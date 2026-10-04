@@ -41,6 +41,11 @@ function continueGame() {
         if (!raw)
             return;
         const g = JSON.parse(raw);
+        if ((g.version ?? 1) < 2) {
+            g.ledger ?? (g.ledger = []);
+            g.history ?? (g.history = []);
+            g.version = 2;
+        }
         lang.mode = normLang(g.settings.lang);
         play(g);
     }

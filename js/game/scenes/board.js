@@ -13,6 +13,7 @@ import { lines, UI, t2, main } from '../i18n.js';
 import { HandModal, say } from '../dialogs.js';
 import { view } from '../fake3d/view.js';
 import { Overview } from '../fake3d/overview.js';
+import { CompanyModal } from '../company.js';
 const ZOOM = 1;
 const TOP = 74; // height of the top bar
 const DIR_OF = (dx, dy) => (Math.abs(dx) >= Math.abs(dy) ? (dx >= 0 ? 'e' : 'w') : dy >= 0 ? 's' : 'n');
@@ -46,11 +47,12 @@ export class BoardScene {
         this.cam.y = n0.y;
         const mk = (x, w, label, icon, color, onClick, pulse = false, size = 24) => new Button({ x, y: 628, w, h: 76, label: lines(label).main, sub: lines(label).sub ?? undefined, icon, color, size, pulse, onClick });
         this.commandButtons = [
-            mk(260, 270, UI.roll, '🎲', '#d7263d', () => this.resolveCommand({ type: 'roll' }), true, 32),
-            mk(546, 150, UI.cards, '🃏', '#d99a0b', () => this.openCards()),
-            mk(712, 150, UI.map, '🗺️', '#17a2a2', () => this.enterMap()),
-            mk(878, 150, UI.info, '📊', '#3a7be8', () => this.openInfo()),
-            mk(1044, 150, UI.menu, '⚙️', '#7a6a55', () => this.onMenu && this.onMenu()),
+            mk(240, 230, UI.roll, '🎲', '#d7263d', () => this.resolveCommand({ type: 'roll' }), true, 32),
+            mk(484, 140, UI.cards, '🃏', '#d99a0b', () => this.openCards()),
+            mk(638, 140, UI.map, '🗺️', '#17a2a2', () => this.enterMap()),
+            mk(792, 140, t2('Company', '会社'), '💼', '#6a3fb5', () => this.openCompany()),
+            mk(946, 140, UI.info, '📊', '#3a7be8', () => this.openInfo()),
+            mk(1100, 140, UI.menu, '⚙️', '#7a6a55', () => this.onMenu && this.onMenu()),
         ];
         this.mapBack = new Button({ x: 1044, y: 628, w: 200, h: 76, label: lines(UI.back).main, sub: lines(UI.back).sub ?? undefined, icon: '↩️', color: '#7a6a55', size: 24, onClick: () => this.exitMap() });
     }
@@ -164,6 +166,9 @@ export class BoardScene {
         const pick = await app.show(new HandModal(this.g, p));
         if (pick)
             this.resolveCommand(pick);
+    }
+    async openCompany() {
+        await app.show(new CompanyModal(this.g, this.current?.id));
     }
     enterMap() {
         this.mode = 'map';
@@ -547,11 +552,11 @@ export class BoardScene {
         const kbd = !!window.__kbd;
         if (this.mode === 'command') {
             ctx.fillStyle = 'rgba(15,52,33,0.88)';
-            roundRect(ctx, 240, 612, 1024, 104, 24);
+            roundRect(ctx, 232, 612, 1024, 104, 24);
             ctx.fill();
             ctx.strokeStyle = C.brass;
             ctx.lineWidth = 3;
-            roundRect(ctx, 240, 612, 1024, 104, 24);
+            roundRect(ctx, 232, 612, 1024, 104, 24);
             ctx.stroke();
             this.commandButtons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));
         }

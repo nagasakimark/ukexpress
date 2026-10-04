@@ -2,7 +2,7 @@ import { STATIONS, STATION_BY_ID, PROP_BY_ID } from './content/stations.js';
 import { CARDS, CARD_BY_ID, TRAINS, AVATARS, EVENTS } from './content/game-data.js';
 import { board, dist, stationDist, distancesTo } from './map.js';
 import { Rng } from './rng.js';
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 2;
 export const CASH_FLOOR = -500;
 // ---------- randomness (seeded, stored in the state) ----------
 export function rnd(g) { const r = new Rng(g.rng); const v = r.next(); g.rng = r.state; return v; }
@@ -46,8 +46,9 @@ export function createGame(s) {
     const g = {
         version: SAVE_VERSION, settings: s, rng: rng.state, year: 1, month: 0, turn: 0, players, owners: {},
         destination: '', prevDestination: 'kingscross',
-        boggart: { holder: null, form: 'boggart', months: 0, calm: 0, grandTurns: 0, brownieTurns: 0 },
+        boggart: { holder: null, form: 'boggart', months: 0, calm: 0, grandTurns: 0, brownieTurns: 3, turns: 0 },
         globalBoosts: {}, over: false, log: [], monthEvent: null, seenEvents: [], boggartLog: {},
+        ledger: [], history: [],
     };
     // The first destination is a famous city a short ride from London, so the first trip is quick and exciting.
     const ks = board.stationNode['kingscross'];
@@ -111,8 +112,8 @@ export function leader(g) { return ranking(g)[0]; }
 export function distToDest(g, p) { return distancesTo(board.stationNode[g.destination])[p.pos]; }
 export function handLimit(p) { return TRAINS[p.train].slots; }
 export function diceCount(p) { return TRAINS[p.train].dice; }
-/** Adds money, applying the kid-friendly debt floor. Returns {change, forgiven}. */
-export function addCash(p, amount) {
+/** Adds money, applying the kid-friendly debt floor. Every pound is written into the company books. */
+export function addCash(g, p, amount, kind = 'other', note = '') {
     const before = p.cash;
     p.cash += Math.round(amount);
     let forgiven = false;
@@ -120,7 +121,18 @@ export function addCash(p, amount) {
         p.cash = CASH_FLOOR;
         forgiven = true;
     }
+    g.ledger.push({ y: g.year, m: g.month, playerId: p.id, v: Math.round(amount), k: kind, n: note || undefined });
+    if (g.ledger.length > 500)
+        g.ledger.splice(0, g.ledger.length - 500);
     return { change: p.cash - before, forgiven };
+}
+/** Cash + property value: the number drawn on the company graph. */
+export function worth(g, p) { return assets(g, p); }
+/** Remembers this month for the company graph (called once per month). */
+export function snapshot(g) {
+    g.history.push({ y: g.year, m: g.month, v: g.players.map((p) => [p.cash, worth(g, p)]) });
+    if (g.history.length > 144)
+        g.history.splice(0, g.history.length - 144);
 }
 export function roundTo10(n) { return Math.round(n / 10) * 10; }
 // ---------- squares ----------
@@ -239,7 +251,7 @@ function boggartActInner(g, p) {
         const leave = b.brownieTurns <= 0;
         if (rchance(g, 0.5)) {
             const m = 500 * Y;
-            addCash(p, m);
+            addCash(g, p, m, 'prize');
             return { text: { en: `The Brownie did your chores! +£${m.toLocaleString('en-GB')}`, ja: `ブラウニーがお手伝い！+£${m.toLocaleString('en-GB')}` }, money: m, good: true, leave };
         }
         const c = drawRareCardId(g);
@@ -255,7 +267,7 @@ function boggartActInner(g, p) {
         }
         if (r <= 1) {
             const m = rint(g, 5, 20) * 10;
-            const res = addCash(p, -m);
+            const res = addCash(g, p, -m, 'fee');
             p.lastBoggartLoss = -res.change;
             return { text: { en: `Little Boggart spent £${m} on sweets!`, ja: `小ボガートがおかしに£${m}使った！` }, money: -m };
         }
@@ -270,7 +282,7 @@ function boggartActInner(g, p) {
                 const pr = props[0];
                 delete g.owners[pr.id];
                 const m = Math.round(priceOf(g, pr) / 2);
-                addCash(p, m);
+                addCash(g, p, m, 'sale', 'prop:' + pr.id);
                 return { text: { en: `The Grand Boggart sold your ${pr.name.en}!`, ja: `大ボガートが「${pr.name.ja}」を売っちゃった！` } };
             }
         }
@@ -290,7 +302,7 @@ function boggartActInner(g, p) {
     }
     if (r < 0.55) {
         const m = rint(g, 10, 50) * 10 * Y;
-        const res = addCash(p, -m);
+        const res = addCash(g, p, -m, 'fee');
         p.lastBoggartLoss = -res.change;
         return { text: { en: `The Boggart spent £${m.toLocaleString('en-GB')} of your money!`, ja: `ボガートがお金を£${m.toLocaleString('en-GB')}使った！` }, money: -m };
     }
@@ -301,7 +313,7 @@ function boggartActInner(g, p) {
     }
     if (r < 0.9) {
         const m = 200 * Y;
-        const res = addCash(p, -m);
+        const res = addCash(g, p, -m, 'fee');
         p.lastBoggartLoss = -res.change;
         return { text: { en: `The Boggart bought a giant teapot with your money! -£${m.toLocaleString('en-GB')}`, ja: `ボガートが大きなティーポットを買った！-£${m.toLocaleString('en-GB')}` }, money: -m };
     }
@@ -346,22 +358,10 @@ export function catMultiplier(g, p, pr) {
 export function settle(g) {
     const lines = [];
     for (const p of g.players) {
-        let income = 0;
-        const mono = new Set();
-        for (const pr of ownedProps(g, p)) {
-            let v = priceOf(g, pr) * pr.ret * catMultiplier(g, p, pr);
-            if (monopolyOwner(g, pr.stationId) === p.id) {
-                v *= 2;
-                mono.add(pr.stationId);
-            }
-            income += v;
-        }
-        if (p.effects.seacoleGift > 0) {
-            income += p.effects.seacoleGift * 2;
+        const f = forecastIncome(g, p);
+        addCash(g, p, f.total, 'rent');
+        if (p.effects.seacoleGift > 0)
             p.effects.seacoleGift = 0;
-        }
-        income = roundTo10(income);
-        p.cash += income;
         // Kid-friendly debt rule: sell the cheapest properties at half price until cash is not negative.
         const sold = [];
         while (p.cash < 0) {
@@ -369,15 +369,28 @@ export function settle(g) {
             if (!props.length)
                 break;
             delete g.owners[props[0].id];
-            p.cash += Math.round(priceOf(g, props[0]) / 2);
+            addCash(g, p, Math.round(priceOf(g, props[0]) / 2), 'sale', 'prop:' + props[0].id);
             sold.push(props[0].name.en);
         }
         const forgiven = p.cash < CASH_FLOOR;
         if (forgiven)
             p.cash = CASH_FLOOR;
-        lines.push({ player: p, income, monopolies: mono.size, sold, forgiven });
+        lines.push({ player: p, income: f.total, monopolies: f.mono, sold, forgiven });
     }
     return lines;
+}
+/** What the March settlement would pay this player right now (same maths as settle, without paying out). */
+export function forecastIncome(g, p) {
+    const lines = ownedProps(g, p).map((pr) => {
+        let v = priceOf(g, pr) * pr.ret * catMultiplier(g, p, pr);
+        const mono = monopolyOwner(g, pr.stationId) === p.id;
+        if (mono)
+            v *= 2;
+        return { prop: pr, rent: v, mono };
+    });
+    const gift = p.effects.seacoleGift > 0 ? p.effects.seacoleGift * 2 : 0;
+    const mono = new Set(lines.filter((l) => l.mono).map((l) => l.prop.stationId)).size;
+    return { total: roundTo10(lines.reduce((a, l) => a + l.rent, 0) + gift), mono, gift, lines };
 }
 export function newYearReset(g) {
     for (const p of g.players) {

@@ -4,7 +4,7 @@ import { CARD_BY_ID, REGIONS, SHOP_STOCK, TRAINS, AVATARS } from '../core/conten
 import { CUSTOM_QUIZ } from '../core/content/stations.js';
 import { eventDate, dateText, realMonth } from '../core/calendar.js';
 import { HEROES, HERO_BY_ID, HEROES_AT, SENSEI } from '../core/content/heroes.js';
-import { addCash, assets, arrivalPrize, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, } from '../core/rules.js';
+import { addCash, assets, arrivalPrize, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, snapshot, } from '../core/rules.js';
 import { C, money } from '../engine/draw.js';
 import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
@@ -216,13 +216,13 @@ export class Director {
         switch (f.t) {
             case 'all':
                 for (const p of g.players)
-                    addCash(p, f.amount * Y);
+                    addCash(g, p, f.amount * Y, 'prize');
                 audio.play('coin');
                 break;
             case 'region':
                 for (const p of g.players)
                     if (f.regions.includes(regionOf(p)))
-                        addCash(p, f.amount * Y);
+                        addCash(g, p, f.amount * Y, 'prize');
                 break;
             case 'card':
                 for (const p of g.players)
@@ -242,7 +242,7 @@ export class Director {
             case 'owner': {
                 const o = g.owners[f.prop];
                 if (o)
-                    addCash(g.players.find((p) => p.id === o), f.amount);
+                    addCash(g, g.players.find((p) => p.id === o), f.amount, 'prize');
                 break;
             }
             case 'gala': {
@@ -251,7 +251,7 @@ export class Director {
                         giveCard(p, 'express');
                 const owners = new Set(STATION_BY_ID['durham'].props.map((pr) => g.owners[pr.id]).filter(Boolean));
                 for (const o of owners)
-                    addCash(g.players.find((p) => p.id === o), 500 * Y);
+                    addCash(g, g.players.find((p) => p.id === o), 500 * Y, 'prize');
                 break;
             }
             case 'boggart':
@@ -261,7 +261,7 @@ export class Director {
             case 'minigame': {
                 // Mini-games are switched off: the prize becomes a lucky draw instead.
                 const w = rpick(g, g.players);
-                addCash(w, 300 * Y);
+                addCash(g, w, 300 * Y, 'prize');
                 audio.play('fanfare');
                 await this.tell(null, { title: t2('Lucky draw!', 'くじ引き！'), icon: '🏆', body: [t2(`${w.name.en} wins the prize: £${(300 * Y).toLocaleString('en-GB')}!`, `${w.name.ja}が当選！£${(300 * Y).toLocaleString('en-GB')}！`)] });
                 break;
@@ -270,8 +270,8 @@ export class Director {
                 const last = lastPlace(g);
                 for (const p of g.players)
                     if (p.id !== last.id) {
-                        const r = addCash(p, -f.amount * Y);
-                        addCash(last, -r.change);
+                        const r = addCash(g, p, -f.amount * Y, 'fee');
+                        addCash(g, last, -r.change, 'prize');
                     }
                 break;
             }
@@ -325,7 +325,7 @@ export class Director {
         const Y = g.year;
         if (!teacher.minigames) {
             const w = rpick(g, g.players);
-            addCash(w, 300 * Y);
+            addCash(g, w, 300 * Y, 'prize');
             await this.tell(null, { title, icon: '🏆', body: [t2(`${w.name.en} wins the prize: £${(300 * Y).toLocaleString('en-GB')}!`, `${w.name.ja}が優勝！£${(300 * Y).toLocaleString('en-GB')}！`)] });
             return;
         }
@@ -340,7 +340,7 @@ export class Director {
         const prizes = [500, 300, 150, 50];
         const body = scores.map((x, i) => {
             const m = prizes[i] * Y;
-            addCash(x.p, m);
+            addCash(g, x.p, m, 'prize');
             return t2(`${['🥇', '🥈', '🥉', '4.'][i]} ${x.p.name.en}: ${x.s} → +£${m.toLocaleString('en-GB')}`, `${['🥇', '🥈', '🥉', '4.'][i]} ${x.p.name.ja}：${x.s} → +£${m.toLocaleString('en-GB')}`);
         });
         audio.play('fanfare');
@@ -349,6 +349,7 @@ export class Director {
     timeUp() { return teacher.timerMinutes > 0 && !app.autoplay && performance.now() - this.startedAt >= teacher.timerMinutes * 60000; }
     async monthEnd() {
         const g = this.g;
+        snapshot(g);
         const timeUp = this.timeUp();
         if (timeUp && g.month !== 11) {
             this.setSpeed(null);
@@ -368,7 +369,7 @@ export class Director {
                 if (giveCard(last, c))
                     await this.tell(null, { title: t2("Mr Whistle's gift", 'ホイッスルさんのプレゼント'), icon: '🎁', body: [t2(`${last.name.en} is in last place, so Mr Whistle gives a ${CARD_BY_ID[c].name.en} card. Keep going!`, `最下位の${last.name.ja}に「${CARD_BY_ID[c].name.ja}」カードをプレゼント。がんばれ！`)] });
                 else {
-                    addCash(last, 500 * g.year);
+                    addCash(g, last, 500 * g.year, 'prize');
                 }
             }
             newYearReset(g);
@@ -491,7 +492,7 @@ export class Director {
         switch (node.type) {
             case 'blue': {
                 const a = blueAmount(g);
-                addCash(p, a);
+                addCash(g, p, a, 'prize');
                 audio.play('coin');
                 fx.burst(s.x, s.y - 30, 'coin', 14, { speed: 6 });
                 fx.float('+' + money(a), s.x, s.y - 80, C.gold);
@@ -505,7 +506,7 @@ export class Director {
                     break;
                 }
                 const a = redAmount(g);
-                const r = addCash(p, -a);
+                const r = addCash(g, p, -a, 'fee');
                 audio.play('bad');
                 fx.shake(8);
                 fx.float('-' + money(a), s.x, s.y - 80, C.red);
@@ -529,7 +530,7 @@ export class Director {
                 const buy = await this.ask({ kind: 'cardShop', playerId: p.id, stock });
                 for (const id of buy) {
                     if (p.cash >= CARD_BY_ID[id].price && giveCard(p, id)) {
-                        addCash(p, -CARD_BY_ID[id].price);
+                        addCash(g, p, -CARD_BY_ID[id].price, 'buy', 'card:' + id);
                         if (this.isHuman(p))
                             collect('cards', id);
                     }
@@ -604,7 +605,7 @@ export class Director {
         if (right) {
             p.stars++;
             if (reward)
-                addCash(p, reward * mult);
+                addCash(this.g, p, reward * mult, 'prize');
         }
         if (!this.isHuman(p))
             await this.note(p, t2(`${p.name.en} answered the quiz ${right ? 'correctly!' : 'wrong.'}`, `${p.name.ja}はクイズに${right ? '正解！' : '不正解。'}`), right ? '⭕' : '❌');
@@ -621,13 +622,13 @@ export class Director {
         const k = rweighted(g, kinds, (x) => ({ rainbow: 2, tea: 2, hero: 3, umbrella: 2, movie: 2, match: 2, royal: 1 }[x]));
         switch (k) {
             case 'rainbow':
-                addCash(p, 300 * Y);
+                addCash(g, p, 300 * Y, 'prize');
                 audio.play('coin');
                 await this.tell(p, { title: t2('A rainbow!', 'にじが出た！'), icon: '🌈', body: [t2('Sun and showers together make a rainbow. A lucky sight for a traveller!', '太陽とにわか雨がいっしょになると、にじが出るよ。旅人にはラッキー！')], money: 300 * Y });
                 break;
             case 'tea':
                 for (const q of g.players)
-                    addCash(q, 100 * Y);
+                    addCash(g, q, 100 * Y, 'prize');
                 await this.tell(p, { title: t2('Afternoon tea party!', 'アフタヌーンティー・パーティー！'), icon: '🫖', body: [t2('Afternoon tea has sandwiches, scones and cakes. Everyone gets £' + 100 * Y + '!', 'サンドイッチ、スコーン、ケーキでお茶会！みんな+£' + 100 * Y + '！')] });
                 break;
             case 'hero': {
@@ -636,20 +637,20 @@ export class Director {
                     await this.heroMeet(p, rpick(g, cand).id, true);
                     break;
                 }
-                addCash(p, 300 * Y);
+                addCash(g, p, 300 * Y, 'prize');
                 break;
             }
             case 'umbrella':
                 await this.gainCard(p, 'umbrella');
                 break;
             case 'movie':
-                addCash(p, 200 * Y);
+                addCash(g, p, 200 * Y, 'prize');
                 await this.tell(p, { title: t2('Movie magic!', '映画のまほう！'), icon: '🎬', body: [t2('Many famous films are made in the UK. A film crew paid to use your station!', 'イギリスでは有名な映画がたくさん作られているよ。撮影隊がお金をはらってくれた！')], money: 200 * Y });
                 break;
             case 'match': {
                 const sport = ownedProps(g, p).filter((x) => x.cat === 'sport').length;
                 const m = (sport * 200 + 100) * Y;
-                addCash(p, m);
+                addCash(g, p, m, 'prize');
                 await this.tell(p, { title: t2('Big match day!', 'ビッグマッチの日！'), icon: '⚽', body: [t2('Football was first given its rules in England in 1863. Sport properties earn extra today!', 'サッカーのルールは1863年にイングランドで作られたよ。スポーツの物件がもうかった！')], money: m });
                 break;
             }
@@ -663,7 +664,7 @@ export class Director {
                 }
                 const best = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
                 if (best)
-                    addCash(g.players.find((q) => q.id === best[0]), 1000);
+                    addCash(g, g.players.find((q) => q.id === best[0]), 1000, 'prize');
                 await this.tell(p, { title: t2(`Royal visit to ${st.name.en}!`, `王様が${st.name.ja}を訪問！`), icon: '👑', body: [t2(best ? `The King visits! ${g.players.find((q) => q.id === best[0]).name.en} owns the most there and earns £1,000.` : 'The King visits! Nobody owns property there yet.', best ? `王様が来た！いちばん物件を持つ${g.players.find((q) => q.id === best[0]).name.ja}に£1,000！` : '王様が来た！まだだれも物件を持っていない。')] });
                 break;
             }
@@ -696,7 +697,7 @@ export class Director {
             const price = priceOf(g, pr);
             if (g.owners[id] || p.cash < price)
                 continue;
-            addCash(p, -price);
+            addCash(g, p, -price, 'buy', 'prop:' + id);
             g.owners[id] = p.id;
             bought.push(id);
         }
@@ -705,7 +706,7 @@ export class Director {
             audio.play('buy');
         }
         if (ans.train !== null && ans.train === p.train + 1 && p.cash >= TRAINS[ans.train].price) {
-            addCash(p, -TRAINS[ans.train].price);
+            addCash(g, p, -TRAINS[ans.train].price, 'buy', 'train:' + ans.train);
             p.train = ans.train;
             audio.play('whistle');
             await this.tell(p, { title: t2(`New train: ${TRAINS[p.train].name.en}!`, `新しい列車：${TRAINS[p.train].name.ja}！`), icon: '🚂', body: [TRAINS[p.train].fact, t2(`Now you roll ${TRAINS[p.train].dice} dice!`, `サイコロが${TRAINS[p.train].dice}個になった！`)], confetti: true });
@@ -724,7 +725,7 @@ export class Director {
     async hometown(p) {
         const g = this.g;
         const m = 500 * g.year;
-        addCash(p, m);
+        addCash(g, p, m, 'prize');
         const c = drawRareCardId(g);
         const got = giveCard(p, c);
         audio.play('fanfare');
@@ -776,7 +777,7 @@ export class Director {
         const g = this.g;
         const st = STATION_BY_ID[g.destination];
         const prize = arrivalPrize(g);
-        addCash(p, prize);
+        addCash(g, p, prize, 'prize');
         p.arrivals++;
         audio.play('fanfare');
         const s = this.board.worldToScreen(this.board.vis[p.id].x, this.board.vis[p.id].y);
@@ -873,7 +874,7 @@ export class Director {
     checkBadges(p) {
         if (!p.badges.includes('movie') && filmStations().every((id) => p.visited.includes(id))) {
             p.badges.push('movie');
-            addCash(p, 2000);
+            addCash(this.g, p, 2000, 'prize');
             this.tell(p, { title: t2('Movie Magic Tour complete!', 'ムービー・マジック・ツアー達成！'), icon: '🎬', body: [t2('You visited every film-location station. +£2,000!', '映画のロケ地の駅をぜんぶ訪れた！+£2,000！')], confetti: true });
         }
     }
@@ -913,8 +914,8 @@ export class Director {
             case 'birthday': {
                 for (const q of g.players)
                     if (q.id !== p.id) {
-                        const r = addCash(q, -100 * Y);
-                        addCash(p, -r.change);
+                        const r = addCash(g, q, -100 * Y, 'fee');
+                        addCash(g, p, -r.change, 'prize');
                     }
                 audio.play('coin');
                 await this.tell(p, { title: t2('Happy birthday!', 'お誕生日おめでとう！'), icon: '🎂', body: [t2('Everyone gave you a present!', 'みんながプレゼントをくれた！')] });
@@ -928,7 +929,7 @@ export class Director {
                 return {};
             case 'jubilee':
                 for (const q of g.players)
-                    addCash(q, 300 * Y);
+                    addCash(g, q, 300 * Y, 'prize');
                 audio.play('coin');
                 return {};
             case 'leaves':
@@ -1001,7 +1002,7 @@ export class Director {
                 return {};
             case 'allGain':
                 for (const q of g.players)
-                    addCash(q, 300 * Y);
+                    addCash(g, q, 300 * Y, 'prize');
                 audio.play('coin');
                 return {};
             case 'neverGiveUp':
@@ -1017,15 +1018,15 @@ export class Director {
                 p.effects.heroHints = 3;
                 return {};
             case 'undoBoggart':
-                addCash(p, p.lastBoggartLoss);
+                addCash(g, p, p.lastBoggartLoss, 'prize');
                 p.lastBoggartLoss = 0;
                 return {};
             case 'kindness': {
                 const last = lastPlace(g);
                 const m = 200 * Y;
                 if (last.id !== p.id) {
-                    addCash(p, -m);
-                    addCash(last, m);
+                    addCash(g, p, -m, 'fee');
+                    addCash(g, last, m, 'prize');
                     p.effects.seacoleGift += m;
                 }
                 return {};
