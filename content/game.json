@@ -1,0 +1,336 @@
+{
+ "regions": {
+  "london": {
+   "name": {
+    "en": "London",
+    "ja": "ロンドン"
+   },
+   "color": "#d64545",
+   "mascot": "🐦‍⬛"
+  },
+  "southeast": {
+   "name": {
+    "en": "South East",
+    "ja": "南東部"
+   },
+   "color": "#e88a2e",
+   "mascot": "🕊️"
+  },
+  "east": {
+   "name": {
+    "en": "East of England",
+    "ja": "イースト・オブ・イングランド"
+   },
+   "color": "#c4478f",
+   "mascot": "🦭"
+  },
+  "southwest": {
+   "name": {
+    "en": "South West",
+    "ja": "南西部"
+   },
+   "color": "#2aa198",
+   "mascot": "🧚"
+  },
+  "midlands": {
+   "name": {
+    "en": "Midlands",
+    "ja": "ミッドランズ"
+   },
+   "color": "#8e5cc4",
+   "mascot": "🦆"
+  },
+  "north": {
+   "name": {
+    "en": "North of England",
+    "ja": "イングランド北部"
+   },
+   "color": "#2f4f8f",
+   "mascot": "🐿️"
+  },
+  "wales": {
+   "name": {
+    "en": "Wales",
+    "ja": "ウェールズ"
+   },
+   "color": "#2e9b46",
+   "mascot": "🐉"
+  },
+  "scotland": {
+   "name": {
+    "en": "Scotland",
+    "ja": "スコットランド"
+   },
+   "color": "#3b7dd8",
+   "mascot": "🦕"
+  },
+  "ni": {
+   "name": {
+    "en": "Northern Ireland",
+    "ja": "北アイルランド"
+   },
+   "color": "#d4a92a",
+   "mascot": "🧔"
+  }
+ },
+ "avatars": [
+  {
+   "emoji": "🦔",
+   "name": {
+    "en": "Pip",
+    "ja": "ピップ"
+   },
+   "from": {
+    "en": "England",
+    "ja": "イングランド"
+   },
+   "line": {
+    "en": "Let's go, go, go!",
+    "ja": "レッツゴー！"
+   }
+  },
+  {
+   "emoji": "🐦",
+   "name": {
+    "en": "Rosie",
+    "ja": "ロージー"
+   },
+   "from": {
+    "en": "England",
+    "ja": "イングランド"
+   },
+   "line": {
+    "en": "Cheerio!",
+    "ja": "チアリオ！"
+   }
+  },
+  {
+   "emoji": "🐮",
+   "name": {
+    "en": "Morag",
+    "ja": "モラグ"
+   },
+   "from": {
+    "en": "Scotland",
+    "ja": "スコットランド"
+   },
+   "line": {
+    "en": "Och, braw!",
+    "ja": "すごいね！"
+   }
+  },
+  {
+   "emoji": "🐧",
+   "name": {
+    "en": "Pen",
+    "ja": "ペン"
+   },
+   "from": {
+    "en": "Northern Ireland",
+    "ja": "北アイルランド"
+   },
+   "line": {
+    "en": "Fishy fun!",
+    "ja": "さかな最高！"
+   }
+  },
+  {
+   "emoji": "🐕",
+   "name": {
+    "en": "Kenta",
+    "ja": "けんた"
+   },
+   "from": {
+    "en": "Japan",
+    "ja": "日本"
+   },
+   "line": {
+    "en": "Yosh, ikuzo!",
+    "ja": "よし、いくぞ！"
+   }
+  },
+  {
+   "emoji": "🦝",
+   "name": {
+    "en": "Tanu",
+    "ja": "たぬ"
+   },
+   "from": {
+    "en": "Japan",
+    "ja": "日本"
+   },
+   "line": {
+    "en": "Pon-poko!",
+    "ja": "ぽんぽこ！"
+   }
+  },
+  {
+   "emoji": "🦢",
+   "name": {
+    "en": "Tsuru",
+    "ja": "つる"
+   },
+   "from": {
+    "en": "Japan",
+    "ja": "日本"
+   },
+   "line": {
+    "en": "Fly high!",
+    "ja": "高く飛ぼう！"
+   }
+  },
+  {
+   "emoji": "🐵",
+   "name": {
+    "en": "Momo",
+    "ja": "もも"
+   },
+   "from": {
+    "en": "Japan",
+    "ja": "日本"
+   },
+   "line": {
+    "en": "Onsen time!",
+    "ja": "温泉タイム！"
+   }
+  }
+ ],
+ "cpuStyles": {
+  "speedy": {
+   "name": {
+    "en": "Speedy",
+    "ja": "スピード"
+   },
+   "badge": "💨",
+   "line": {
+    "en": "Full steam ahead!",
+    "ja": "全速前進！"
+   }
+  },
+  "collector": {
+   "name": {
+    "en": "Collector",
+    "ja": "コレクター"
+   },
+   "badge": "🏠",
+   "line": {
+    "en": "I'll take it!",
+    "ja": "それ、買います！"
+   }
+  },
+  "trickster": {
+   "name": {
+    "en": "Trickster",
+    "ja": "いたずら"
+   },
+   "badge": "🃏",
+   "line": {
+    "en": "Oops! Sorry!",
+    "ja": "おっと、ごめん！"
+   }
+  },
+  "scholar": {
+   "name": {
+    "en": "Scholar",
+    "ja": "物知り"
+   },
+   "badge": "📚",
+   "line": {
+    "en": "Did you know?",
+    "ja": "知ってた？"
+   }
+  }
+ },
+ "trains": [
+  {
+   "id": "billy",
+   "name": {
+    "en": "Puffing Billy",
+    "ja": "パッフィング・ビリー"
+   },
+   "dice": 1,
+   "price": 0,
+   "slots": 8,
+   "color": "#5b4636",
+   "fact": {
+    "en": "One of the oldest steam engines, 1813.",
+    "ja": "1813年ごろの、とても古い蒸気機関車。"
+   }
+  },
+  {
+   "id": "rocket",
+   "name": {
+    "en": "Stephenson's Rocket",
+    "ja": "ロケット号"
+   },
+   "dice": 2,
+   "price": 2000,
+   "slots": 8,
+   "color": "#e6b422",
+   "fact": {
+    "en": "Won the Rainhill Trials in 1829.",
+    "ja": "1829年のレインヒル・トライアルで優勝。"
+   }
+  },
+  {
+   "id": "scotsman",
+   "name": {
+    "en": "Flying Scotsman",
+    "ja": "フライング・スコッツマン"
+   },
+   "dice": 2,
+   "price": 4000,
+   "slots": 9,
+   "color": "#2e7d32",
+   "fact": {
+    "en": "First official 100 mph steam run, 1934.",
+    "ja": "1934年、蒸気機関車で初めて時速100マイルを記録。"
+   }
+  },
+  {
+   "id": "mallard",
+   "name": {
+    "en": "Mallard",
+    "ja": "マラード"
+   },
+   "dice": 3,
+   "price": 8000,
+   "slots": 9,
+   "color": "#1e5aa8",
+   "fact": {
+    "en": "Fastest steam train ever: 126 mph in 1938.",
+    "ja": "1938年、時速126マイル。世界一速い蒸気機関車。"
+   }
+  },
+  {
+   "id": "hst",
+   "name": {
+    "en": "InterCity 125",
+    "ja": "インターシティ125"
+   },
+   "dice": 3,
+   "price": 12000,
+   "slots": 9,
+   "color": "#f2c230",
+   "fact": {
+    "en": "Fast diesel train from 1976.",
+    "ja": "1976年からの速いディーゼル列車。"
+   }
+  },
+  {
+   "id": "azuma",
+   "name": {
+    "en": "Azuma",
+    "ja": "あずま"
+   },
+   "dice": 4,
+   "price": 20000,
+   "slots": 9,
+   "color": "#e8e8e8",
+   "fact": {
+    "en": "Built by Hitachi, a Japanese company!",
+    "ja": "日本の日立が作った列車！"
+   }
+  }
+ ]
+}

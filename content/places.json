@@ -1,0 +1,2243 @@
+{
+ "kingscross": {
+  "facts": [
+   {
+    "en": "Platform 9¾ has a real luggage trolley half-way into the wall, so fans can take a Harry Potter photo.",
+    "ja": "9¾番線には、壁に半分めりこんだカートがあって、ハリー・ポッターの写真がとれるよ。"
+   },
+   {
+    "en": "Next door, St Pancras station has the Eurostar train that goes under the sea to Paris.",
+    "ja": "となりのセント・パンクラス駅からは、海の下を通ってパリへ行くユーロスターが出ているよ。"
+   }
+  ],
+  "team": {
+   "en": "Arsenal (the Gunners)",
+   "ja": "アーセナル（ガナーズ）"
+  },
+  "famous": {
+   "en": "Harry Potter wands and scarves",
+   "ja": "ハリー・ポッターのつえとマフラー"
+  }
+ },
+ "paddington": {
+  "facts": [
+   {
+    "en": "Paddington Bear is named after this station. In the stories he arrived from Peru with a label round his neck.",
+    "ja": "くまのパディントンは、この駅の名前から。お話では、首にふだをつけてペルーからやってきたよ。"
+   },
+   {
+    "en": "The huge glass and iron roof was designed by the engineer Isambard Kingdom Brunel in 1854.",
+    "ja": "大きなガラスと鉄の屋根は、1854年にブルネルという技師が作ったよ。"
+   }
+  ],
+  "team": {
+   "en": "Queens Park Rangers (QPR)",
+   "ja": "クイーンズ・パーク・レンジャーズ（QPR）"
+  },
+  "famous": {
+   "en": "Marmalade sandwiches",
+   "ja": "マーマレードのサンドイッチ"
+  }
+ },
+ "waterloo": {
+  "facts": [
+   {
+    "en": "Waterloo is one of the busiest railway stations in the UK. Millions of people walk through it every year.",
+    "ja": "ウォータールーは、イギリスでいちばんいそがしい駅のひとつ。毎年何百万人も通るよ。"
+   },
+   {
+    "en": "Just outside, the South Bank has a big riverside walk, theatres, and street food stalls.",
+    "ja": "駅の外のサウスバンクには、川ぞいの散歩道、劇場、屋台がならんでいるよ。"
+   }
+  ],
+  "team": {
+   "en": "Millwall (the Lions)",
+   "ja": "ミルウォール（ライオンズ）"
+  },
+  "famous": {
+   "en": "Street food from the South Bank",
+   "ja": "サウスバンクの屋台フード"
+  }
+ },
+ "greenwich": {
+  "facts": [
+   {
+    "en": "The Cutty Sark is a tall tea-clipper ship from 1869. You can walk right underneath it!",
+    "ja": "カティサーク号は1869年の背の高い帆船。船の下を歩けるよ！"
+   },
+   {
+    "en": "At the Royal Observatory you can stand with one foot in each half of the world, on the Prime Meridian line.",
+    "ja": "王立天文台では、世界の東と西に片足ずつ立てるよ。本初子午線の線があるんだ。"
+   }
+  ],
+  "team": {
+   "en": "Charlton Athletic (the Addicks)",
+   "ja": "チャールトン・アスレティック（アディックス）"
+  },
+  "famous": {
+   "en": "Greenwich Market crafts",
+   "ja": "グリニッジ・マーケットの手作り雑貨"
+  }
+ },
+ "westminster": {
+  "facts": [
+   {
+    "en": "The Houses of Parliament, where the UK's laws are made, were rebuilt after a big fire in 1834.",
+    "ja": "法律を作る国会議事堂は、1834年の大火事のあとに建てなおされたよ。"
+   },
+   {
+    "en": "Westminster Abbey has crowned kings and queens for almost 1,000 years.",
+    "ja": "ウェストミンスター寺院では、1000年近く王さまや女王さまの戴冠式をしているよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Union Jack souvenirs and red bus toys",
+   "ja": "ユニオンジャックのおみやげと赤いバスのおもちゃ"
+  }
+ },
+ "kew": {
+  "facts": [
+   {
+    "en": "Kew Gardens grows more than 50,000 kinds of plants, and it is a World Heritage Site.",
+    "ja": "キュー・ガーデンズには5万種類以上の植物があって、世界遺産になっているよ。"
+   },
+   {
+    "en": "You can walk on a Treetop Walkway, 18 metres above the ground!",
+    "ja": "地上18メートルの高さの木の上の歩道を歩けるよ！"
+   }
+  ],
+  "team": {
+   "en": "Brentford (the Bees)",
+   "ja": "ブレントフォード（ビーズ）"
+  },
+  "famous": {
+   "en": "Rare plants and flowers",
+   "ja": "めずらしい植物と花"
+  }
+ },
+ "oxford": {
+  "facts": [
+   {
+    "en": "People have studied at Oxford for about 900 years. Alice in Wonderland was first told to a girl who lived here.",
+    "ja": "オックスフォードでは約900年も前から勉強しているよ。「不思議の国のアリス」はここに住む女の子に話されたのがはじまり。"
+   },
+   {
+    "en": "The Christ Church dining hall looks like the Great Hall in the Harry Potter films.",
+    "ja": "クライスト・チャーチの食堂は、ハリー・ポッターの大広間にそっくり。"
+   }
+  ],
+  "team": {
+   "en": "Oxford United (the U's)",
+   "ja": "オックスフォード・ユナイテッド"
+  },
+  "famous": {
+   "en": "Oxford marmalade",
+   "ja": "オックスフォード・マーマレード"
+  }
+ },
+ "cambridge": {
+  "facts": [
+   {
+    "en": "In Cambridge you can go punting: standing in a flat boat and pushing it along the river with a long pole.",
+    "ja": "ケンブリッジでは「パンティング」ができるよ。平たい舟に立って、長い棒で川をすすむんだ。"
+   },
+   {
+    "en": "More than 100 people connected to Cambridge University have won a Nobel Prize.",
+    "ja": "ケンブリッジ大学に関係する人から、100人以上がノーベル賞をとっているよ。"
+   }
+  ],
+  "team": {
+   "en": "Cambridge United (the U's)",
+   "ja": "ケンブリッジ・ユナイテッド"
+  },
+  "famous": {
+   "en": "Punting on the River Cam",
+   "ja": "カム川のパンティング"
+  }
+ },
+ "canterbury": {
+  "facts": [
+   {
+    "en": "Pilgrims have walked to Canterbury for 800 years. 'The Canterbury Tales' is a famous book about their journey.",
+    "ja": "800年も前から、人びとはカンタベリーへ巡礼に歩いてきたよ。その旅を書いたのが「カンタベリー物語」。"
+   },
+   {
+    "en": "St Augustine arrived near Canterbury in the year 597 and started the English church.",
+    "ja": "597年に聖アウグスティヌスがやってきて、イングランドの教会をはじめたよ。"
+   }
+  ],
+  "team": {
+   "en": "Kent Cricket (the Spitfires)",
+   "ja": "ケント・クリケット（スピットファイアーズ）"
+  },
+  "famous": {
+   "en": "Canterbury Tales souvenirs",
+   "ja": "カンタベリー物語のおみやげ"
+  }
+ },
+ "dover": {
+  "facts": [
+   {
+    "en": "Dover Castle sits above the White Cliffs. Under it there are secret tunnels from the Second World War.",
+    "ja": "ドーバー城は白い崖の上。下には第二次世界大戦の秘密のトンネルがあるよ。"
+   },
+   {
+    "en": "Ferries leave Dover all day for France. The sea between is only 34 km wide.",
+    "ja": "ドーバーからは1日じゅうフランス行きのフェリーが出ているよ。海はたった34キロのはば。"
+   }
+  ],
+  "team": {
+   "en": "Dover Athletic (the Whites)",
+   "ja": "ドーバー・アスレティック（ホワイツ）"
+  },
+  "famous": {
+   "en": "Chalk from the White Cliffs",
+   "ja": "白い崖のチョーク"
+  }
+ },
+ "brighton": {
+  "facts": [
+   {
+    "en": "Brighton Pavilion looks like an Indian palace, with onion-shaped domes. A king built it for parties.",
+    "ja": "ブライトン・パビリオンは、玉ねぎのような屋根をもつインド風の宮殿。王さまがパーティーのために建てたよ。"
+   },
+   {
+    "en": "Brighton's beach is covered in pebbles, not sand, so people wear sandals in the sea.",
+    "ja": "ブライトンのビーチは砂ではなく小石。海に入るときはサンダルをはくよ。"
+   }
+  ],
+  "team": {
+   "en": "Brighton & Hove Albion (the Seagulls)",
+   "ja": "ブライトン（シーガルズ）"
+  },
+  "famous": {
+   "en": "Brighton rock candy",
+   "ja": "ブライトン・ロック（棒のキャンディ）"
+  }
+ },
+ "portsmouth": {
+  "facts": [
+   {
+    "en": "Portsmouth is home to the Royal Navy's historic ships: HMS Victory, HMS Warrior and the Mary Rose.",
+    "ja": "ポーツマスには、ヴィクトリー号やウォーリア号、メアリー・ローズ号など、海軍の古い船があるよ。"
+   },
+   {
+    "en": "Charles Dickens, who wrote 'Oliver Twist', was born in Portsmouth in 1812.",
+    "ja": "「オリバー・ツイスト」を書いたディケンズは、1812年にポーツマスで生まれたよ。"
+   }
+  ],
+  "team": {
+   "en": "Portsmouth FC (Pompey)",
+   "ja": "ポーツマス（ポンピー）"
+  },
+  "famous": {
+   "en": "Naval ship museums",
+   "ja": "海軍の船の博物館"
+  }
+ },
+ "bristol": {
+  "facts": [
+   {
+    "en": "The Clifton Suspension Bridge, finished in 1864, hangs 75 metres above a deep gorge.",
+    "ja": "クリフトン吊り橋は1864年に完成。深い谷の75メートル上にかかっているよ。"
+   },
+   {
+    "en": "Bristol is where the cartoon makers Aardman live. They made Wallace and Gromit and Shaun the Sheep!",
+    "ja": "ブリストルは、ウォレスとグルミットやひつじのショーンを作ったアードマンの本拠地！"
+   }
+  ],
+  "team": {
+   "en": "Bristol City (the Robins)",
+   "ja": "ブリストル・シティ（ロビンズ）"
+  },
+  "famous": {
+   "en": "Wallace & Gromit clay models",
+   "ja": "ウォレスとグルミットのねんど人形"
+  }
+ },
+ "bath": {
+  "facts": [
+   {
+    "en": "The Roman Baths still hold hot spring water, about 46°C, flowing since Roman times.",
+    "ja": "ローマ風呂には、いまも約46度の温泉がわきつづけているよ。"
+   },
+   {
+    "en": "The Royal Crescent is a curved row of 30 grand houses, built about 250 years ago.",
+    "ja": "ロイヤル・クレセントは、約250年前に建てられた30軒の三日月形の大きな家。"
+   }
+  ],
+  "team": {
+   "en": "Bath City (the Romans)",
+   "ja": "バース・シティ（ローマンズ）"
+  },
+  "famous": {
+   "en": "Sally Lunn buns",
+   "ja": "サリー・ランのパン"
+  }
+ },
+ "salisbury": {
+  "facts": [
+   {
+    "en": "Salisbury Cathedral has the tallest church spire in the UK: 123 metres high!",
+    "ja": "ソールズベリー大聖堂の塔は高さ123メートル。イギリスの教会でいちばん高いよ！"
+   },
+   {
+    "en": "One of the four original copies of the Magna Carta, from 1215, is kept here.",
+    "ja": "1215年のマグナ・カルタの原本4つのうち、1つがここにあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Salisbury FC (the Whites)",
+   "ja": "ソールズベリー（ホワイツ）"
+  },
+  "famous": {
+   "en": "Stonehenge souvenirs",
+   "ja": "ストーンヘンジのおみやげ"
+  }
+ },
+ "exeter": {
+  "facts": [
+   {
+    "en": "Exeter Cathedral has the longest stretch of Gothic stone ceiling in the world.",
+    "ja": "エクセター大聖堂には、世界でいちばん長いゴシック様式の石の天井があるよ。"
+   },
+   {
+    "en": "In Devon, you put the cream on first and the jam on top. In Cornwall it is the other way round!",
+    "ja": "デヴォンでは、スコーンにクリームを先に、ジャムを上にのせる。コーンウォールではその逆！"
+   }
+  ],
+  "team": {
+   "en": "Exeter City (the Grecians)",
+   "ja": "エクセター・シティ（グリーシャンズ）"
+  },
+  "famous": {
+   "en": "Devon cream tea",
+   "ja": "デヴォンのクリームティー"
+  }
+ },
+ "plymouth": {
+  "facts": [
+   {
+    "en": "Sir Francis Drake was playing bowls on Plymouth Hoe when the Spanish Armada appeared in 1588.",
+    "ja": "1588年、スペインの艦隊が来たとき、ドレーク船長はプリマス・ホーでボウリングをしていたそうだよ。"
+   },
+   {
+    "en": "Plymouth has the biggest naval base in western Europe, and the National Marine Aquarium.",
+    "ja": "プリマスには西ヨーロッパ最大の海軍基地と、国立海洋水族館があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Plymouth Argyle (the Pilgrims)",
+   "ja": "プリマス・アーガイル（ピルグリムズ）"
+  },
+  "famous": {
+   "en": "Seafood",
+   "ja": "魚介類 "
+  }
+ },
+ "penzance": {
+  "facts": [
+   {
+    "en": "St Michael's Mount is a little island with a castle. At low tide you can walk to it along a stone path.",
+    "ja": "セント・マイケルズ・マウントは、お城のある小さな島。潮がひくと石の道を歩いて行けるよ。"
+   },
+   {
+    "en": "Penzance is near Land's End, the most south-western point of England.",
+    "ja": "ペンザンスの近くにはランズ・エンド、イングランドのいちばん南西のはしがあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Penzance AFC",
+   "ja": "ペンザンスAFC"
+  },
+  "famous": {
+   "en": "Cornish pasties",
+   "ja": "コーニッシュ・パスティ"
+  }
+ },
+ "birmingham": {
+  "facts": [
+   {
+    "en": "Birmingham was the heart of the Industrial Revolution, with thousands of workshops making metal goods.",
+    "ja": "バーミンガムは産業革命の中心地。金属の製品を作る工場がたくさんあったよ。"
+   },
+   {
+    "en": "The Bullring shopping centre is covered in 15,000 shiny discs, like a big silver sparkly skin.",
+    "ja": "ブルリングの商業施設の外かべは、1万5000枚のキラキラ光る円盤でおおわれているよ。"
+   }
+  ],
+  "team": {
+   "en": "Aston Villa (the Villans)",
+   "ja": "アストン・ヴィラ（ヴィランズ）"
+  },
+  "famous": {
+   "en": "Balti curry",
+   "ja": "バルティ・カレー"
+  }
+ },
+ "stratford": {
+  "facts": [
+   {
+    "en": "William Shakespeare was born in Stratford-upon-Avon in 1564 and is buried in its church.",
+    "ja": "ウィリアム・シェイクスピアは1564年にここで生まれ、町の教会にねむっているよ。"
+   },
+   {
+    "en": "The Royal Shakespeare Company puts on his plays here all year round.",
+    "ja": "ロイヤル・シェイクスピア・カンパニーが、1年じゅう彼の劇を上演しているよ。"
+   }
+  ],
+  "team": {
+   "en": "Stratford Town",
+   "ja": "ストラットフォード・タウン"
+  },
+  "famous": {
+   "en": "Shakespeare plays and souvenirs",
+   "ja": "シェイクスピアの劇とおみやげ"
+  }
+ },
+ "stoke": {
+  "facts": [
+   {
+    "en": "Stoke-on-Trent has made pottery for hundreds of years. Wedgwood and Emma Bridgewater are from here.",
+    "ja": "ストーク・オン・トレントは何百年も焼き物の町。ウェッジウッドやエマ・ブリッジウォーターもここ。"
+   },
+   {
+    "en": "The old bottle-shaped kilns that fired the pots still stand around the city.",
+    "ja": "焼き物を焼いていたビンの形の古いかまが、町のあちこちに残っているよ。"
+   }
+  ],
+  "team": {
+   "en": "Stoke City (the Potters)",
+   "ja": "ストーク・シティ（ポッターズ）"
+  },
+  "famous": {
+   "en": "Pottery and teapots",
+   "ja": "焼き物とティーポット"
+  }
+ },
+ "nottingham": {
+  "facts": [
+   {
+    "en": "Nottingham is the home of Robin Hood. A statue of him stands outside the castle.",
+    "ja": "ノッティンガムはロビン・フッドの町。お城の前に銅像があるよ。"
+   },
+   {
+    "en": "Ye Olde Trip to Jerusalem, a pub built into the castle rock, claims to be England's oldest pub.",
+    "ja": "岩のほら穴にあるパブ「イェ・オールド・トリップ・トゥ・エルサレム」は、イングランドで最も古いパブだといわれているよ。"
+   }
+  ],
+  "team": {
+   "en": "Nottingham Forest (the Reds)",
+   "ja": "ノッティンガム・フォレスト（レッズ）"
+  },
+  "famous": {
+   "en": "Nottingham lace",
+   "ja": "ノッティンガム・レース"
+  }
+ },
+ "leicester": {
+  "facts": [
+   {
+    "en": "The skeleton of King Richard III was found under a car park in Leicester in 2012.",
+    "ja": "2012年、リチャード3世の骨がレスターの駐車場の下から見つかったよ。"
+   },
+   {
+    "en": "Leicester celebrates Diwali, the Hindu festival of lights, with one of the biggest parties outside India.",
+    "ja": "レスターはヒンドゥー教の光のまつりディワリを、インド以外で最大級の規模でお祝いするよ。"
+   }
+  ],
+  "team": {
+   "en": "Leicester City (the Foxes)",
+   "ja": "レスター・シティ（フォクシーズ）"
+  },
+  "famous": {
+   "en": "Red Leicester cheese",
+   "ja": "レッド・レスター・チーズ"
+  }
+ },
+ "liverpool": {
+  "facts": [
+   {
+    "en": "The Beatles started in Liverpool. You can visit the Cavern Club where they played over 250 times.",
+    "ja": "ビートルズはリバプールで生まれたよ。250回以上演奏したキャバーン・クラブも見学できる。"
+   },
+   {
+    "en": "The Royal Albert Dock has old brick warehouses by the water, now full of museums and cafés.",
+    "ja": "ロイヤル・アルバート・ドックには、レンガの古い倉庫が並び、いまは博物館やカフェになっているよ。"
+   }
+  ],
+  "team": {
+   "en": "Liverpool FC and Everton (the Reds and the Toffees)",
+   "ja": "リバプールFCとエバートン（レッズとトフィーズ）"
+  },
+  "famous": {
+   "en": "Beatles music",
+   "ja": "ビートルズの音楽"
+  }
+ },
+ "manchester": {
+  "facts": [
+   {
+    "en": "Manchester was the first big factory city. It was nicknamed 'Cottonopolis' because it made so much cotton cloth.",
+    "ja": "マンチェスターは工場の町。たくさん綿布を作ったので「コットノポリス」と呼ばれたよ。"
+   },
+   {
+    "en": "Ernest Rutherford first split the atom here, and graphene was discovered at Manchester University.",
+    "ja": "ラザフォードが原子をはじめて分けたのも、グラフェンが見つかったのも、マンチェスターの大学だよ。"
+   }
+  ],
+  "team": {
+   "en": "Manchester United and Manchester City (the Red Devils and the Citizens)",
+   "ja": "マンチェスター・ユナイテッドとマンチェスター・シティ"
+  },
+  "famous": {
+   "en": "Football shirts and Manchester tart",
+   "ja": "サッカーのユニフォームとマンチェスタータルト"
+  }
+ },
+ "blackpool": {
+  "facts": [
+   {
+    "en": "Blackpool Tower is 158 metres tall. The Illuminations light up the seafront with colourful lights every autumn.",
+    "ja": "ブラックプール・タワーは高さ158メートル。毎年秋にはイルミネーションで海ぞいがカラフルに光るよ。"
+   },
+   {
+    "en": "Blackpool Pleasure Beach has rollercoasters and has been a top thrill-ride park for over 100 years.",
+    "ja": "ブラックプール・プレジャー・ビーチには、100年以上つづくジェットコースターがあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Blackpool FC (the Seasiders)",
+   "ja": "ブラックプール（シーサイダーズ）"
+  },
+  "famous": {
+   "en": "Blackpool rock candy",
+   "ja": "ブラックプール・ロック（棒のキャンディ）"
+  }
+ },
+ "windermere": {
+  "facts": [
+   {
+    "en": "Windermere is 17 km long. You can take a steamer boat along it and look at the mountains.",
+    "ja": "ウィンダミア湖は長さ17キロ。蒸気船に乗って山を見ながら進めるよ。"
+   },
+   {
+    "en": "Beatrix Potter, who made Peter Rabbit, lived near Windermere and loved the Lake District.",
+    "ja": "ピーターラビットを作ったビアトリクス・ポターは、ウィンダミアの近くに住み、湖水地方を愛したよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Kendal Mint Cake",
+   "ja": "ケンダル・ミントケーキ"
+  }
+ },
+ "leeds": {
+  "facts": [
+   {
+    "en": "Leeds has beautiful old shopping arcades with glass roofs, like Victorian Quarter and Thornton's Arcade.",
+    "ja": "リーズには、ガラスの屋根がついたビクトリア時代のアーケード街がいくつもあるよ。"
+   },
+   {
+    "en": "The Royal Armouries in Leeds is the national museum of arms and armour, with knights' suits.",
+    "ja": "リーズの王立武器博物館には、騎士のよろいがたくさんあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Leeds United (the Whites)",
+   "ja": "リーズ・ユナイテッド（ホワイツ）"
+  },
+  "famous": {
+   "en": "The Middleton Railway started in 1758. It is the oldest railway in the world that is still working today.",
+   "ja": "ミドルトン鉄道は1758年に運行を開始しました。今も動いている鉄道の中では、世界で一番古いです。"
+  }
+ },
+ "sheffield": {
+  "facts": [
+   {
+    "en": "Sheffield is the 'Steel City'. Its cutlery and knives were sold all over the world.",
+    "ja": "シェフィールドは「鉄鋼の町」。ナイフやフォークは世界じゅうに売られたよ。"
+   },
+   {
+    "en": "Sheffield is one of the greenest cities in England. Many parks and woods grow inside the city.",
+    "ja": "シェフィールドはイングランドでもとくに緑が多い都市。町の中に公園や森がたくさんあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Sheffield Wednesday and Sheffield United",
+   "ja": "シェフィールド・ウェンズデイとシェフィールド・ユナイテッド"
+  },
+  "famous": {
+   "en": "Stainless steel cutlery",
+   "ja": "ステンレスのナイフとフォーク"
+  }
+ },
+ "york": {
+  "facts": [
+   {
+    "en": "York Minster has the biggest medieval stained-glass window in the UK, as big as a tennis court.",
+    "ja": "ヨーク大聖堂には、イギリス最大の中世のステンドグラスの窓があるよ。テニスコートほどの大きさ。"
+   },
+   {
+    "en": "The Shambles is a narrow old street so crooked that the top floors almost touch.",
+    "ja": "シャンブルズは細くて曲がった古い道。上の階がほとんどくっつきそうだよ。"
+   }
+  ],
+  "team": {
+   "en": "York City (the Minstermen)",
+   "ja": "ヨーク・シティ（ミンスターメン）"
+  },
+  "famous": {
+   "en": "Chocolate: Kit Kat and Terry's",
+   "ja": "チョコレート：キットカットとテリーズ"
+  }
+ },
+ "durham": {
+  "facts": [
+   {
+    "en": "Durham Cathedral is a World Heritage Site, nearly 1,000 years old, and is the resting place of St Cuthbert.",
+    "ja": "ダラム大聖堂は世界遺産。約1000年の歴史があり、聖カスバートがねむっているよ。"
+   },
+   {
+    "en": "Parts of the Harry Potter films were shot at Durham Cathedral's cloisters.",
+    "ja": "ダラム大聖堂の回廊は、ハリー・ポッターの映画の撮影にも使われたよ。"
+   }
+  ],
+  "team": {
+   "en": "Durham Cricket (the Jets)",
+   "ja": "ダラム・クリケット（ジェッツ）"
+  },
+  "famous": {
+   "en": "Durham mustard",
+   "ja": "ダラム・マスタード"
+  }
+ },
+ "newcastle": {
+  "facts": [
+   {
+    "en": "Newcastle has seven bridges across the River Tyne. The Tyne Bridge is the most famous.",
+    "ja": "ニューカッスルのタイン川には7つの橋がかかっていて、タイン橋がいちばん有名だよ。"
+   },
+   {
+    "en": "The Millennium Bridge tilts like an eyelid to let ships pass, so people call it the 'Blinking Eye'.",
+    "ja": "ミレニアム橋は、まぶたのようにかたむいて船を通すので「まばたきの目」と呼ばれるよ。"
+   }
+  ],
+  "team": {
+   "en": "Newcastle United (the Magpies)",
+   "ja": "ニューカッスル・ユナイテッド（マグパイズ）"
+  },
+  "famous": {
+   "en": "Greggs: The massive UK bakery chain started here in 1939, famous for sausage rolls and bakes.",
+   "ja": "グレッグス（Greggs）：1939年にニューカッスルで創業したイギリスの大手ベーカリーチェーン。ソーセージロールやパイ（ベイクス）で有名です。"
+  }
+ },
+ "carlisle": {
+  "facts": [
+   {
+    "en": "Carlisle Castle held Mary, Queen of Scots, as a prisoner in 1568.",
+    "ja": "カーライル城には、1568年にスコットランド女王メアリーがとらえられていたよ。"
+   },
+   {
+    "en": "Carlisle is only 15 km from the Scottish border, and has a Roman fort nearby.",
+    "ja": "カーライルはスコットランドの国境まで15キロ。近くにローマ時代の砦もあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Carlisle United (the Cumbrians)",
+   "ja": "カーライル・ユナイテッド"
+  },
+  "famous": {
+   "en": "Carr's biscuits",
+   "ja": "カーズ・ビスケット"
+  }
+ },
+ "cardiff": {
+  "facts": [
+   {
+    "en": "Cardiff Castle has a Roman wall, a Norman keep, and a very fancy Victorian castle inside.",
+    "ja": "カーディフ城には、ローマの壁、ノルマンの塔、豪華なビクトリア様式の城がいっしょにあるよ。"
+   },
+   {
+    "en": "Millennium Stadium (Principality Stadium) is a huge sports stadium with a roof that can close.",
+    "ja": "ミレニアム・スタジアム（プリンシパリティ・スタジアム）は、屋根を閉められる大きなスタジアム。"
+   }
+  ],
+  "team": {
+   "en": "Cardiff City (the Bluebirds)",
+   "ja": "カーディフ・シティ（ブルーバーズ）"
+  },
+  "famous": {
+   "en": "Welsh cakes",
+   "ja": "ウェルシュ・ケーキ"
+  }
+ },
+ "swansea": {
+  "facts": [
+   {
+    "en": "Dylan Thomas, a famous Welsh poet, was born in Swansea in 1914.",
+    "ja": "有名なウェールズの詩人ディラン・トマスは、1914年にスウォンジーで生まれたよ。"
+   },
+   {
+    "en": "The Mumbles near Swansea has a pier and an ice-cream tradition. Bay beaches run for miles.",
+    "ja": "スウォンジー近くのマンブルズには桟橋とアイスクリーム屋さん。長いビーチがつづくよ。"
+   }
+  ],
+  "team": {
+   "en": "Swansea City (the Swans)",
+   "ja": "スウォンジー・シティ（スワンズ）"
+  },
+  "famous": {
+   "en": "Laverbread (seaweed)",
+   "ja": "ラバーブレッド（海そう）"
+  }
+ },
+ "aberystwyth": {
+  "facts": [
+   {
+    "en": "The Vale of Rheidol Railway is a little steam train that climbs up a valley to Devil's Bridge.",
+    "ja": "ヴェール・オブ・ライドル鉄道は、谷を登ってデビルズ・ブリッジまで行く小さな蒸気機関車。"
+   },
+   {
+    "en": "Aberystwyth has the National Library of Wales, with millions of books in Welsh and English.",
+    "ja": "アベリストウィスには、ウェールズ国立図書館があって、ウェールズ語と英語の本が何百万冊もあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Aberystwyth Town (the Seasiders)",
+   "ja": "アベリストウィス・タウン"
+  },
+  "famous": {
+   "en": "Welsh lamb",
+   "ja": "ウェールズの羊肉"
+  }
+ },
+ "llanberis": {
+  "facts": [
+   {
+    "en": "A little rack-and-pinion train, the Snowdon Mountain Railway, climbs to the top in about an hour.",
+    "ja": "スノードン登山鉄道は、歯車で山をのぼる小さな電車。約1時間で頂上に着くよ。"
+   },
+   {
+    "en": "Dolbadarn Castle, a round stone tower from the 1200s, stands beside the lake in Llanberis.",
+    "ja": "ラネベリスの湖のそばには、1200年代の丸い石の塔、ドルバダーン城があるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Slate",
+   "ja": "スレート（かわらの石）"
+  }
+ },
+ "bangor": {
+  "facts": [
+   {
+    "en": "The Menai Suspension Bridge was designed by Thomas Telford and opened in 1826.",
+    "ja": "メナイ吊り橋はトーマス・テルフォードが設計して、1826年に開通したよ。"
+   },
+   {
+    "en": "Bangor Pier is one of the longest in Wales, about 460 metres into the Menai Strait.",
+    "ja": "バンゴー桟橋は、メナイ海峡へ約460メートルのびる、ウェールズ最長級の桟橋。"
+   }
+  ],
+  "team": {
+   "en": "Bangor City (the Citizens)",
+   "ja": "バンゴー・シティ"
+  },
+  "famous": {
+   "en": "Anglesey sea salt",
+   "ja": "アングルシー島の海の塩"
+  }
+ },
+ "conwy": {
+  "facts": [
+   {
+    "en": "Conwy Castle was built in 1283 and still has eight round towers and a long town wall.",
+    "ja": "コンウィ城は1283年に建てられ、8つの丸い塔と長い城壁が今も残っているよ。"
+   },
+   {
+    "en": "Conwy also has the Smallest House in Great Britain, painted bright red.",
+    "ja": "コンウィには「グレートブリテン島でいちばん小さい家」があって、真っ赤にぬられているよ。"
+   }
+  ],
+  "team": {
+   "en": "Conwy Borough",
+   "ja": "コンウィ・バラ"
+  },
+  "famous": {
+   "en": "Conwy mussels",
+   "ja": "コンウィのムール貝"
+  }
+ },
+ "edinburgh": {
+  "facts": [
+   {
+    "en": "Every August, Edinburgh hosts the biggest arts festival in the world, called the Fringe.",
+    "ja": "毎年8月、エジンバラでは世界最大の芸術祭「フリンジ」が開かれるよ。"
+   },
+   {
+    "en": "The castle fires a cannon, the One O'Clock Gun, at 1pm every day except Sunday.",
+    "ja": "お城では、日曜日以外の毎日、午後1時に大砲「ワン・オクロック・ガン」を撃つよ。"
+   }
+  ],
+  "team": {
+   "en": "Hearts and Hibernian (Hearts and Hibs)",
+   "ja": "ハーツとハイバーニアン"
+  },
+  "famous": {
+   "en": "shortbread",
+   "ja": "ショートブレッド"
+  }
+ },
+ "glasgow": {
+  "facts": [
+   {
+    "en": "Glasgow has more than 90 parks and gardens. Its name means 'dear green place'.",
+    "ja": "グラスゴーには90以上の公園があって、名前は「大好きな緑の場所」という意味だよ。"
+   },
+   {
+    "en": "The architect Charles Rennie Mackintosh designed the Glasgow School of Art and many stylish buildings.",
+    "ja": "建築家チャールズ・レニー・マッキントッシュが、グラスゴー美術学校などを設計したよ。"
+   }
+  ],
+  "team": {
+   "en": "Celtic and Rangers (the Hoops and the Gers)",
+   "ja": "セルティックとレンジャーズ"
+  },
+  "famous": {
+   "en": "Tunnock's teacakes",
+   "ja": "タノックスのティーケーキ"
+  }
+ },
+ "stirling": {
+  "facts": [
+   {
+    "en": "Stirling Castle sits on a rock above the town. Many Scottish kings and queens lived here.",
+    "ja": "スターリング城は町を見おろす岩の上にあって、多くのスコットランドの王や女王が住んだよ。"
+   },
+   {
+    "en": "The Wallace Monument is a tall stone tower for the hero William Wallace, who won the Battle of Stirling Bridge in 1297.",
+    "ja": "ウォレス記念塔は英雄ウィリアム・ウォレスをたたえる塔。1297年のスターリング橋の戦いで勝ったよ。"
+   }
+  ],
+  "team": {
+   "en": "Stirling Albion (the Binos)",
+   "ja": "スターリング・アルビオン"
+  },
+  "famous": {
+   "en": "Highland cow toys",
+   "ja": "ハイランド牛のぬいぐるみ"
+  }
+ },
+ "standrews": {
+  "facts": [
+   {
+    "en": "The Old Course at St Andrews is the oldest golf course in the world, and anyone can walk on it on Sundays.",
+    "ja": "セント・アンドリューズのオールド・コースは世界最古のゴルフ場。日曜日は誰でも歩けるよ。"
+   },
+   {
+    "en": "St Andrews University is Scotland's oldest, started in 1413. Prince William studied here.",
+    "ja": "セント・アンドリューズ大学は1413年に始まったスコットランド最古の大学。ウィリアム王子も学んだよ。"
+   }
+  ],
+  "team": {
+   "en": "St Andrews United",
+   "ja": "セント・アンドリューズ・ユナイテッド"
+  },
+  "famous": {
+   "en": "Golf clubs and balls",
+   "ja": "ゴルフクラブとボール"
+  }
+ },
+ "aberdeen": {
+  "facts": [
+   {
+    "en": "Aberdeen's granite buildings sparkle in the sun because the stone has tiny shiny mica pieces in it.",
+    "ja": "アバディーンの花こう岩の建物は、雲母が入っていて太陽の下でキラキラ光るよ。"
+   },
+   {
+    "en": "Aberdeen is the oil capital of Europe, with many offshore oil platforms in the North Sea.",
+    "ja": "アバディーンはヨーロッパの石油の都。北海にたくさんの海上の油田があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Aberdeen FC (the Dons)",
+   "ja": "アバディーン（ドンズ）"
+  },
+  "famous": {
+   "en": "Aberdeen Angus beef",
+   "ja": "アバディーン・アンガス牛"
+  }
+ },
+ "inverness": {
+  "facts": [
+   {
+    "en": "Inverness is called the capital of the Highlands. The River Ness runs through the middle of the town.",
+    "ja": "インヴァネスは「ハイランドの首都」。町のまん中をネス川が流れているよ。"
+   },
+   {
+    "en": "Loch Ness is so deep that it holds more water than all the lakes in England and Wales put together.",
+    "ja": "ネス湖はとても深くて、イングランドとウェールズの全部の湖を合わせるよりも水が多いよ。"
+   }
+  ],
+  "team": {
+   "en": "Inverness Caledonian Thistle (Caley Thistle)",
+   "ja": "インヴァネス・カレドニアン・シスル"
+  },
+  "famous": {
+   "en": "Some people think a famous monster called the 'Loch Ness Monster' lives in the water near here!",
+   "ja": "「ネス湖の怪獣」という有名な怪獣が、この近くの水中に生息していると思っている人もいるんです！"
+  }
+ },
+ "fortwilliam": {
+  "facts": [
+   {
+    "en": "Ben Nevis is 1,345 metres high. In winter, climbers need ice axes to reach the top.",
+    "ja": "ベン・ネビスは1345メートル。冬は、頂上まで行くのにピッケルがいるよ。"
+   },
+   {
+    "en": "The Jacobite steam train from Fort William crosses the Glenfinnan Viaduct, which appears in Harry Potter films.",
+    "ja": "ジャコバイト号という蒸気機関車が、ハリー・ポッターに出てくるグレンフィナン橋を渡るよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Highland Soap",
+   "ja": "ハイランド・ソープ"
+  }
+ },
+ "kirkwall": {
+  "facts": [
+   {
+    "en": "Kirkwall's St Magnus Cathedral is built of red and yellow sandstone and is nearly 900 years old.",
+    "ja": "カークウォールのセント・マグナス大聖堂は、赤と黄色の砂岩でできていて、約900年の歴史があるよ。"
+   },
+   {
+    "en": "The Ring of Brodgar on Orkney is a huge circle of standing stones that is about 4,500 years old.",
+    "ja": "オークニーのリング・オブ・ブロッガーは、約4500年前の大きな石の輪だよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Orkney fudge and cheese",
+   "ja": "オークニーのファッジとチーズ"
+  }
+ },
+ "belfast": {
+  "facts": [
+   {
+    "en": "Titanic Belfast is a museum shaped like four ship bows, standing where the Titanic was built.",
+    "ja": "タイタニック・ベルファストは、4つの船首の形をした博物館で、タイタニックが造られた場所に建つよ。"
+   },
+   {
+    "en": "The Peace Walls and colourful murals in Belfast tell the story of the city's history.",
+    "ja": "ベルファストの平和の壁とカラフルな壁画は、町の歴史を伝えているよ。"
+   }
+  ],
+  "team": {
+   "en": "Linfield and Glentoran",
+   "ja": "リンフィールドとグレントラン"
+  },
+  "famous": {
+   "en": "Ulster Fry",
+   "ja": "アルスター・フライ（朝ごはん）"
+  }
+ },
+ "derry": {
+  "facts": [
+   {
+    "en": "Derry is the only city in Ireland whose old walls are still complete. They were built about 400 years ago and you can walk all the way round.",
+    "ja": "デリーは、昔の城壁がまるごと残っているアイルランド島でただ1つの町。約400年前のもので、ぐるっと一周歩けるよ。"
+   },
+   {
+    "en": "The Peace Bridge is a curving walking bridge that joins two sides of the River Foyle.",
+    "ja": "ピース・ブリッジは、フォイル川の両岸をつなぐ、曲線を描く歩行者用の橋。"
+   }
+  ],
+  "team": {
+   "en": "Derry City FC (the Candystripes)",
+   "ja": "デリー・シティ（キャンディストライプス）"
+  },
+  "famous": {
+   "en": "Halloween parties",
+   "ja": "ハロウィーンのお祭り"
+  }
+ },
+ "portrush": {
+  "facts": [
+   {
+    "en": "The Giant's Causeway is made of about 40,000 stone columns that formed from lava 60 million years ago.",
+    "ja": "ジャイアンツ・コーズウェイは、6000万年前の溶岩が固まってできた約4万本の石の柱。"
+   },
+   {
+    "en": "Portrush has a famous golf club, Royal Portrush, where the Open golf championship has been played.",
+    "ja": "ポートラッシュには有名なロイヤル・ポートラッシュ・ゴルフクラブがあり、全英オープンも開かれたよ。"
+   }
+  ],
+  "team": {
+   "en": "Coleraine FC (the Bannsiders)",
+   "ja": "コールレーン（バンサイダーズ）"
+  },
+  "famous": {
+   "en": "Portrush is famous for its iconic artisan ice cream.",
+   "ja": "ポートラッシュは、その象徴的な手作りアイスクリームで有名です。"
+  }
+ },
+ "windsor": {
+  "facts": [
+   {
+    "en": "Windsor Castle is the oldest castle in the world that is still lived in. It has been a royal home for nearly 1,000 years.",
+    "ja": "ウィンザー城は、いまも人が住んでいる世界でいちばん古いお城。約1000年、王家の家だよ。"
+   },
+   {
+    "en": "Several days a week you can watch the Changing of the Guard at the castle, with red coats and tall furry hats.",
+    "ja": "週に何日か、お城で赤い服に大きな毛皮の帽子の衛兵の交代式が見られるよ。"
+   }
+  ],
+  "team": {
+   "en": "Windsor FC",
+   "ja": "ウィンザーFC"
+  },
+  "famous": {
+   "en": "Royal souvenirs",
+   "ja": "王室グッズ"
+  }
+ },
+ "reading": {
+  "facts": [
+   {
+    "en": "Reading Festival is one of the oldest rock music festivals in the world. It is held every August.",
+    "ja": "レディング・フェスティバルは、世界でも最も古いロックフェスのひとつ。毎年8月にひらかれるよ。"
+   },
+   {
+    "en": "Reading Abbey, now a ruin, once held the burial place of King Henry I.",
+    "ja": "いまは遺跡のレディング修道院には、ヘンリー1世のお墓があったよ。"
+   }
+  ],
+  "team": {
+   "en": "Reading FC (the Royals)",
+   "ja": "レディング（ロイヤルズ）"
+  },
+  "famous": {
+   "en": "Huntley & Palmers biscuits",
+   "ja": "ハントリー＆パーマーズのビスケット"
+  }
+ },
+ "winchester": {
+  "facts": [
+   {
+    "en": "King Arthur's Round Table, a huge round wooden table, hangs on the wall of Winchester's Great Hall.",
+    "ja": "アーサー王の円卓といわれる大きな丸いテーブルが、ウィンチェスターの大広間のかべにかかっているよ。"
+   },
+   {
+    "en": "Jane Austen, author of 'Pride and Prejudice', is buried in Winchester Cathedral.",
+    "ja": "「高慢と偏見」を書いたジェーン・オースティンは、ウィンチェスター大聖堂にねむっているよ。"
+   }
+  ],
+  "team": {
+   "en": "Winchester City",
+   "ja": "ウィンチェスター・シティ"
+  },
+  "famous": {
+   "en": "Watercress",
+   "ja": "クレソン"
+  }
+ },
+ "southampton": {
+  "facts": [
+   {
+    "en": "Southampton is a giant cruise-ship port. Some of the biggest ships in the world stop here.",
+    "ja": "サウサンプトンは大きなクルーズ船の港。世界最大級の船もやってくるよ。"
+   },
+   {
+    "en": "The Mayflower pilgrims also stopped at Southampton in 1620, before the ship went on to Plymouth.",
+    "ja": "1620年、メイフラワー号の巡礼者たちもサウサンプトンに立ちより、そのあとプリマスへ向かったよ。"
+   }
+  ],
+  "team": {
+   "en": "Southampton FC (the Saints)",
+   "ja": "サウサンプトン（セインツ）"
+  },
+  "famous": {
+   "en": "Cruise ships",
+   "ja": "クルーズ船"
+  }
+ },
+ "hastings": {
+  "facts": [
+   {
+    "en": "The Bayeux Tapestry, a 70-metre-long embroidery, tells the story of the Battle of Hastings in pictures.",
+    "ja": "70メートルもあるバイユーのタペストリーは、ヘイスティングズの戦いの物語を刺しゅうで描いているよ。"
+   },
+   {
+    "en": "Hastings' tall black wooden huts, called net shops, were built to dry fishing nets.",
+    "ja": "ヘイスティングズには、漁のあみをほすための黒くて背の高い木の小屋「ネットショップ」があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Hastings United (the U's)",
+   "ja": "ヘイスティングズ・ユナイテッド"
+  },
+  "famous": {
+   "en": "Fresh fish from the beach boats",
+   "ja": "ビーチの漁船でとれた新鮮な魚"
+  }
+ },
+ "margate": {
+  "facts": [
+   {
+    "en": "Margate has a golden sandy beach, and the artist J. M. W. Turner said it had 'the loveliest skies in Europe'.",
+    "ja": "マーゲートには金色の砂浜があって、画家ターナーは「ヨーロッパでいちばん美しい空」と言ったよ。"
+   },
+   {
+    "en": "The Turner Contemporary art gallery stands right by the sea where Turner once stayed.",
+    "ja": "ターナーが泊まった海辺には、ターナー・コンテンポラリー美術館が建っているよ。"
+   }
+  ],
+  "team": {
+   "en": "Margate FC",
+   "ja": "マーゲートFC"
+  },
+  "famous": {
+   "en": "Seaside rock candy",
+   "ja": "海辺のロック・キャンディ"
+  }
+ },
+ "rye": {
+  "facts": [
+   {
+    "en": "Mermaid Street in Rye is a steep cobbled street with crooked, 500-year-old houses.",
+    "ja": "ライのマーメイド・ストリートは、古い石だたみの坂道で、500年前のかたむいた家がならぶよ。"
+   },
+   {
+    "en": "Rye was once beside the sea, but the sea moved away. Now it stands 3 km inland.",
+    "ja": "ライはむかし海のそばにあったけど、海がはなれて、いまは3キロ内陸にあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Rye United",
+   "ja": "ライ・ユナイテッド"
+  },
+  "famous": {
+   "en": "Rye pottery",
+   "ja": "ライの焼き物"
+  }
+ },
+ "miltonkeynes": {
+  "facts": [
+   {
+    "en": "Milton Keynes was built in 1967 as a 'new town', with a grid of straight roads and lots of roundabouts.",
+    "ja": "ミルトン・キーンズは1967年に作られた「ニュータウン」。まっすぐな道とたくさんのロータリーがあるよ。"
+   },
+   {
+    "en": "Bletchley Park nearby is where code-breakers like Alan Turing broke secret codes in the Second World War.",
+    "ja": "近くのブレッチリー・パークでは、アラン・チューリングたちが戦争中に暗号を解いたよ。"
+   }
+  ],
+  "team": {
+   "en": "MK Dons",
+   "ja": "MKドンズ"
+  },
+  "famous": {
+   "en": "Concrete cows",
+   "ja": "コンクリートの牛"
+  }
+ },
+ "norwich": {
+  "facts": [
+   {
+    "en": "Norwich Castle sits on a hill in the middle of the city, and the cathedral has one of the tallest spires in England.",
+    "ja": "ノーリッジの町の中心の丘にはお城があって、大聖堂にはイングランドでも高い塔があるよ。"
+   },
+   {
+    "en": "Colman's Mustard started here in 1814. Norwich is called the 'Fine City'.",
+    "ja": "コールマンのマスタードは1814年にここで生まれたよ。ノーリッジは「すてきな町」と呼ばれる。"
+   }
+  ],
+  "team": {
+   "en": "Norwich City (the Canaries)",
+   "ja": "ノーリッジ・シティ（カナリーズ）"
+  },
+  "famous": {
+   "en": "Colman's mustard",
+   "ja": "コールマンのマスタード"
+  }
+ },
+ "ipswich": {
+  "facts": [
+   {
+    "en": "Ipswich is an old port and has one of the oldest towns in England. Ships still dock at its waterfront.",
+    "ja": "イプスウィッチは古い港町で、イングランドでも最も古い町のひとつ。いまも港に船が入るよ。"
+   },
+   {
+    "en": "Cardinal Wolsey, an adviser to Henry VIII, was born in Ipswich.",
+    "ja": "ヘンリー8世の顧問ウルジー枢機卿は、イプスウィッチで生まれたよ。"
+   }
+  ],
+  "team": {
+   "en": "Ipswich Town (the Tractor Boys)",
+   "ja": "イプスウィッチ・タウン（トラクターボーイズ）"
+  },
+  "famous": {
+   "en": "Suffolk sausages and farm food",
+   "ja": "サフォークのソーセージと農場の食べ物"
+  }
+ },
+ "colchester": {
+  "facts": [
+   {
+    "en": "Colchester Castle has the biggest Norman castle keep in Europe, built on the old Roman temple.",
+    "ja": "コルチェスター城は、ヨーロッパ最大のノルマン様式の塔で、ローマ時代の神殿の上に建っているよ。"
+   },
+   {
+    "en": "Colchester Zoo has big animals like tigers and giraffes, and a famous Roman wall surrounds the old town.",
+    "ja": "コルチェスター動物園にはトラやキリンがいて、古い町にはローマの城壁も残っているよ。"
+   }
+  ],
+  "team": {
+   "en": "Colchester United (the U's)",
+   "ja": "コルチェスター・ユナイテッド"
+  },
+  "famous": {
+   "en": "Colchester oysters",
+   "ja": "コルチェスターのカキ"
+  }
+ },
+ "ely": {
+  "facts": [
+   {
+    "en": "Ely was once an island in the flat marshes called the Fens, until the land was drained.",
+    "ja": "イーリーは、「フェン」とよばれる湿地の中の島だったけど、いまは水をぬいて陸地になったよ。"
+   },
+   {
+    "en": "Oliver Cromwell lived in Ely. His house is now a museum.",
+    "ja": "オリバー・クロムウェルがイーリーに住んでいて、その家はいま博物館になっているよ。"
+   }
+  ],
+  "team": {
+   "en": "Ely City",
+   "ja": "イーリー・シティ"
+  },
+  "famous": {
+   "en": "Fenland eels",
+   "ja": "フェンのうなぎ"
+  }
+ },
+ "greatyarmouth": {
+  "facts": [
+   {
+    "en": "Great Yarmouth has a long sandy beach and traditional seaside fun with arcades and the Pleasure Beach.",
+    "ja": "グレート・ヤーマスには長い砂浜と、ゲームセンターや遊園地などの海辺の遊びがあるよ。"
+   },
+   {
+    "en": "Near Great Yarmouth, the Norfolk Broads are lakes and rivers where you can float in boats and see wildlife.",
+    "ja": "近くのノーフォーク・ブローズでは、ボートに乗って野生の動物を見られるよ。"
+   }
+  ],
+  "team": {
+   "en": "Great Yarmouth Town",
+   "ja": "グレート・ヤーマス・タウン"
+  },
+  "famous": {
+   "en": "Yarmouth bloaters (smoked herring)",
+   "ja": "ヤーマス・ブローター（くんせいニシン）"
+  }
+ },
+ "bournemouth": {
+  "facts": [
+   {
+    "en": "Bournemouth has about 11 km of golden sand, and it is one of the UK's best surfing and seaside holiday towns.",
+    "ja": "ボーンマスには約11キロの金色の砂浜があって、サーフィンや海水浴で人気だよ。"
+   },
+   {
+    "en": "Frankenstein author Mary Shelley is buried in Bournemouth, in the churchyard at St Peter's.",
+    "ja": "「フランケンシュタイン」を書いたメアリー・シェリーは、ボーンマスのセント・ピーターズ教会にねむっているよ。"
+   }
+  ],
+  "team": {
+   "en": "AFC Bournemouth (the Cherries)",
+   "ja": "AFCボーンマス（チェリーズ）"
+  },
+  "famous": {
+   "en": "Sandy beaches and surfing",
+   "ja": "砂浜とサーフィン"
+  }
+ },
+ "lymeregis": {
+  "facts": [
+   {
+    "en": "Mary Anning found the first complete ichthyosaur skeleton on the Lyme Regis beach in 1811, when she was only about 12.",
+    "ja": "メアリー・アニングは、1811年に12歳くらいで、ライム・リージスの浜で魚竜の全身骨を見つけたよ。"
+   },
+   {
+    "en": "The Cobb is a curved stone harbour wall from the 1300s. It was in the film 'The French Lieutenant's Woman'.",
+    "ja": "コブは1300年代からある曲がった石の防波堤で、映画「フランス軍中尉の女」にも出たよ。"
+   }
+  ],
+  "team": {
+   "en": "Lyme Regis FC",
+   "ja": "ライム・リージスFC"
+  },
+  "famous": {
+   "en": "Fossils",
+   "ja": "化石"
+  }
+ },
+ "torquay": {
+  "facts": [
+   {
+    "en": "Torquay is called the English Riviera because of its palm trees and mild weather.",
+    "ja": "トーキーは、ヤシの木とおだやかな天気から「イングランドのリビエラ」と呼ばれるよ。"
+   },
+   {
+    "en": "Agatha Christie was born in Torquay, and the town is full of places that appear in her books.",
+    "ja": "アガサ・クリスティーはトーキーで生まれて、町には彼女の本に出てくる場所がたくさんあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Torquay United (the Gulls)",
+   "ja": "トーキー・ユナイテッド（ガルズ）"
+  },
+  "famous": {
+   "en": "Devon clotted cream",
+   "ja": "デヴォンのクロテッドクリーム"
+  }
+ },
+ "tintagel": {
+  "facts": [
+   {
+    "en": "Legend says King Arthur was born at Tintagel. The ruined castle clings to cliffs above the sea.",
+    "ja": "伝説によると、アーサー王はティンタジェルで生まれたそうだよ。お城の遺跡は、海の上の崖にそびえているよ。"
+   },
+   {
+    "en": "A new footbridge now crosses the gap between the cliffs, so you can walk to the castle ruins.",
+    "ja": "新しい歩道橋が崖のあいだにかかって、お城の遺跡まで歩いて行けるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Cornish ice cream and pasties",
+   "ja": "コーンウォールのアイスとパスティ"
+  }
+ },
+ "stives": {
+  "facts": [
+   {
+    "en": "St Ives has a branch of the Tate art gallery by the beach, and many painters have worked here.",
+    "ja": "セント・アイヴスの浜辺には、テート美術館の分館があって、たくさんの画家が働いたよ。"
+   },
+   {
+    "en": "Cornwall's St Ives has four sandy beaches in a small town of little fishing streets.",
+    "ja": "セント・アイヴスには、小さな漁師の町に4つの砂浜があるよ。"
+   }
+  ],
+  "team": {
+   "en": "St Ives Town",
+   "ja": "セント・アイヴス・タウン"
+  },
+  "famous": {
+   "en": "Pilchards and art",
+   "ja": "イワシと芸術"
+  }
+ },
+ "falmouth": {
+  "facts": [
+   {
+    "en": "Pendennis Castle at Falmouth was built by Henry VIII to guard the harbour, together with a sister castle across the water.",
+    "ja": "ファルマスのペンデニス城は、ヘンリー8世が港を守るために建てたお城で、海の向こうに姉妹城があるよ。"
+   },
+   {
+    "en": "Falmouth is where the big tall ships and sailing races stop. The National Maritime Museum Cornwall is here.",
+    "ja": "ファルマスには大型帆船やヨットレースがやってくる。コーンウォール国立海洋博物館もあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Falmouth Town",
+   "ja": "ファルマス・タウン"
+  },
+  "famous": {
+   "en": "Falmouth oysters",
+   "ja": "ファルマスのカキ"
+  }
+ },
+ "glastonbury": {
+  "facts": [
+   {
+    "en": "Glastonbury Tor is a hill with a lonely tower on top. Some legends say it is the island of Avalon.",
+    "ja": "グラストンベリー・トーアは、塔が1つ立つ丘。アーサー王のアヴァロン島だという伝説があるよ。"
+   },
+   {
+    "en": "The Glastonbury Festival is the biggest music and arts festival in the UK, held on a farm nearby.",
+    "ja": "グラストンベリー・フェスティバルは、イギリス最大の音楽と芸術のお祭りで、近くの農場でひらかれるよ。"
+   }
+  ],
+  "team": {
+   "en": "Glastonbury FC",
+   "ja": "グラストンベリーFC"
+  },
+  "famous": {
+   "en": "Festival wellies",
+   "ja": "フェスのゴム長ぐつ"
+  }
+ },
+ "cheddar": {
+  "facts": [
+   {
+    "en": "Cheddar Gorge is the biggest gorge in the UK, with cliffs up to 137 metres high.",
+    "ja": "チェダー渓谷はイギリス最大の渓谷で、崖は高いところで137メートルあるよ。"
+   },
+   {
+    "en": "Cheddar Man, a skeleton about 10,000 years old, was found in a cave here.",
+    "ja": "チェダーの洞くつで、約1万年前の骨「チェダー・マン」が見つかったよ。"
+   }
+  ],
+  "team": {
+   "en": "Cheddar FC",
+   "ja": "チェダーFC"
+  },
+  "famous": {
+   "en": "Cheddar cheese",
+   "ja": "チェダーチーズ"
+  }
+ },
+ "gloucester": {
+  "facts": [
+   {
+    "en": "In Gloucester Cathedral's cloisters, scenes of Hogwarts corridors in Harry Potter were filmed.",
+    "ja": "グロスター大聖堂の回廊では、ハリー・ポッターのホグワーツの廊下のシーンが撮影されたよ。"
+   },
+   {
+    "en": "Every year people chase a round wheel of Double Gloucester cheese down Cooper's Hill. It is called cheese rolling.",
+    "ja": "毎年、クーパーズ・ヒルで、ダブルグロスターチーズの丸いかたまりを追いかけておりる「チーズ転がし」があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Gloucester Rugby (the Cherry and Whites)",
+   "ja": "グロスター・ラグビー"
+  },
+  "famous": {
+   "en": "Double Gloucester cheese",
+   "ja": "ダブル・グロスター・チーズ"
+  }
+ },
+ "newport": {
+  "facts": [
+   {
+    "en": "The Newport Transporter Bridge, built in 1906, carries cars across the river on a hanging platform.",
+    "ja": "ニューポート運搬橋は1906年にできて、つり下げた台に車をのせて川をわたすよ。"
+   },
+   {
+    "en": "Newport has the ruins of a Roman fort at nearby Caerleon, with a Roman amphitheatre.",
+    "ja": "近くのカーレオンには、ローマ時代の砦と円形劇場の遺跡があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Newport County (the Exiles)",
+   "ja": "ニューポート・カウンティ（エグザイルズ）"
+  },
+  "famous": {
+   "en": "Welsh rarebit",
+   "ja": "ウェルシュ・ラビット（チーズトースト）"
+  }
+ },
+ "tenby": {
+  "facts": [
+   {
+    "en": "Tenby is surrounded by medieval walls and has a harbour full of pastel-coloured houses.",
+    "ja": "テンビーは中世の城壁に囲まれていて、港にはパステルカラーの家がならんでいるよ。"
+   },
+   {
+    "en": "Boats from Tenby go to Caldey Island, where monks make chocolate and perfume.",
+    "ja": "テンビーから船でカルディ島へ行くと、修道士がチョコレートや香水を作っているよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Caldey Island chocolate",
+   "ja": "カルディ島のチョコレート"
+  }
+ },
+ "stdavids": {
+  "facts": [
+   {
+    "en": "St Davids is the smallest city in the UK, with only about 1,600 people, but it has a big cathedral.",
+    "ja": "セント・デイヴィッズは人口約1600人。イギリスでいちばん小さな市なのに、大きな大聖堂があるよ。"
+   },
+   {
+    "en": "Puffins, seals and dolphins live along the Pembrokeshire coast near St Davids.",
+    "ja": "セント・デイヴィッズの近くのペンブルックシャーの海岸には、パフィンやアザラシ、イルカがすんでいるよ。"
+   }
+  ],
+  "team": {
+   "en": "St Davids City",
+   "ja": "セント・デイヴィッズ・シティ"
+  },
+  "famous": {
+   "en": "Welsh sea salt and cheese",
+   "ja": "ウェールズの塩とチーズ"
+  }
+ },
+ "brecon": {
+  "facts": [
+   {
+    "en": "Pen y Fan, 886 metres high, is the tallest mountain in southern Britain.",
+    "ja": "ペン・イ・ヴァンは標高886メートル。南ブリテンでいちばん高い山だよ。"
+   },
+   {
+    "en": "The Brecon Beacons is a Dark Sky Reserve, which means you can see thousands of stars at night.",
+    "ja": "ブレコン・ビーコンズは「ダークスカイ保護区」。夜は数えきれない星が見えるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Welsh Lamb",
+   "ja": "ウェールズ産ラム肉"
+  }
+ },
+ "caernarfon": {
+  "facts": [
+   {
+    "en": "Caernarfon Castle is where Prince Charles became the Prince of Wales in 1969.",
+    "ja": "カーナーヴォン城は、1969年にチャールズ皇太子がプリンス・オブ・ウェールズになった場所。"
+   },
+   {
+    "en": "The castle walls have bands of different coloured stone, and the towers have many sides instead of being round.",
+    "ja": "お城のかべには色のちがう石の帯があり、塔は丸ではなく多角形になっているよ。"
+   }
+  ],
+  "team": {
+   "en": "Caernarfon Town",
+   "ja": "カーナーヴォン・タウン"
+  },
+  "famous": {
+   "en": "Welsh slate and wool",
+   "ja": "ウェールズのスレートとウール"
+  }
+ },
+ "portmeirion": {
+  "facts": [
+   {
+    "en": "Portmeirion was built between 1925 and 1976 by architect Clough Williams-Ellis to look like an Italian seaside village.",
+    "ja": "ポートメリオンは、建築家ウィリアムズ＝エリスが1925年から50年がかりで、イタリアの海辺の村のように作ったよ。"
+   },
+   {
+    "en": "The TV show 'The Prisoner' was filmed in Portmeirion in the 1960s.",
+    "ja": "1960年代のドラマ「プリズナーNo.6」は、ポートメリオンで撮影されたよ。"
+   }
+  ],
+  "team": {
+   "en": "Porthmadog FC",
+   "ja": "ポースマドッグFC"
+  },
+  "famous": {
+   "en": "Portmeirion pottery",
+   "ja": "ポートメリオンの焼き物"
+  }
+ },
+ "holyhead": {
+  "facts": [
+   {
+    "en": "Holyhead is on Holy Island, Anglesey. From here ferries cross to Dublin in about three hours.",
+    "ja": "ホーリーヘッドはアングルシー島のホーリー島にあって、ここから約3時間でダブリンへ船が出るよ。"
+   },
+   {
+    "en": "South Stack Lighthouse stands on a tiny island you reach by a footbridge down over 400 steps.",
+    "ja": "サウス・スタック灯台は小さな島に立つ。400段以上の階段を下って橋をわたるよ。"
+   }
+  ],
+  "team": {
+   "en": "Holyhead Hotspur",
+   "ja": "ホーリーヘッド・ホットスパー"
+  },
+  "famous": {
+   "en": "Ferries to Ireland",
+   "ja": "アイルランド行きのフェリー"
+  }
+ },
+ "lincoln": {
+  "facts": [
+   {
+    "en": "Lincoln Cathedral was the tallest building in the world for over 200 years, until its spire fell down in 1548.",
+    "ja": "リンカーン大聖堂は、200年以上のあいだ世界でいちばん高い建物だったよ。1548年に塔がくずれたんだ。"
+   },
+   {
+    "en": "Steep Hill in Lincoln is a very steep cobbled street leading up to the castle and cathedral.",
+    "ja": "リンカーンのスティープ・ヒルは、お城と大聖堂へのぼる、とても急な石だたみの坂道。"
+   }
+  ],
+  "team": {
+   "en": "Lincoln City (the Imps)",
+   "ja": "リンカーン・シティ（インプス）"
+  },
+  "famous": {
+   "en": "Lincolnshire sausages",
+   "ja": "リンカンシャー・ソーセージ"
+  }
+ },
+ "coventry": {
+  "facts": [
+   {
+    "en": "Coventry's old cathedral was bombed in the Second World War. People built a new one next to the ruins, as a sign of peace.",
+    "ja": "コベントリーの古い大聖堂は戦争で壊されたよ。平和のしるしに、その横に新しい大聖堂を建てたんだ。"
+   },
+   {
+    "en": "Coventry was the home of the British car industry and the Coventry Transport Museum shows hundreds of cars.",
+    "ja": "コベントリーはイギリスの自動車産業の町。交通博物館には何百台もの車があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Coventry City (the Sky Blues)",
+   "ja": "コベントリー・シティ（スカイブルーズ）"
+  },
+  "famous": {
+   "en": "Cars and bicycles",
+   "ja": "自動車と自転車"
+  }
+ },
+ "worcester": {
+  "facts": [
+   {
+    "en": "Worcestershire sauce was first made in Worcester in the 1830s and is still made there today.",
+    "ja": "ウスターソースは1830年代にウスターで生まれ、いまもそこで作られているよ。"
+   },
+   {
+    "en": "The composer Edward Elgar, who wrote 'Pomp and Circumstance', was born near Worcester.",
+    "ja": "「威風堂々」を作ったエルガーは、ウスターの近くで生まれたよ。"
+   }
+  ],
+  "team": {
+   "en": "Worcester City (the Citizens)",
+   "ja": "ウスター・シティ"
+  },
+  "famous": {
+   "en": "Worcestershire sauce is the base for yakisoba and okonomiyaki sauce.",
+   "ja": "ウスターソースは、焼きそばやお好み焼きのソースのベースです。"
+  }
+ },
+ "shrewsbury": {
+  "facts": [
+   {
+    "en": "Charles Darwin, who came up with the theory of evolution, was born in Shrewsbury in 1809.",
+    "ja": "進化論を考えたチャールズ・ダーウィンは、1809年にシュルーズベリーで生まれたよ。"
+   },
+   {
+    "en": "Shrewsbury is almost surrounded by the River Severn and is full of black-and-white Tudor houses.",
+    "ja": "シュルーズベリーはセヴァーン川にほとんど囲まれ、白と黒のチューダー様式の家がならぶよ。"
+   }
+  ],
+  "team": {
+   "en": "Shrewsbury Town (the Salop)",
+   "ja": "シュルーズベリー・タウン"
+  },
+  "famous": {
+   "en": "Shropshire blue cheese",
+   "ja": "シュロップシャー・ブルーチーズ"
+  }
+ },
+ "derby": {
+  "facts": [
+   {
+    "en": "The Derby Silk Mill, built in 1721, is called one of the world's first factories.",
+    "ja": "1721年に作られたダービーの絹織物工場は、世界で最初の工場のひとつといわれているよ。"
+   },
+   {
+    "en": "Rolls-Royce makes jet engines in Derby. Many trains and planes are built in this city.",
+    "ja": "ダービーではロールス・ロイスがジェットエンジンを作っているよ。列車や飛行機も作られる町だよ。"
+   }
+  ],
+  "team": {
+   "en": "Derby County (the Rams)",
+   "ja": "ダービー・カウンティ（ラムズ）"
+  },
+  "famous": {
+   "en": "Rolls-Royce engines",
+   "ja": "ロールス・ロイスのエンジン"
+  }
+ },
+ "ironbridge": {
+  "facts": [
+   {
+    "en": "The Iron Bridge, built in 1779, was the first big bridge in the world made of iron. It gave the town its name.",
+    "ja": "1779年のアイアンブリッジは、世界で最初の大きな鉄の橋。町の名前もこの橋からきたよ。"
+   },
+   {
+    "en": "Ironbridge Gorge has many museums, like Blists Hill Victorian Town, where people dress in old clothes.",
+    "ja": "アイアンブリッジ渓谷には、昔の服を着た人がいるブリスツ・ヒル・ビクトリアン・タウンなどの博物館があるよ。"
+   }
+  ],
+  "team": {
+   "en": "AFC Telford United",
+   "ja": "AFCテルフォード・ユナイテッド"
+  },
+  "famous": {
+   "en": "Coalport china",
+   "ja": "コールポートの陶磁器"
+  }
+ },
+ "buxton": {
+  "facts": [
+   {
+    "en": "Buxton has served natural spring water to the world for centuries, and you can fill a bottle for free at St Ann's Well.",
+    "ja": "バクストンの天然水は何百年も有名。セント・アンズ・ウェルでは無料でボトルに入れられるよ。"
+   },
+   {
+    "en": "Buxton Opera House is a beautiful theatre from 1903 and it is the highest market town in England, 300 metres up.",
+    "ja": "バクストン・オペラハウスは1903年の美しい劇場。町は標高300メートルで、イングランドでいちばん高い市場町だよ。"
+   }
+  ],
+  "team": {
+   "en": "Buxton FC",
+   "ja": "バクストンFC"
+  },
+  "famous": {
+   "en": "Buxton mineral water",
+   "ja": "バクストンのミネラルウォーター"
+  }
+ },
+ "hereford": {
+  "facts": [
+   {
+    "en": "The Mappa Mundi in Hereford Cathedral is a world map drawn on one big piece of calfskin about 700 years ago.",
+    "ja": "ヘレフォード大聖堂のマッパ・ムンディは、約700年前に1枚の子牛の皮に描かれた世界地図だよ。"
+   },
+   {
+    "en": "The Hereford Cathedral Chained Library keeps old books chained to the shelves so no one could steal them.",
+    "ja": "ヘレフォード大聖堂の鎖つき図書館では、本がぬすまれないように鎖でつながれているよ。"
+   }
+  ],
+  "team": {
+   "en": "Hereford FC (the Bulls)",
+   "ja": "ヘレフォードFC（ブルズ）"
+  },
+  "famous": {
+   "en": "Hereford cattle",
+   "ja": "ヘレフォード牛"
+  }
+ },
+ "chester": {
+  "facts": [
+   {
+    "en": "Chester has the best-preserved Roman city walls in Britain. You can walk all the way round, about 3 km.",
+    "ja": "チェスターには、イギリスでいちばんよく残るローマ時代の城壁があって、約3キロをぐるっと歩けるよ。"
+   },
+   {
+    "en": "Chester Zoo is one of the UK's biggest zoos and the Rows are two-storey shopping streets from the Middle Ages.",
+    "ja": "チェスター動物園はイギリス最大級。「ロウズ」は中世から続く2階建ての買い物通りだよ。"
+   }
+  ],
+  "team": {
+   "en": "Chester FC (the Seals)",
+   "ja": "チェスターFC"
+  },
+  "famous": {
+   "en": "Cheshire cheese",
+   "ja": "チェシャー・チーズ"
+  }
+ },
+ "hull": {
+  "facts": [
+   {
+    "en": "In Hull, the telephone boxes are cream, not red, because the city had its own phone company.",
+    "ja": "ハルでは電話ボックスがクリーム色。むかし町に独自の電話会社があったからだよ。"
+   },
+   {
+    "en": "Hull's Deep is an aquarium shaped like a shark's head with one of the deepest tanks in the UK.",
+    "ja": "ハルの「ザ・ディープ」はサメの頭の形をした水族館で、イギリス有数の深い水槽があるよ。"
+   }
+  ],
+  "team": {
+   "en": "Hull City (the Tigers)",
+   "ja": "ハル・シティ（タイガース）"
+  },
+  "famous": {
+   "en": "Fish and chips",
+   "ja": "フィッシュ・アンド・チップス"
+  }
+ },
+ "scarborough": {
+  "facts": [
+   {
+    "en": "Scarborough was one of the first seaside holiday towns in Britain. Its Spa has been welcoming visitors since the 1600s.",
+    "ja": "スカーバラはイギリス最初期の海辺のリゾート。1600年代から温泉を楽しむ人が来たよ。"
+   },
+   {
+    "en": "Scarborough Castle stands on a headland between two bays, with views for miles.",
+    "ja": "スカーバラ城は2つの湾にはさまれた岬の上にあって、遠くまで見わたせるよ。"
+   }
+  ],
+  "team": {
+   "en": "Scarborough Athletic",
+   "ja": "スカーバラ・アスレティック"
+  },
+  "famous": {
+   "en": "Fish and chips by the sea",
+   "ja": "海辺のフィッシュ・アンド・チップス"
+  }
+ },
+ "whitby": {
+  "facts": [
+   {
+    "en": "Dracula author Bram Stoker was inspired by Whitby Abbey and the 199 steps leading up to it.",
+    "ja": "「ドラキュラ」の作者ストーカーは、ウィットビー修道院とそこへ続く199段の階段に心をうごかされたよ。"
+   },
+   {
+    "en": "Captain Cook learned to sail from Whitby. His ship the Endeavour was built here.",
+    "ja": "キャプテン・クックはウィットビーで航海を学び、船エンデバー号もここで作られたよ。"
+   }
+  ],
+  "team": {
+   "en": "Whitby Town",
+   "ja": "ウィットビー・タウン"
+  },
+  "famous": {
+   "en": "Whitby kippers and jet jewellery",
+   "ja": "ウィットビーのくんせいニシンと黒玉のアクセサリー"
+  }
+ },
+ "harrogate": {
+  "facts": [
+   {
+    "en": "Harrogate has hundreds of mineral springs and is famous for Bettys Tea Rooms, where people eat fat rascals, big fruity scones.",
+    "ja": "ハロゲートにはたくさんの鉱泉があって、ベティーズ・ティールームの「ファット・ラスカル」というスコーンが有名。"
+   },
+   {
+    "en": "Harrogate is also known for its spring daffodils and flower shows, and the annual Spring Flower Show.",
+    "ja": "ハロゲートはスイセンや花のショーでも有名。毎年春にはスプリング・フラワー・ショーがあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Harrogate Town",
+   "ja": "ハロゲート・タウン"
+  },
+  "famous": {
+   "en": "Bettys Fat Rascals and Yorkshire Tea",
+   "ja": "ベティーズのファット・ラスカルとヨークシャー・ティー"
+  }
+ },
+ "haworth": {
+  "facts": [
+   {
+    "en": "The Brontë sisters, Charlotte, Emily and Anne, grew up in the parsonage at Haworth and wrote famous novels there.",
+    "ja": "シャーロット、エミリー、アンのブロンテ姉妹は、ハワースの牧師館で育ち、有名な小説を書いたよ。"
+   },
+   {
+    "en": "Haworth's steep cobbled Main Street leads up to the moors of Wuthering Heights country.",
+    "ja": "ハワースの急な石だたみのメインストリートを登ると、「嵐が丘」の荒れ地が広がるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Bronte books and Yorkshire puddings",
+   "ja": "ブロンテの本とヨークシャー・プディング"
+  }
+ },
+ "lancaster": {
+  "facts": [
+   {
+    "en": "Lancaster Castle was a prison until 2011, and it is nearly 1,000 years old.",
+    "ja": "ランカスター城は2011年まで刑務所だった、約1000年の歴史をもつお城だよ。"
+   },
+   {
+    "en": "The red rose of Lancaster fought the white rose of York in the Wars of the Roses.",
+    "ja": "ランカスターの赤いバラは、バラ戦争でヨークの白いバラと戦ったよ。"
+   }
+  ],
+  "team": {
+   "en": "Lancaster City",
+   "ja": "ランカスター・シティ"
+  },
+  "famous": {
+   "en": "Lancashire hotpot",
+   "ja": "ランカシャー・ホットポット"
+  }
+ },
+ "keswick": {
+  "facts": [
+   {
+    "en": "Derwentwater lake near Keswick has islands you can visit by boat, and Catbells hill is a favourite short climb.",
+    "ja": "ケズウィックのダーウェント湖には、ボートで行ける島があるよ。キャットベルズは人気の小さな登山。"
+   },
+   {
+    "en": "The Cumberland Pencil Museum has the world's biggest coloured pencil, almost 8 metres long.",
+    "ja": "カンバーランド鉛筆博物館には、長さ約8メートルの世界一大きな色えんぴつがあるよ。"
+   }
+  ],
+  "team": {
+   "en": "Keswick AFC",
+   "ja": "ケズウィックAFC"
+  },
+  "famous": {
+   "en": "Cumberland pencils",
+   "ja": "カンバーランド鉛筆"
+  }
+ },
+ "hexham": {
+  "facts": [
+   {
+    "en": "Hadrian's Wall was begun in the year 122 to guard the north of the Roman Empire.",
+    "ja": "ハドリアヌスの長城は122年に、ローマ帝国の北をまもるために作りはじめられたよ。"
+   },
+   {
+    "en": "At Housesteads Roman Fort you can see the remains of a Roman toilet with its stone seats.",
+    "ja": "ハウスステッズのローマ砦では、石のいすのついたローマ時代のトイレのあとが見られるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Roman history",
+   "ja": "ローマ時代の歴史"
+  }
+ },
+ "sunderland": {
+  "facts": [
+   {
+    "en": "Sunderland built so many ships that it was once called 'the largest shipbuilding town in the world'.",
+    "ja": "サンダーランドはたくさんの船を作って、「世界最大の造船の町」といわれたよ。"
+   },
+   {
+    "en": "Sunderland's Stadium of Light is built on the site of an old coal mine.",
+    "ja": "サンダーランドのスタジアム・オブ・ライトは、古い炭鉱のあとに建てられたよ。"
+   }
+  ],
+  "team": {
+   "en": "Sunderland AFC (the Black Cats)",
+   "ja": "サンダーランド（ブラックキャッツ）"
+  },
+  "famous": {
+   "en": "Ships and glass",
+   "ja": "船とガラス"
+  }
+ },
+ "berwick": {
+  "facts": [
+   {
+    "en": "Berwick has three famous bridges, and its Elizabethan walls surround the town. They changed hands between England and Scotland 13 times.",
+    "ja": "ベリックには有名な3つの橋と町を囲む城壁があるよ。町はイングランドとスコットランドのあいだで13回も持ち主が変わった。"
+   },
+   {
+    "en": "The Berwick Rangers, an English town, play in the Scottish football league, which is quite unusual!",
+    "ja": "ベリック・レンジャーズはイングランドの町のチームなのに、スコットランドのリーグに出ているよ。"
+   }
+  ],
+  "team": {
+   "en": "Berwick Rangers",
+   "ja": "ベリック・レンジャーズ"
+  },
+  "famous": {
+   "en": "Berwick cockles (sweets)",
+   "ja": "ベリック・コックルズ（あめ）"
+  }
+ },
+ "lindisfarne": {
+  "facts": [
+   {
+    "en": "Holy Island is cut off from the mainland twice a day when the tide comes in. A stone causeway road crosses the sand.",
+    "ja": "ホーリー島は、1日2回、潮が満ちると陸からはなれてしまう。砂の上に石の道があるよ。"
+   },
+   {
+    "en": "In the year 793, Vikings attacked Lindisfarne, the start of the Viking Age in Britain.",
+    "ja": "793年、ヴァイキングがリンディスファーンをおそった。イギリスのヴァイキング時代のはじまりだよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Lindisfarne mead (honey wine)",
+   "ja": "リンディスファーンの蜂蜜酒"
+  }
+ },
+ "dundee": {
+  "facts": [
+   {
+    "en": "RRS Discovery, the ship Captain Scott took to Antarctica in 1901, is now a museum in Dundee.",
+    "ja": "スコット隊長が1901年に南極へ行った船ディスカバリー号は、いまダンディーの博物館になっているよ。"
+   },
+   {
+    "en": "V&A Dundee is a museum of design shaped like the cliffs on the Scottish coast.",
+    "ja": "ダンディーのV&Aは、スコットランドの崖のような形をしたデザインの博物館だよ。"
+   }
+  ],
+  "team": {
+   "en": "Dundee FC and Dundee United",
+   "ja": "ダンディーFCとダンディー・ユナイテッド"
+  },
+  "famous": {
+   "en": "Jute, jam and journalism (the 3 Js)",
+   "ja": "ジュート、ジャム、新聞（3つのJ）"
+  }
+ },
+ "perth": {
+  "facts": [
+   {
+    "en": "Perth is called the Fair City. Scone Palace, near Perth, kept the Stone of Destiny where Scottish kings were crowned.",
+    "ja": "パースは「美しい町」とよばれるよ。近くのスコーン宮殿には、王の戴冠式に使った運命の石があったよ。"
+   },
+   {
+    "en": "Perth is on the River Tay, Scotland's longest river, which is also good for salmon fishing.",
+    "ja": "パースはスコットランド最長のテイ川ぞいにあって、サケ釣りが有名だよ。"
+   }
+  ],
+  "team": {
+   "en": "St Johnstone (the Saints)",
+   "ja": "セント・ジョンストン（セインツ）"
+  },
+  "famous": {
+   "en": "Scottish salmon",
+   "ja": "スコットランドのサーモン"
+  }
+ },
+ "pitlochry": {
+  "facts": [
+   {
+    "en": "Pitlochry Dam has a fish ladder, so salmon can swim up the river past the dam.",
+    "ja": "ピトロクリーのダムにはサケのための魚道があって、ダムの上までのぼれるよ。"
+   },
+   {
+    "en": "Pitlochry has a distillery and the Edradour whisky distillery, one of the smallest in Scotland.",
+    "ja": "ピトロクリーには、スコットランドで最も小さいエドラダワー蒸留所があるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Heathergems",
+   "ja": "ヘザージェムズ"
+  }
+ },
+ "oban": {
+  "facts": [
+   {
+    "en": "Oban is called the Gateway to the Isles because ferries go from here to many Hebridean islands.",
+    "ja": "オーバンは「島々への入口」。ここから多くの島へフェリーが出ているよ。"
+   },
+   {
+    "en": "McCaig's Tower in Oban looks like a Roman Colosseum on top of a hill. A banker built it in the 1890s.",
+    "ja": "オーバンのマッケイグ塔は、丘の上のコロッセオのよう。1890年代に銀行家が建てたよ。"
+   }
+  ],
+  "team": {
+   "en": "Oban Camanachd (a shinty team)",
+   "ja": "オーバン・カマナックド（シンティのチーム）"
+  },
+  "famous": {
+   "en": "Fresh seafood",
+   "ja": "新鮮な海の幸"
+  }
+ },
+ "portree": {
+  "facts": [
+   {
+    "en": "The Fairy Pools on the Isle of Skye are crystal-clear blue pools with small waterfalls.",
+    "ja": "スカイ島の妖精のプールは、小さな滝がある透きとおった青い池だよ。"
+   },
+   {
+    "en": "The Old Man of Storr is a tall rock pinnacle on a mountain on Skye. It looks like a giant's finger.",
+    "ja": "スカイ島のオールドマン・オブ・ストアは、山にそびえる巨人の指のような岩だよ。"
+   }
+  ],
+  "team": {
+   "en": "Skye Camanachd (a shinty team)",
+   "ja": "スカイ・カマナックド（シンティのチーム）"
+  },
+  "famous": {
+   "en": "Talisker whisky",
+   "ja": "タリスカー・ウイスキー"
+  }
+ },
+ "ullapool": {
+  "facts": [
+   {
+    "en": "Ullapool is a fishing port on Loch Broom, and from here the ferry sails to Stornoway on the Isle of Lewis.",
+    "ja": "ウラプールはブルーム湖の漁港で、ここからルイス島のストーノウェイへフェリーが出ているよ。"
+   },
+   {
+    "en": "Near Ullapool, Corrieshalloch Gorge has a deep, narrow canyon with a suspension bridge across it.",
+    "ja": "ウラプールの近くのコリーシャロック渓谷には、深くて細い谷をまたぐ吊り橋があるよ。"
+   }
+  ],
+  "team": null,
+  "famous": {
+   "en": "Highland haddock and salmon",
+   "ja": "ハイランドのタラとサーモン"
+  }
+ },
+ "melrose": {
+  "facts": [
+   {
+    "en": "Rugby sevens, the fast seven-a-side game, was invented in Melrose in 1883 by a butcher named Ned Haig.",
+    "ja": "7人制ラグビー（セブンズ）は、1883年に肉屋のネッド・ヘイグがメルローズで考えたよ。"
+   },
+   {
+    "en": "Melrose Abbey, a ruined red-stone church, is said to hold the heart of Robert the Bruce.",
+    "ja": "メルローズ修道院は赤い石の遺跡で、ロバート・ブルース王の心臓がうめられているといわれるよ。"
+   }
+  ],
+  "team": {
+   "en": "Melrose RFC",
+   "ja": "メルローズ・ラグビークラブ"
+  },
+  "famous": {
+   "en": "Rugby sevens",
+   "ja": "ラグビー・セブンズ"
+  }
+ },
+ "stornoway": {
+  "facts": [
+   {
+    "en": "The Callanish Standing Stones on Lewis are older than Stonehenge. They form a cross-shaped circle of tall stones.",
+    "ja": "ルイス島のカラニッシュ・スタンディングストーンズは、ストーンヘンジより古い、十字の形に並んだ石の輪。"
+   },
+   {
+    "en": "The Isle of Lewis is famous for Harris Tweed, a cloth woven by hand in people's homes on the island.",
+    "ja": "ルイス島は、島の人が家で手織りするハリス・ツイードの布で有名だよ。"
+   }
+  ],
+  "team": {
+   "en": "Stornoway Athletic",
+   "ja": "ストーノウェイ・アスレティック"
+  },
+  "famous": {
+   "en": "Harris Tweed",
+   "ja": "ハリス・ツイード"
+  }
+ },
+ "lerwick": {
+  "facts": [
+   {
+    "en": "The Shetland pony is a small, strong, shaggy horse. Many children learn to ride on one.",
+    "ja": "シェットランド・ポニーは、小さくて力が強い毛むくじゃらの馬。子どもの乗馬にぴったり。"
+   },
+   {
+    "en": "Up Helly Aa is a Viking fire festival in Lerwick each January. People parade with torches and burn a longship.",
+    "ja": "アップ・ヘリー・アーは、1月にレラウィックで行われるヴァイキングの火祭り。たいまつ行列のあと、ヴァイキング船を燃やすよ。"
+   }
+  ],
+  "team": {
+   "en": "Lerwick Rangers",
+   "ja": "レラウィック・レンジャーズ"
+  },
+  "famous": {
+   "en": "Shetland wool and ponies",
+   "ja": "シェットランドのウールとポニー"
+  }
+ },
+ "armagh": {
+  "facts": [
+   {
+    "en": "Armagh has two cathedrals, both named after St Patrick, and it is the religious capital of Ireland.",
+    "ja": "アーマーには聖パトリックの名をもつ大聖堂が2つあって、アイルランドの宗教の中心地だよ。"
+   },
+   {
+    "en": "The Armagh Planetarium and Observatory has been looking at the stars since 1790.",
+    "ja": "アーマー天文台は1790年から星を観察しているよ。"
+   }
+  ],
+  "team": {
+   "en": "Armagh City FC and Armagh GAA",
+   "ja": "アーマー・シティFC"
+  },
+  "famous": {
+   "en": "Armagh Bramley apples",
+   "ja": "アーマーのブラムリーりんご"
+  }
+ },
+ "enniskillen": {
+  "facts": [
+   {
+    "en": "Enniskillen Castle stands on the water's edge. The town sits on an island between Upper and Lower Lough Erne.",
+    "ja": "エニスキレン城は水辺に立ち、町はアーン湖の上湖と下湖のあいだの島にあるよ。"
+   },
+   {
+    "en": "Marble Arch Caves nearby have underground rivers you can visit by boat.",
+    "ja": "近くのマーブル・アーチ洞くつでは、地下の川をボートで進めるよ。"
+   }
+  ],
+  "team": {
+   "en": "Enniskillen Rangers",
+   "ja": "エニスキレン・レンジャーズ"
+  },
+  "famous": {
+   "en": "Belleek pottery",
+   "ja": "ベリークの陶磁器"
+  }
+ },
+ "downpatrick": {
+  "facts": [
+   {
+    "en": "St Patrick, the patron saint of Ireland, is said to be buried near Down Cathedral in Downpatrick.",
+    "ja": "アイルランドの守護聖人聖パトリックは、ダウンパトリックの大聖堂の近くにねむるといわれるよ。"
+   },
+   {
+    "en": "The Saint Patrick Centre in Downpatrick tells his story with exhibits.",
+    "ja": "セント・パトリック・センターでは、聖パトリックの物語を展示で学べるよ。"
+   }
+  ],
+  "team": {
+   "en": "Downpatrick FC",
+   "ja": "ダウンパトリックFC"
+  },
+  "famous": {
+   "en": "Shamrocks",
+   "ja": "シャムロック（三つ葉）"
+  }
+ },
+ "ballycastle": {
+  "facts": [
+   {
+    "en": "The Carrick-a-Rede rope bridge swings 30 metres above the sea and was first used by salmon fishermen.",
+    "ja": "キャリック・ア・リード吊り橋は、海の30メートル上でゆれる。もとはサケ漁師が使ったよ。"
+   },
+   {
+    "en": "The Ould Lammas Fair in Ballycastle has been held every August for about 400 years.",
+    "ja": "バリーキャッスルのオールド・ラマス・フェアは、約400年も毎年8月にひらかれているよ。"
+   }
+  ],
+  "team": {
+   "en": "Ballycastle United",
+   "ja": "バリーキャッスル・ユナイテッド"
+  },
+  "famous": {
+   "en": "Dulse (seaweed snack) and yellowman toffee",
+   "ja": "ダルス（海そう）とイエローマン・トフィー"
+  }
+ },
+ "newry": {
+  "facts": [
+   {
+    "en": "The Mourne Wall is a stone wall about 35 km long that climbs over 15 peaks of the Mourne Mountains.",
+    "ja": "モーン・ウォールは、モーン山地の15の山を越えて続く約35キロの石垣だよ。"
+   },
+   {
+    "en": "Newry's Canal was the first summit-level canal in the British Isles, built in 1742.",
+    "ja": "ニューリー運河は1742年にできた、ブリテン諸島で最初の山越えの運河だよ。"
+   }
+  ],
+  "team": {
+   "en": "Newry City AFC",
+   "ja": "ニューリー・シティAFC"
+  },
+  "famous": {
+   "en": "Mourne granite",
+   "ja": "モーン山地の花こう岩"
+  }
+ },
+ "carrickfergus": {
+  "facts": [
+   {
+    "en": "Carrickfergus Castle is over 800 years old, and it was in use by soldiers until the 1920s.",
+    "ja": "キャリクファーガス城は800年以上前のもので、1920年代まで兵士が使っていたよ。"
+   },
+   {
+    "en": "The first Norman castle in Ireland was built here by John de Courcy in 1177.",
+    "ja": "アイルランド初のノルマン様式の城は、1177年にジョン・ド・クーシーがここに建てたよ。"
+   }
+  ],
+  "team": {
+   "en": "Carrick Rangers",
+   "ja": "キャリック・レンジャーズ"
+  },
+  "famous": {
+   "en": "Castle tours",
+   "ja": "お城めぐり"
+  }
+ }
+}

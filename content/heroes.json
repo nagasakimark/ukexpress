@@ -1,0 +1,819 @@
+{
+ "guest": {
+  "name": {
+   "en": "Mark Sensei",
+   "ja": "マーク先生"
+  },
+  "emoji": "👨‍🏫",
+  "welcome": {
+   "en": "Welcome to my hometown, Durham!",
+   "ja": "ぼくのふるさと、ダラムへようこそ！"
+  }
+ },
+ "heroes": [
+  {
+   "id": "shakespeare",
+   "name": {
+    "en": "William Shakespeare",
+    "ja": "ウィリアム・シェイクスピア"
+   },
+   "lived": "1564–1616",
+   "station": "stratford",
+   "emoji": "🎭",
+   "line": {
+    "en": "His plays are still performed all over the world.",
+    "ja": "彼の劇は今も世界中で上演されているよ。"
+   },
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "Encore!",
+    "ja": "アンコール！"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
+   "japan": {
+    "en": "Kurosawa's film Throne of Blood retells Macbeth.",
+    "ja": "黒澤明の『蜘蛛巣城』は『マクベス』がもと。"
+   },
+   "living": false
+  },
+  {
+   "id": "newton",
+   "name": {
+    "en": "Isaac Newton",
+    "ja": "アイザック・ニュートン"
+   },
+   "lived": "1643–1727",
+   "station": "cambridge",
+   "emoji": "🍎",
+   "line": {
+    "en": "He explained why things fall and how light makes rainbows.",
+    "ja": "物が落ちるわけや、光が虹になるしくみを説明したよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "austen",
+   "name": {
+    "en": "Jane Austen",
+    "ja": "ジェーン・オースティン"
+   },
+   "lived": "1775–1817",
+   "station": "bath",
+   "emoji": "📚",
+   "line": {
+    "en": "She wrote famous novels about families. She is on the £10 note.",
+    "ja": "家族の小説を書いた有名な作家。10ポンド札にのっているよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "stephenson",
+   "name": {
+    "en": "George Stephenson",
+    "ja": "ジョージ・スチーブンソン"
+   },
+   "lived": "1781–1848",
+   "station": "newcastle",
+   "emoji": "🚂",
+   "line": {
+    "en": "The \"Father of Railways\" built early steam trains.",
+    "ja": "「鉄道の父」。初期の蒸気機関車を作ったよ。"
+   },
+   "power": "dice2",
+   "powerName": {
+    "en": "Rocket Start",
+    "ja": "ロケット・スタート"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
+   "japan": {
+    "en": "Japan's first railways used British trains.",
+    "ja": "日本の最初の鉄道はイギリスの汽車を使ったよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "anning",
+   "name": {
+    "en": "Mary Anning",
+    "ja": "メアリー・アニング"
+   },
+   "lived": "1799–1847",
+   "station": "lymeregis",
+   "emoji": "🦴",
+   "line": {
+    "en": "As a girl she found giant sea-reptile fossils on the beach.",
+    "ja": "子どものころ、海辺で大きな海の爬虫類の化石を見つけたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "seacole",
+   "name": {
+    "en": "Mary Seacole",
+    "ja": "メアリー・シーコール"
+   },
+   "lived": "1805–1881",
+   "station": "waterloo",
+   "emoji": "🩺",
+   "line": {
+    "en": "She travelled far to care for sick soldiers, even when people turned her away.",
+    "ja": "断られても遠くまで行って、病気の兵士の看病をしたよ。"
+   },
+   "power": "kindness",
+   "powerName": {
+    "en": "Kindness",
+    "ja": "やさしさ"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
+   "living": false
+  },
+  {
+   "id": "brunel",
+   "name": {
+    "en": "Isambard Kingdom Brunel",
+    "ja": "イザムバード・キングダム・ブルネル"
+   },
+   "lived": "1806–1859",
+   "station": "bristol",
+   "emoji": "🌉",
+   "line": {
+    "en": "He designed bridges, giant iron ships and the railway from London to Bristol.",
+    "ja": "橋や大きな鉄の船、ロンドンからブリストルへの鉄道を設計したよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "darwin",
+   "name": {
+    "en": "Charles Darwin",
+    "ja": "チャールズ・ダーウィン"
+   },
+   "lived": "1809–1882",
+   "station": "plymouth",
+   "emoji": "🐢",
+   "line": {
+    "en": "He sailed around the world and studied how living things change over time.",
+    "ja": "世界をめぐって、生き物が長い時間で変わることを研究したよ。"
+   },
+   "power": "seeDest",
+   "powerName": {
+    "en": "Explorer's Notebook",
+    "ja": "探検ノート"
+   },
+   "powerDesc": {
+    "en": "Choose the next destination from 3 stations.",
+    "ja": "次の目的地を3つから選べる。"
+   },
+   "living": false
+  },
+  {
+   "id": "dickens",
+   "name": {
+    "en": "Charles Dickens",
+    "ja": "チャールズ・ディケンズ"
+   },
+   "lived": "1812–1870",
+   "station": "portsmouth",
+   "emoji": "🎄",
+   "line": {
+    "en": "He wrote A Christmas Carol and spoke up for poor children.",
+    "ja": "『クリスマス・キャロル』を書き、貧しい子どもたちのために声をあげたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "lovelace",
+   "name": {
+    "en": "Ada Lovelace",
+    "ja": "エイダ・ラブレス"
+   },
+   "lived": "1815–1852",
+   "station": "kingscross",
+   "emoji": "🔢",
+   "line": {
+    "en": "She wrote steps for a machine to follow: an early computer program.",
+    "ja": "機械が実行する手順を書いた。初期のコンピューター・プログラムだよ。"
+   },
+   "power": "perDie",
+   "powerName": {
+    "en": "First Program",
+    "ja": "はじめてのプログラム"
+   },
+   "powerDesc": {
+    "en": "+1 square for every die this turn.",
+    "ja": "このターン、サイコロ1個につき+1マス。"
+   },
+   "living": false
+  },
+  {
+   "id": "nightingale",
+   "name": {
+    "en": "Florence Nightingale",
+    "ja": "フローレンス・ナイチンゲール"
+   },
+   "lived": "1820–1910",
+   "station": "waterloo",
+   "emoji": "🪔",
+   "line": {
+    "en": "The \"Lady with the Lamp\" made hospitals clean and safe.",
+    "ja": "「ランプの貴婦人」。病院を清潔で安全にしたよ。"
+   },
+   "power": "undoBoggart",
+   "powerName": {
+    "en": "Care",
+    "ja": "ケア"
+   },
+   "powerDesc": {
+    "en": "Get back the Boggart's last money loss.",
+    "ja": "ボガートに取られた最後のお金を取りもどす。"
+   },
+   "japan": {
+    "en": "Modern nursing in Japan follows her ideas.",
+    "ja": "日本の看護も彼女の考えをもとにしているよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "bird",
+   "name": {
+    "en": "Isabella Bird",
+    "ja": "イザベラ・バード"
+   },
+   "lived": "1831–1904",
+   "station": "york",
+   "emoji": "🗾",
+   "line": {
+    "en": "A brave traveller who journeyed across northern Japan in 1878 and wrote about it.",
+    "ja": "1878年に東北や北海道を旅して、本に書いた勇かんな旅行家。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "She wrote \"Unbeaten Tracks in Japan\".",
+    "ja": "『日本奥地紀行』を書いたよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "conder",
+   "name": {
+    "en": "Josiah Conder",
+    "ja": "ジョサイア・コンドル"
+   },
+   "lived": "1852–1920",
+   "station": "greenwich",
+   "emoji": "🏛️",
+   "line": {
+    "en": "A London architect who taught Japan's first architects.",
+    "ja": "日本の最初の建築家たちを教えたロンドンの建築家。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "He designed buildings in Tokyo, like the Rokumeikan.",
+    "ja": "鹿鳴館など東京の建物を設計したよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "pankhurst",
+   "name": {
+    "en": "Emmeline Pankhurst",
+    "ja": "エメリン・パンクハースト"
+   },
+   "lived": "1858–1928",
+   "station": "manchester",
+   "emoji": "🗳️",
+   "line": {
+    "en": "She fought so that women could vote.",
+    "ja": "女性が選挙で投票できるように戦ったよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "potter",
+   "name": {
+    "en": "Beatrix Potter",
+    "ja": "ビアトリクス・ポター"
+   },
+   "lived": "1866–1943",
+   "station": "windermere",
+   "emoji": "🍄",
+   "line": {
+    "en": "She wrote and drew little books about animals, studied mushrooms, and saved Lake District farms.",
+    "ja": "動物の小さな本を書いて絵をかき、キノコを研究し、湖水地方の農場を守ったよ。"
+   },
+   "power": "foodBoost",
+   "powerName": {
+    "en": "Protect the Land",
+    "ja": "大地を守る"
+   },
+   "powerDesc": {
+    "en": "Your Food properties pay +50% this year.",
+    "ja": "今年の食べ物の物件の利益+50%。"
+   },
+   "japan": {
+    "en": "Her books are loved in Japan; many Japanese visitors go to the Lake District.",
+    "ja": "日本でも大人気。湖水地方には日本からたくさんの人が来るよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "soseki",
+   "name": {
+    "en": "Natsume Sōseki",
+    "ja": "夏目漱石"
+   },
+   "lived": "1867–1916",
+   "station": "paddington",
+   "emoji": "🐈",
+   "line": {
+    "en": "The famous Japanese writer lived in London as a student.",
+    "ja": "有名な日本の作家。留学生としてロンドンに住んでいたよ。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "He wrote \"I Am a Cat\".",
+    "ja": "『吾輩は猫である』を書いたよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "leach",
+   "name": {
+    "en": "Bernard Leach",
+    "ja": "バーナード・リーチ"
+   },
+   "lived": "1887–1979",
+   "station": "penzance",
+   "emoji": "🏺",
+   "line": {
+    "en": "He learned pottery in Japan and started a pottery in St Ives with Hamada Shōji.",
+    "ja": "日本で陶芸を学び、濱田庄司とセント・アイヴスに窯を開いたよ。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "A friend of the Japanese mingei (folk craft) movement.",
+    "ja": "日本の民藝運動の仲間だよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "tolkien",
+   "name": {
+    "en": "J.R.R. Tolkien",
+    "ja": "J・R・R・トールキン"
+   },
+   "lived": "1892–1973",
+   "station": "oxford",
+   "emoji": "🗺️",
+   "line": {
+    "en": "A professor who invented whole languages and wrote The Hobbit.",
+    "ja": "言葉をまるごと作り出し、『ホビットの冒険』を書いた教授。"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "Invented Languages",
+    "ja": "言葉の発明"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "living": false
+  },
+  {
+   "id": "turing",
+   "name": {
+    "en": "Alan Turing",
+    "ja": "アラン・チューリング"
+   },
+   "lived": "1912–1954",
+   "station": "manchester",
+   "emoji": "💻",
+   "line": {
+    "en": "He imagined computers before they existed. He is on the £50 note.",
+    "ja": "コンピューターができる前にそれを考えた人。50ポンド札にのっているよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "franklin",
+   "name": {
+    "en": "Rosalind Franklin",
+    "ja": "ロザリンド・フランクリン"
+   },
+   "lived": "1920–1958",
+   "station": "cambridge",
+   "emoji": "🧬",
+   "line": {
+    "en": "Her X-ray photo helped show the shape of DNA.",
+    "ja": "彼女のX線写真が、DNAの形を明らかにする助けになったよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "attenborough",
+   "name": {
+    "en": "David Attenborough",
+    "ja": "デイビッド・アッテンボロー"
+   },
+   "lived": "born 1926",
+   "station": "leicester",
+   "emoji": "🌍",
+   "line": {
+    "en": "He has made nature films for over 70 years and asks us to protect the planet.",
+    "ja": "70年以上自然の番組を作り、地球を守ろうとよびかけているよ。"
+   },
+   "power": "natureBoost",
+   "powerName": {
+    "en": "Nature Film",
+    "ja": "自然の番組"
+   },
+   "powerDesc": {
+    "en": "Tourism at nature stations pays double this year.",
+    "ja": "今年、自然の駅の観光の利益2倍。"
+   },
+   "japan": {
+    "en": "NHK helped make Planet Earth, which he narrated.",
+    "ja": "NHKも『プラネットアース』の制作に参加したよ。"
+   },
+   "living": true
+  },
+  {
+   "id": "hawking",
+   "name": {
+    "en": "Stephen Hawking",
+    "ja": "スティーブン・ホーキング"
+   },
+   "lived": "1942–2018",
+   "station": "cambridge",
+   "emoji": "🌌",
+   "line": {
+    "en": "He studied black holes and kept working even when he could not move or speak.",
+    "ja": "体が動かず話せなくなっても、ブラックホールの研究を続けたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "beatles",
+   "name": {
+    "en": "The Beatles",
+    "ja": "ザ・ビートルズ"
+   },
+   "lived": "1960s band",
+   "station": "liverpool",
+   "emoji": "🎸",
+   "line": {
+    "en": "Four friends from Liverpool became the world's most famous band.",
+    "ja": "リバプールの4人の友だちが、世界一有名なバンドになったよ。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "They played at the Budokan in Tokyo in 1966.",
+    "ja": "1966年に武道館で演奏したよ。"
+   },
+   "living": true
+  },
+  {
+   "id": "bernerslee",
+   "name": {
+    "en": "Tim Berners-Lee",
+    "ja": "ティム・バーナーズ＝リー"
+   },
+   "lived": "born 1955",
+   "station": "kingscross",
+   "emoji": "🌐",
+   "line": {
+    "en": "He invented the World Wide Web and gave it to everyone for free.",
+    "ja": "ワールド・ワイド・ウェブを発明して、みんなに無料で使えるようにしたよ。"
+   },
+   "power": "warpOwned",
+   "powerName": {
+    "en": "The Web",
+    "ja": "ウェブ"
+   },
+   "powerDesc": {
+    "en": "Jump to any station where you own property.",
+    "ja": "物件を持っている駅へジャンプ。"
+   },
+   "living": true
+  },
+  {
+   "id": "burns",
+   "name": {
+    "en": "Robert Burns",
+    "ja": "ロバート・バーンズ"
+   },
+   "lived": "1759–1796",
+   "station": "glasgow",
+   "emoji": "📜",
+   "line": {
+    "en": "Scotland's national poet wrote the words to Auld Lang Syne.",
+    "ja": "スコットランドの国民的詩人。「オールド・ラング・サイン」の詩を書いたよ。"
+   },
+   "power": "allGain",
+   "powerName": {
+    "en": "Auld Lang Syne",
+    "ja": "オールド・ラング・サイン"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
+   "japan": {
+    "en": "Its tune is 蛍の光 (Hotaru no Hikari).",
+    "ja": "メロディーは「蛍の光」！"
+   },
+   "living": false
+  },
+  {
+   "id": "glover",
+   "name": {
+    "en": "Thomas Glover",
+    "ja": "トーマス・グラバー"
+   },
+   "lived": "1838–1911",
+   "station": "aberdeen",
+   "emoji": "⛵",
+   "line": {
+    "en": "He helped start shipbuilding in Japan. His house in Nagasaki is famous.",
+    "ja": "日本の造船を始める手助けをしたよ。長崎のグラバー邸が有名。"
+   },
+   "power": "industryBoost",
+   "powerName": {
+    "en": "Shipyard",
+    "ja": "造船所"
+   },
+   "powerDesc": {
+    "en": "Your Industry properties pay +50% this year.",
+    "ja": "今年の工業の物件の利益+50%。"
+   },
+   "japan": {
+    "en": "Glover Garden, Nagasaki.",
+    "ja": "長崎のグラバー園。"
+   },
+   "living": false
+  },
+  {
+   "id": "brunton",
+   "name": {
+    "en": "Richard Henry Brunton",
+    "ja": "リチャード・ヘンリー・ブラントン"
+   },
+   "lived": "1841–1901",
+   "station": "aberdeen",
+   "emoji": "🔦",
+   "line": {
+    "en": "He built about 26 lighthouses around Japan's coast.",
+    "ja": "日本の海岸に約26の灯台を建てたよ。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "The \"Father of Japanese lighthouses\".",
+    "ja": "「日本の灯台の父」。"
+   },
+   "living": false
+  },
+  {
+   "id": "bell",
+   "name": {
+    "en": "Alexander Graham Bell",
+    "ja": "アレクサンダー・グラハム・ベル"
+   },
+   "lived": "1847–1922",
+   "station": "edinburgh",
+   "emoji": "☎️",
+   "line": {
+    "en": "Born in Edinburgh, he invented the telephone.",
+    "ja": "エディンバラ生まれ。電話を発明したよ。"
+   },
+   "power": "callAhead",
+   "powerName": {
+    "en": "Call Ahead",
+    "ja": "電話で予約"
+   },
+   "powerDesc": {
+    "en": "Choose the next destination from 3 stations.",
+    "ja": "次の目的地を3つから選べる。"
+   },
+   "living": false
+  },
+  {
+   "id": "stevenson",
+   "name": {
+    "en": "Robert Louis Stevenson",
+    "ja": "ロバート・ルイス・スティーヴンソン"
+   },
+   "lived": "1850–1894",
+   "station": "edinburgh",
+   "emoji": "🏴‍☠️",
+   "line": {
+    "en": "He wrote the adventure story Treasure Island.",
+    "ja": "冒険の物語『宝島』を書いたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "fleming",
+   "name": {
+    "en": "Alexander Fleming",
+    "ja": "アレクサンダー・フレミング"
+   },
+   "lived": "1881–1955",
+   "station": "glasgow",
+   "emoji": "💊",
+   "line": {
+    "en": "He discovered penicillin, a medicine made from mould.",
+    "ja": "カビから作る薬、ペニシリンを発見したよ。"
+   },
+   "power": "shrinkBoggart",
+   "powerName": {
+    "en": "Medicine",
+    "ja": "くすり"
+   },
+   "powerDesc": {
+    "en": "Shrink your Boggart (a Little Boggart leaves).",
+    "ja": "ボガートを小さくする（小ボガートはいなくなる）。"
+   },
+   "living": false
+  },
+  {
+   "id": "baird",
+   "name": {
+    "en": "John Logie Baird",
+    "ja": "ジョン・ロジー・ベアード"
+   },
+   "lived": "1888–1946",
+   "station": "glasgow",
+   "emoji": "📺",
+   "line": {
+    "en": "He showed the world's first working television.",
+    "ja": "世界で初めて動くテレビを見せたよ。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "Japan's TV pioneer Takayanagi Kenjirō worked at the same time.",
+    "ja": "日本のテレビの父、高柳健次郎も同じころ研究していたよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "murray",
+   "name": {
+    "en": "Andy Murray",
+    "ja": "アンディ・マリー"
+   },
+   "lived": "born 1987",
+   "station": "stirling",
+   "emoji": "🎾",
+   "line": {
+    "en": "He won Wimbledon twice and two Olympic gold medals.",
+    "ja": "ウィンブルドンで2回、オリンピックで2回金メダル！"
+   },
+   "power": "none",
+   "living": true
+  },
+  {
+   "id": "dylan",
+   "name": {
+    "en": "Dylan Thomas",
+    "ja": "ディラン・トマス"
+   },
+   "lived": "1914–1953",
+   "station": "swansea",
+   "emoji": "✒️",
+   "line": {
+    "en": "A poet who loved the sound of words.",
+    "ja": "言葉のひびきが大好きな詩人だよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "dahl",
+   "name": {
+    "en": "Roald Dahl",
+    "ja": "ロアルド・ダール"
+   },
+   "lived": "1916–1990",
+   "station": "cardiff",
+   "emoji": "📖",
+   "line": {
+    "en": "Born in Cardiff, he wrote Matilda and Charlie and the Chocolate Factory.",
+    "ja": "カーディフ生まれ。『マチルダ』『チョコレート工場の秘密』を書いたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "campbell",
+   "name": {
+    "en": "Betty Campbell",
+    "ja": "ベティ・キャンベル"
+   },
+   "lived": "1934–2017",
+   "station": "cardiff",
+   "emoji": "🏫",
+   "line": {
+    "en": "Wales's first Black head teacher. She taught children to be proud of their history.",
+    "ja": "ウェールズ初の黒人の校長先生。子どもたちに自分の歴史をほこりに思うよう教えたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "greythompson",
+   "name": {
+    "en": "Tanni Grey-Thompson",
+    "ja": "タニ・グレイ＝トンプソン"
+   },
+   "lived": "born 1969",
+   "station": "cardiff",
+   "emoji": "🏅",
+   "line": {
+    "en": "A wheelchair racer who won 11 Paralympic gold medals.",
+    "ja": "車いすレースでパラリンピック金メダル11個！"
+   },
+   "power": "neverGiveUp",
+   "powerName": {
+    "en": "Never Give Up",
+    "ja": "あきらめない"
+   },
+   "powerDesc": {
+    "en": "If you are last, +3 dice for 2 turns.",
+    "ja": "最下位なら2ターン、サイコロ+3個。"
+   },
+   "living": true
+  },
+  {
+   "id": "kelvin",
+   "name": {
+    "en": "Lord Kelvin",
+    "ja": "ケルビン卿"
+   },
+   "lived": "1824–1907",
+   "station": "belfast",
+   "emoji": "🌡️",
+   "line": {
+    "en": "Born in Belfast. A temperature scale, the kelvin, is named after him.",
+    "ja": "ベルファスト生まれ。温度の単位「ケルビン」は彼の名前から。"
+   },
+   "power": "none",
+   "japan": {
+    "en": "Japanese scientists studied with him in Glasgow.",
+    "ja": "日本の科学者もグラスゴーで彼に学んだよ。"
+   },
+   "living": false
+  },
+  {
+   "id": "ferguson",
+   "name": {
+    "en": "Harry Ferguson",
+    "ja": "ハリー・ファーガソン"
+   },
+   "lived": "1884–1960",
+   "station": "belfast",
+   "emoji": "🚜",
+   "line": {
+    "en": "He invented a better tractor and was the first person to fly a plane in Ireland.",
+    "ja": "すぐれたトラクターを発明し、アイルランドで初めて飛行機を飛ばしたよ。"
+   },
+   "power": "none",
+   "living": false
+  },
+  {
+   "id": "lewis",
+   "name": {
+    "en": "C.S. Lewis",
+    "ja": "C・S・ルイス"
+   },
+   "lived": "1898–1963",
+   "station": "belfast",
+   "emoji": "📕",
+   "line": {
+    "en": "Born in Belfast, he wrote the Narnia books.",
+    "ja": "ベルファスト生まれ。『ナルニア国物語』を書いたよ。"
+   },
+   "power": "none",
+   "living": false
+  }
+ ]
+}

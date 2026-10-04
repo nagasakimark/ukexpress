@@ -1,0 +1,14 @@
+{
+  "_comment": "Teachers: add your own quiz questions here. 'answer' is the number of the correct option (0 = first). Delete the example if you like.",
+  "questions": [
+    {
+      "q": { "en": "What colour are London's famous buses?", "ja": "ロンドンの有名なバスは何色？" },
+      "options": [
+        { "en": "Red", "ja": "赤" },
+        { "en": "Purple", "ja": "むらさき" },
+        { "en": "Silver", "ja": "銀色" }
+      ],
+      "answer": 0
+    }
+  ]
+}

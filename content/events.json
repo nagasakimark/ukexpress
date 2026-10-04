@@ -1,0 +1,2292 @@
+[
+ {
+  "id": "newyear",
+  "cal": 0,
+  "date": "d1",
+  "emoji": "🎆",
+  "title": {
+   "en": "New Year's Day",
+   "ja": "元日"
+  },
+  "why": {
+   "en": "1st January is the first day of the year. People make New Year's resolutions: promises to do something better.",
+   "ja": "1月1日は1年のはじまり。「新年の決意」といって、がんばることを約束する人が多いよ。"
+  },
+  "fact": {
+   "en": "Many people in the UK watch fireworks over the River Thames in London at midnight.",
+   "ja": "ロンドンでは、真夜中にテムズ川の上で花火が上がるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people make on New Year's Day?",
+    "ja": "元日にみんなが立てるものは？"
+   },
+   "options": [
+    {
+     "en": "Resolutions (promises)",
+     "ja": "決意（約束）"
+    },
+    {
+     "en": "Snowmen",
+     "ja": "雪だるま"
+    },
+    {
+     "en": "Pancakes",
+     "ja": "パンケーキ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Everyone gets pocket money: £100 × year.",
+   "ja": "みんなおこづかい +£100×年。"
+  },
+  "fx": {
+   "t": "all",
+   "amount": 100
+  },
+  "image": "newyearsday"
+ },
+ {
+  "id": "hogmanay",
+  "cal": 0,
+  "date": "d2",
+  "emoji": "🥁",
+  "title": {
+   "en": "Hogmanay",
+   "ja": "ホグマニー"
+  },
+  "why": {
+   "en": "Hogmanay is Scotland's New Year party on the night of 31st December, and the fun carries on for days.",
+   "ja": "ホグマニーは、12月31日の夜から始まるスコットランドの新年のパーティー。数日つづくよ。"
+  },
+  "fact": {
+   "en": "At midnight people sing 'Auld Lang Syne', a song by the Scottish poet Robert Burns.",
+   "ja": "夜中の0時には、スコットランドの詩人バーンズの歌「蛍の光」を歌うよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Which country has Hogmanay?",
+    "ja": "ホグマニーがあるのはどの国？"
+   },
+   "options": [
+    {
+     "en": "Scotland",
+     "ja": "スコットランド"
+    },
+    {
+     "en": "Wales",
+     "ja": "ウェールズ"
+    },
+    {
+     "en": "England",
+     "ja": "イングランド"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Scotland get £200 × year.",
+   "ja": "スコットランドにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "scotland"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Scotland",
+   "ja": "スコットランド"
+  },
+  "label": {
+   "en": "31st December to 2nd January",
+   "ja": "12月31日〜1月2日"
+  },
+  "image": "hogmanay"
+ },
+ {
+  "id": "burns",
+  "cal": 0,
+  "date": "d25",
+  "emoji": "🎻",
+  "title": {
+   "en": "Burns Night",
+   "ja": "バーンズ・ナイト"
+  },
+  "why": {
+   "en": "On 25th January, Scots remember the poet Robert Burns with a supper, poems and bagpipes.",
+   "ja": "1月25日は、詩人ロバート・バーンズをしのんで、夕食会をして詩をよみ、バグパイプを聞く日。"
+  },
+  "fact": {
+   "en": "The special dish is haggis, which is eaten with 'neeps and tatties': turnips and potatoes.",
+   "ja": "ごちそうはハギス。カブとじゃがいも（ニープスとタティーズ）といっしょに食べるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is the traditional food on Burns Night?",
+    "ja": "バーンズ・ナイトの伝統の食べ物は？"
+   },
+   "options": [
+    {
+     "en": "Haggis",
+     "ja": "ハギス"
+    },
+    {
+     "en": "Pizza",
+     "ja": "ピザ"
+    },
+    {
+     "en": "Sushi",
+     "ja": "すし"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Scotland get £200 × year.",
+   "ja": "スコットランドにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "scotland"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Scotland",
+   "ja": "スコットランド"
+  },
+  "image": "burnsnight"
+ },
+ {
+  "id": "jansales",
+  "cal": 0,
+  "date": "",
+  "emoji": "🛍️",
+  "title": {
+   "en": "January Sales",
+   "ja": "ジャニュアリー・セール"
+  },
+  "why": {
+   "en": "After Christmas, shops cut their prices in the January Sales. People hurry out to find a bargain.",
+   "ja": "クリスマスのあと、お店は1月のセールで値下げするよ。みんなお買い得品をさがしに出かける。"
+  },
+  "fact": {
+   "en": "The big sales start on Boxing Day, 26th December, and often run through January.",
+   "ja": "大きなセールは12月26日のボクシング・デーから始まって、1月まで続くことが多いよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What happens in the January Sales?",
+    "ja": "ジャニュアリー・セールでは？"
+   },
+   "options": [
+    {
+     "en": "Prices go down",
+     "ja": "値段が安くなる"
+    },
+    {
+     "en": "Trains stop",
+     "ja": "電車が止まる"
+    },
+    {
+     "en": "Snow falls",
+     "ja": "雪がふる"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Bargain! Everyone gets a free card.",
+   "ja": "お買い得！みんなカードを1枚もらえる。"
+  },
+  "fx": {
+   "t": "card"
+  },
+  "label": {
+   "en": "After Christmas, through January",
+   "ja": "クリスマスのあと、1月ごろ"
+  },
+  "image": "januarysales"
+ },
+ {
+  "id": "pancake",
+  "cal": 1,
+  "date": "easter-47",
+  "emoji": "🥞",
+  "title": {
+   "en": "Pancake Day",
+   "ja": "パンケーキ・デー"
+  },
+  "why": {
+   "en": "Pancake Day, or Shrove Tuesday, is the day before Lent. Families eat pancakes with lemon and sugar.",
+   "ja": "パンケーキ・デー（懺悔の火曜日）は、四旬節の前の日。レモンと砂糖でパンケーキを食べるよ。"
+  },
+  "fact": {
+   "en": "Some towns hold pancake races where people run while flipping a pancake in a frying pan!",
+   "ja": "フライパンでパンケーキをひっくり返しながら走る「パンケーキ・レース」をする町もあるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people eat on Pancake Day?",
+    "ja": "パンケーキ・デーに食べるものは？"
+   },
+   "options": [
+    {
+     "en": "Pancakes",
+     "ja": "パンケーキ"
+    },
+    {
+     "en": "Fish and chips",
+     "ja": "フィッシュ・アンド・チップス"
+    },
+    {
+     "en": "Sandwiches",
+     "ja": "サンドイッチ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lucky draw! One lucky railway wins £300 × year.",
+   "ja": "くじ引き！運のいい鉄道が +£300×年。"
+  },
+  "fx": {
+   "t": "minigame",
+   "id": "pancake"
+  },
+  "label": {
+   "en": "Shrove Tuesday (February or early March)",
+   "ja": "懺悔の火曜日（2月か3月はじめ）"
+  },
+  "image": "pancakeday",
+  "minigame": "pancake"
+ },
+ {
+  "id": "valentine",
+  "cal": 1,
+  "date": "d14",
+  "emoji": "💌",
+  "title": {
+   "en": "Valentine's Day",
+   "ja": "バレンタインデー"
+  },
+  "why": {
+   "en": "On 14th February people send cards and give flowers to the people they love. Many cards are sent without a name!",
+   "ja": "2月14日は、大切な人にカードや花をおくる日。名前をかかないカードも多いよ。"
+  },
+  "fact": {
+   "en": "In the UK, both boys and girls can send Valentine's cards, and people sometimes eat out for dinner.",
+   "ja": "イギリスでは男の子も女の子もカードをおくるよ。レストランで食事をする人もいる。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people send on Valentine's Day?",
+    "ja": "バレンタインデーにおくるものは？"
+   },
+   "options": [
+    {
+     "en": "Cards and flowers",
+     "ja": "カードと花"
+    },
+    {
+     "en": "Kites",
+     "ja": "たこ"
+    },
+    {
+     "en": "Eggs",
+     "ja": "たまご"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lots of cards in the post! Everyone gets £100 × year.",
+   "ja": "カードがいっぱい！みんな +£100×年。"
+  },
+  "fx": {
+   "t": "all",
+   "amount": 100
+  },
+  "image": "valentinesday"
+ },
+ {
+  "id": "snowdrops",
+  "cal": 1,
+  "date": "",
+  "emoji": "❄️",
+  "title": {
+   "en": "Snowdrop Season",
+   "ja": "スノードロップの季節"
+  },
+  "why": {
+   "en": "In February tiny white flowers called snowdrops push up through the cold ground, a sign that spring is coming.",
+   "ja": "2月になると、スノードロップという小さな白い花が寒い地面からさいて、春がくる合図になるよ。"
+  },
+  "fact": {
+   "en": "Gardens and woods open for 'snowdrop walks'. The flowers can bloom even while there is still snow.",
+   "ja": "庭や森では「スノードロップ散歩」が開かれるよ。雪が残っている間にもさくんだ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do snowdrops tell us?",
+    "ja": "スノードロップは何を知らせる？"
+   },
+   "options": [
+    {
+     "en": "Spring is coming",
+     "ja": "春がくる"
+    },
+    {
+     "en": "Summer has ended",
+     "ja": "夏が終わった"
+    },
+    {
+     "en": "It is Christmas",
+     "ja": "クリスマス"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Garden visitors! Tourism properties earn 1.5× this year.",
+   "ja": "庭の見学者！今年は観光の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "tourism",
+   "mult": 1.5
+  },
+  "label": {
+   "en": "Late January to March",
+   "ja": "1月の終わりから3月"
+  },
+  "image": "snowdropseason"
+ },
+ {
+  "id": "stdavid",
+  "cal": 2,
+  "date": "d1",
+  "emoji": "🌼",
+  "title": {
+   "en": "St David's Day",
+   "ja": "聖デイヴィッドの日"
+  },
+  "why": {
+   "en": "1st March is the national day of Wales. People wear daffodils or leeks and sing Welsh songs.",
+   "ja": "3月1日はウェールズの記念日。ラッパズイセンやリーキ（ねぎ）をつけて、ウェールズの歌をうたうよ。"
+  },
+  "fact": {
+   "en": "Welsh children go to school in traditional costume and the red dragon flag flies everywhere.",
+   "ja": "ウェールズの子どもたちは民族衣装で学校へ行き、赤いドラゴンの旗があちこちにあがるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is on the flag of Wales?",
+    "ja": "ウェールズの旗にあるのは？"
+   },
+   "options": [
+    {
+     "en": "A red dragon",
+     "ja": "赤いドラゴン"
+    },
+    {
+     "en": "A lion",
+     "ja": "ライオン"
+    },
+    {
+     "en": "A harp",
+     "ja": "ハープ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Wales get £300 × year.",
+   "ja": "ウェールズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "wales"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Wales",
+   "ja": "ウェールズ"
+  },
+  "image": "stdavidsday"
+ },
+ {
+  "id": "stpatrick",
+  "cal": 2,
+  "date": "d17",
+  "emoji": "☘️",
+  "title": {
+   "en": "St Patrick's Day",
+   "ja": "聖パトリックの日"
+  },
+  "why": {
+   "en": "17th March is St Patrick's Day. In Northern Ireland people wear green and shamrocks and go to parades.",
+   "ja": "3月17日は聖パトリックの日。北アイルランドでは、緑の服やシャムロックをつけてパレードに行くよ。"
+  },
+  "fact": {
+   "en": "St Patrick used a three-leaf shamrock to explain an idea to the people. It became Ireland's symbol.",
+   "ja": "聖パトリックは三つ葉のシャムロックで教えを伝えたよ。いまはアイルランドのシンボル。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What colour do people wear on St Patrick's Day?",
+    "ja": "聖パトリックの日に着る色は？"
+   },
+   "options": [
+    {
+     "en": "Green",
+     "ja": "緑"
+    },
+    {
+     "en": "Red",
+     "ja": "赤"
+    },
+    {
+     "en": "Purple",
+     "ja": "むらさき"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Northern Ireland get £300 × year.",
+   "ja": "北アイルランドにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "ni"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Northern Ireland",
+   "ja": "北アイルランド"
+  },
+  "image": "stpatricksday"
+ },
+ {
+  "id": "mothers",
+  "cal": 2,
+  "date": "easter-21",
+  "emoji": "💐",
+  "title": {
+   "en": "Mother's Day",
+   "ja": "母の日（マザリング・サンデー）"
+  },
+  "why": {
+   "en": "In the UK, Mothering Sunday falls three weeks before Easter. Children give their mums cards, flowers and cake.",
+   "ja": "イギリスの母の日（マザリング・サンデー）は、イースターの3週間前。カードや花、ケーキをおくるよ。"
+  },
+  "fact": {
+   "en": "The UK date moves every year. It is not the same as the American and Japanese date in May.",
+   "ja": "イギリスの母の日は毎年かわるよ。アメリカや日本の5月とはちがう日だよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "When is Mother's Day in the UK?",
+    "ja": "イギリスの母の日はいつ？"
+   },
+   "options": [
+    {
+     "en": "In March (around)",
+     "ja": "3月ごろ"
+    },
+    {
+     "en": "In May",
+     "ja": "5月"
+    },
+    {
+     "en": "In December",
+     "ja": "12月"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Cakes and family lunches! Food properties earn 1.5× this year.",
+   "ja": "ケーキと家族のランチ！今年は食べ物の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "food",
+   "mult": 1.5
+  },
+  "label": {
+   "en": "Mothering Sunday (March or early April)",
+   "ja": "マザリング・サンデー（3月か4月はじめ）"
+  },
+  "image": "mothersday"
+ },
+ {
+  "id": "equinox",
+  "cal": 2,
+  "date": "d20",
+  "emoji": "🌗",
+  "title": {
+   "en": "Spring Equinox",
+   "ja": "春分の日"
+  },
+  "why": {
+   "en": "Around 20th March, day and night are the same length. After this, days become longer than nights in the UK.",
+   "ja": "3月20日ごろは、昼と夜が同じ長さ。このあとイギリスでは昼のほうが長くなるよ。"
+  },
+  "fact": {
+   "en": "The clocks in the UK 'spring forward' by one hour at the end of March, so evenings are lighter.",
+   "ja": "イギリスでは3月の終わりに時計を1時間すすめて、夕方が明るくなるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What happens at the Spring Equinox?",
+    "ja": "春分の日には？"
+   },
+   "options": [
+    {
+     "en": "Day and night are equal",
+     "ja": "昼と夜が同じ長さ"
+    },
+    {
+     "en": "The longest day",
+     "ja": "いちばん長い日"
+    },
+    {
+     "en": "The longest night",
+     "ja": "いちばん長い夜"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "A fresh start! Everyone gets £100 × year.",
+   "ja": "新しいスタート！みんな +£100×年。"
+  },
+  "fx": {
+   "t": "all",
+   "amount": 100
+  },
+  "image": "springequinox"
+ },
+ {
+  "id": "easter",
+  "cal": 3,
+  "date": "easter",
+  "emoji": "🥚",
+  "title": {
+   "en": "Easter Egg Hunts",
+   "ja": "イースター・エッグ探し"
+  },
+  "why": {
+   "en": "At Easter, children hunt for chocolate eggs hidden in gardens and parks. Easter moves every year, in March or April.",
+   "ja": "イースターには、庭や公園にかくされたチョコの卵を探すよ。日にちは毎年かわって、3月か4月。"
+  },
+  "fact": {
+   "en": "Many families eat hot cross buns, sweet buns with a cross on top, on Good Friday.",
+   "ja": "聖金曜日には、上に十字のあるあまいパン「ホット・クロス・バン」を食べる家が多いよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do children hunt for at Easter?",
+    "ja": "イースターに子どもが探すものは？"
+   },
+   "options": [
+    {
+     "en": "Chocolate eggs",
+     "ja": "チョコの卵"
+    },
+    {
+     "en": "Pumpkins",
+     "ja": "かぼちゃ"
+    },
+    {
+     "en": "Snowballs",
+     "ja": "雪だま"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lucky draw! One lucky railway wins £300 × year.",
+   "ja": "くじ引き！運のいい鉄道が +£300×年。"
+  },
+  "fx": {
+   "t": "minigame",
+   "id": "eggs"
+  },
+  "label": {
+   "en": "Easter Sunday (March or April)",
+   "ja": "イースターの日曜日（3月か4月）"
+  },
+  "image": "easteregghunts",
+  "minigame": "eggs"
+ },
+ {
+  "id": "stgeorge",
+  "cal": 3,
+  "date": "d23",
+  "emoji": "🌹",
+  "title": {
+   "en": "St George's Day",
+   "ja": "聖ジョージの日"
+  },
+  "why": {
+   "en": "23rd April is England's national day, named after St George, who is said to have fought a dragon.",
+   "ja": "4月23日はイングランドの記念日。ドラゴンと戦ったと言われる聖ジョージにちなむよ。"
+  },
+  "fact": {
+   "en": "England's flag, a red cross on white, is St George's Cross. It is also Shakespeare's birthday!",
+   "ja": "イングランドの旗（白地に赤い十字）は聖ジョージの十字。シェイクスピアの誕生日でもあるよ！"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is on the English flag?",
+    "ja": "イングランドの旗にあるのは？"
+   },
+   "options": [
+    {
+     "en": "A red cross",
+     "ja": "赤い十字"
+    },
+    {
+     "en": "A red dragon",
+     "ja": "赤いドラゴン"
+    },
+    {
+     "en": "A blue X",
+     "ja": "青いX"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in England get £100 × year.",
+   "ja": "イングランドにいる人は +£100×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london",
+    "southeast",
+    "east",
+    "southwest",
+    "midlands",
+    "north"
+   ],
+   "amount": 100
+  },
+  "where": {
+   "en": "England",
+   "ja": "イングランド"
+  },
+  "image": "stgeorgesday"
+ },
+ {
+  "id": "marathon",
+  "cal": 3,
+  "date": "last-0",
+  "emoji": "🏃",
+  "title": {
+   "en": "London Marathon",
+   "ja": "ロンドン・マラソン"
+  },
+  "why": {
+   "en": "In late April, about 50,000 runners run 42 kilometres through London, past Tower Bridge and Buckingham Palace.",
+   "ja": "4月の終わり、約5万人のランナーが、タワーブリッジやバッキンガム宮殿の前を42キロ走るよ。"
+  },
+  "fact": {
+   "en": "Many runners wear costumes and raise money for charity. Some even run dressed as a rhino!",
+   "ja": "仮装して走り、チャリティーのためにお金を集める人も多いよ。サイの仮装で走る人もいるよ！"
+  },
+  "quiz": {
+   "q": {
+    "en": "How far is a marathon?",
+    "ja": "マラソンの長さは？"
+   },
+   "options": [
+    {
+     "en": "About 42 km",
+     "ja": "約42キロ"
+    },
+    {
+     "en": "About 10 km",
+     "ja": "約10キロ"
+    },
+    {
+     "en": "About 100 km",
+     "ja": "約100キロ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Crowds fill the streets! Players in London get £200 × year.",
+   "ja": "沿道は大にぎわい！ロンドンにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "label": {
+   "en": "Late April",
+   "ja": "4月の終わり"
+  },
+  "image": "londonmarathon"
+ },
+ {
+  "id": "mayday",
+  "cal": 4,
+  "date": "d1",
+  "emoji": "🎀",
+  "title": {
+   "en": "May Day",
+   "ja": "メーデー"
+  },
+  "why": {
+   "en": "On May Day, 1st May, villages in England celebrate spring with maypole dancing, flowers and Morris dancers.",
+   "ja": "5月1日のメーデーには、イングランドの村が春をいわって、メイポール・ダンスや花、モリス・ダンスをするよ。"
+  },
+  "fact": {
+   "en": "Dancers hold coloured ribbons and weave them around a tall pole called a maypole.",
+   "ja": "ダンサーは色とりどりのリボンをもって、メイポールという高い柱のまわりで編みこむよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people dance around on May Day?",
+    "ja": "メーデーに人びとがまわりでおどるものは？"
+   },
+   "options": [
+    {
+     "en": "A maypole",
+     "ja": "メイポール"
+    },
+    {
+     "en": "A Christmas tree",
+     "ja": "クリスマスツリー"
+    },
+    {
+     "en": "A big rock",
+     "ja": "大きな岩"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in southern England get a free card.",
+   "ja": "イングランド南部にいる人はカードを1枚もらえる。"
+  },
+  "fx": {
+   "t": "cardRegion",
+   "regions": [
+    "london",
+    "southeast",
+    "east",
+    "southwest"
+   ]
+  },
+  "where": {
+   "en": "England",
+   "ja": "イングランド"
+  },
+  "image": "mayday"
+ },
+ {
+  "id": "chelsea",
+  "cal": 4,
+  "date": "nth-2-3",
+  "emoji": "🌷",
+  "title": {
+   "en": "Chelsea Flower Show",
+   "ja": "チェルシー・フラワーショー"
+  },
+  "why": {
+   "en": "Every May, the Royal Horticultural Society holds the world-famous Chelsea Flower Show in London, with gardens made in a few days.",
+   "ja": "毎年5月、ロンドンで有名なチェルシー・フラワーショーが開かれて、数日で作った庭が集まるよ。"
+  },
+  "fact": {
+   "en": "The King and Queen and other members of the royal family often visit the show.",
+   "ja": "王さまや女王さまなど王室の人もよく見に来るよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is shown at Chelsea?",
+    "ja": "チェルシーで見られるものは？"
+   },
+   "options": [
+    {
+     "en": "Gardens and flowers",
+     "ja": "庭と花"
+    },
+    {
+     "en": "Racing cars",
+     "ja": "レーシングカー"
+    },
+    {
+     "en": "Fireworks",
+     "ja": "花火"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in London get a free card.",
+   "ja": "ロンドンにいる人はカードを1枚もらえる。"
+  },
+  "fx": {
+   "t": "cardRegion",
+   "regions": [
+    "london"
+   ]
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "image": "chelseaflowershow"
+ },
+ {
+  "id": "facup",
+  "cal": 4,
+  "date": "nth-6-3",
+  "emoji": "🏆",
+  "title": {
+   "en": "FA Cup Final",
+   "ja": "FAカップ決勝"
+  },
+  "why": {
+   "en": "The FA Cup is the oldest football competition in the world. The final is held at Wembley Stadium in London every May.",
+   "ja": "FAカップは世界でいちばん古いサッカー大会。決勝は毎年5月にロンドンのウェンブリー・スタジアムで行われるよ。"
+  },
+  "fact": {
+   "en": "Small non-league clubs can play giants like Manchester United, so there are often surprises.",
+   "ja": "小さなクラブが、マンチェスター・ユナイテッドのような強いクラブと戦えるので、びっくりする結果もあるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Where is the FA Cup Final played?",
+    "ja": "FAカップ決勝が行われるのは？"
+   },
+   "options": [
+    {
+     "en": "Wembley Stadium",
+     "ja": "ウェンブリー・スタジアム"
+    },
+    {
+     "en": "Hyde Park",
+     "ja": "ハイド・パーク"
+    },
+    {
+     "en": "Tower Bridge",
+     "ja": "タワーブリッジ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Football fever! Sport properties earn 2× this year.",
+   "ja": "サッカー熱！今年はスポーツの物件が2倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "sport",
+   "mult": 2
+  },
+  "image": "facupfinal"
+ },
+ {
+  "id": "hay",
+  "cal": 4,
+  "date": "",
+  "emoji": "📚",
+  "title": {
+   "en": "Hay Festival",
+   "ja": "ヘイ・フェスティバル"
+  },
+  "why": {
+   "en": "The Hay Festival is a book festival in a little town in Wales. Writers, singers and scientists come to talk about their work.",
+   "ja": "ヘイ・フェスティバルは、ウェールズの小さな町で開かれる本のお祭り。作家や歌手、科学者が話しに来るよ。"
+  },
+  "fact": {
+   "en": "The town, Hay-on-Wye, has about 20 second-hand bookshops, and is called the 'Town of Books'.",
+   "ja": "ヘイ・オン・ワイには古本屋さんが約20軒あって、「本の町」と呼ばれているよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is the Hay Festival about?",
+    "ja": "ヘイ・フェスティバルは何のお祭り？"
+   },
+   "options": [
+    {
+     "en": "Books",
+     "ja": "本"
+    },
+    {
+     "en": "Boats",
+     "ja": "ボート"
+    },
+    {
+     "en": "Bicycles",
+     "ja": "自転車"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Wales get £300 × year.",
+   "ja": "ウェールズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "wales"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Wales",
+   "ja": "ウェールズ"
+  },
+  "label": {
+   "en": "Late May to early June",
+   "ja": "5月の終わりから6月はじめ"
+  },
+  "image": "hayfestival"
+ },
+ {
+  "id": "solstice",
+  "cal": 5,
+  "date": "d21",
+  "emoji": "🌞",
+  "title": {
+   "en": "Summer Solstice",
+   "ja": "夏至"
+  },
+  "why": {
+   "en": "Around 21st June is the longest day of the year. In the UK the sun rises very early and sets very late.",
+   "ja": "6月21日ごろは1年でいちばん昼の長い日。イギリスでは太陽がとても早くのぼり、おそくしずむよ。"
+  },
+  "fact": {
+   "en": "Crowds gather at Stonehenge every year to watch the sun rise between the ancient stones.",
+   "ja": "毎年、ストーンヘンジに人が集まって、古い石のあいだから昇る朝日を見るよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Where do people watch the solstice sunrise?",
+    "ja": "夏至の日の出を見に集まる場所は？"
+   },
+   "options": [
+    {
+     "en": "Stonehenge",
+     "ja": "ストーンヘンジ"
+    },
+    {
+     "en": "Big Ben",
+     "ja": "ビッグ・ベン"
+    },
+    {
+     "en": "Tower Bridge",
+     "ja": "タワーブリッジ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "If you own a property at Salisbury (Stonehenge), you earn £1,000.",
+   "ja": "ソールズベリー（ストーンヘンジ）の物件をもつ人は +£1,000。"
+  },
+  "fx": {
+   "t": "owner",
+   "prop": "salisbury_0",
+   "amount": 1000
+  },
+  "image": "summersolstice"
+ },
+ {
+  "id": "trooping",
+  "cal": 5,
+  "date": "nth-6-2",
+  "emoji": "💂",
+  "title": {
+   "en": "Trooping the Colour",
+   "ja": "トゥルーピング・ザ・カラー"
+  },
+  "why": {
+   "en": "In June, soldiers march in red coats and tall black hats in London to celebrate the King's official birthday.",
+   "ja": "6月、赤い上着と黒い毛皮の帽子の兵隊が、ロンドンで王さまの公式の誕生日をいわって行進するよ。"
+  },
+  "fact": {
+   "en": "The royal family watches from the balcony of Buckingham Palace, and planes fly past.",
+   "ja": "王室の人びとはバッキンガム宮殿のバルコニーから見て、飛行機も上を飛ぶよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Whose birthday is celebrated?",
+    "ja": "だれの誕生日をおいわいする？"
+   },
+   "options": [
+    {
+     "en": "The King's official birthday",
+     "ja": "王さまの公式の誕生日"
+    },
+    {
+     "en": "The Prime Minister's",
+     "ja": "首相の"
+    },
+    {
+     "en": "Big Ben's",
+     "ja": "ビッグ・ベンの"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in London get £200 × year.",
+   "ja": "ロンドンにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "image": "troopingthecolour"
+ },
+ {
+  "id": "ascot",
+  "cal": 5,
+  "date": "nth-2-3",
+  "emoji": "🐎",
+  "title": {
+   "en": "Royal Ascot",
+   "ja": "ロイヤル・アスコット"
+  },
+  "why": {
+   "en": "Royal Ascot is a famous horse-racing week near Windsor. People dress up in smart suits and big, fancy hats.",
+   "ja": "ロイヤル・アスコットは、ウィンザー近くで開かれる有名な競馬の週。みんな立派なスーツと大きな帽子でおしゃれする。"
+  },
+  "fact": {
+   "en": "The King and Queen arrive in horse-drawn carriages at the start of each day.",
+   "ja": "毎日のはじめに、王さまと女王さまが馬車で到着するよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people wear at Royal Ascot?",
+    "ja": "ロイヤル・アスコットで着るものは？"
+   },
+   "options": [
+    {
+     "en": "Fancy hats",
+     "ja": "おしゃれな帽子"
+    },
+    {
+     "en": "Swimsuits",
+     "ja": "水着"
+    },
+    {
+     "en": "Pyjamas",
+     "ja": "パジャマ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in south-east England get £300 × year.",
+   "ja": "イングランド南東部にいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "southeast"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Berkshire, England",
+   "ja": "イングランド（バークシャー）"
+  },
+  "image": "royalascot"
+ },
+ {
+  "id": "fathers",
+  "cal": 5,
+  "date": "nth-0-3",
+  "emoji": "👔",
+  "title": {
+   "en": "Father's Day",
+   "ja": "父の日"
+  },
+  "why": {
+   "en": "On the third Sunday in June, children give their dads cards and presents, and families often have a barbecue.",
+   "ja": "6月の第3日曜日、子どもたちはお父さんにカードやプレゼントをおくり、バーベキューをする家も多いよ。"
+  },
+  "fact": {
+   "en": "In Japan too, Father's Day is on the third Sunday in June, the same as in the UK!",
+   "ja": "日本の父の日も6月の第3日曜日で、イギリスと同じだよ！"
+  },
+  "quiz": {
+   "q": {
+    "en": "When is Father's Day in the UK?",
+    "ja": "イギリスの父の日はいつ？"
+   },
+   "options": [
+    {
+     "en": "Third Sunday in June",
+     "ja": "6月の第3日曜日"
+    },
+    {
+     "en": "1st January",
+     "ja": "1月1日"
+    },
+    {
+     "en": "25th December",
+     "ja": "12月25日"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Barbecue time! Food properties earn 1.5× this year.",
+   "ja": "バーベキュー！今年は食べ物の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "food",
+   "mult": 1.5
+  },
+  "image": "fathersday"
+ },
+ {
+  "id": "glastonbury",
+  "cal": 5,
+  "date": "last-3",
+  "emoji": "🎸",
+  "title": {
+   "en": "Glastonbury Festival",
+   "ja": "グラストンベリー・フェスティバル"
+  },
+  "why": {
+   "en": "Glastonbury is the biggest music festival in the UK. About 200,000 people camp on a farm in Somerset to hear bands.",
+   "ja": "グラストンベリーはイギリス最大の音楽フェス。約20万人がサマセットの農場にテントをはって、バンドを聞くよ。"
+  },
+  "fact": {
+   "en": "It often rains, so everyone brings rubber boots, called wellies, and the farm turns into mud!",
+   "ja": "よく雨がふるので、みんなゴム長ぐつ（ウェリーズ）をもっていって、農場はどろんこになるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people wear on their feet when it is muddy?",
+    "ja": "どろどろの日に足にはくものは？"
+   },
+   "options": [
+    {
+     "en": "Wellies (rubber boots)",
+     "ja": "ウェリーズ（ゴム長ぐつ）"
+    },
+    {
+     "en": "Slippers",
+     "ja": "スリッパ"
+    },
+    {
+     "en": "Roller skates",
+     "ja": "ローラースケート"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Festival crowds! Culture properties earn 1.5× this year.",
+   "ja": "フェスの大にぎわい！今年は文化の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "culture",
+   "mult": 1.5
+  },
+  "where": {
+   "en": "Somerset, England",
+   "ja": "イングランド（サマセット）"
+  },
+  "image": "glastonburyfestival"
+ },
+ {
+  "id": "wimbledon",
+  "cal": 6,
+  "date": "nth-0-2",
+  "emoji": "🎾",
+  "title": {
+   "en": "Wimbledon",
+   "ja": "ウィンブルドン"
+  },
+  "why": {
+   "en": "Wimbledon is the oldest tennis tournament in the world. It is played on grass courts in London in early July.",
+   "ja": "ウィンブルドンは世界でいちばん古いテニス大会。7月のはじめ、ロンドンの芝のコートで行われるよ。"
+  },
+  "fact": {
+   "en": "Players must wear white, and visitors eat strawberries and cream while they watch.",
+   "ja": "選手は白い服を着る決まりで、観客はイチゴとクリームを食べながら観戦するよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What colour must the players wear?",
+    "ja": "選手が着なければならない色は？"
+   },
+   "options": [
+    {
+     "en": "White",
+     "ja": "白"
+    },
+    {
+     "en": "Red",
+     "ja": "赤"
+    },
+    {
+     "en": "Black",
+     "ja": "黒"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lucky draw! One lucky railway wins £300 × year.",
+   "ja": "くじ引き！運のいい鉄道が +£300×年。"
+  },
+  "fx": {
+   "t": "minigame",
+   "id": "tennis"
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "image": "wimbledon",
+  "minigame": "tennis"
+ },
+ {
+  "id": "gala",
+  "cal": 6,
+  "date": "nth-6-2",
+  "emoji": "🎺",
+  "title": {
+   "en": "Durham Miners' Gala",
+   "ja": "ダラム・ミナーズ・ガラ"
+  },
+  "why": {
+   "en": "The Durham Miners' Gala, or 'Big Meeting', celebrates the coal miners of north-east England with brass bands and banners.",
+   "ja": "ダラム・ミナーズ・ガラ（ビッグ・ミーティング）は、北東イングランドの炭鉱で働いた人びとを、ブラスバンドと旗でたたえるお祭り。"
+  },
+  "fact": {
+   "en": "Each old mining village marches into Durham behind a big, hand-painted banner.",
+   "ja": "昔の炭鉱の村ごとに、手描きの大きな旗を先頭に、ダラムの町へ行進するよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Who does the Gala remember?",
+    "ja": "ガラがしのぶ人たちは？"
+   },
+   "options": [
+    {
+     "en": "Coal miners",
+     "ja": "炭鉱で働く人"
+    },
+    {
+     "en": "Pirates",
+     "ja": "海賊"
+    },
+    {
+     "en": "Astronauts",
+     "ja": "宇宙飛行士"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in northern England get a free Express card. Durham property owners earn £500 × year.",
+   "ja": "イングランド北部にいる人は特急カードをもらえる。ダラムの物件のもち主は +£500×年。"
+  },
+  "fx": {
+   "t": "gala"
+  },
+  "where": {
+   "en": "Durham, England",
+   "ja": "イングランド（ダラム）"
+  },
+  "image": "durhamminersgala"
+ },
+ {
+  "id": "highland",
+  "cal": 6,
+  "date": "",
+  "emoji": "🏋️",
+  "title": {
+   "en": "Highland Games",
+   "ja": "ハイランド・ゲームズ"
+  },
+  "why": {
+   "en": "In summer, Scottish towns hold Highland Games with strong athletes, bagpipes and dancing in kilts.",
+   "ja": "夏には、スコットランドの町でハイランド・ゲームズが開かれ、力もちの選手、バグパイプ、キルトのダンスが見られるよ。"
+  },
+  "fact": {
+   "en": "The most famous event is tossing the caber, a huge wooden pole as long as a telegraph pole.",
+   "ja": "いちばん有名なのは「ケーバー投げ」。電柱のように長い大きな丸太を投げるんだ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do athletes toss at the Highland Games?",
+    "ja": "ハイランド・ゲームズで投げるものは？"
+   },
+   "options": [
+    {
+     "en": "A caber (a pole)",
+     "ja": "ケーバー（丸太）"
+    },
+    {
+     "en": "A frisbee",
+     "ja": "フリスビー"
+    },
+    {
+     "en": "A football",
+     "ja": "サッカーボール"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lucky draw! One lucky railway wins £300 × year.",
+   "ja": "くじ引き！運のいい鉄道が +£300×年。"
+  },
+  "fx": {
+   "t": "minigame",
+   "id": "caber"
+  },
+  "where": {
+   "en": "Scotland",
+   "ja": "スコットランド"
+  },
+  "label": {
+   "en": "Summer, all over Scotland",
+   "ja": "夏、スコットランドの各地"
+  },
+  "image": "highlandgames",
+  "minigame": "caber"
+ },
+ {
+  "id": "summerhols",
+  "cal": 6,
+  "date": "d21",
+  "emoji": "🏖️",
+  "title": {
+   "en": "School Summer Holidays Begin",
+   "ja": "夏休みのはじまり"
+  },
+  "why": {
+   "en": "In the UK, school summer holidays begin in July and last about six weeks. Families go to the beach or abroad.",
+   "ja": "イギリスの夏休みは7月に始まり、約6週間。家族で海辺や外国へ出かけるよ。"
+  },
+  "fact": {
+   "en": "Many families go to seaside towns like Blackpool, Brighton and Newquay, and traffic jams are common!",
+   "ja": "ブラックプール、ブライトン、ニューキーなどの海辺の町へ行く家族が多く、道路はよく渋滞するよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "How long are the UK's summer holidays?",
+    "ja": "イギリスの夏休みはどれくらい？"
+   },
+   "options": [
+    {
+     "en": "About 6 weeks",
+     "ja": "約6週間"
+    },
+    {
+     "en": "About 1 week",
+     "ja": "約1週間"
+    },
+    {
+     "en": "About 6 months",
+     "ja": "約6か月"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Holiday time! Tourism properties earn 2× this year.",
+   "ja": "夏休み！今年は観光の物件が2倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "tourism",
+   "mult": 2
+  },
+  "label": {
+   "en": "Around the third week of July",
+   "ja": "7月の第3週ごろ"
+  },
+  "image": "summerholidays"
+ },
+ {
+  "id": "henley",
+  "cal": 6,
+  "date": "nth-3-1",
+  "emoji": "🚣",
+  "title": {
+   "en": "Henley Royal Regatta",
+   "ja": "ヘンリー・ロイヤル・レガッタ"
+  },
+  "why": {
+   "en": "Henley Royal Regatta is a famous rowing race on the River Thames. Crews race side by side along a straight course.",
+   "ja": "ヘンリー・ロイヤル・レガッタは、テムズ川で行われる有名なボートレース。2隻が並んでまっすぐのコースをこぐよ。"
+  },
+  "fact": {
+   "en": "Visitors wear blazers and straw hats, and picnic by the river while they watch.",
+   "ja": "観客はブレザーと麦わら帽子で、川のそばでピクニックをしながら観戦するよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What sport is at Henley?",
+    "ja": "ヘンリーで行われるスポーツは？"
+   },
+   "options": [
+    {
+     "en": "Rowing",
+     "ja": "ボートこぎ"
+    },
+    {
+     "en": "Golf",
+     "ja": "ゴルフ"
+    },
+    {
+     "en": "Rugby",
+     "ja": "ラグビー"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in south-east England get £250 × year.",
+   "ja": "イングランド南東部にいる人は +£250×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "southeast"
+   ],
+   "amount": 250
+  },
+  "where": {
+   "en": "Oxfordshire, England",
+   "ja": "イングランド（オックスフォードシャー）"
+  },
+  "label": {
+   "en": "Late June or early July",
+   "ja": "6月の終わりか7月はじめ"
+  },
+  "image": "henleyroyalregatta"
+ },
+ {
+  "id": "fringe",
+  "cal": 7,
+  "date": "d7",
+  "emoji": "🎭",
+  "title": {
+   "en": "Edinburgh Fringe Festival",
+   "ja": "エディンバラ・フリンジ"
+  },
+  "why": {
+   "en": "In August, Edinburgh becomes the biggest arts festival in the world, with thousands of shows in theatres, pubs and on the street.",
+   "ja": "8月、エディンバラは世界最大の芸術祭の町になり、劇場やパブ、道ばたで何千ものショーが行われるよ。"
+  },
+  "fact": {
+   "en": "Comedians, singers and dancers come from all over the world, and many famous comedians began here.",
+   "ja": "世界じゅうからコメディアンや歌手、ダンサーが集まって、有名な芸人もここから生まれたよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "In which city is the Fringe?",
+    "ja": "フリンジが開かれる町は？"
+   },
+   "options": [
+    {
+     "en": "Edinburgh",
+     "ja": "エディンバラ"
+    },
+    {
+     "en": "Cardiff",
+     "ja": "カーディフ"
+    },
+    {
+     "en": "Brighton",
+     "ja": "ブライトン"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Scotland: culture properties earn 2× this year.",
+   "ja": "スコットランドの文化の物件は、今年2倍もうかる。"
+  },
+  "fx": {
+   "t": "scotlandCulture"
+  },
+  "where": {
+   "en": "Edinburgh, Scotland",
+   "ja": "スコットランド（エディンバラ）"
+  },
+  "label": {
+   "en": "Most of August",
+   "ja": "8月のほとんど"
+  },
+  "image": "edinburghfringefestival"
+ },
+ {
+  "id": "eisteddfod",
+  "cal": 7,
+  "date": "nth-6-1",
+  "emoji": "🎶",
+  "title": {
+   "en": "National Eisteddfod of Wales",
+   "ja": "ウェールズ・アイステズヴォッド"
+  },
+  "why": {
+   "en": "The Eisteddfod is a Welsh festival of music, poetry and dance. People compete in singing and reciting poems in Welsh.",
+   "ja": "アイステズヴォッドは、ウェールズの音楽、詩、ダンスのお祭り。ウェールズ語の歌や詩の朗読で競うよ。"
+  },
+  "fact": {
+   "en": "The winning poet is given a special chair and takes part in a grand ceremony with white-robed druids.",
+   "ja": "優勝した詩人には特別ないすがおくられ、白いローブのドルイドが立ち会う式がひらかれるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Which language is used at the Eisteddfod?",
+    "ja": "アイステズヴォッドで使われることばは？"
+   },
+   "options": [
+    {
+     "en": "Welsh",
+     "ja": "ウェールズ語"
+    },
+    {
+     "en": "French",
+     "ja": "フランス語"
+    },
+    {
+     "en": "Japanese",
+     "ja": "日本語"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Wales get £300 × year.",
+   "ja": "ウェールズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "wales"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Wales",
+   "ja": "ウェールズ"
+  },
+  "label": {
+   "en": "First week of August",
+   "ja": "8月のはじめの週"
+  },
+  "image": "eisteddfod"
+ },
+ {
+  "id": "carnival",
+  "cal": 7,
+  "date": "last-1",
+  "emoji": "🥁",
+  "title": {
+   "en": "Notting Hill Carnival",
+   "ja": "ノッティング・ヒル・カーニバル"
+  },
+  "why": {
+   "en": "Notting Hill Carnival is the biggest street party in Europe. It celebrates Caribbean culture with music, floats and costumes.",
+   "ja": "ノッティング・ヒル・カーニバルは、ヨーロッパ最大のストリートパーティー。音楽やおみこし、衣装でカリブの文化をいわうよ。"
+  },
+  "fact": {
+   "en": "About a million people come to London on the August bank holiday to dance in the streets.",
+   "ja": "8月の祝日に約100万人がロンドンに来て、通りでおどるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Which culture does the Carnival celebrate?",
+    "ja": "カーニバルがいわう文化は？"
+   },
+   "options": [
+    {
+     "en": "Caribbean",
+     "ja": "カリブ"
+    },
+    {
+     "en": "Viking",
+     "ja": "ヴァイキング"
+    },
+    {
+     "en": "Roman",
+     "ja": "ローマ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in London get £250 × year.",
+   "ja": "ロンドンにいる人は +£250×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 250
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "image": "nottinghillcarnival"
+ },
+ {
+  "id": "harvest",
+  "cal": 8,
+  "date": "last-0",
+  "emoji": "🌾",
+  "title": {
+   "en": "Harvest Festival",
+   "ja": "収穫祭"
+  },
+  "why": {
+   "en": "In autumn, schools and churches hold Harvest Festivals to say thank you for food from farms. Children bring tins and fruit.",
+   "ja": "秋には、学校や教会で食べ物に感謝する収穫祭がひらかれて、子どもたちは缶詰や果物をもっていくよ。"
+  },
+  "fact": {
+   "en": "The food is often given to people who need it, so it is a time of sharing.",
+   "ja": "集めた食べ物は、必要な人にあげるよ。分かち合う日なんだ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people say thank you for at Harvest Festival?",
+    "ja": "収穫祭で感謝するものは？"
+   },
+   "options": [
+    {
+     "en": "Food from farms",
+     "ja": "農場の食べ物"
+    },
+    {
+     "en": "Rain",
+     "ja": "雨"
+    },
+    {
+     "en": "New trains",
+     "ja": "新しい電車"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Food properties earn 1.5× this year.",
+   "ja": "今年は食べ物の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "food",
+   "mult": 1.5
+  },
+  "label": {
+   "en": "Late September",
+   "ja": "9月の終わり"
+  },
+  "image": "harvestfestival"
+ },
+ {
+  "id": "backtoschool",
+  "cal": 8,
+  "date": "d2",
+  "emoji": "🎒",
+  "title": {
+   "en": "Back to School",
+   "ja": "新学期"
+  },
+  "why": {
+   "en": "In early September, UK children go back to school after the summer holidays. Their school year begins in September, not April!",
+   "ja": "9月のはじめ、イギリスの子どもたちは夏休みのあとで学校にもどるよ。学年は4月ではなく9月からはじまる！"
+  },
+  "fact": {
+   "en": "Many children wear school uniforms with a blazer and a tie, and they often have a packed lunch.",
+   "ja": "ブレザーとネクタイの制服を着る子が多く、お弁当をもっていくことも多いよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "When does the school year start in the UK?",
+    "ja": "イギリスの学年がはじまるのは？"
+   },
+   "options": [
+    {
+     "en": "September",
+     "ja": "9月"
+    },
+    {
+     "en": "April",
+     "ja": "4月"
+    },
+    {
+     "en": "January",
+     "ja": "1月"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "New pencils! Everyone gets £100 × year.",
+   "ja": "新しい文房具！みんな +£100×年。"
+  },
+  "fx": {
+   "t": "all",
+   "amount": 100
+  },
+  "label": {
+   "en": "Early September",
+   "ja": "9月のはじめ"
+  },
+  "image": "backtoschool"
+ },
+ {
+  "id": "heritage",
+  "cal": 8,
+  "date": "d11",
+  "emoji": "🏛️",
+  "title": {
+   "en": "Heritage Open Days",
+   "ja": "ヘリテージ・オープン・デイズ"
+  },
+  "why": {
+   "en": "For ten days in September, old buildings like castles, churches and factories open their doors to visitors for free.",
+   "ja": "9月の10日間、お城や教会、工場などの古い建物が、無料で見学できるよ。"
+  },
+  "fact": {
+   "en": "People can go inside places that are normally closed, and many are run by volunteers.",
+   "ja": "ふだんは入れない場所に入れるよ。ボランティアが運営していることも多い。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do you get at Heritage Open Days?",
+    "ja": "ヘリテージ・オープン・デイズでできることは？"
+   },
+   "options": [
+    {
+     "en": "Free visits to old buildings",
+     "ja": "古い建物の無料見学"
+    },
+    {
+     "en": "Free train rides",
+     "ja": "電車のタダ乗り"
+    },
+    {
+     "en": "Free ice cream",
+     "ja": "アイスのタダ食い"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Culture properties earn 1.5× this year.",
+   "ja": "今年は文化の物件が1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "culture",
+   "mult": 1.5
+  },
+  "label": {
+   "en": "Mid-September, ten days",
+   "ja": "9月なかごろ、10日間"
+  },
+  "image": "heritageopendays"
+ },
+ {
+  "id": "braemar",
+  "cal": 8,
+  "date": "nth-6-1",
+  "emoji": "🎖️",
+  "title": {
+   "en": "Braemar Gathering",
+   "ja": "ブレーマー・ギャザリング"
+  },
+  "why": {
+   "en": "The Braemar Gathering is the most famous Highland games in Scotland. The royal family sometimes watches it.",
+   "ja": "ブレーマー・ギャザリングは、スコットランドでいちばん有名なハイランド・ゲームズ。王室の人が見にくることもあるよ。"
+  },
+  "fact": {
+   "en": "There are bagpipe bands, dancing, running up a hill, and tossing heavy hammers and stones.",
+   "ja": "バグパイプ、ダンス、山のぼりのレース、重いハンマーや石を投げる競技があるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What instrument is played at the Gathering?",
+    "ja": "ギャザリングで演奏される楽器は？"
+   },
+   "options": [
+    {
+     "en": "Bagpipes",
+     "ja": "バグパイプ"
+    },
+    {
+     "en": "Piano",
+     "ja": "ピアノ"
+    },
+    {
+     "en": "Violin",
+     "ja": "バイオリン"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Scotland get £200 × year.",
+   "ja": "スコットランドにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "scotland"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Scotland",
+   "ja": "スコットランド"
+  },
+  "image": "braemargathering"
+ },
+ {
+  "id": "northrun",
+  "cal": 8,
+  "date": "nth-0-2",
+  "emoji": "🏅",
+  "title": {
+   "en": "Great North Run",
+   "ja": "グレート・ノース・ラン"
+  },
+  "why": {
+   "en": "The Great North Run is the biggest half-marathon in the world. About 60,000 people run 21 km from Newcastle to the sea.",
+   "ja": "グレート・ノース・ランは世界最大のハーフマラソン。約6万人がニューカッスルから海まで21キロを走るよ。"
+  },
+  "fact": {
+   "en": "The run crosses the Tyne Bridge, and the Red Arrows plane team often flies overhead.",
+   "ja": "コースはタイン橋をわたり、上空をレッドアローズが飛ぶこともあるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Which city does the Great North Run start in?",
+    "ja": "グレート・ノース・ランがはじまる町は？"
+   },
+   "options": [
+    {
+     "en": "Newcastle",
+     "ja": "ニューカッスル"
+    },
+    {
+     "en": "Bristol",
+     "ja": "ブリストル"
+    },
+    {
+     "en": "Cardiff",
+     "ja": "カーディフ"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in northern England get £250 × year.",
+   "ja": "イングランド北部にいる人は +£250×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "north"
+   ],
+   "amount": 250
+  },
+  "where": {
+   "en": "North-east England",
+   "ja": "イングランド北東部"
+  },
+  "image": "greatnorthrun"
+ },
+ {
+  "id": "halloween",
+  "cal": 9,
+  "date": "d31",
+  "emoji": "🎃",
+  "title": {
+   "en": "Halloween",
+   "ja": "ハロウィーン"
+  },
+  "why": {
+   "en": "On 31st October, children dress up as ghosts and witches and go trick-or-treating. People carve scary faces in pumpkins.",
+   "ja": "10月31日、子どもたちはおばけや魔女に仮装して、「トリック・オア・トリート」にまわるよ。かぼちゃには怖い顔をほる。"
+  },
+  "fact": {
+   "en": "Halloween began long ago with a Celtic festival called Samhain, and Derry holds one of Europe's biggest Halloween festivals.",
+   "ja": "ハロウィーンは、昔のケルトの「サウィン」というお祭りが元。デリーにはヨーロッパ最大級のハロウィーンの祭りがあるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people carve at Halloween?",
+    "ja": "ハロウィーンにほるものは？"
+   },
+   "options": [
+    {
+     "en": "Pumpkins",
+     "ja": "かぼちゃ"
+    },
+    {
+     "en": "Snowmen",
+     "ja": "雪だるま"
+    },
+    {
+     "en": "Eggs",
+     "ja": "たまご"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Spooky! The Boggart jumps to a random player.",
+   "ja": "ぶきみ！ボガートがだれかにジャンプ。"
+  },
+  "fx": {
+   "t": "boggart"
+  },
+  "image": "halloween"
+ },
+ {
+  "id": "riveroflight",
+  "cal": 9,
+  "date": "d25",
+  "emoji": "🏮",
+  "title": {
+   "en": "River of Light",
+   "ja": "リバー・オブ・ライト"
+  },
+  "why": {
+   "en": "River of Light is a free festival in Liverpool. Giant glowing lanterns and light shows fill the Albert Dock at night.",
+   "ja": "リバー・オブ・ライトはリバプールの無料のお祭り。夜、アルバート・ドックを大きな光のランタンやライトショーがかざるよ。"
+  },
+  "fact": {
+   "en": "It is held in the autumn half-term holiday, when the nights are dark and families go out to see the lights.",
+   "ja": "秋の学校のお休みの時期にひらかれて、暗い夜に家族が光を見に出かけるよ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "In which city is River of Light?",
+    "ja": "リバー・オブ・ライトがひらかれる町は？"
+   },
+   "options": [
+    {
+     "en": "Liverpool",
+     "ja": "リバプール"
+    },
+    {
+     "en": "York",
+     "ja": "ヨーク"
+    },
+    {
+     "en": "Oxford",
+     "ja": "オックスフォード"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in northern England get £200 × year.",
+   "ja": "イングランド北部にいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "north"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Liverpool, England",
+   "ja": "イングランド（リバプール）"
+  },
+  "label": {
+   "en": "Late October to early November",
+   "ja": "10月の終わりから11月はじめ"
+  },
+  "image": "riveroflight"
+ },
+ {
+  "id": "bonfire",
+  "cal": 10,
+  "date": "d5",
+  "emoji": "🎆",
+  "title": {
+   "en": "Bonfire Night",
+   "ja": "ボンファイヤー・ナイト"
+  },
+  "why": {
+   "en": "On 5th November, people watch fireworks and light bonfires. They remember Guy Fawkes, who tried to blow up Parliament in 1605.",
+   "ja": "11月5日は花火とたき火の夜。1605年に議事堂を爆破しようとしたガイ・フォークスを思い出す日だよ。"
+  },
+  "fact": {
+   "en": "Children say a rhyme: 'Remember, remember, the fifth of November!' Many eat toffee apples and sparklers glow in the dark.",
+   "ja": "子どもたちは「Remember, remember, the fifth of November!」と唱えるよ。トフィーりんごを食べ、線香花火が暗やみで光る。"
+  },
+  "quiz": {
+   "q": {
+    "en": "Whose plot do people remember?",
+    "ja": "人びとが思い出す事件の人物は？"
+   },
+   "options": [
+    {
+     "en": "Guy Fawkes",
+     "ja": "ガイ・フォークス"
+    },
+    {
+     "en": "Robin Hood",
+     "ja": "ロビン・フッド"
+    },
+    {
+     "en": "King Arthur",
+     "ja": "アーサー王"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Lucky draw! One lucky railway wins £300 × year.",
+   "ja": "くじ引き！運のいい鉄道が +£300×年。"
+  },
+  "fx": {
+   "t": "minigame",
+   "id": "fireworks"
+  },
+  "image": "bonfirenight",
+  "minigame": "fireworks"
+ },
+ {
+  "id": "standrew",
+  "cal": 10,
+  "date": "d30",
+  "emoji": "🏴",
+  "title": {
+   "en": "St Andrew's Day",
+   "ja": "聖アンドリューの日"
+  },
+  "why": {
+   "en": "30th November is the national day of Scotland, named after St Andrew. The Scottish flag is a white X on blue.",
+   "ja": "11月30日はスコットランドの記念日。聖アンドリューにちなむよ。スコットランドの旗は、青地に白いXの形。"
+  },
+  "fact": {
+   "en": "The white X is called a saltire. People celebrate with music, dancing and food.",
+   "ja": "白いXは「ソルタイア」とよぶよ。音楽やダンス、ごちそうでいわうんだ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What does the Scottish flag look like?",
+    "ja": "スコットランドの旗は？"
+   },
+   "options": [
+    {
+     "en": "A white X on blue",
+     "ja": "青地に白いX"
+    },
+    {
+     "en": "A red dragon",
+     "ja": "赤いドラゴン"
+    },
+    {
+     "en": "A red cross on white",
+     "ja": "白地に赤い十字"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Players in Scotland get £300 × year.",
+   "ja": "スコットランドにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "scotland"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Scotland",
+   "ja": "スコットランド"
+  },
+  "image": "standrewsday"
+ },
+ {
+  "id": "cin",
+  "cal": 10,
+  "date": "nth-5-3",
+  "emoji": "🧸",
+  "title": {
+   "en": "BBC Children in Need",
+   "ja": "BBCチルドレン・イン・ニード"
+  },
+  "why": {
+   "en": "Every November the BBC holds a big TV night to raise money for children who need help. Pudsey Bear is its yellow mascot.",
+   "ja": "毎年11月、BBCは助けが必要な子どもたちのために寄付を集める大きなテレビ番組を放送するよ。黄色のクマ「パッジー」がマスコット。"
+  },
+  "fact": {
+   "en": "People do silly challenges, wear spotty clothes and bake cakes to raise money. It has raised over £1 billion since 1980.",
+   "ja": "水玉の服を着たり、ケーキを焼いたりして募金するよ。1980年からの寄付は10億ポンドをこえたんだ。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What is Children in Need for?",
+    "ja": "チルドレン・イン・ニードは何のため？"
+   },
+   "options": [
+    {
+     "en": "Helping children",
+     "ja": "子どもたちを助ける"
+    },
+    {
+     "en": "Building bridges",
+     "ja": "橋を作る"
+    },
+    {
+     "en": "Racing cars",
+     "ja": "車のレース"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Sharing is kind! Everyone gives £50 × year to the player in last place.",
+   "ja": "助け合い！みんなが最下位の人に +£50×年をわたす。"
+  },
+  "fx": {
+   "t": "charity",
+   "amount": 50
+  },
+  "label": {
+   "en": "A Friday in mid-November",
+   "ja": "11月なかごろの金曜日"
+  },
+  "image": "bbcchildreninneed"
+ },
+ {
+  "id": "christmas",
+  "cal": 11,
+  "date": "d25",
+  "emoji": "🎄",
+  "title": {
+   "en": "Christmas Day",
+   "ja": "クリスマス"
+  },
+  "why": {
+   "en": "On 25th December families open presents, eat a big Christmas dinner with turkey, roast potatoes and Christmas pudding, and pull crackers.",
+   "ja": "12月25日、家族でプレゼントをあけ、ターキーやロースト・ポテト、クリスマス・プディングの大きな夕食を食べ、クラッカーを鳴らすよ。"
+  },
+  "fact": {
+   "en": "At 3pm many families watch the King's speech on TV. Children leave a mince pie for Father Christmas and a carrot for his reindeer.",
+   "ja": "午後3時には、多くの家族が王さまのスピーチをテレビで見るよ。子どもたちはサンタさんにミンスパイ、トナカイにはにんじんを置いておく。"
+  },
+  "quiz": {
+   "q": {
+    "en": "What do people pull at Christmas dinner?",
+    "ja": "クリスマスの夕食でひっぱるものは？"
+   },
+   "options": [
+    {
+     "en": "Crackers",
+     "ja": "クラッカー"
+    },
+    {
+     "en": "Ropes",
+     "ja": "ロープ"
+    },
+    {
+     "en": "Sleds",
+     "ja": "そり"
+    }
+   ],
+   "answer": 0
+  },
+  "effect": {
+   "en": "Merry Christmas! Every player gets a free card.",
+   "ja": "メリー・クリスマス！みんなカードを1枚もらえる。"
+  },
+  "fx": {
+   "t": "card"
+  },
+  "image": "christmasday",
+  "extras": [
+   {
+    "id": "boxingday",
+    "image": "boxingday",
+    "emoji": "📦",
+    "title": {
+     "en": "Boxing Day",
+     "ja": "ボクシング・デー"
+    },
+    "text": {
+     "en": "The day after Christmas, 26th December, is Boxing Day. Long ago, people gave boxes of gifts to the poor and to servants. Today families go for walks, watch football, and hunt for bargains in the sales.",
+     "ja": "クリスマスの次の日、12月26日がボクシング・デー。昔は、貧しい人やお手伝いさんに贈りものの箱をわたした日。いまは家族で散歩したり、サッカーを見たり、セールで買い物をしたりするよ。"
+    }
+   },
+   {
+    "id": "pantomime",
+    "image": "pantomimeseason",
+    "emoji": "🎭",
+    "title": {
+     "en": "Pantomime Season",
+     "ja": "パントマイム・シーズン"
+    },
+    "text": {
+     "en": "At Christmas, theatres put on pantomimes, or 'panto': funny family shows of fairy tales like Cinderella. The hero is often played by a woman, and the 'Dame' by a man. Everyone shouts, 'He's behind you!' and 'Oh no it isn't!'",
+     "ja": "クリスマスには、劇場で「パントマイム（パント）」というおもしろい家族向けの劇をやるよ。シンデレラなどの童話が多くて、主人公を女性が、おばさん役を男性が演じたりする。みんなで「うしろにいるよ！」と大声をかけるんだ。"
+    }
+   },
+   {
+    "id": "christmasmarkets",
+    "image": "christmasmarkets",
+    "emoji": "🛖",
+    "title": {
+     "en": "Christmas Markets",
+     "ja": "クリスマス・マーケット"
+    },
+    "text": {
+     "en": "In December, towns like Manchester, Birmingham and York set up little wooden market huts. You can buy gifts, hot chocolate, mince pies and mulled wine, and the lights sparkle in the cold air.",
+     "ja": "12月には、マンチェスター、バーミンガム、ヨークなどの町に、木の小さな屋台がならぶよ。プレゼント、ホットチョコ、ミンスパイ、ホットワインが買えて、寒い空気の中でライトがキラキラ光る。"
+    }
+   }
+  ]
+ }
+]

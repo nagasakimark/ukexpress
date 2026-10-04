@@ -1,0 +1,25 @@
+{
+  "_comment": "Words for the Bonfire Night spelling mini-game. Keep them short (3-6 letters) and picturable.",
+  "words": [
+    { "word": "TEA", "emoji": "🫖", "ja": "紅茶" },
+    { "word": "BUS", "emoji": "🚌", "ja": "バス" },
+    { "word": "CAKE", "emoji": "🍰", "ja": "ケーキ" },
+    { "word": "RAIN", "emoji": "🌧️", "ja": "雨" },
+    { "word": "TRAIN", "emoji": "🚂", "ja": "電車" },
+    { "word": "SHEEP", "emoji": "🐑", "ja": "ひつじ" },
+    { "word": "CASTLE", "emoji": "🏰", "ja": "お城" },
+    { "word": "BRIDGE", "emoji": "🌉", "ja": "橋" },
+    { "word": "KING", "emoji": "👑", "ja": "王様" },
+    { "word": "FISH", "emoji": "🐟", "ja": "魚" },
+    { "word": "SHIP", "emoji": "🚢", "ja": "船" },
+    { "word": "LAKE", "emoji": "🏞️", "ja": "湖" },
+    { "word": "MAP", "emoji": "🗺️", "ja": "地図" },
+    { "word": "STAR", "emoji": "⭐", "ja": "星" },
+    { "word": "DOG", "emoji": "🐕", "ja": "犬" },
+    { "word": "CAT", "emoji": "🐈", "ja": "ネコ" },
+    { "word": "BOOK", "emoji": "📚", "ja": "本" },
+    { "word": "APPLE", "emoji": "🍎", "ja": "りんご" },
+    { "word": "CLOCK", "emoji": "🕰️", "ja": "時計" },
+    { "word": "FLAG", "emoji": "🚩", "ja": "旗" }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+ "cards": [
+  {
+   "id": "express",
+   "name": {
+    "en": "Express",
+    "ja": "エクスプレス"
+   },
+   "emoji": "🚄",
+   "rarity": 1,
+   "price": 100,
+   "kind": "move",
+   "dice": 1,
+   "desc": {
+    "en": "Roll +1 die this turn.",
+    "ja": "サイコロ+1個！"
+   }
+  },
+  {
+   "id": "intercity",
+   "name": {
+    "en": "InterCity",
+    "ja": "インターシティ"
+   },
+   "emoji": "🚅",
+   "rarity": 1,
+   "price": 300,
+   "kind": "move",
+   "dice": 2,
+   "desc": {
+    "en": "Roll +2 dice this turn.",
+    "ja": "サイコロ+2個！"
+   }
+  },
+  {
+   "id": "azuma",
+   "name": {
+    "en": "Azuma",
+    "ja": "あずま"
+   },
+   "emoji": "🚆",
+   "rarity": 2,
+   "price": 800,
+   "kind": "move",
+   "dice": 3,
+   "desc": {
+    "en": "Roll +3 dice. Built by Hitachi!",
+    "ja": "サイコロ+3個！日立の列車！"
+   }
+  },
+  {
+   "id": "balloon",
+   "name": {
+    "en": "Hot-Air Balloon",
+    "ja": "熱気球"
+   },
+   "emoji": "🎈",
+   "rarity": 1,
+   "price": 200,
+   "kind": "warp",
+   "desc": {
+    "en": "Fly to a random station.",
+    "ja": "どこかの駅へ飛んでいく！"
+   }
+  },
+  {
+   "id": "royal",
+   "name": {
+    "en": "Royal Train",
+    "ja": "ロイヤル・トレイン"
+   },
+   "emoji": "👑",
+   "rarity": 3,
+   "price": 0,
+   "kind": "warp",
+   "desc": {
+    "en": "Go to the station nearest the destination.",
+    "ja": "目的地にいちばん近い駅へ！"
+   }
+  },
+  {
+   "id": "return",
+   "name": {
+    "en": "Return Ticket",
+    "ja": "往復きっぷ"
+   },
+   "emoji": "🎫",
+   "rarity": 1,
+   "price": 150,
+   "kind": "warp",
+   "desc": {
+    "en": "Go back to the last station where you bought property.",
+    "ja": "最後に物件を買った駅へもどる。"
+   }
+  },
+  {
+   "id": "birthday",
+   "name": {
+    "en": "Birthday",
+    "ja": "バースデー"
+   },
+   "emoji": "🎂",
+   "rarity": 1,
+   "price": 0,
+   "kind": "money",
+   "desc": {
+    "en": "Every player gives you £100 × year. Happy birthday!",
+    "ja": "みんなから£100×年をもらえる！"
+   }
+  },
+  {
+   "id": "tourism",
+   "name": {
+    "en": "Tourism Boom",
+    "ja": "観光ブーム"
+   },
+   "emoji": "📸",
+   "rarity": 2,
+   "price": 1500,
+   "kind": "money",
+   "desc": {
+    "en": "Your Tourism properties pay double this March.",
+    "ja": "今年の観光の物件の利益が2倍！"
+   }
+  },
+  {
+   "id": "harvest",
+   "name": {
+    "en": "Harvest Festival",
+    "ja": "収穫祭"
+   },
+   "emoji": "🌾",
+   "rarity": 2,
+   "price": 1500,
+   "kind": "money",
+   "desc": {
+    "en": "Your Food properties pay double this March.",
+    "ja": "今年の食べ物の物件の利益が2倍！"
+   }
+  },
+  {
+   "id": "jubilee",
+   "name": {
+    "en": "Jubilee Party",
+    "ja": "ジュビリー・パーティー"
+   },
+   "emoji": "🎉",
+   "rarity": 2,
+   "price": 0,
+   "kind": "money",
+   "desc": {
+    "en": "Everyone gets £300 × year. Street party!",
+    "ja": "みんな£300×年をもらえる！"
+   }
+  },
+  {
+   "id": "umbrella",
+   "name": {
+    "en": "Umbrella",
+    "ja": "かさ"
+   },
+   "emoji": "☂️",
+   "rarity": 1,
+   "price": 150,
+   "kind": "defence",
+   "desc": {
+    "en": "Keep it: it cancels your next red square.",
+    "ja": "持っていると、次の赤マスを1回ふせぐ。"
+   }
+  },
+  {
+   "id": "leaves",
+   "name": {
+    "en": "Leaves on the Line",
+    "ja": "線路に落ち葉"
+   },
+   "emoji": "🍂",
+   "rarity": 2,
+   "price": 1200,
+   "kind": "attack",
+   "desc": {
+    "en": "Everyone else rolls only 1 die for 2 turns.",
+    "ja": "ほかの人は2ターン、サイコロ1個だけ。"
+   }
+  },
+  {
+   "id": "queue",
+   "name": {
+    "en": "Queue",
+    "ja": "行列"
+   },
+   "emoji": "🧍",
+   "rarity": 2,
+   "price": 0,
+   "kind": "attack",
+   "desc": {
+    "en": "The player in 1st place waits in a queue and skips a turn.",
+    "ja": "1位の人は行列に並んで1回休み。"
+   }
+  },
+  {
+   "id": "rowan",
+   "name": {
+    "en": "Rowan Twig",
+    "ja": "ナナカマドの小枝"
+   },
+   "emoji": "🌿",
+   "rarity": 2,
+   "price": 1500,
+   "kind": "boggart",
+   "desc": {
+    "en": "Send your Boggart to the nearest player.",
+    "ja": "ボガートをいちばん近い人へ送る。"
+   }
+  },
+  {
+   "id": "tea",
+   "name": {
+    "en": "Cup of Tea",
+    "ja": "紅茶"
+   },
+   "emoji": "☕",
+   "rarity": 1,
+   "price": 400,
+   "kind": "boggart",
+   "desc": {
+    "en": "Calm the Boggart: it does nothing for 2 turns. Let's have a cup of tea!",
+    "ja": "ボガートが2ターンおとなしくなる。"
+   }
+  },
+  {
+   "id": "horseshoe",
+   "name": {
+    "en": "Horseshoe",
+    "ja": "馬のていてつ"
+   },
+   "emoji": "🐴",
+   "rarity": 1,
+   "price": 600,
+   "kind": "defence",
+   "desc": {
+    "en": "Keep it: your Boggart cannot grow bigger.",
+    "ja": "持っていると、ボガートが大きくならない。"
+   }
+  },
+  {
+   "id": "guidebook",
+   "name": {
+    "en": "Guidebook",
+    "ja": "ガイドブック"
+   },
+   "emoji": "📘",
+   "rarity": 1,
+   "price": 100,
+   "kind": "learn",
+   "desc": {
+    "en": "Your next quiz shows a hint and pays double.",
+    "ja": "次のクイズはヒント付きで、ごほうび2倍。"
+   }
+  }
+ ],
+ "shopStock": {
+  "london": [
+   "leaves",
+   "guidebook",
+   "express",
+   "intercity"
+  ],
+  "southeast": [
+   "express",
+   "umbrella",
+   "return"
+  ],
+  "east": [
+   "guidebook",
+   "umbrella",
+   "return"
+  ],
+  "southwest": [
+   "balloon",
+   "return",
+   "umbrella"
+  ],
+  "midlands": [
+   "intercity",
+   "guidebook",
+   "express"
+  ],
+  "north": [
+   "azuma",
+   "leaves",
+   "tea"
+  ],
+  "wales": [
+   "horseshoe",
+   "express",
+   "balloon"
+  ],
+  "scotland": [
+   "rowan",
+   "umbrella",
+   "intercity"
+  ],
+  "ni": [
+   "express",
+   "tea",
+   "balloon"
+  ]
+ }
+}

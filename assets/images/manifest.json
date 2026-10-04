@@ -1,0 +1,1196 @@
+[
+ {
+  "folder": "places",
+  "file": "kingscross.png",
+  "subject": "King's Cross",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "paddington.png",
+  "subject": "Paddington",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "waterloo.png",
+  "subject": "Waterloo",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "greenwich.png",
+  "subject": "Greenwich",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "oxford.png",
+  "subject": "Oxford",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "cambridge.png",
+  "subject": "Cambridge",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "canterbury.png",
+  "subject": "Canterbury",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "dover.png",
+  "subject": "Dover",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "brighton.png",
+  "subject": "Brighton",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "portsmouth.png",
+  "subject": "Portsmouth",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "bristol.png",
+  "subject": "Bristol",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "bath.png",
+  "subject": "Bath",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "salisbury.png",
+  "subject": "Salisbury",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "exeter.png",
+  "subject": "Exeter",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "plymouth.png",
+  "subject": "Plymouth",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "penzance.png",
+  "subject": "Penzance",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "birmingham.png",
+  "subject": "Birmingham",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "stratforduponavon.png",
+  "subject": "Stratford-upon-Avon",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "stokeontrent.png",
+  "subject": "Stoke-on-Trent",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "nottingham.png",
+  "subject": "Nottingham",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "leicester.png",
+  "subject": "Leicester",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "liverpool.png",
+  "subject": "Liverpool",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "manchester.png",
+  "subject": "Manchester",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "blackpool.png",
+  "subject": "Blackpool",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "windermere.png",
+  "subject": "Windermere",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "leeds.png",
+  "subject": "Leeds",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "sheffield.png",
+  "subject": "Sheffield",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "york.png",
+  "subject": "York",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "durham.png",
+  "subject": "Durham",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "newcastle.png",
+  "subject": "Newcastle",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "carlisle.png",
+  "subject": "Carlisle",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "cardiff.png",
+  "subject": "Cardiff",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "swansea.png",
+  "subject": "Swansea",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "aberystwyth.png",
+  "subject": "Aberystwyth",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "llanberis.png",
+  "subject": "Llanberis",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "bangor.png",
+  "subject": "Bangor",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "conwy.png",
+  "subject": "Conwy",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "edinburgh.png",
+  "subject": "Edinburgh",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "glasgow.png",
+  "subject": "Glasgow",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "stirling.png",
+  "subject": "Stirling",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "standrews.png",
+  "subject": "St Andrews",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "aberdeen.png",
+  "subject": "Aberdeen",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "inverness.png",
+  "subject": "Inverness",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "fortwilliam.png",
+  "subject": "Fort William",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "kirkwall.png",
+  "subject": "Kirkwall",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "belfast.png",
+  "subject": "Belfast",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "derry.png",
+  "subject": "Derry/Londonderry",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "portrush.png",
+  "subject": "Portrush",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "westminster.png",
+  "subject": "Westminster",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "kewgardens.png",
+  "subject": "Kew Gardens",
+  "note": "a photo of this place (London)"
+ },
+ {
+  "folder": "places",
+  "file": "windsor.png",
+  "subject": "Windsor",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "reading.png",
+  "subject": "Reading",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "winchester.png",
+  "subject": "Winchester",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "southampton.png",
+  "subject": "Southampton",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "hastings.png",
+  "subject": "Hastings",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "margate.png",
+  "subject": "Margate",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "rye.png",
+  "subject": "Rye",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "miltonkeynes.png",
+  "subject": "Milton Keynes",
+  "note": "a photo of this place (South East)"
+ },
+ {
+  "folder": "places",
+  "file": "norwich.png",
+  "subject": "Norwich",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "ipswich.png",
+  "subject": "Ipswich",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "colchester.png",
+  "subject": "Colchester",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "ely.png",
+  "subject": "Ely",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "greatyarmouth.png",
+  "subject": "Great Yarmouth",
+  "note": "a photo of this place (East of England)"
+ },
+ {
+  "folder": "places",
+  "file": "bournemouth.png",
+  "subject": "Bournemouth",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "lymeregis.png",
+  "subject": "Lyme Regis",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "torquay.png",
+  "subject": "Torquay",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "tintagel.png",
+  "subject": "Tintagel",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "stives.png",
+  "subject": "St Ives",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "falmouth.png",
+  "subject": "Falmouth",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "glastonbury.png",
+  "subject": "Glastonbury",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "cheddar.png",
+  "subject": "Cheddar",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "gloucester.png",
+  "subject": "Gloucester",
+  "note": "a photo of this place (South West)"
+ },
+ {
+  "folder": "places",
+  "file": "newport.png",
+  "subject": "Newport",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "tenby.png",
+  "subject": "Tenby",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "stdavids.png",
+  "subject": "St Davids",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "breconbeacons.png",
+  "subject": "Brecon Beacons",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "caernarfon.png",
+  "subject": "Caernarfon",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "portmeirion.png",
+  "subject": "Portmeirion",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "holyhead.png",
+  "subject": "Holyhead",
+  "note": "a photo of this place (Wales)"
+ },
+ {
+  "folder": "places",
+  "file": "lincoln.png",
+  "subject": "Lincoln",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "coventry.png",
+  "subject": "Coventry",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "worcester.png",
+  "subject": "Worcester",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "shrewsbury.png",
+  "subject": "Shrewsbury",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "derby.png",
+  "subject": "Derby",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "ironbridge.png",
+  "subject": "Ironbridge",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "buxton.png",
+  "subject": "Buxton",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "hereford.png",
+  "subject": "Hereford",
+  "note": "a photo of this place (Midlands)"
+ },
+ {
+  "folder": "places",
+  "file": "chester.png",
+  "subject": "Chester",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "hull.png",
+  "subject": "Hull",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "scarborough.png",
+  "subject": "Scarborough",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "whitby.png",
+  "subject": "Whitby",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "harrogate.png",
+  "subject": "Harrogate",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "haworth.png",
+  "subject": "Haworth",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "lancaster.png",
+  "subject": "Lancaster",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "keswick.png",
+  "subject": "Keswick",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "hadrianswall.png",
+  "subject": "Hadrian's Wall",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "sunderland.png",
+  "subject": "Sunderland",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "berwickupontweed.png",
+  "subject": "Berwick-upon-Tweed",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "lindisfarne.png",
+  "subject": "Lindisfarne",
+  "note": "a photo of this place (North of England)"
+ },
+ {
+  "folder": "places",
+  "file": "dundee.png",
+  "subject": "Dundee",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "perth.png",
+  "subject": "Perth",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "pitlochry.png",
+  "subject": "Pitlochry",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "oban.png",
+  "subject": "Oban",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "isleofskye.png",
+  "subject": "Isle of Skye",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "ullapool.png",
+  "subject": "Ullapool",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "melrose.png",
+  "subject": "Melrose",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "isleoflewis.png",
+  "subject": "Isle of Lewis",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "shetland.png",
+  "subject": "Shetland",
+  "note": "a photo of this place (Scotland)"
+ },
+ {
+  "folder": "places",
+  "file": "armagh.png",
+  "subject": "Armagh",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "enniskillen.png",
+  "subject": "Enniskillen",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "downpatrick.png",
+  "subject": "Downpatrick",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "ballycastle.png",
+  "subject": "Ballycastle",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "newry.png",
+  "subject": "Newry",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "places",
+  "file": "carrickfergus.png",
+  "subject": "Carrickfergus",
+  "note": "a photo of this place (Northern Ireland)"
+ },
+ {
+  "folder": "heroes",
+  "file": "williamshakespeare.png",
+  "subject": "William Shakespeare",
+  "note": "a portrait of William Shakespeare (1564–1616)"
+ },
+ {
+  "folder": "heroes",
+  "file": "isaacnewton.png",
+  "subject": "Isaac Newton",
+  "note": "a portrait of Isaac Newton (1643–1727)"
+ },
+ {
+  "folder": "heroes",
+  "file": "janeausten.png",
+  "subject": "Jane Austen",
+  "note": "a portrait of Jane Austen (1775–1817)"
+ },
+ {
+  "folder": "heroes",
+  "file": "georgestephenson.png",
+  "subject": "George Stephenson",
+  "note": "a portrait of George Stephenson (1781–1848)"
+ },
+ {
+  "folder": "heroes",
+  "file": "maryanning.png",
+  "subject": "Mary Anning",
+  "note": "a portrait of Mary Anning (1799–1847)"
+ },
+ {
+  "folder": "heroes",
+  "file": "maryseacole.png",
+  "subject": "Mary Seacole",
+  "note": "a portrait of Mary Seacole (1805–1881)"
+ },
+ {
+  "folder": "heroes",
+  "file": "isambardkingdombrunel.png",
+  "subject": "Isambard Kingdom Brunel",
+  "note": "a portrait of Isambard Kingdom Brunel (1806–1859)"
+ },
+ {
+  "folder": "heroes",
+  "file": "charlesdarwin.png",
+  "subject": "Charles Darwin",
+  "note": "a portrait of Charles Darwin (1809–1882)"
+ },
+ {
+  "folder": "heroes",
+  "file": "charlesdickens.png",
+  "subject": "Charles Dickens",
+  "note": "a portrait of Charles Dickens (1812–1870)"
+ },
+ {
+  "folder": "heroes",
+  "file": "adalovelace.png",
+  "subject": "Ada Lovelace",
+  "note": "a portrait of Ada Lovelace (1815–1852)"
+ },
+ {
+  "folder": "heroes",
+  "file": "florencenightingale.png",
+  "subject": "Florence Nightingale",
+  "note": "a portrait of Florence Nightingale (1820–1910)"
+ },
+ {
+  "folder": "heroes",
+  "file": "isabellabird.png",
+  "subject": "Isabella Bird",
+  "note": "a portrait of Isabella Bird (1831–1904)"
+ },
+ {
+  "folder": "heroes",
+  "file": "josiahconder.png",
+  "subject": "Josiah Conder",
+  "note": "a portrait of Josiah Conder (1852–1920)"
+ },
+ {
+  "folder": "heroes",
+  "file": "emmelinepankhurst.png",
+  "subject": "Emmeline Pankhurst",
+  "note": "a portrait of Emmeline Pankhurst (1858–1928)"
+ },
+ {
+  "folder": "heroes",
+  "file": "beatrixpotter.png",
+  "subject": "Beatrix Potter",
+  "note": "a portrait of Beatrix Potter (1866–1943)"
+ },
+ {
+  "folder": "heroes",
+  "file": "natsumesoseki.png",
+  "subject": "Natsume Sōseki",
+  "note": "a portrait of Natsume Sōseki (1867–1916)"
+ },
+ {
+  "folder": "heroes",
+  "file": "bernardleach.png",
+  "subject": "Bernard Leach",
+  "note": "a portrait of Bernard Leach (1887–1979)"
+ },
+ {
+  "folder": "heroes",
+  "file": "jrrtolkien.png",
+  "subject": "J.R.R. Tolkien",
+  "note": "a portrait of J.R.R. Tolkien (1892–1973)"
+ },
+ {
+  "folder": "heroes",
+  "file": "alanturing.png",
+  "subject": "Alan Turing",
+  "note": "a portrait of Alan Turing (1912–1954)"
+ },
+ {
+  "folder": "heroes",
+  "file": "rosalindfranklin.png",
+  "subject": "Rosalind Franklin",
+  "note": "a portrait of Rosalind Franklin (1920–1958)"
+ },
+ {
+  "folder": "heroes",
+  "file": "davidattenborough.png",
+  "subject": "David Attenborough",
+  "note": "a portrait of David Attenborough (born 1926)"
+ },
+ {
+  "folder": "heroes",
+  "file": "stephenhawking.png",
+  "subject": "Stephen Hawking",
+  "note": "a portrait of Stephen Hawking (1942–2018)"
+ },
+ {
+  "folder": "heroes",
+  "file": "thebeatles.png",
+  "subject": "The Beatles",
+  "note": "a portrait of The Beatles (1960s band)"
+ },
+ {
+  "folder": "heroes",
+  "file": "timbernerslee.png",
+  "subject": "Tim Berners-Lee",
+  "note": "a portrait of Tim Berners-Lee (born 1955)"
+ },
+ {
+  "folder": "heroes",
+  "file": "robertburns.png",
+  "subject": "Robert Burns",
+  "note": "a portrait of Robert Burns (1759–1796)"
+ },
+ {
+  "folder": "heroes",
+  "file": "thomasglover.png",
+  "subject": "Thomas Glover",
+  "note": "a portrait of Thomas Glover (1838–1911)"
+ },
+ {
+  "folder": "heroes",
+  "file": "richardhenrybrunton.png",
+  "subject": "Richard Henry Brunton",
+  "note": "a portrait of Richard Henry Brunton (1841–1901)"
+ },
+ {
+  "folder": "heroes",
+  "file": "alexandergrahambell.png",
+  "subject": "Alexander Graham Bell",
+  "note": "a portrait of Alexander Graham Bell (1847–1922)"
+ },
+ {
+  "folder": "heroes",
+  "file": "robertlouisstevenson.png",
+  "subject": "Robert Louis Stevenson",
+  "note": "a portrait of Robert Louis Stevenson (1850–1894)"
+ },
+ {
+  "folder": "heroes",
+  "file": "alexanderfleming.png",
+  "subject": "Alexander Fleming",
+  "note": "a portrait of Alexander Fleming (1881–1955)"
+ },
+ {
+  "folder": "heroes",
+  "file": "johnlogiebaird.png",
+  "subject": "John Logie Baird",
+  "note": "a portrait of John Logie Baird (1888–1946)"
+ },
+ {
+  "folder": "heroes",
+  "file": "andymurray.png",
+  "subject": "Andy Murray",
+  "note": "a portrait of Andy Murray (born 1987)"
+ },
+ {
+  "folder": "heroes",
+  "file": "dylanthomas.png",
+  "subject": "Dylan Thomas",
+  "note": "a portrait of Dylan Thomas (1914–1953)"
+ },
+ {
+  "folder": "heroes",
+  "file": "roalddahl.png",
+  "subject": "Roald Dahl",
+  "note": "a portrait of Roald Dahl (1916–1990)"
+ },
+ {
+  "folder": "heroes",
+  "file": "bettycampbell.png",
+  "subject": "Betty Campbell",
+  "note": "a portrait of Betty Campbell (1934–2017)"
+ },
+ {
+  "folder": "heroes",
+  "file": "tannigreythompson.png",
+  "subject": "Tanni Grey-Thompson",
+  "note": "a portrait of Tanni Grey-Thompson (born 1969)"
+ },
+ {
+  "folder": "heroes",
+  "file": "lordkelvin.png",
+  "subject": "Lord Kelvin",
+  "note": "a portrait of Lord Kelvin (1824–1907)"
+ },
+ {
+  "folder": "heroes",
+  "file": "harryferguson.png",
+  "subject": "Harry Ferguson",
+  "note": "a portrait of Harry Ferguson (1884–1960)"
+ },
+ {
+  "folder": "heroes",
+  "file": "cslewis.png",
+  "subject": "C.S. Lewis",
+  "note": "a portrait of C.S. Lewis (1898–1963)"
+ },
+ {
+  "folder": "heroes",
+  "file": "marksensei.png",
+  "subject": "Mark Sensei",
+  "note": "a picture of the hometown guest (edited in the Teacher panel)"
+ },
+ {
+  "folder": "events",
+  "file": "newyearsday.png",
+  "subject": "New Year's Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "hogmanay.png",
+  "subject": "Hogmanay",
+  "note": "a picture for this event (Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "burnsnight.png",
+  "subject": "Burns Night",
+  "note": "a picture for this event (Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "januarysales.png",
+  "subject": "January Sales",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "pancakeday.png",
+  "subject": "Pancake Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "valentinesday.png",
+  "subject": "Valentine's Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "snowdropseason.png",
+  "subject": "Snowdrop Season",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "stdavidsday.png",
+  "subject": "St David's Day",
+  "note": "a picture for this event (Wales)"
+ },
+ {
+  "folder": "events",
+  "file": "stpatricksday.png",
+  "subject": "St Patrick's Day",
+  "note": "a picture for this event (Northern Ireland)"
+ },
+ {
+  "folder": "events",
+  "file": "mothersday.png",
+  "subject": "Mother's Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "springequinox.png",
+  "subject": "Spring Equinox",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "easteregghunts.png",
+  "subject": "Easter Egg Hunts",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "stgeorgesday.png",
+  "subject": "St George's Day",
+  "note": "a picture for this event (England)"
+ },
+ {
+  "folder": "events",
+  "file": "londonmarathon.png",
+  "subject": "London Marathon",
+  "note": "a picture for this event (London)"
+ },
+ {
+  "folder": "events",
+  "file": "mayday.png",
+  "subject": "May Day",
+  "note": "a picture for this event (England)"
+ },
+ {
+  "folder": "events",
+  "file": "chelseaflowershow.png",
+  "subject": "Chelsea Flower Show",
+  "note": "a picture for this event (London)"
+ },
+ {
+  "folder": "events",
+  "file": "facupfinal.png",
+  "subject": "FA Cup Final",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "hayfestival.png",
+  "subject": "Hay Festival",
+  "note": "a picture for this event (Wales)"
+ },
+ {
+  "folder": "events",
+  "file": "summersolstice.png",
+  "subject": "Summer Solstice",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "troopingthecolour.png",
+  "subject": "Trooping the Colour",
+  "note": "a picture for this event (London)"
+ },
+ {
+  "folder": "events",
+  "file": "royalascot.png",
+  "subject": "Royal Ascot",
+  "note": "a picture for this event (Berkshire, England)"
+ },
+ {
+  "folder": "events",
+  "file": "fathersday.png",
+  "subject": "Father's Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "glastonburyfestival.png",
+  "subject": "Glastonbury Festival",
+  "note": "a picture for this event (Somerset, England)"
+ },
+ {
+  "folder": "events",
+  "file": "wimbledon.png",
+  "subject": "Wimbledon",
+  "note": "a picture for this event (London)"
+ },
+ {
+  "folder": "events",
+  "file": "durhamminersgala.png",
+  "subject": "Durham Miners' Gala",
+  "note": "a picture for this event (Durham, England)"
+ },
+ {
+  "folder": "events",
+  "file": "highlandgames.png",
+  "subject": "Highland Games",
+  "note": "a picture for this event (Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "summerholidays.png",
+  "subject": "School Summer Holidays Begin",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "henleyroyalregatta.png",
+  "subject": "Henley Royal Regatta",
+  "note": "a picture for this event (Oxfordshire, England)"
+ },
+ {
+  "folder": "events",
+  "file": "edinburghfringefestival.png",
+  "subject": "Edinburgh Fringe Festival",
+  "note": "a picture for this event (Edinburgh, Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "eisteddfod.png",
+  "subject": "National Eisteddfod of Wales",
+  "note": "a picture for this event (Wales)"
+ },
+ {
+  "folder": "events",
+  "file": "nottinghillcarnival.png",
+  "subject": "Notting Hill Carnival",
+  "note": "a picture for this event (London)"
+ },
+ {
+  "folder": "events",
+  "file": "harvestfestival.png",
+  "subject": "Harvest Festival",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "backtoschool.png",
+  "subject": "Back to School",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "heritageopendays.png",
+  "subject": "Heritage Open Days",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "braemargathering.png",
+  "subject": "Braemar Gathering",
+  "note": "a picture for this event (Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "greatnorthrun.png",
+  "subject": "Great North Run",
+  "note": "a picture for this event (North-east England)"
+ },
+ {
+  "folder": "events",
+  "file": "halloween.png",
+  "subject": "Halloween",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "riveroflight.png",
+  "subject": "River of Light",
+  "note": "a picture for this event (Liverpool, England)"
+ },
+ {
+  "folder": "events",
+  "file": "bonfirenight.png",
+  "subject": "Bonfire Night",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "standrewsday.png",
+  "subject": "St Andrew's Day",
+  "note": "a picture for this event (Scotland)"
+ },
+ {
+  "folder": "events",
+  "file": "bbcchildreninneed.png",
+  "subject": "BBC Children in Need",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "christmasday.png",
+  "subject": "Christmas Day",
+  "note": "a picture for this event"
+ },
+ {
+  "folder": "events",
+  "file": "boxingday.png",
+  "subject": "Boxing Day",
+  "note": "a picture for Boxing Day (shown after Christmas Day, one at random)"
+ },
+ {
+  "folder": "events",
+  "file": "pantomimeseason.png",
+  "subject": "Pantomime Season",
+  "note": "a picture for Pantomime Season (shown after Christmas Day, one at random)"
+ },
+ {
+  "folder": "events",
+  "file": "christmasmarkets.png",
+  "subject": "Christmas Markets",
+  "note": "a picture for Christmas Markets (shown after Christmas Day, one at random)"
+ }
+]

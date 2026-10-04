@@ -1,0 +1,22 @@
+Board pictures (atlas-*.webp, sprites.json)
+==========================================
+
+Rendered by the sprite studio (tools/studio.html, driven by tools/render_sprites.py, packed by tools/pack_sprites.py)
+from these 3D models, all from one fixed camera angle (src/game/fake3d/proj.ts PITCH):
+
+- Kenney (www.kenney.nl), CC0 1.0 (public domain): Nature Kit, City Kit (Commercial), City Kit (Suburban), Car Kit,
+  Cube Pets, Graveyard Kit, Pirate Kit, Train Kit. Credit is not required but appreciated: thank you, Kenney!
+- Our own procedural models (src/game/world/landmarks.ts, looks.ts and src/studio/studio.ts): every station landmark,
+  British houses, city blocks, puffy trees, fir trees, mountains, cows, sheep, the ferry, Stephenson's Rocket.
+
+To re-render (for example after adding a station with a new landmark):
+  1. link the Kenney kits:  _kenney/studio/<kit>  (nature, city, suburban, castle, car, roads, cube, graveyard,
+     pirate, train), e.g. _kenney/studio/nature -> the "Nature Kit/Models/GLB format" folder
+  2. npm start            (the game server, port 8080)
+  3. npm run sprites      (needs Python with playwright + pillow)
+
+Map data: coastlines from Natural Earth (naturalearthdata.com), public domain, via the world-atlas package
+(content/coast.json, made by tools/make-coast.mjs).
+
+Seasonal pictures: mountains and landmark hills have summer, spring, autumn and winter versions (deco/mountain/<season>, lm/<id>/au and lm/<id>/wi).
+tools/prune_seasonal.py deletes a seasonal landmark picture that is identical to the summer one.
