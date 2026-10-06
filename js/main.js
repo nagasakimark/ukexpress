@@ -123,6 +123,11 @@ async function boot() {
     window.__app = app;
     window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay }; // handy for automated UI tests
     loading.classList.add('hidden');
+    // The title screen draws the normal 3D board, so wait for the board
+    // pictures first (showing progress meanwhile). The render-scale step-down
+    // for slow machines is untouched: it still applies on top of the 3D view.
+    app.go(new LoadingScene());
+    await spritesLoading;
     const q = new URLSearchParams(location.search);
     if (q.get('lang'))
         lang.mode = normLang(q.get('lang'));

@@ -1,17 +1,15 @@
 import { app } from '../app.js';
 import { Button, navigate } from '../../engine/ui.js';
-import { C, text, emoji, roundRect } from '../../engine/draw.js';
+import { C, panel, text, emoji, roundRect } from '../../engine/draw.js';
 import { clock } from '../../engine/tween.js';
 import { audio } from '../../engine/audio.js';
 import { fx } from '../../engine/fx.js';
-import { drawTrain } from '../mapart.js';
-import { lines, UI, t2 } from '../i18n.js';
-import { choose } from '../dialogs.js';
+import { lines, UI, t2, main } from '../i18n.js';
+import { choose, PModal, header } from '../dialogs.js';
 import { howToPlay } from '../tutorial.js';
 import { BookModal } from '../book.js';
 import { board } from '../../core/map.js';
 import { view } from '../fake3d/view.js';
-import { sprites } from '../fake3d/sprites.js';
 import { isDryLand } from '../fake3d/ground.js';
 // The title picture (assets/images/title.png). Loads in the background while the
 // title screen is showing; the drawn text logo below is only a fallback.
@@ -26,6 +24,44 @@ function getTitleImg() {
         titleImg = img;
     }
     return titleImgOk && titleImg ? titleImg : null;
+}
+// The QR code (assets/images/qrcode.png) shown by the top-right button.
+let qrImg = null;
+let qrImgOk = false;
+function getQrImg() {
+    if (!qrImg && typeof Image !== 'undefined') {
+        const img = new Image();
+        img.onload = () => { qrImgOk = true; };
+        img.onerror = () => { qrImg = null; };
+        img.src = 'assets/images/qrcode.png';
+        qrImg = img;
+    }
+    return qrImgOk && qrImg ? qrImg : null;
+}
+/** A modal showing the game's QR code, opened from the title screen's top-right button. */
+class QrModal extends PModal {
+    constructor() {
+        super();
+        getQrImg(); // start loading straight away
+        const l = lines(UI.ok);
+        this.buttons.push(new Button({ x: 640 - 130, y: 616, w: 260, h: 64, label: l.main, sub: l.sub ?? undefined, color: C.green, onClick: () => this.resolveWith(undefined) }));
+        this.onBack = () => this.resolveWith(undefined);
+        this.focus = 0;
+    }
+    drawBody(ctx) {
+        panel(ctx, 340, 40, 600, 640, { fill: '#f3ead2' });
+        header(ctx, t2('Play UK Express!', 'UKエクスプレス！であそぼう'), 340, 40, 600, C.green);
+        const img = getQrImg();
+        const bx = 440, by = 150, bs = 400;
+        ctx.fillStyle = '#fff';
+        roundRect(ctx, bx - 10, by - 10, bs + 20, bs + 20, 16);
+        ctx.fill();
+        if (img && img.naturalWidth)
+            ctx.drawImage(img, bx, by, bs, bs);
+        else
+            text(ctx, main(t2('Loading…', 'よみこみちゅう…')), 640, by + bs / 2, { size: 28, color: '#5a5a50', align: 'center' });
+        text(ctx, main(t2('Scan with a phone or tablet!', 'スマホやタブレットでよみとってね！')), 640, 600, { size: 22, color: '#5a5a50', align: 'center' });
+    }
 }
 export class TitleScene {
     constructor(onNew, onContinue) {
@@ -57,6 +93,7 @@ export class TitleScene {
             mk(650, 412, 280, UI.howTo, '❓', '#3a7be8', () => howToPlay()),
             mk(640 - 290, 494, 280, t2('UK Book', 'UKブック'), '📖', '#7a2e1f', () => app.show(new BookModal())),
             mk(650, 494, 280, UI.options, '⚙️', '#7a6a55', () => this.optionsMenu()),
+            new Button({ x: 1280 - 16 - 110, y: 16, w: 110, h: 60, label: 'QR', icon: '📱', size: 24, color: '#3a7be8', onClick: () => { app.show(new QrModal()); } }),
         ];
         this.focus = this.hasSave() ? 1 : 0;
     }
@@ -117,7 +154,7 @@ export class TitleScene {
         }
         if (a === 'confirm')
             this.buttons[this.focus]?.click();
-        else if (a === 'up' || a === 'down')
+        else if (a !== 'other')
             this.focus = navigate(this.buttons, this.focus, a);
         return true;
     }
@@ -191,71 +228,18 @@ export class TitleScene {
     }
     draw(ctx) {
         const t = clock.realTime;
-        if (sprites.ready) {
-            this.drawBoard(ctx, t);
-            const v = ctx.createLinearGradient(0, 0, 0, 720);
-            v.addColorStop(0, 'rgba(10,40,25,0.35)');
-            v.addColorStop(0.35, 'rgba(10,40,25,0)');
-            v.addColorStop(0.75, 'rgba(10,40,25,0)');
-            v.addColorStop(1, 'rgba(10,40,25,0.4)');
-            ctx.fillStyle = v;
-            ctx.fillRect(0, 0, 1280, 720);
-        }
-        else
-            this.draw2D(ctx, t);
-        this.drawFront(ctx, t);
-    }
-    draw2D(ctx, t) {
-        // sky
-        const g = ctx.createLinearGradient(0, 0, 0, 720);
-        g.addColorStop(0, '#7cc6f2');
-        g.addColorStop(0.6, '#cdeefc');
-        g.addColorStop(1, '#fff6d8');
-        ctx.fillStyle = g;
+        // The board sprites are loaded before the title screen shows (see boot()),
+        // so the normal 3D view is always used. If loading failed, the ground and
+        // signs still draw; only the sprites are missing.
+        this.drawBoard(ctx, t);
+        const v = ctx.createLinearGradient(0, 0, 0, 720);
+        v.addColorStop(0, 'rgba(10,40,25,0.35)');
+        v.addColorStop(0.35, 'rgba(10,40,25,0)');
+        v.addColorStop(0.75, 'rgba(10,40,25,0)');
+        v.addColorStop(1, 'rgba(10,40,25,0.4)');
+        ctx.fillStyle = v;
         ctx.fillRect(0, 0, 1280, 720);
-        // clouds
-        for (let i = 0; i < 5; i++) {
-            const x = ((t / 40 + i * 300) % 1600) - 200, y = 70 + (i % 3) * 50;
-            ctx.fillStyle = 'rgba(255,255,255,0.9)';
-            for (const [dx, dy, r] of [[0, 0, 30], [30, -12, 36], [64, 0, 28], [32, 10, 30]]) {
-                ctx.beginPath();
-                ctx.arc(x + dx, y + dy, r, 0, 7);
-                ctx.fill();
-            }
-        }
-        // landmarks skyline
-        emoji(ctx, '🏰', 160, 470, 120);
-        emoji(ctx, '🎡', 1110, 470, 110);
-        emoji(ctx, '⛪', 980, 500, 80);
-        emoji(ctx, '🪨', 300, 520, 60);
-        // hills
-        const hill = (y0, amp, col, ph) => {
-            ctx.fillStyle = col;
-            ctx.beginPath();
-            ctx.moveTo(0, 720);
-            for (let x = 0; x <= 1280; x += 20)
-                ctx.lineTo(x, y0 + Math.sin(x / 180 + ph) * amp);
-            ctx.lineTo(1280, 720);
-            ctx.fill();
-        };
-        hill(540, 24, '#8fcf6b', 0);
-        hill(590, 18, '#6fb24f', 2);
-        // rails + train
-        ctx.fillStyle = '#5b4636';
-        ctx.fillRect(0, 640, 1280, 10);
-        for (let x = 0; x < 1280; x += 26) {
-            ctx.fillStyle = '#8a6a48';
-            ctx.fillRect(x, 648, 14, 8);
-        }
-        const tx = ((t / 5) % 1700) - 200;
-        drawTrain(ctx, tx, 630, '#d7263d', 2, 1, t, 3);
-        for (let i = 0; i < 3; i++) {
-            const a = ((t / 300 + i * 0.33) % 1);
-            ctx.fillStyle = `rgba(255,255,255,${0.8 - a * 0.8})`;
-            ctx.beginPath();
-            ctx.arc(tx + 18 - a * 60, 596 - a * 70, 8 + a * 14, 0, 7);
-            ctx.fill();
-        }
+        this.drawFront(ctx, t);
     }
     drawFront(ctx, t) {
         // logo: the title picture, gently bobbing
