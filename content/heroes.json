@@ -52,7 +52,15 @@
     "en": "He explained why things fall and how light makes rainbows.",
     "ja": "物が落ちるわけや、光が虹になるしくみを説明したよ。"
    },
-   "power": "none",
+   "power": "dice2",
+   "powerName": {
+    "en": "Gravity Assist",
+    "ja": "重力アシスト"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
    "living": false
   },
   {
@@ -68,7 +76,15 @@
     "en": "She wrote famous novels about families. She is on the £10 note.",
     "ja": "家族の小説を書いた有名な作家。10ポンド札にのっているよ。"
    },
-   "power": "none",
+   "power": "quizHints",
+   "powerName": {
+    "en": "Keen Observer",
+    "ja": "するどい観察眼"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
    "living": false
   },
   {
@@ -112,7 +128,15 @@
     "en": "As a girl she found giant sea-reptile fossils on the beach.",
     "ja": "子どものころ、海辺で大きな海の爬虫類の化石を見つけたよ。"
    },
-   "power": "none",
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "Fossils in Museums",
+    "ja": "博物館の化石"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
    "living": false
   },
   {
@@ -152,7 +176,15 @@
     "en": "He designed bridges, giant iron ships and the railway from London to Bristol.",
     "ja": "橋や大きな鉄の船、ロンドンからブリストルへの鉄道を設計したよ。"
    },
-   "power": "none",
+   "power": "dice2",
+   "powerName": {
+    "en": "Great Western",
+    "ja": "グレート・ウェスタン"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
    "living": false
   },
   {
@@ -192,7 +224,15 @@
     "en": "He wrote A Christmas Carol and spoke up for poor children.",
     "ja": "『クリスマス・キャロル』を書き、貧しい子どもたちのために声をあげたよ。"
    },
-   "power": "none",
+   "power": "allGain",
+   "powerName": {
+    "en": "A Christmas Carol",
+    "ja": "クリスマス・キャロル"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
    "living": false
   },
   {
@@ -260,7 +300,15 @@
     "en": "A brave traveller who journeyed across northern Japan in 1878 and wrote about it.",
     "ja": "1878年に東北や北海道を旅して、本に書いた勇かんな旅行家。"
    },
-   "power": "none",
+   "power": "callAhead",
+   "powerName": {
+    "en": "Send Word Ahead",
+    "ja": "先に手紙を出す"
+   },
+   "powerDesc": {
+    "en": "Choose the next destination from 3 stations.",
+    "ja": "次の目的地を3つから選べる。"
+   },
    "japan": {
     "en": "She wrote \"Unbeaten Tracks in Japan\".",
     "ja": "『日本奥地紀行』を書いたよ。"
@@ -280,7 +328,15 @@
     "en": "A London architect who taught Japan's first architects.",
     "ja": "日本の最初の建築家たちを教えたロンドンの建築家。"
    },
-   "power": "none",
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "East Meets West",
+    "ja": "東西の出会い"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
    "japan": {
     "en": "He designed buildings in Tokyo, like the Rokumeikan.",
     "ja": "鹿鳴館など東京の建物を設計したよ。"
@@ -300,7 +356,15 @@
     "en": "She fought so that women could vote.",
     "ja": "女性が選挙で投票できるように戦ったよ。"
    },
-   "power": "none",
+   "power": "kindness",
+   "powerName": {
+    "en": "Fairness for All",
+    "ja": "みんなに公平を"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
    "living": false
   },
   {
@@ -344,7 +408,15 @@
     "en": "The famous Japanese writer lived in London as a student.",
     "ja": "有名な日本の作家。留学生としてロンドンに住んでいたよ。"
    },
-   "power": "none",
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "Great Novelist",
+    "ja": "大文豪"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
    "japan": {
     "en": "He wrote \"I Am a Cat\".",
     "ja": "『吾輩は猫である』を書いたよ。"
@@ -364,7 +436,15 @@
     "en": "He learned pottery in Japan and started a pottery in St Ives with Hamada Shōji.",
     "ja": "日本で陶芸を学び、濱田庄司とセント・アイヴスに窯を開いたよ。"
    },
-   "power": "none",
+   "power": "industryBoost",
+   "powerName": {
+    "en": "Fire the Kilns",
+    "ja": "かまを焚く"
+   },
+   "powerDesc": {
+    "en": "Your Industry properties pay +50% this year.",
+    "ja": "今年の工業の物件の利益+50%。"
+   },
    "japan": {
     "en": "A friend of the Japanese mingei (folk craft) movement.",
     "ja": "日本の民藝運動の仲間だよ。"
@@ -408,7 +488,15 @@
     "en": "He imagined computers before they existed. He is on the £50 note.",
     "ja": "コンピューターができる前にそれを考えた人。50ポンド札にのっているよ。"
    },
-   "power": "none",
+   "power": "seeDest",
+   "powerName": {
+    "en": "Codebreaker",
+    "ja": "暗号解読"
+   },
+   "powerDesc": {
+    "en": "Choose the next destination from 3 stations.",
+    "ja": "次の目的地を3つから選べる。"
+   },
    "living": false
   },
   {
@@ -424,7 +512,15 @@
     "en": "Her X-ray photo helped show the shape of DNA.",
     "ja": "彼女のX線写真が、DNAの形を明らかにする助けになったよ。"
    },
-   "power": "none",
+   "power": "quizHints",
+   "powerName": {
+    "en": "X-Ray Vision",
+    "ja": "X線の目"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
    "living": false
   },
   {
@@ -468,7 +564,15 @@
     "en": "He studied black holes and kept working even when he could not move or speak.",
     "ja": "体が動かず話せなくなっても、ブラックホールの研究を続けたよ。"
    },
-   "power": "none",
+   "power": "perDie",
+   "powerName": {
+    "en": "Expanding Universe",
+    "ja": "広がる宇宙"
+   },
+   "powerDesc": {
+    "en": "+1 square for every die this turn.",
+    "ja": "このターン、サイコロ1個につき+1マス。"
+   },
    "living": false
   },
   {
@@ -484,7 +588,15 @@
     "en": "Four friends from Liverpool became the world's most famous band.",
     "ja": "リバプールの4人の友だちが、世界一有名なバンドになったよ。"
    },
-   "power": "none",
+   "power": "dice2",
+   "powerName": {
+    "en": "Magical Mystery Tour",
+    "ja": "マジカル・ミステリー・ツアー"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
    "japan": {
     "en": "They played at the Budokan in Tokyo in 1966.",
     "ja": "1966年に武道館で演奏したよ。"
@@ -584,7 +696,15 @@
     "en": "He built about 26 lighthouses around Japan's coast.",
     "ja": "日本の海岸に約26の灯台を建てたよ。"
    },
-   "power": "none",
+   "power": "undoBoggart",
+   "powerName": {
+    "en": "Lighthouse Light",
+    "ja": "灯台の光"
+   },
+   "powerDesc": {
+    "en": "Get back the Boggart's last money loss.",
+    "ja": "ボガートに取られた最後のお金を取りもどす。"
+   },
    "japan": {
     "en": "The \"Father of Japanese lighthouses\".",
     "ja": "「日本の灯台の父」。"
@@ -628,7 +748,15 @@
     "en": "He wrote the adventure story Treasure Island.",
     "ja": "冒険の物語『宝島』を書いたよ。"
    },
-   "power": "none",
+   "power": "allGain",
+   "powerName": {
+    "en": "Share the Treasure",
+    "ja": "宝を分けよう"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
    "living": false
   },
   {
@@ -668,7 +796,15 @@
     "en": "He showed the world's first working television.",
     "ja": "世界で初めて動くテレビを見せたよ。"
    },
-   "power": "none",
+   "power": "quizHints",
+   "powerName": {
+    "en": "Stay Tuned",
+    "ja": "チャンネルはそのまま"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
    "japan": {
     "en": "Japan's TV pioneer Takayanagi Kenjirō worked at the same time.",
     "ja": "日本のテレビの父、高柳健次郎も同じころ研究していたよ。"
@@ -688,7 +824,15 @@
     "en": "He won Wimbledon twice and two Olympic gold medals.",
     "ja": "ウィンブルドンで2回、オリンピックで2回金メダル！"
    },
-   "power": "none",
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Centre Court",
+    "ja": "センターコート"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
    "living": true
   },
   {
@@ -704,7 +848,15 @@
     "en": "A poet who loved the sound of words.",
     "ja": "言葉のひびきが大好きな詩人だよ。"
    },
-   "power": "none",
+   "power": "neverGiveUp",
+   "powerName": {
+    "en": "Rage Against the Light",
+    "ja": "最後まであきらめない"
+   },
+   "powerDesc": {
+    "en": "If you are last, +3 dice for 2 turns.",
+    "ja": "最下位なら2ターン、サイコロ+3個。"
+   },
    "living": false
   },
   {
@@ -720,7 +872,15 @@
     "en": "Born in Cardiff, he wrote Matilda and Charlie and the Chocolate Factory.",
     "ja": "カーディフ生まれ。『マチルダ』『チョコレート工場の秘密』を書いたよ。"
    },
-   "power": "none",
+   "power": "foodBoost",
+   "powerName": {
+    "en": "Chocolate Factory",
+    "ja": "チョコレート工場"
+   },
+   "powerDesc": {
+    "en": "Your Food properties pay +50% this year.",
+    "ja": "今年の食べ物の物件の利益+50%。"
+   },
    "living": false
   },
   {
@@ -736,7 +896,15 @@
     "en": "Wales's first Black head teacher. She taught children to be proud of their history.",
     "ja": "ウェールズ初の黒人の校長先生。子どもたちに自分の歴史をほこりに思うよう教えたよ。"
    },
-   "power": "none",
+   "power": "quizHints",
+   "powerName": {
+    "en": "Teacher's Hints",
+    "ja": "先生のヒント"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
    "living": false
   },
   {
@@ -776,7 +944,15 @@
     "en": "Born in Belfast. A temperature scale, the kelvin, is named after him.",
     "ja": "ベルファスト生まれ。温度の単位「ケルビン」は彼の名前から。"
    },
-   "power": "none",
+   "power": "industryBoost",
+   "powerName": {
+    "en": "Precise Engineering",
+    "ja": "正確な技術"
+   },
+   "powerDesc": {
+    "en": "Your Industry properties pay +50% this year.",
+    "ja": "今年の工業の物件の利益+50%。"
+   },
    "japan": {
     "en": "Japanese scientists studied with him in Glasgow.",
     "ja": "日本の科学者もグラスゴーで彼に学んだよ。"
@@ -796,7 +972,15 @@
     "en": "He invented a better tractor and was the first person to fly a plane in Ireland.",
     "ja": "すぐれたトラクターを発明し、アイルランドで初めて飛行機を飛ばしたよ。"
    },
-   "power": "none",
+   "power": "foodBoost",
+   "powerName": {
+    "en": "Tractors for Farms",
+    "ja": "農場のトラクター"
+   },
+   "powerDesc": {
+    "en": "Your Food properties pay +50% this year.",
+    "ja": "今年の食べ物の物件の利益+50%。"
+   },
    "living": false
   },
   {
@@ -812,8 +996,728 @@
     "en": "Born in Belfast, he wrote the Narnia books.",
     "ja": "ベルファスト生まれ。『ナルニア国物語』を書いたよ。"
    },
-   "power": "none",
+   "power": "warpOwned",
+   "powerName": {
+    "en": "Through the Wardrobe",
+    "ja": "タンスの奥の国へ"
+   },
+   "powerDesc": {
+    "en": "Jump to any station where you own property.",
+    "ja": "物件を持っている駅へジャンプ。"
+   },
    "living": false
+  },
+  {
+   "id": "beckham",
+   "name": {
+    "en": "David Beckham",
+    "ja": "デビッド・ベッカム"
+   },
+   "lived": "born 1975",
+   "station": "manchester",
+   "emoji": "⚽",
+   "line": {
+    "en": "Manchester United and England star. Famous for bending free kicks!",
+    "ja": "マンチェスター・ユナイテッドとイングランドのスター。フリーキックの名手！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Bend It",
+    "ja": "カーブシュート"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "japan": {
+    "en": "He played at the 2002 World Cup in Japan.",
+    "ja": "2002年の日韓ワールドカップで日本でもプレーしたよ。"
+   },
+   "living": true
+  },
+  {
+   "id": "bellingham",
+   "name": {
+    "en": "Jude Bellingham",
+    "ja": "ジュード・ベリンガム"
+   },
+   "lived": "born 2003",
+   "station": "birmingham",
+   "emoji": "⚽",
+   "line": {
+    "en": "A Birmingham boy who became a Real Madrid and England star.",
+    "ja": "バーミンガム生まれ。レアル・マドリードとイングランドのスター！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Match Winner",
+    "ja": "決勝ゴール"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "kane",
+   "name": {
+    "en": "Harry Kane",
+    "ja": "ハリー・ケイン"
+   },
+   "lived": "born 1993",
+   "station": "westminster",
+   "emoji": "⚽",
+   "line": {
+    "en": "England captain and record goal scorer. A goal machine!",
+    "ja": "イングランド代表のキャプテン。歴代最多ゴール！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Captain's Goals",
+    "ja": "キャプテンのゴール"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "raducanu",
+   "name": {
+    "en": "Emma Raducanu",
+    "ja": "エマ・ラドゥカヌ"
+   },
+   "lived": "born 2002",
+   "station": "greenwich",
+   "emoji": "🎾",
+   "line": {
+    "en": "Won the US Open at 18 — the first qualifier ever to win a Grand Slam!",
+    "ja": "18歳で全米オープン優勝！予選からの優勝は史上初！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Qualifier Dream",
+    "ja": "予選からの夢"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "itoje",
+   "name": {
+    "en": "Maro Itoje",
+    "ja": "マロ・イトジェ"
+   },
+   "lived": "born 1994",
+   "station": "cardiff",
+   "emoji": "🏉",
+   "line": {
+    "en": "England rugby star. Famous for steals at the lineout!",
+    "ja": "イングランドのラグビーのスター。ラインアウトの名手！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Lineout King",
+    "ja": "ラインアウトの王様"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "hamilton",
+   "name": {
+    "en": "Lewis Hamilton",
+    "ja": "ルイス・ハミルトン"
+   },
+   "lived": "born 1985",
+   "station": "miltonkeynes",
+   "emoji": "🏎️",
+   "line": {
+    "en": "Seven-time Formula 1 world champion. The fastest man on four wheels!",
+    "ja": "F1で7回世界チャンピオン！4つのタイヤでいちばん速い男！"
+   },
+   "power": "dice2",
+   "powerName": {
+    "en": "Top Speed",
+    "ja": "トップスピード"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
+   "living": true
+  },
+  {
+   "id": "deng",
+   "name": {
+    "en": "Luol Deng",
+    "ja": "ルオル・デン"
+   },
+   "lived": "born 1985",
+   "station": "greenwich",
+   "emoji": "🏀",
+   "line": {
+    "en": "Born in Sudan, he grew up in London and became an NBA All-Star!",
+    "ja": "スーダン生まれ。ロンドンで育ち、NBAオールスターになったよ！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "All-Star Training",
+    "ja": "オールスターの特訓"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "michel",
+   "name": {
+    "en": "Ciara Michel",
+    "ja": "シアラ・ミシェル"
+   },
+   "lived": "born 1985",
+   "station": "westminster",
+   "emoji": "🏐",
+   "line": {
+    "en": "First British player in the volleyball Champions League. Team GB at London 2012!",
+    "ja": "チャンピオンズリーグ初のイギリス人選手！ロンドン五輪にも出たよ！"
+   },
+   "power": "underdog",
+   "powerName": {
+    "en": "Underdog Spirit",
+    "ja": "あきらめない心"
+   },
+   "powerDesc": {
+    "en": "Only in last place: draw a rare card.",
+    "ja": "最下位のときだけ：レアカードを1枚ひく。"
+   },
+   "living": true
+  },
+  {
+   "id": "bello",
+   "name": {
+    "en": "Javier & Joaquin Bello",
+    "ja": "ハビエル＆ホアキン・ベロ"
+   },
+   "lived": "born 2000 (twins!)",
+   "station": "bournemouth",
+   "emoji": "🏐",
+   "line": {
+    "en": "Born in Madrid, they moved to London at 11 and won medals for Britain!",
+    "ja": "マドリード生まれ。11歳でロンドンに移り、イギリスのためにメダルを取ったよ！"
+   },
+   "power": "twinpower",
+   "powerName": {
+    "en": "Twin Power",
+    "ja": "ツインパワー"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn, and your next quiz pays double.",
+    "ja": "このターン、サイコロ+2個。次のクイズはヒント付きで2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "doyle",
+   "name": {
+    "en": "Arthur Conan Doyle",
+    "ja": "アーサー・コナン・ドイル"
+   },
+   "lived": "1859–1930",
+   "station": "edinburgh",
+   "emoji": "🔍",
+   "line": {
+    "en": "He wrote stories about Sherlock Holmes, the great detective.",
+    "ja": "名探偵シャーロック・ホームズの物語を書いたよ。"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "Elementary!",
+    "ja": "エレメンタリー！"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "japan": {
+    "en": "The manga detective Conan is named after Conan Doyle!",
+    "ja": "名探偵コナンの「コナン」はコナン・ドイルからもらった名前だよ！"
+   },
+   "living": false
+  },
+  {
+   "id": "faraday",
+   "name": {
+    "en": "Michael Faraday",
+    "ja": "マイケル・ファラデー"
+   },
+   "lived": "1791–1867",
+   "station": "westminster",
+   "emoji": "⚡",
+   "line": {
+    "en": "He showed that magnets can make electricity. Every power station uses his idea!",
+    "ja": "磁石で電気を作れることを発見。発電所はみんなこの仕組み！"
+   },
+   "power": "dice2",
+   "powerName": {
+    "en": "Electric Start",
+    "ja": "電気のスタート"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
+   "living": false
+  },
+  {
+   "id": "watt",
+   "name": {
+    "en": "James Watt",
+    "ja": "ジェームズ・ワット"
+   },
+   "lived": "1736–1819",
+   "station": "birmingham",
+   "emoji": "⚙️",
+   "line": {
+    "en": "He made steam engines powerful. The watt is named after him!",
+    "ja": "蒸気機関をパワフルにしたよ。「ワット」は彼の名前から！"
+   },
+   "power": "dice2",
+   "powerName": {
+    "en": "Full Steam",
+    "ja": "フルスチーム"
+   },
+   "powerDesc": {
+    "en": "+2 dice this turn.",
+    "ja": "このターン、サイコロ+2個。"
+   },
+   "living": false
+  },
+  {
+   "id": "jenner",
+   "name": {
+    "en": "Edward Jenner",
+    "ja": "エドワード・ジェンナー"
+   },
+   "lived": "1749–1823",
+   "station": "gloucester",
+   "emoji": "💉",
+   "line": {
+    "en": "He invented vaccination and saved millions of lives.",
+    "ja": "ワクチンを発明し、何百万人もの命を救ったよ！"
+   },
+   "power": "shrinkBoggart",
+   "powerName": {
+    "en": "Vaccination",
+    "ja": "ワクチン"
+   },
+   "powerDesc": {
+    "en": "Shrink your Boggart (a Little Boggart leaves).",
+    "ja": "ボガートを小さくする（小ボガートはいなくなる）。"
+   },
+   "living": false
+  },
+  {
+   "id": "atkinson",
+   "name": {
+    "en": "Rowan Atkinson",
+    "ja": "ローワン・アトキンソン"
+   },
+   "lived": "born 1955",
+   "station": "durham",
+   "emoji": "🧸",
+   "line": {
+    "en": "He plays Mr Bean, but he studied electrical engineering at Oxford!",
+    "ja": "ミスター・ビーンの中の人。実はオックスフォード大学の電気工学の秀才！"
+   },
+   "power": "allGain",
+   "powerName": {
+    "en": "Laughter for All",
+    "ja": "みんなで大笑い"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
+   "living": true
+  },
+  {
+   "id": "chaplin",
+   "name": {
+    "en": "Charlie Chaplin",
+    "ja": "チャーリー・チャップリン"
+   },
+   "lived": "1889–1977",
+   "station": "waterloo",
+   "emoji": "🎩",
+   "line": {
+    "en": "The silent-film tramp who made the world laugh — and spoke up for peace.",
+    "ja": "無声映画の放浪者。世界を笑わせ、平和をうったえたよ！"
+   },
+   "power": "allGain",
+   "powerName": {
+    "en": "A Smile Each",
+    "ja": "みんなに笑顔を"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
+   "living": false
+  },
+  {
+   "id": "rashford",
+   "name": {
+    "en": "Marcus Rashford",
+    "ja": "マーカス・ラッシュフォード"
+   },
+   "lived": "born 1997",
+   "station": "manchester",
+   "emoji": "⚽",
+   "line": {
+    "en": "Manchester United star who campaigned so hungry children get school dinners.",
+    "ja": "マンチェスター・ユナイテッドのスター。おなかのすいた子に給食をとどける運動をしたよ！"
+   },
+   "power": "kindness",
+   "powerName": {
+    "en": "School Dinners",
+    "ja": "給食を守れ"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
+   "living": true
+  },
+  {
+   "id": "bond",
+   "name": {
+    "en": "Michael Bond",
+    "ja": "マイケル・ボンド"
+   },
+   "lived": "1926–2017",
+   "station": "paddington",
+   "emoji": "🐻",
+   "line": {
+    "en": "He created Paddington Bear, the kind bear from far away.",
+    "ja": "遠い国から来た親切なクマ、パディントンを生んだよ。"
+   },
+   "power": "kindness",
+   "powerName": {
+    "en": "Please Look After",
+    "ja": "よろしくおねがいします"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
+   "living": false
+  },
+  {
+   "id": "farah",
+   "name": {
+    "en": "Mo Farah",
+    "ja": "モー・ファラー"
+   },
+   "lived": "born 1983",
+   "station": "stratford",
+   "emoji": "🏅",
+   "line": {
+    "en": "Born in Somalia, he moved to London at 8 and became an Olympic champion!",
+    "ja": "ソマリア生まれ。8歳でロンドンに移り、オリンピック王者になったよ！"
+   },
+   "power": "neverGiveUp",
+   "powerName": {
+    "en": "Super Saturday",
+    "ja": "スーパー・サタデー"
+   },
+   "powerDesc": {
+    "en": "If you are last, +3 dice for 2 turns.",
+    "ja": "最下位なら2ターン、サイコロ+3個。"
+   },
+   "living": true
+  },
+  {
+   "id": "watson",
+   "name": {
+    "en": "Emma Watson",
+    "ja": "エマ・ワトソン"
+   },
+   "lived": "born 1990",
+   "station": "oxford",
+   "emoji": "🪄",
+   "line": {
+    "en": "Born in Paris, she moved to England as a girl and played Hermione!",
+    "ja": "パリ生まれ。子どものころイングランドに移り、ハーマイオニーを演じたよ！"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "Hermione's Hint",
+    "ja": "ハーマイオニーのヒント"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "japan": {
+    "en": "She speaks for girls' education at the United Nations.",
+    "ja": "国連で女の子の教育を応援しているよ。"
+   },
+   "living": true
+  },
+  {
+   "id": "malala",
+   "name": {
+    "en": "Malala Yousafzai",
+    "ja": "マララ・ユスフザイ"
+   },
+   "lived": "born 1997",
+   "station": "oxford",
+   "emoji": "📚",
+   "line": {
+    "en": "Born in Pakistan, she moved to England and won the Nobel Prize fighting for girls' schools.",
+    "ja": "パキスタン生まれ。イギリスに移り、女の子の学校のために戦ってノーベル賞！"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "School for All",
+    "ja": "みんなに学校を"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "turner",
+   "name": {
+    "en": "J.M.W. Turner",
+    "ja": "J.M.W.ターナー"
+   },
+   "lived": "1775–1851",
+   "station": "margate",
+   "emoji": "🎨",
+   "line": {
+    "en": "He painted light and storms like nobody before. A gallery in Margate holds his name!",
+    "ja": "光と嵐をだれよりも美しく描いたよ。マーゲートの美術館は彼の名前！"
+   },
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "Paint the Light",
+    "ja": "光を描く"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
+   "living": false
+  },
+  {
+   "id": "banksy",
+   "name": {
+    "en": "Banksy",
+    "ja": "バンクシー"
+   },
+   "lived": "active since the 1990s",
+   "station": "bristol",
+   "emoji": "🖌️",
+   "line": {
+    "en": "A mystery street artist from Bristol. Nobody knows his real name!",
+    "ja": "ブリストルのなぞの落書きアーティスト。本名はだれも知らない！"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "Look Closer",
+    "ja": "よく見て"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "wilberforce",
+   "name": {
+    "en": "William Wilberforce",
+    "ja": "ウィリアム・ウィルバーフォース"
+   },
+   "lived": "1759–1833",
+   "station": "hull",
+   "emoji": "🕊️",
+   "line": {
+    "en": "Born in Hull, he fought for years to end the slave trade.",
+    "ja": "ハル生まれ。奴隷貿易をなくすために何年も戦ったよ。"
+   },
+   "power": "kindness",
+   "powerName": {
+    "en": "Freedom for All",
+    "ja": "みんなに自由を"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
+   "living": false
+  },
+  {
+   "id": "fry",
+   "name": {
+    "en": "Elizabeth Fry",
+    "ja": "エリザベス・フライ"
+   },
+   "lived": "1780–1845",
+   "station": "norwich",
+   "emoji": "🔑",
+   "line": {
+    "en": "Born in Norwich, she made prisons kinder and gave people second chances.",
+    "ja": "ノリッジ生まれ。刑務所をやさしくし、やりなおしのチャンスをあげたよ。"
+   },
+   "power": "kindness",
+   "powerName": {
+    "en": "Second Chances",
+    "ja": "やりなおしのチャンス"
+   },
+   "powerDesc": {
+    "en": "Give £200 × year to last place; get double back in March.",
+    "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
+   },
+   "living": false
+  },
+  {
+   "id": "lennon",
+   "name": {
+    "en": "John Lennon",
+    "ja": "ジョン・レノン"
+   },
+   "lived": "1940–1980",
+   "station": "liverpool",
+   "emoji": "🎹",
+   "line": {
+    "en": "Born in Liverpool, his song Imagine dreams of a peaceful world.",
+    "ja": "リバプール生まれ。「イマジン」で平和な世界を歌ったよ。"
+   },
+   "power": "allGain",
+   "powerName": {
+    "en": "Imagine",
+    "ja": "イマジン"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
+   "living": false
+  },
+  {
+   "id": "ishiguro",
+   "name": {
+    "en": "Kazuo Ishiguro",
+    "ja": "カズオ・イシグロ"
+   },
+   "lived": "born 1954",
+   "station": "westminster",
+   "emoji": "📖",
+   "line": {
+    "en": "Born in Nagasaki, he moved to England at 5 and won the Nobel Prize for stories.",
+    "ja": "長崎生まれ。5歳でイギリスへ移り、物語でノーベル賞を取ったよ！"
+   },
+   "power": "cultureBoost",
+   "powerName": {
+    "en": "Nobel Storyteller",
+    "ja": "ノーベルの物語"
+   },
+   "powerDesc": {
+    "en": "Your Culture properties pay double this year.",
+    "ja": "今年の文化の物件の利益2倍。"
+   },
+   "japan": {
+    "en": "Born in Nagasaki! Books like The Remains of the Day and Never Let Me Go are read worldwide. A Nagasaki kid can move the world with stories.",
+    "ja": "長崎生まれ！『日の名残り』『わたしを離さないで』は世界中で読まれているよ。長崎の子も物語で世界を動かせる証拠だよ！"
+   },
+   "living": true
+  },
+  {
+   "id": "rooney",
+   "name": {
+    "en": "Wayne Rooney",
+    "ja": "ウェイン・ルーニー"
+   },
+   "lived": "born 1985",
+   "station": "liverpool",
+   "emoji": "⚽",
+   "line": {
+    "en": "A Liverpool boy who became Manchester United and England's goal machine!",
+    "ja": "リバプール生まれ。マンチェスター・ユナイテッドとイングランドのゴールマシーン！"
+   },
+   "power": "sportBoost",
+   "powerName": {
+    "en": "Record Scorer",
+    "ja": "最多ゴール"
+   },
+   "powerDesc": {
+    "en": "Your Sport properties pay double this year.",
+    "ja": "今年のスポーツの物件の利益が2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "cumberbatch",
+   "name": {
+    "en": "Benedict Cumberbatch",
+    "ja": "ベネディクト・カンバーバッチ"
+   },
+   "lived": "born 1976",
+   "station": "edinburgh",
+   "emoji": "🕵️",
+   "line": {
+    "en": "He played Sherlock Holmes, created by Edinburgh's own Conan Doyle!",
+    "ja": "シャーロック・ホームズを演じたよ。原作者コナン・ドイルもエディンバラ！"
+   },
+   "power": "quizHints",
+   "powerName": {
+    "en": "Deduction",
+    "ja": "推理"
+   },
+   "powerDesc": {
+    "en": "Your next 3 quizzes show a hint and pay double.",
+    "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
+   },
+   "living": true
+  },
+  {
+   "id": "sheeran",
+   "name": {
+    "en": "Ed Sheeran",
+    "ja": "エド・シーラン"
+   },
+   "lived": "born 1991",
+   "station": "ipswich",
+   "emoji": "🎸",
+   "line": {
+    "en": "Born in Yorkshire, he grew up in Suffolk and sings songs the whole world sings!",
+    "ja": "ヨークシャー生まれ、サフォーク育ち。世界中が歌う歌を歌うよ！"
+   },
+   "power": "allGain",
+   "powerName": {
+    "en": "Sing Along",
+    "ja": "みんなで歌おう"
+   },
+   "powerDesc": {
+    "en": "Every player gains £300 × year. Friendship!",
+    "ja": "みんな+£300×年。友情！"
+   },
+   "living": true
   }
  ]
 }

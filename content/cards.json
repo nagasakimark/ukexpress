@@ -137,9 +137,24 @@
     "en": "Your Food properties pay double this March.",
     "ja": "今年の食べ物の物件の利益が2倍！"
    }
-  },
-  {
-   "id": "jubilee",
+   },
+   {
+    "id": "cupfinal",
+    "name": {
+     "en": "Cup Final",
+     "ja": "カップ決勝"
+    },
+    "emoji": "🏆",
+    "rarity": 2,
+    "price": 1500,
+    "kind": "money",
+    "desc": {
+     "en": "Your Sport properties pay double this March.",
+     "ja": "今年のスポーツの物件の利益が2倍！"
+    }
+   },
+   {
+    "id": "jubilee",
    "name": {
     "en": "Jubilee Party",
     "ja": "ジュビリー・パーティー"
@@ -163,13 +178,13 @@
    "rarity": 1,
    "price": 150,
    "kind": "defence",
-   "desc": {
-    "en": "Keep it: it cancels your next red square.",
-    "ja": "持っていると、次の赤マスを1回ふせぐ。"
-   }
-  },
-  {
-   "id": "leaves",
+    "desc": {
+     "en": "Blocks your next red square, then it breaks.",
+     "ja": "次の赤マスを1回ふせぐけど、こわれちゃう。"
+    }
+   },
+   {
+    "id": "leaves",
    "name": {
     "en": "Leaves on the Line",
     "ja": "線路に落ち葉"
@@ -238,10 +253,10 @@
    "rarity": 1,
    "price": 600,
    "kind": "defence",
-   "desc": {
-    "en": "Keep it: your Boggart cannot grow bigger.",
-    "ja": "持っていると、ボガートが大きくならない。"
-   }
+    "desc": {
+     "en": "Stops your Boggart growing once, then it breaks.",
+     "ja": "ボガートが大きくなるのを1回ふせぐけど、こわれちゃう。"
+    }
   },
    {
     "id": "guidebook",
@@ -299,8 +314,8 @@
     "price": 800,
     "kind": "defence",
     "desc": {
-     "en": "Keep it: Leaves on the Line and queues can't touch you.",
-     "ja": "持っていると、落ち葉も行列もへっちゃら。"
+     "en": "Blocks Leaves on the Line and queues, then it breaks.",
+     "ja": "落ち葉と行列を1回ふせぐけど、こわれちゃう。"
     }
    },
    {
@@ -325,7 +340,8 @@
     "guidebook",
     "express",
     "intercity",
-    "tourism"
+    "tourism",
+    "cupfinal"
    ],
    "southeast": [
     "express",

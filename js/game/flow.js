@@ -4,7 +4,7 @@ import { CARD_BY_ID, REGIONS, SHOP_STOCK, TRAINS, AVATARS } from '../core/conten
 import { CUSTOM_QUIZ } from '../core/content/stations.js';
 import { eventDate, dateText, realMonth } from '../core/calendar.js';
 import { HEROES, HERO_BY_ID, HEROES_AT, SENSEI } from '../core/content/heroes.js';
-import { addCash, assets, arrivalPrize, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, snapshot, } from '../core/rules.js';
+import { addCash, assets, arrivalPrize, arrivalRanking, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, snapshot, } from '../core/rules.js';
 import { C, money } from '../engine/draw.js';
 import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
@@ -167,6 +167,11 @@ export class Director {
             audio.play('boggart');
             fx.shake(14);
             await this.tell(null, { title: t2('The Boggart grew into a GRAND BOGGART!', 'ボガートが大ボガートに！'), body: [t2(`It has stayed with ${h.name.en} too long. It will leave in 3 turns.`, `${h.name.ja}のところに長くいすぎた！3ターンでいなくなるよ。`)], iconDraw: (c, x, y) => drawBoggart(c, x, y, 88, 'grand', clock.realTime), color: '#4a3a5a' });
+        }
+        else if (grow === 'blocked') {
+            const h = g.players.find((p) => p.id === g.boggart.holder);
+            audio.play('card');
+            await this.tell(null, { title: t2('Horseshoe saves the day!', 'ていてつで助かった！'), icon: '🐴', body: [t2(`${h.name.en}'s horseshoe stopped the Boggart growing — but it crumbled to dust!`, `${h.name.ja}のていてつが、ボガートが大きくなるのをふせいだ！でも、ボロボロにこわれちゃった！`)] });
         }
         if (pick)
             await this.eventDay(pick.ev, pick.extra);
@@ -403,6 +408,8 @@ export class Director {
         if (!app.autoplay)
             audio.chooChoo(); // the train is in view: no dialog is covering it now
         await banner(t2(`${p.name.en}'s turn!`, `${p.name.ja}の番！`), C.players[p.color], AVATARS[p.avatar].emoji, this.isHuman(p) ? 1000 : 800);
+        if (!app.autoplay && g.boggart.holder === p.id && g.boggart.form !== 'brownie')
+            await toast(t2(`Careful, ${p.name.en}: the Boggart is on your train!`, `${p.name.ja}、気をつけて！ボガートが電車に乗っているよ！`), '🐾', '#4a3a5a', 1500);
         if (p.effects.skipTurn) {
             p.effects.skipTurn = false;
             await this.tell(p, { title: t2('Waiting in the queue…', '行列に並んでいる…'), icon: '🧍', body: [this.voice(p, t2('You skip this turn. In the UK, people queue politely!', '1回休み。イギリスの人はきちんと並ぶよ！'), t2(`${p.name.en} skips this turn. In the UK, people queue politely!`, '1回休み。イギリスの人はきちんと並ぶよ！'))] });
@@ -695,7 +702,7 @@ export class Director {
                 await this.hometown(p);
             const heroes = (HEROES_AT[sid] ?? []).filter((h) => !p.heroCollection.includes(h.id));
             if (heroes.length)
-                await this.heroMeet(p, heroes[0].id, false);
+                await this.heroMeet(p, rpick(g, heroes).id, false);
         }
         // Shop
         const ans = await this.ask({ kind: 'shop', playerId: p.id, stationId: sid });
@@ -747,6 +754,7 @@ export class Director {
     async heroMeet(p, heroId, visit) {
         const g = this.g;
         const h = HERO_BY_ID[heroId];
+        await banner(t2('A British hero appears!', 'イギリスのヒーロー登場！'), '#8a6a10', h.emoji, 1500);
         if (this.isHuman(p)) {
             const rows = [{ icon: '📅', label: t2('Lived', '生きた年'), text: t2(h.lived, h.lived) }, { icon: '💬', label: t2('In their words', 'ひとこと'), text: h.line }];
             if (h.japan)
@@ -779,21 +787,35 @@ export class Director {
                 p.heroes[k] = heroId;
         }
         audio.play('fanfare');
-        await this.tell(p, { title: t2(`Hero card: ${h.name.en}!`, `ヒーローカード：${h.name.ja}！`), iconDraw: (ctx, x, y) => drawHeroCard(ctx, heroId, x - 72, y - 100, 144, 200), body: [h.powerDesc ? t2(`Power: ${h.powerName.en}. ${h.powerDesc.en} (once a year)`, `パワー：${h.powerName.ja}。${h.powerDesc.ja}（1年に1回）`) : t2('Added to your Hall of Heroes!', 'ヒーローの殿堂に追加されたよ！')], confetti: true }, '🦸');
+        await this.tell(p, { title: t2(`Hero card: ${h.name.en}!`, `ヒーローカード：${h.name.ja}！`), iconDraw: (ctx, x, y) => drawHeroCard(ctx, heroId, x - 72, y - 100, 144, 200), body: [h.powerDesc ? t2(`Power: ${h.powerName.en}. ${h.powerDesc.en} (once a year)`, `パワー：${h.powerName.ja}。${h.powerDesc.ja}（1年に1回）`) : t2('Added to your Hall of Heroes!', 'ヒーローの殿堂に追加されたよ！'), t2('Find it in your Cards menu. Heroes recharge every April!', 'カードメニューで使えるよ。ヒーローは4月になったら復活するよ！')], confetti: true }, '🦸');
     }
     // ======================= arrival =======================
     async arrival(p) {
         const g = this.g;
         const st = STATION_BY_ID[g.destination];
         const prize = arrivalPrize(g);
-        addCash(g, p, prize, 'prize');
+        const firstBonus = Math.round(prize * 0.5 / 10) * 10;
+        addCash(g, p, prize + firstBonus, 'prize');
+        // Everyone else ranks by exact squares away: closest is 2nd, next is 3rd.
+        const ranked = arrivalRanking(g, p.id);
+        const awards = [];
+        if (ranked[0])
+            awards.push({ place: '2nd', placeJa: '2位', who: ranked[0].p, dist: ranked[0].dist, bonus: Math.round(prize * 0.25 / 10) * 10 });
+        if (ranked[1])
+            awards.push({ place: '3rd', placeJa: '3位', who: ranked[1].p, dist: ranked[1].dist, bonus: Math.round(prize * 0.1 / 10) * 10 });
+        for (const a of awards)
+            addCash(g, a.who, a.bonus, 'prize');
         p.arrivals++;
         audio.play('fanfare');
         const s = this.board.worldToScreen(this.board.vis[p.id].x, this.board.vis[p.id].y);
         fx.burst(s.x, s.y - 40, 'confetti', 80, { speed: 10, up: 7 });
         fx.burst(s.x, s.y - 40, 'coin', 20, { speed: 7 });
-        await banner(t2(`${p.name.en} arrived at ${st.name.en}!`, `${p.name.ja}が${st.name.ja}に到着！`), C.players[p.color], '🎉', 1600);
-        await this.tell(p, { title: t2('You reached the destination!', '目的地に到着！'), icon: st.emoji, body: [t2(`Arrival prize${st.hometown ? ' (+50% hometown bonus)' : ''}:`, `到着ボーナス${st.hometown ? '（ふるさと+50%）' : ''}：`)], money: prize, confetti: true }, '🎉');
+        await banner(t2(`${p.name.en} is first to arrive at ${st.name.en}!`, `${p.name.ja}が${st.name.ja}に1番乗り！`), C.players[p.color], '🎉', 1600);
+        await this.tell(p, { title: t2('You reached the destination!', '目的地に到着！'), icon: st.emoji, body: [t2(`Arrival prize${st.hometown ? ' (+50% hometown bonus)' : ''}:`, `到着ボーナス${st.hometown ? '（ふるさと+50%）' : ''}：`), t2('1st arrival bonus:', '1番乗りボーナス：')], money: prize + firstBonus, confetti: true }, '🎉');
+        if (awards.length) {
+            audio.play('coin');
+            await say({ title: t2('Photo finish!', '写真判定！'), icon: '🏁', body: awards.map((a) => t2(`${a.place}: ${a.who.name.en} (${a.dist} squares away): +${money(a.bonus)}`, `${a.placeJa}：${a.who.name.ja}（あと${a.dist}マス）：+${money(a.bonus)}`)), color: C.brass });
+        }
         // The destination's factfile (a picture, the local team, what it is famous for), then a simple quiz: players take turns
         if (!app.autoplay) {
             const rows = [{ icon: '🗺️', label: t2('Where', 'どこ'), text: REGIONS[st.region].name }];
@@ -830,13 +852,20 @@ export class Director {
             g.boggart = { holder: f.id, form, months: 0, calm: 0, grandTurns: 0, brownieTurns: 3, turns: 0 };
             audio.play('boggart');
             fx.shake(10);
-            const fn = form === 'brownie' ? t2('a helpful Brownie', '親切なブラウニー') : form === 'little' ? t2('a Little Boggart', '小ボガート') : t2('the Boggart', 'ボガート');
+            const bad = form !== 'brownie';
             await this.tell(null, {
-                title: t2(`${fn.en[0].toUpperCase() + fn.en.slice(1)} jumps on ${f.name.en}'s train!`, `${fn.ja}が${f.name.ja}の電車に！`),
+                title: !bad
+                    ? t2(`A Brownie is helping ${f.name.en}!`, `ブラウニーが${f.name.ja}を助けるよ！`)
+                    : form === 'little'
+                        ? t2(`A Little Boggart is on ${f.name.en}'s train!`, `小ボガートが${f.name.ja}の電車に乗った！`)
+                        : t2(`The Boggart is on ${f.name.en}'s train!`, `ボガートが${f.name.ja}の電車に乗った！`),
                 iconDraw: (ctx, x, y) => drawBoggart(ctx, x, y, 88, form, clock.realTime), color: form === 'brownie' ? '#7a5230' : '#4a3a5a',
-                body: [form === 'brownie'
-                        ? t2('In old stories, a kind Brownie helps with the chores. Lucky you!', '昔話では、親切なブラウニーがお手伝いをしてくれるよ。ラッキー！')
-                        : t2('In old English stories, a Boggart lives in your house and plays tricks. "Oops! Sorry!" Pass another train to give it away!', 'イギリスの昔話では、ボガートは家に住んでいたずらをするよ。「おっと、ごめん！」ほかの電車を追いこすとうつせるよ！')],
+                body: [!bad
+                        ? t2(`${f.name.en} will get lucky surprises for a few turns. Nobody else is affected!`, `${f.name.ja}はしばらくラッキーなことが起きるよ。ほかの人には何も起きないよ！`)
+                        : t2(`${f.name.en} will have bad luck at the end of every turn until it leaves. To shake it off: pass another train, use Rowan Twig or a Cup of Tea — or just wait, it naps and wanders off!`, `${f.name.ja}は、いなくなるまで毎ターンの最後に悪いことが起きるよ。にがすには：ほかの電車を追いこす、ナナカマドか紅茶を使う、待つ（お昼ねしてどこかへ行くよ）！`),
+                    form === 'brownie'
+                        ? t2('In old stories, a kind Brownie helps with the chores. Lucky!', '昔話では、親切なブラウニーがお手伝いをしてくれるよ。ラッキー！')
+                        : t2('In old English stories, a Boggart lives in your house and plays tricks. "Oops! Sorry!"', 'イギリスの昔話では、ボガートは家に住んでいたずらをするよ。「おっと、ごめん！」')],
             });
         }
         // New destination
@@ -862,7 +891,11 @@ export class Director {
                 audio.play('coin');
             if (res.money && res.money < 0)
                 fx.shake(8);
-            await this.tell(p, { title: g.boggart.form === 'brownie' ? t2('The Brownie helps!', 'ブラウニーのお手伝い！') : t2('The Boggart strikes!', 'ボガートのいたずら！'), iconDraw: (ctx, x, y) => drawBoggart(ctx, x, y, 88, g.boggart.form, clock.realTime), body: [res.text], color: res.good ? '#7a5230' : '#4a3a5a' }, '🐾');
+            const bad = g.boggart.form !== 'brownie';
+            const you = this.isHuman(p);
+            await this.tell(p, { title: !bad
+                    ? you ? t2('The Brownie helps you!', 'ブラウニーがお手伝い！') : t2(`The Brownie helps ${p.name.en}!`, `ブラウニーが${p.name.ja}をお手伝い！`)
+                    : you ? t2('The Boggart strikes you!', 'ボガートがいたずらしてきた！') : t2(`The Boggart strikes ${p.name.en}!`, `ボガートが${p.name.ja}にいたずら！`), iconDraw: (ctx, x, y) => drawBoggart(ctx, x, y, 88, g.boggart.form, clock.realTime), body: [res.text], color: res.good ? '#7a5230' : '#4a3a5a' }, '🐾');
             if (res.warp !== undefined) {
                 p.prev = -1;
                 p.pos = res.warp;
@@ -936,21 +969,31 @@ export class Director {
             case 'harvest':
                 boostCat(p, 'food', 2);
                 return {};
+            case 'cupfinal':
+                boostCat(p, 'sport', 2);
+                return {};
             case 'jubilee':
                 for (const q of g.players)
                     addCash(g, q, 300 * Y, 'prize');
                 audio.play('coin');
                 return {};
-            case 'leaves':
+            case 'leaves': {
+                const saved = g.players.filter((q) => q.id !== p.id && q.cards.includes('wellies'));
+                for (const q of saved)
+                    removeCard(q, 'wellies');
                 for (const q of g.players)
-                    if (q.id !== p.id && !q.cards.includes('wellies'))
+                    if (q.id !== p.id && !saved.includes(q))
                         q.effects.oneDieTurns = 2;
+                if (saved.length)
+                    await say({ title: t2('Splashed through!', 'へっちゃら！'), icon: '🥾', body: [t2(`${saved.map((q) => q.name.en).join(' and ')} splashed through in wellies — but the wellies fell apart!`, `${saved.map((q) => q.name.ja).join('と')}は長ぐつでへっちゃら！でも長ぐつはこわれちゃった。`)], color: '#6c7a89' });
                 return {};
+            }
             case 'queue': {
                 const r = g.players.slice().sort((a, b) => assets(g, b) - assets(g, a));
                 const target = r[0].id === p.id ? r[1] : r[0];
                 if (target && target.cards.includes('wellies')) {
-                    await say({ title: t2('Splashed through!', 'へっちゃら！'), icon: '🥾', body: [this.voice(p, t2('Your wellies kept you out of the queue!', '長ぐつのおかげで、行列に並ばなくてすんだ！'), t2(`${target.name.en}'s wellies kept them out of the queue!`, `${target.name.ja}は長ぐつのおかげで、行列に並ばなくてすんだ！`))], color: C.players[target.color] });
+                    removeCard(target, 'wellies');
+                    await say({ title: t2('Splashed through!', 'へっちゃら！'), icon: '🥾', body: [this.voice(p, t2('Your wellies kept you out of the queue! But they got caked in mud and fell apart.', '長ぐつのおかげで、行列に並ばなくてすんだ！でも、どろどろでこわれちゃった。'), t2(`${target.name.en}'s wellies kept them out of the queue! But the wellies got caked in mud and fell apart.`, `${target.name.ja}は長ぐつのおかげで、行列に並ばなくてすんだ！でも、長ぐつはどろどろでこわれちゃった。`))], color: C.players[target.color] });
                     return {};
                 }
                 if (target) {
@@ -1045,11 +1088,26 @@ export class Director {
             case 'industryBoost':
                 boostCat(p, 'industry', 1.5);
                 return {};
+            case 'sportBoost':
+                boostCat(p, 'sport', 2);
+                return {};
             case 'allGain':
                 for (const q of g.players)
                     addCash(g, q, 300 * Y, 'prize');
                 audio.play('coin');
                 return {};
+            case 'underdog': {
+                if (lastPlace(g).id !== p.id) {
+                    delete p.heroUsedYear[id];
+                    await this.tell(p, { title: t2('Not yet!', 'まだだよ！'), icon: '🏐', body: [this.voice(p, t2('This power only works when you are in last place.', 'このパワーは最下位のときだけ使えるよ。'), t2(`This power only works when ${p.name.en} is in last place.`, 'このパワーは最下位のときだけ使えるよ。'))] });
+                    return {};
+                }
+                await this.gainCard(p, drawRareCardId(g));
+                return {};
+            }
+            case 'twinpower':
+                p.effects.guidebook = 1;
+                return { extraDice: 2 };
             case 'neverGiveUp':
                 if (lastPlace(g).id === p.id) {
                     p.effects.bonusDice = 3;

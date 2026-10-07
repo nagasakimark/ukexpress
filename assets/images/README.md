@@ -127,7 +127,7 @@ Extra photos: save up to 6 more pictures beside the base file as `<name>2.png` â
 | `newry.png` | Newry |
 | `carrickfergus.png` | Carrickfergus |
 
-## Heroes: assets/images/heroes/  (40 files)
+## Heroes: assets/images/heroes/  (69 files)
 
 | File | Subject |
 |---|---|
@@ -170,6 +170,35 @@ Extra photos: save up to 6 more pictures beside the base file as `<name>2.png` â
 | `lordkelvin.png` | Lord Kelvin |
 | `harryferguson.png` | Harry Ferguson |
 | `cslewis.png` | C.S. Lewis |
+| `davidbeckham.png` | David Beckham |
+| `judebellingham.png` | Jude Bellingham |
+| `harrykane.png` | Harry Kane |
+| `emmaraducanu.png` | Emma Raducanu |
+| `maroitoje.png` | Maro Itoje |
+| `lewishamilton.png` | Lewis Hamilton |
+| `luoldeng.png` | Luol Deng |
+| `ciaramichel.png` | Ciara Michel |
+| `javierjoaquinbello.png` | Javier & Joaquin Bello |
+| `arthurconandoyle.png` | Arthur Conan Doyle |
+| `michaelfaraday.png` | Michael Faraday |
+| `jameswatt.png` | James Watt |
+| `edwardjenner.png` | Edward Jenner |
+| `rowanatkinson.png` | Rowan Atkinson |
+| `charliechaplin.png` | Charlie Chaplin |
+| `marcusrashford.png` | Marcus Rashford |
+| `michaelbond.png` | Michael Bond |
+| `mofarah.png` | Mo Farah |
+| `emmawatson.png` | Emma Watson |
+| `malalayousafzai.png` | Malala Yousafzai |
+| `jmwturner.png` | J.M.W. Turner |
+| `banksy.png` | Banksy |
+| `williamwilberforce.png` | William Wilberforce |
+| `elizabethfry.png` | Elizabeth Fry |
+| `johnlennon.png` | John Lennon |
+| `kazuoishiguro.png` | Kazuo Ishiguro |
+| `waynerooney.png` | Wayne Rooney |
+| `benedictcumberbatch.png` | Benedict Cumberbatch |
+| `edsheeran.png` | Ed Sheeran |
 | `marksensei.png` | Mark Sensei |
 
 ## Events: assets/images/events/  (45 files)

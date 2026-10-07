@@ -919,6 +919,180 @@
  },
  {
   "folder": "heroes",
+  "file": "davidbeckham.png",
+  "subject": "David Beckham",
+  "note": "a portrait of David Beckham (born 1975)"
+ },
+ {
+  "folder": "heroes",
+  "file": "judebellingham.png",
+  "subject": "Jude Bellingham",
+  "note": "a portrait of Jude Bellingham (born 2003)"
+ },
+ {
+  "folder": "heroes",
+  "file": "harrykane.png",
+  "subject": "Harry Kane",
+  "note": "a portrait of Harry Kane (born 1993)"
+ },
+ {
+  "folder": "heroes",
+  "file": "emmaraducanu.png",
+  "subject": "Emma Raducanu",
+  "note": "a portrait of Emma Raducanu (born 2002)"
+ },
+ {
+  "folder": "heroes",
+  "file": "maroitoje.png",
+  "subject": "Maro Itoje",
+  "note": "a portrait of Maro Itoje (born 1994)"
+ },
+ {
+  "folder": "heroes",
+  "file": "lewishamilton.png",
+  "subject": "Lewis Hamilton",
+  "note": "a portrait of Lewis Hamilton (born 1985)"
+ },
+ {
+  "folder": "heroes",
+  "file": "luoldeng.png",
+  "subject": "Luol Deng",
+  "note": "a portrait of Luol Deng (born 1985)"
+ },
+ {
+  "folder": "heroes",
+  "file": "ciaramichel.png",
+  "subject": "Ciara Michel",
+  "note": "a portrait of Ciara Michel (born 1985)"
+ },
+ {
+  "folder": "heroes",
+  "file": "javierjoaquinbello.png",
+  "subject": "Javier & Joaquin Bello",
+  "note": "a portrait of Javier & Joaquin Bello (born 2000 (twins!))"
+ },
+ {
+  "folder": "heroes",
+  "file": "arthurconandoyle.png",
+  "subject": "Arthur Conan Doyle",
+  "note": "a portrait of Arthur Conan Doyle (1859–1930)"
+ },
+ {
+  "folder": "heroes",
+  "file": "michaelfaraday.png",
+  "subject": "Michael Faraday",
+  "note": "a portrait of Michael Faraday (1791–1867)"
+ },
+ {
+  "folder": "heroes",
+  "file": "jameswatt.png",
+  "subject": "James Watt",
+  "note": "a portrait of James Watt (1736–1819)"
+ },
+ {
+  "folder": "heroes",
+  "file": "edwardjenner.png",
+  "subject": "Edward Jenner",
+  "note": "a portrait of Edward Jenner (1749–1823)"
+ },
+ {
+  "folder": "heroes",
+  "file": "rowanatkinson.png",
+  "subject": "Rowan Atkinson",
+  "note": "a portrait of Rowan Atkinson (born 1955)"
+ },
+ {
+  "folder": "heroes",
+  "file": "charliechaplin.png",
+  "subject": "Charlie Chaplin",
+  "note": "a portrait of Charlie Chaplin (1889–1977)"
+ },
+ {
+  "folder": "heroes",
+  "file": "marcusrashford.png",
+  "subject": "Marcus Rashford",
+  "note": "a portrait of Marcus Rashford (born 1997)"
+ },
+ {
+  "folder": "heroes",
+  "file": "michaelbond.png",
+  "subject": "Michael Bond",
+  "note": "a portrait of Michael Bond (1926–2017)"
+ },
+ {
+  "folder": "heroes",
+  "file": "mofarah.png",
+  "subject": "Mo Farah",
+  "note": "a portrait of Mo Farah (born 1983)"
+ },
+ {
+  "folder": "heroes",
+  "file": "emmawatson.png",
+  "subject": "Emma Watson",
+  "note": "a portrait of Emma Watson (born 1990)"
+ },
+ {
+  "folder": "heroes",
+  "file": "malalayousafzai.png",
+  "subject": "Malala Yousafzai",
+  "note": "a portrait of Malala Yousafzai (born 1997)"
+ },
+ {
+  "folder": "heroes",
+  "file": "jmwturner.png",
+  "subject": "J.M.W. Turner",
+  "note": "a portrait of J.M.W. Turner (1775–1851)"
+ },
+ {
+  "folder": "heroes",
+  "file": "banksy.png",
+  "subject": "Banksy",
+  "note": "a portrait of Banksy (active since the 1990s)"
+ },
+ {
+  "folder": "heroes",
+  "file": "williamwilberforce.png",
+  "subject": "William Wilberforce",
+  "note": "a portrait of William Wilberforce (1759–1833)"
+ },
+ {
+  "folder": "heroes",
+  "file": "elizabethfry.png",
+  "subject": "Elizabeth Fry",
+  "note": "a portrait of Elizabeth Fry (1780–1845)"
+ },
+ {
+  "folder": "heroes",
+  "file": "johnlennon.png",
+  "subject": "John Lennon",
+  "note": "a portrait of John Lennon (1940–1980)"
+ },
+ {
+  "folder": "heroes",
+  "file": "kazuoishiguro.png",
+  "subject": "Kazuo Ishiguro",
+  "note": "a portrait of Kazuo Ishiguro (born 1954)"
+ },
+ {
+  "folder": "heroes",
+  "file": "waynerooney.png",
+  "subject": "Wayne Rooney",
+  "note": "a portrait of Wayne Rooney (born 1985)"
+ },
+ {
+  "folder": "heroes",
+  "file": "benedictcumberbatch.png",
+  "subject": "Benedict Cumberbatch",
+  "note": "a portrait of Benedict Cumberbatch (born 1976)"
+ },
+ {
+  "folder": "heroes",
+  "file": "edsheeran.png",
+  "subject": "Ed Sheeran",
+  "note": "a portrait of Ed Sheeran (born 1991)"
+ },
+ {
+  "folder": "heroes",
   "file": "marksensei.png",
   "subject": "Mark Sensei",
   "note": "a picture of the hometown guest (edited in the Teacher panel)"

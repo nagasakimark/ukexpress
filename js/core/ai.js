@@ -46,7 +46,7 @@ function cpuCommand(g, p) {
             return { type: 'hero', id };
         if (pw === 'undoBoggart' && p.lastBoggartLoss > 0)
             return { type: 'hero', id };
-        if ((pw === 'dice2' || pw === 'perDie') && d > 8)
+        if ((pw === 'dice2' || pw === 'perDie' || pw === 'twinpower') && d > 8)
             return { type: 'hero', id };
         if (pw === 'foodBoost' && owns('food') >= 2 && g.month >= 6)
             return { type: 'hero', id };
@@ -56,7 +56,11 @@ function cpuCommand(g, p) {
             return { type: 'hero', id };
         if (pw === 'natureBoost' && owns('tourism') >= 2 && g.month >= 6)
             return { type: 'hero', id };
+        if (pw === 'sportBoost' && owns('sport') >= 2 && g.month >= 6)
+            return { type: 'hero', id };
         if (pw === 'neverGiveUp' && lastPlace(g).id === p.id)
+            return { type: 'hero', id };
+        if (pw === 'underdog' && lastPlace(g).id === p.id)
             return { type: 'hero', id };
         if ((pw === 'quizHints' || pw === 'seeDest' || pw === 'callAhead') && !p.effects.chooseDest)
             return { type: 'hero', id };
@@ -100,9 +104,9 @@ function cpuCommand(g, p) {
         if (has('turpin') && lead.cards.length && rchance(g, attackP))
             return { type: 'card', id: 'turpin' };
     }
-    for (const c of ['tourism', 'harvest']) {
+    for (const c of ['tourism', 'harvest', 'cupfinal']) {
         if (has(c) && g.month >= 7) {
-            const cat = c === 'tourism' ? 'tourism' : 'food';
+            const cat = c === 'tourism' ? 'tourism' : c === 'harvest' ? 'food' : 'sport';
             if (ownedProps(g, p).filter((x) => x.cat === cat).length >= 2)
                 return { type: 'card', id: c };
         }

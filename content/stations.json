@@ -482,8 +482,8 @@
    },
    {
     "name": {
-     "en": "Hop farm",
-     "ja": "ホップ農園"
+     "en": "Cherry orchard",
+     "ja": "さくらんぼ園"
     },
     "category": "food",
     "price": 250,
@@ -4389,8 +4389,8 @@
    },
    {
     "name": {
-     "en": "Oyster bar",
-     "ja": "カキのお店"
+     "en": "Oyster restaurant",
+     "ja": "カキのレストラン"
     },
     "category": "food",
     "price": 150,
@@ -5071,8 +5071,8 @@
   "properties": [
    {
     "name": {
-     "en": "Cider farm shop",
-     "ja": "シードル農家の売店"
+     "en": "Apple juice farm shop",
+     "ja": "りんごジュースの農場ショップ"
     },
     "category": "food",
     "price": 60,
@@ -6433,8 +6433,8 @@
   "properties": [
    {
     "name": {
-     "en": "Cider orchard shop",
-     "ja": "シードルの果樹園ショップ"
+     "en": "Apple orchard shop",
+     "ja": "りんご園のショップ"
     },
     "category": "food",
     "price": 80,
@@ -7464,8 +7464,8 @@
    },
    {
     "name": {
-     "en": "Honey mead shop",
-     "ja": "はちみつ酒の店"
+     "en": "Honey farm shop",
+     "ja": "はちみつ農場ショップ"
     },
     "category": "food",
     "price": 90,
@@ -7699,8 +7699,8 @@
    },
    {
     "name": {
-     "en": "Highland whisky distillery",
-     "ja": "ハイランドのウイスキー蒸留所"
+     "en": "Highland shortbread factory",
+     "ja": "ハイランドのショートブレッド工場"
     },
     "category": "industry",
     "price": 1500,
@@ -8227,8 +8227,8 @@
    },
    {
     "name": {
-     "en": "Cider and apple juice press",
-     "ja": "リンゴジュースのしぼり場"
+     "en": "Apple juice press",
+     "ja": "りんごジュース工場"
     },
     "category": "industry",
     "price": 400,

@@ -110,6 +110,13 @@ export function ranking(g) { return g.players.slice().sort((a, b) => assets(g, b
 export function lastPlace(g) { const r = ranking(g); return r[r.length - 1]; }
 export function leader(g) { return ranking(g)[0]; }
 export function distToDest(g, p) { return distancesTo(board.stationNode[g.destination])[p.pos]; }
+/** Non-arrivers ranked by exact squares from the destination (closest first, poorer player wins ties). */
+export function arrivalRanking(g, arriverId) {
+    const d = distancesTo(board.stationNode[g.destination]);
+    return g.players.filter((p) => p.id !== arriverId)
+        .map((p) => ({ p, dist: d[p.pos] }))
+        .sort((a, b) => a.dist - b.dist || assets(g, a.p) - assets(g, b.p));
+}
 export function handLimit(p) { return TRAINS[p.train].slots; }
 export function diceCount(p) { return TRAINS[p.train].dice; }
 /** Adds money, applying the kid-friendly debt floor. Every pound is written into the company books. */
@@ -327,7 +334,11 @@ export function boggartMonth(g) {
         return null;
     b.months++;
     const holder = player(g, b.holder);
-    if (b.form === 'boggart' && b.months >= 12 && g.settings.years >= 10 && !holder.cards.includes('horseshoe')) {
+    if (b.form === 'boggart' && b.months >= 12 && g.settings.years >= 10) {
+        if (holder.cards.includes('horseshoe')) {
+            removeCard(holder, 'horseshoe');
+            return 'blocked';
+        }
         b.form = 'grand';
         b.grandTurns = 3;
         return 'grow';
