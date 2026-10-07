@@ -37,7 +37,28 @@
     "en": "Kurosawa's film Throne of Blood retells Macbeth.",
     "ja": "黒澤明の『蜘蛛巣城』は『マクベス』がもと。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "An English playwright from Stratford. He wrote Romeo and Juliet, Hamlet and dozens more plays that are still performed all over the world, 400 years later.",
+    "ja": "ストラトフォードの劇作家。『ロミオとジュリエット』『ハムレット』など何十もの劇を書き、400年後の今も世界中で上演されているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Shakespeare write?","ja":"何を書いた？"},
+     "options": [{"en":"Songs for radio","ja":"ラジオの歌"}, {"en":"Plays like Romeo and Juliet","ja":"『ロミオとジュリエット』などの劇"}, {"en":"Newspapers","ja":"新聞"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where was Shakespeare born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Stratford","ja":"ストラトフォード"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"His plays are still...?","ja":"彼の劇は今も…？"},
+     "options": [{"en":"Forgotten","ja":"忘れられた"}, {"en":"Performed worldwide","ja":"世界中で上演される"}, {"en":"Banned","ja":"禁止された"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "newton",
@@ -61,7 +82,28 @@
     "en": "+2 dice this turn.",
     "ja": "このターン、サイコロ+2個。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "An English scientist at Cambridge University. He explained why apples fall to the ground (gravity) and showed that white light makes a rainbow. His book about how things move is one of the most famous science books ever.",
+    "ja": "ケンブリッジ大学の科学者。リンゴが落ちる理由（重力）や、白い光が虹になることを説明したよ。物の動きについての本は世界一有名な科学の本の一つ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Newton explain?","ja":"ニュートンは何を説明したの？"},
+     "options": [{"en":"Why things fall (gravity)","ja":"物が落ちる理由（重力）"}, {"en":"How phones work","ja":"電話の仕組み"}, {"en":"How cars move","ja":"車の仕組み"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What can white light make?","ja":"白い光は何になる？"},
+     "options": [{"en":"Snow","ja":"雪"}, {"en":"A rainbow","ja":"虹"}, {"en":"Thunder","ja":"雷"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where did Newton work?","ja":"ニュートンはどこで研究した？"},
+     "options": [{"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}, {"en":"Cambridge","ja":"ケンブリッジ"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "austen",
@@ -85,7 +127,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A writer from Bath who wrote funny, clever novels about families — like Pride and Prejudice. She is on the British £10 note.",
+    "ja": "バースの作家。『高慢と偏見』など家族についての面白くて賢い小説を書いたよ。イギリスの10ポンド札に描かれているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Austen write?","ja":"何を書いた？"},
+     "options": [{"en":"Novels about families","ja":"家族についての小説"}, {"en":"Cookbooks","ja":"料理の本"}, {"en":"Maps","ja":"地図"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Famous book?","ja":"有名な本は？"},
+     "options": [{"en":"Treasure Island","ja":"宝島"}, {"en":"Pride and Prejudice","ja":"高慢と偏見"}, {"en":"Peter Rabbit","ja":"ピーターラビット"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Austen is on which banknote?","ja":"どのお札？"},
+     "options": [{"en":"£10","ja":"10ポンド"}, {"en":"£5","ja":"5ポンド"}, {"en":"£100","ja":"100ポンド"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "stephenson",
@@ -113,7 +176,28 @@
     "en": "Japan's first railways used British trains.",
     "ja": "日本の最初の鉄道はイギリスの汽車を使ったよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "The \"father of railways\". His steam engine Rocket won a famous race in 1829!",
+    "ja": "「鉄道の父」。蒸気機関車ロケット号が1829年のレースで優勝したよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What was his engine called?","ja":"機関車の名前は？"},
+     "options": [{"en":"Comet","ja":"コメット号"}, {"en":"Rocket","ja":"ロケット号"}, {"en":"Thunder","ja":"サンダー号"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"When was the race?","ja":"レースはいつ？"},
+     "options": [{"en":"1929","ja":"1929年"}, {"en":"1829","ja":"1829年"}, {"en":"1799","ja":"1799年"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Stephenson is called...?","ja":"何と呼ばれている？"},
+     "options": [{"en":"Father of railways","ja":"鉄道の父"}, {"en":"Father of planes","ja":"飛行機の父"}, {"en":"Father of cars","ja":"車の父"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "anning",
@@ -137,7 +221,28 @@
     "en": "Your Culture properties pay double this year.",
     "ja": "今年の文化の物件の利益2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "As a girl in Lyme Regis she found giant sea-reptile fossils on the beach — some of the first ever seen!",
+    "ja": "ライム・リージスの少女時代、海岸で巨大な海の爬虫類の化石を発見！世界初レベルの大発見だったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Anning find?","ja":"何を見つけた？"},
+     "options": [{"en":"Treasure chests","ja":"宝箱"}, {"en":"Giant fossils","ja":"巨大な化石"}, {"en":"Old coins","ja":"古いコイン"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where?","ja":"どこで？"},
+     "options": [{"en":"A London park","ja":"ロンドンの公園"}, {"en":"At school","ja":"学校"}, {"en":"Lyme Regis beach","ja":"ライム・リージスの海岸"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Anning was...?","ja":"アニングは？"},
+     "options": [{"en":"A queen","ja":"女王"}, {"en":"A girl fossil hunter","ja":"少女の化石ハンター"}, {"en":"A pilot","ja":"パイロット"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "seacole",
@@ -161,7 +266,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Jamaican nurse who paid her own way to the Crimean War to care for sick soldiers. The soldiers loved her cooking and kindness.",
+    "ja": "ジャマイカの看護師。自費でクリミア戦争へ行き、病気の兵士を看病したよ。兵士たちは彼女の料理と優しさが大好きだったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Seacole from?","ja":"どこ出身？"},
+     "options": [{"en":"Jamaica","ja":"ジャマイカ"}, {"en":"France","ja":"フランス"}, {"en":"Italy","ja":"イタリア"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which war did she nurse in?","ja":"どの戦争で看護？"},
+     "options": [{"en":"Crimean War","ja":"クリミア戦争"}, {"en":"A pillow fight","ja":"枕投げ大会"}, {"en":"A football match","ja":"サッカーの試合"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How did she get there?","ja":"どうやって行った？"},
+     "options": [{"en":"She paid her own way","ja":"自費で行った"}, {"en":"By rocket","ja":"ロケットで"}, {"en":"She swam","ja":"泳いで"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "brunel",
@@ -185,7 +311,28 @@
     "en": "+2 dice this turn.",
     "ja": "このターン、サイコロ+2個。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A brilliant engineer. He built the railway from London to Bristol, giant iron ships, and the Clifton Suspension Bridge.",
+    "ja": "天才技師。ロンドン〜ブリストルの鉄道、巨大な鉄の船、クリフトン吊り橋を作ったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Which railway did Brunel build?","ja":"作った鉄道は？"},
+     "options": [{"en":"London–Bristol","ja":"ロンドン〜ブリストル"}, {"en":"London–Paris","ja":"ロンドン〜パリ"}, {"en":"London–Rome","ja":"ロンドン〜ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which bridge?","ja":"どの橋？"},
+     "options": [{"en":"Tower Bridge","ja":"タワーブリッジ"}, {"en":"Sydney Harbour Bridge","ja":"シドニーの橋"}, {"en":"Clifton Suspension Bridge","ja":"クリフトン吊り橋"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Brunel was an...?","ja":"ブルネルは？"},
+     "options": [{"en":"Baker","ja":"パン屋"}, {"en":"Engineer","ja":"技師"}, {"en":"Sailor","ja":"船乗り"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "darwin",
@@ -209,7 +356,28 @@
     "en": "Choose the next destination from 3 stations.",
     "ja": "次の目的地を3つから選べる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A naturalist who sailed from Plymouth on HMS Beagle for five years. He studied finches and fossils, then wrote On the Origin of Species about how living things change (evolution).",
+    "ja": "ビーグル号でプリマスから5年間旅した博物学者。フィンチや化石を研究し、『種の起源』で生き物の変化（進化）を説明したよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"How long was the Beagle voyage?","ja":"ビーグル号の旅は何年？"},
+     "options": [{"en":"Five years","ja":"5年"}, {"en":"Five days","ja":"5日"}, {"en":"Five months","ja":"5か月"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What book did Darwin write?","ja":"ダーウィンが書いた本は？"},
+     "options": [{"en":"Treasure Island","ja":"宝島"}, {"en":"On the Origin of Species","ja":"種の起源"}, {"en":"Robinson Crusoe","ja":"ロビンソン漂流記"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where did the Beagle sail from?","ja":"ビーグル号はどこから出発？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Liverpool","ja":"リバプール"}, {"en":"Plymouth","ja":"プリマス"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "dickens",
@@ -233,7 +401,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Portsmouth, he wrote A Christmas Carol and Oliver Twist. His stories about poor children helped Britain treat them more kindly.",
+    "ja": "ポーツマス生まれ。『クリスマス・キャロル』『オリバー・ツイスト』を書いたよ。貧しい子どもの物語が、イギリスをやさしく変えたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Dickens born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Portsmouth","ja":"ポーツマス"}, {"en":"Paris","ja":"パリ"}, {"en":"New York","ja":"ニューヨーク"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which book at Christmas?","ja":"クリスマスの本は？"},
+     "options": [{"en":"A Christmas Carol","ja":"クリスマス・キャロル"}, {"en":"Cinderella","ja":"シンデレラ"}, {"en":"Dracula","ja":"ドラキュラ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who did his stories help?","ja":"だれを助けた？"},
+     "options": [{"en":"Kings","ja":"王様"}, {"en":"Poor children","ja":"貧しい子ども"}, {"en":"Pirates","ja":"海賊"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "lovelace",
@@ -257,7 +446,28 @@
     "en": "+1 square for every die this turn.",
     "ja": "このターン、サイコロ1個につき+1マス。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A mathematician in London. She wrote the first computer program — for a machine that was never even built! People call her the first programmer.",
+    "ja": "ロンドンの数学者。作られなかった機械のための世界初のプログラムを書いたよ。最初のプログラマーと呼ばれているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Ada write first?","ja":"エイダが最初に書いたものは？"},
+     "options": [{"en":"A computer program","ja":"コンピュータのプログラム"}, {"en":"A telephone","ja":"電話"}, {"en":"A light bulb","ja":"電球"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What is Ada called?","ja":"エイダは何と呼ばれている？"},
+     "options": [{"en":"The first pilot","ja":"最初のパイロット"}, {"en":"The first programmer","ja":"最初のプログラマー"}, {"en":"The first doctor","ja":"最初のお医者さん"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Whose machine was her program for?","ja":"プログラムはだれの機械のため？"},
+     "options": [{"en":"Charles Babbage","ja":"チャールズ・バベッジ"}, {"en":"Isaac Newton","ja":"アイザック・ニュートン"}, {"en":"Florence Nightingale","ja":"フローレンス・ナイチンゲール"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "nightingale",
@@ -285,7 +495,28 @@
     "en": "Modern nursing in Japan follows her ideas.",
     "ja": "日本の看護も彼女の考えをもとにしているよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "The \"lady with the lamp\" who nursed soldiers at night in the Crimean War. She started modern nursing and counted everything with numbers!",
+    "ja": "「ランプの貴婦人」。クリミア戦争で夜も兵士を看病したよ。近代看護を始め、数字で記録することも始めたよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did she carry at night?","ja":"夜に持っていたものは？"},
+     "options": [{"en":"A sword","ja":"剣"}, {"en":"A lamp","ja":"ランプ"}, {"en":"A bell","ja":"ベル"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Which war?","ja":"どの戦争？"},
+     "options": [{"en":"Crimean War","ja":"クリミア戦争"}, {"en":"A food fight","ja":"食べ物合戦"}, {"en":"A snowball fight","ja":"雪合戦"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did Nightingale start?","ja":"始めたものは？"},
+     "options": [{"en":"Modern nursing","ja":"近代看護"}, {"en":"Football","ja":"サッカー"}, {"en":"Pizza delivery","ja":"ピザの宅配"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "bird",
@@ -313,7 +544,28 @@
     "en": "She wrote \"Unbeaten Tracks in Japan\".",
     "ja": "『日本奥地紀行』を書いたよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A brave traveller who journeyed across northern Japan in 1878 and wrote a famous book about it, when few Westerners had seen Japan.",
+    "ja": "1878年に北日本を旅した勇敢な旅行家。有名な旅行記を書いたよ。当時、日本を見た西洋人はほとんどいなかったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"When did Bird travel Japan?","ja":"いつ旅した？"},
+     "options": [{"en":"1878","ja":"1878年"}, {"en":"1978","ja":"1978年"}, {"en":"2078","ja":"2078年"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which part of Japan?","ja":"日本のどこ？"},
+     "options": [{"en":"Northern Japan","ja":"北日本"}, {"en":"Paris","ja":"パリ"}, {"en":"Hawaii","ja":"ハワイ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did Bird write?","ja":"書いたものは？"},
+     "options": [{"en":"A travel book","ja":"旅行記"}, {"en":"A cookbook","ja":"料理本"}, {"en":"A phone book","ja":"電話帳"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "conder",
@@ -341,7 +593,28 @@
     "en": "He designed buildings in Tokyo, like the Rokumeikan.",
     "ja": "鹿鳴館など東京の建物を設計したよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A London architect who taught Japan's first architects — including the man who designed Tokyo Station!",
+    "ja": "ロンドンの建築家。日本の最初の建築家たちを教えたよ。東京駅を設計した人も教え子だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Conder teach?","ja":"何を教えた？"},
+     "options": [{"en":"Swimming","ja":"水泳"}, {"en":"Architecture","ja":"建築"}, {"en":"Singing","ja":"歌"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"His student designed...?","ja":"教え子が設計したのは？"},
+     "options": [{"en":"Tokyo Station","ja":"東京駅"}, {"en":"Eiffel Tower","ja":"エッフェル塔"}, {"en":"Big Ben","ja":"ビッグベン"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was Conder from?","ja":"どこ出身？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "pankhurst",
@@ -365,7 +638,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "She fought so that women could vote — with marches and protests. In 1928 British women won equal votes!",
+    "ja": "女性も投票できるよう戦ったよ。デモや抗議運動で！1928年、イギリスの女性は平等な投票権を勝ち取ったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Pankhurst fight for?","ja":"何のために戦った？"},
+     "options": [{"en":"Votes for women","ja":"女性の投票権"}, {"en":"Longer holidays","ja":"長い休み"}, {"en":"Bigger hats","ja":"大きな帽子"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How?","ja":"どうやって？"},
+     "options": [{"en":"Marches and protests","ja":"デモや抗議"}, {"en":"Sleeping","ja":"寝ること"}, {"en":"Hiding","ja":"かくれること"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"When did women win equal votes?","ja":"いつ勝ち取った？"},
+     "options": [{"en":"1928","ja":"1928年"}, {"en":"2028","ja":"2028年"}, {"en":"1828","ja":"1828年"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "potter",
@@ -393,7 +687,28 @@
     "en": "Her books are loved in Japan; many Japanese visitors go to the Lake District.",
     "ja": "日本でも大人気。湖水地方には日本からたくさんの人が来るよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "She wrote and drew little books about Peter Rabbit and his friends. She also studied mushrooms and used her money to save Lake District farms.",
+    "ja": "ピーターラビットの小さな本を書いて絵をかいたよ。キノコも研究し、お金で湖水地方の農場を守ったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who is her famous rabbit?","ja":"有名なウサギは？"},
+     "options": [{"en":"Bugs Bunny","ja":"バッグス・バニー"}, {"en":"Miffy","ja":"ミッフィー"}, {"en":"Peter Rabbit","ja":"ピーターラビット"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"What did her money save?","ja":"お金で守ったものは？"},
+     "options": [{"en":"Lake District farms","ja":"湖水地方の農場"}, {"en":"Castles","ja":"お城"}, {"en":"Trains","ja":"列車"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What else did she study?","ja":"ほかに研究したものは？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Mushrooms","ja":"キノコ"}, {"en":"Stars","ja":"星"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "soseki",
@@ -421,7 +736,28 @@
     "en": "He wrote \"I Am a Cat\".",
     "ja": "『吾輩は猫である』を書いたよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Japan's famous writer. He studied in London as a student, then wrote Botchan and Kokoro, books every Japanese student knows.",
+    "ja": "日本の有名な作家。学生時代ロンドンに留学し、『坊っちゃん』『こころ』を書いたよ。日本の学生ならだれもが知っている本だよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where is Soseki from?","ja":"どこ出身？"},
+     "options": [{"en":"Japan","ja":"日本"}, {"en":"France","ja":"フランス"}, {"en":"Italy","ja":"イタリア"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where did he study abroad?","ja":"どこに留学？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Paris","ja":"パリ"}, {"en":"New York","ja":"ニューヨーク"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which book did Soseki write?","ja":"書いた本は？"},
+     "options": [{"en":"Harry Potter","ja":"ハリー・ポッター"}, {"en":"Botchan","ja":"坊っちゃん"}, {"en":"Moby Dick","ja":"白鯨"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "leach",
@@ -449,7 +785,28 @@
     "en": "A friend of the Japanese mingei (folk craft) movement.",
     "ja": "日本の民藝運動の仲間だよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "He learned pottery in Japan and started a pottery in St Ives with Hamada Shoji. People call him the father of British studio pottery.",
+    "ja": "日本で陶芸を学び、浜田庄司とセント・アイヴスで窯を開いたよ。イギリス陶芸の父と呼ばれているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who started the pottery with Leach?","ja":"だれと始めた？"},
+     "options": [{"en":"Hamada Shoji","ja":"浜田庄司"}, {"en":"Mickey Mouse","ja":"ミッキーマウス"}, {"en":"Superman","ja":"スーパーマン"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was the pottery?","ja":"どこに開いた？"},
+     "options": [{"en":"St Ives","ja":"セント・アイヴス"}, {"en":"Paris","ja":"パリ"}, {"en":"New York","ja":"ニューヨーク"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did they make?","ja":"何を作った？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Pots","ja":"陶器"}, {"en":"Shoes","ja":"靴"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "tolkien",
@@ -473,7 +830,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "An Oxford professor who invented Middle-earth: hobbits, elves and dragons. The Hobbit and The Lord of the Rings started as stories for his children.",
+    "ja": "オックスフォード大学の教授。中つ国を発明したよ。ホビットやエルフ、ドラゴン！『ホビット』『指輪物語』は子どもへのお話が始まりだったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where did Tolkien teach?","ja":"どこで教えた？"},
+     "options": [{"en":"Oxford","ja":"オックスフォード"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who lives in his books?","ja":"本に出てくるのは？"},
+     "options": [{"en":"Robots","ja":"ロボット"}, {"en":"Hobbits and elves","ja":"ホビットとエルフ"}, {"en":"Aliens","ja":"宇宙人"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"His stories began as...?","ja":"始まりは…？"},
+     "options": [{"en":"Tales for his children","ja":"子どもへのお話"}, {"en":"Newspaper news","ja":"新聞記事"}, {"en":"School lessons","ja":"学校の授業"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "turing",
@@ -497,7 +875,28 @@
     "en": "Choose the next destination from 3 stations.",
     "ja": "次の目的地を3つから選べる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A mathematician who imagined computers before they existed. At Bletchley Park he helped break secret codes. He is on the British £50 note.",
+    "ja": "コンピュータができる前に考え出した数学者。ブレッチリー・パークで暗号解読を助けたよ。イギリスの50ポンド札に描かれているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where did Turing help break codes?","ja":"どこで暗号解読を助けた？"},
+     "options": [{"en":"Bletchley Park","ja":"ブレッチリー・パーク"}, {"en":"Tower of London","ja":"ロンドン塔"}, {"en":"Buckingham Palace","ja":"バッキンガム宮殿"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which banknote shows Turing?","ja":"チューリングはどのお札？"},
+     "options": [{"en":"£10","ja":"10ポンド"}, {"en":"£50","ja":"50ポンド"}, {"en":"£20","ja":"20ポンド"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did Turing imagine early?","ja":"早くから考え出したものは？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Computers","ja":"コンピュータ"}, {"en":"Planes","ja":"飛行機"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "franklin",
@@ -521,7 +920,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A scientist whose X-ray photo showed the shape of DNA — the instruction book inside every living thing. She studied at Cambridge.",
+    "ja": "X線写真でDNAの形を示した科学者。DNAは生き物の設計図だよ。ケンブリッジ大学で学んだよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did her photo show?","ja":"写真が示したものは？"},
+     "options": [{"en":"The shape of DNA","ja":"DNAの形"}, {"en":"The moon","ja":"月"}, {"en":"A star","ja":"星"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What is DNA?","ja":"DNAって何？"},
+     "options": [{"en":"Food","ja":"食べ物"}, {"en":"Instructions inside living things","ja":"生き物の中の設計図"}, {"en":"Rocks","ja":"石"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where did Franklin study?","ja":"どこで学んだ？"},
+     "options": [{"en":"Paris","ja":"パリ"}, {"en":"Cambridge","ja":"ケンブリッジ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "attenborough",
@@ -549,7 +969,28 @@
     "en": "NHK helped make Planet Earth, which he narrated.",
     "ja": "NHKも『プラネットアース』の制作に参加したよ。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A broadcaster who has spent about 70 years filming animals and wild places for TV, from the North Pole to the jungle. He grew up in Leicester.",
+    "ja": "70年近く、動物や大自然をテレビで紹介。北極からジャングルまで！レスターで育ったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What does he film?","ja":"何を撮る？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Animals and wild places","ja":"動物と大自然"}, {"en":"Cooking","ja":"料理"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where did he grow up?","ja":"どこで育った？"},
+     "options": [{"en":"Leicester","ja":"レスター"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How long filming?","ja":"何年くらい？"},
+     "options": [{"en":"About 70 years","ja":"約70年"}, {"en":"7 years","ja":"7年"}, {"en":"7 months","ja":"7か月"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "hawking",
@@ -573,7 +1014,28 @@
     "en": "+1 square for every die this turn.",
     "ja": "このターン、サイコロ1個につき+1マス。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Cambridge scientist who studied black holes — places in space where gravity is so strong that nothing can escape. He kept working even when illness meant he could not move or speak.",
+    "ja": "ケンブリッジの科学者。ブラックホールを研究したよ。体が動かなくても話せなくても研究を続けたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Hawking study?","ja":"何を研究した？"},
+     "options": [{"en":"Oceans","ja":"海"}, {"en":"Black holes","ja":"ブラックホール"}, {"en":"Volcanoes","ja":"火山"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What is a black hole?","ja":"ブラックホールって何？"},
+     "options": [{"en":"A hole in the ground","ja":"地面の穴"}, {"en":"A dark cloud","ja":"暗い雲"}, {"en":"Super-strong gravity nothing escapes","ja":"何も逃げられない強い重力"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Where did Hawking work?","ja":"どこで研究した？"},
+     "options": [{"en":"Cambridge","ja":"ケンブリッジ"}, {"en":"Oxford","ja":"オックスフォード"}, {"en":"Paris","ja":"パリ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "beatles",
@@ -601,7 +1063,28 @@
     "en": "They played at the Budokan in Tokyo in 1966.",
     "ja": "1966年に武道館で演奏したよ。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Four friends from Liverpool who became the world's most famous band. Songs like She Loves You made everyone sing along!",
+    "ja": "リバプールの4人の友達。世界一有名なバンドになったよ。「シー・ラヴズ・ユー」など、みんなが歌える曲ばかり！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where are the Beatles from?","ja":"どこ出身？"},
+     "options": [{"en":"Liverpool","ja":"リバプール"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How many Beatles?","ja":"何人組？"},
+     "options": [{"en":"Three","ja":"3人"}, {"en":"Four","ja":"4人"}, {"en":"Ten","ja":"10人"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Famous song?","ja":"有名な曲は？"},
+     "options": [{"en":"Happy Birthday","ja":"ハッピーバースデー"}, {"en":"Twinkle Twinkle","ja":"きらきら星"}, {"en":"She Loves You","ja":"シー・ラヴズ・ユー"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "bernerslee",
@@ -625,7 +1108,28 @@
     "en": "Jump to any station where you own property.",
     "ja": "物件を持っている駅へジャンプ。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A London-born scientist who invented the World Wide Web — and gave it away for free so everyone can use it!",
+    "ja": "ロンドン生まれ。ワールド・ワイド・ウェブを発明し、みんなが使えるよう無料にしたよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did he invent?","ja":"発明したものは？"},
+     "options": [{"en":"The World Wide Web","ja":"ワールド・ワイド・ウェブ"}, {"en":"The television","ja":"テレビ"}, {"en":"The aeroplane","ja":"飛行機"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How much did he charge?","ja":"いくら取った？"},
+     "options": [{"en":"£1 million","ja":"100万ポンド"}, {"en":"Free!","ja":"無料！"}, {"en":"£100","ja":"100ポンド"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where was he born?","ja":"どこ生まれ？"},
+     "options": [{"en":"New York","ja":"ニューヨーク"}, {"en":"Sydney","ja":"シドニー"}, {"en":"London","ja":"ロンドン"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "burns",
@@ -653,7 +1157,28 @@
     "en": "Its tune is 蛍の光 (Hotaru no Hikari).",
     "ja": "メロディーは「蛍の光」！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Scotland's national poet. He wrote Auld Lang Syne, the song friends sing together on New Year's Eve!",
+    "ja": "スコットランドの国民的詩人。「オールド・ラング・サイン」を書いたよ。大みそかに友達と歌う曲だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Burns was...?","ja":"バーンズは？"},
+     "options": [{"en":"A Scottish poet","ja":"スコットランドの詩人"}, {"en":"A French chef","ja":"フランスのシェフ"}, {"en":"An Italian pilot","ja":"イタリアのパイロット"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Famous song?","ja":"有名な曲は？"},
+     "options": [{"en":"Happy Birthday","ja":"ハッピーバースデー"}, {"en":"Auld Lang Syne","ja":"オールド・ラング・サイン"}, {"en":"Jingle Bells","ja":"ジングルベル"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"When is it sung?","ja":"いつ歌う？"},
+     "options": [{"en":"New Year's Eve","ja":"大みそか"}, {"en":"Breakfast","ja":"朝ごはん"}, {"en":"Halloween","ja":"ハロウィン"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "glover",
@@ -681,7 +1206,28 @@
     "en": "Glover Garden, Nagasaki.",
     "ja": "長崎のグラバー園。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Scotsman who sailed to Nagasaki in 1859. He built ships and helped start the company that became Mitsubishi! His old house is still there.",
+    "ja": "スコットランド人。1859年に長崎へ渡り、船を作り、三菱のもとになる会社を助けたよ！彼の家は今も長崎にあるよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where did Glover move to?","ja":"どこへ移った？"},
+     "options": [{"en":"Paris","ja":"パリ"}, {"en":"Nagasaki","ja":"長崎"}, {"en":"New York","ja":"ニューヨーク"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What company did he help start?","ja":"助けた会社は？"},
+     "options": [{"en":"Toyota cars","ja":"トヨタの車"}, {"en":"Ships that became Mitsubishi","ja":"三菱のもとになる船会社"}, {"en":"Nintendo games","ja":"任天堂のゲーム"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What is still in Nagasaki?","ja":"長崎に今もあるものは？"},
+     "options": [{"en":"His old house","ja":"彼の家"}, {"en":"His bicycle","ja":"彼の自転車"}, {"en":"His hat","ja":"彼の帽子"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "brunton",
@@ -709,7 +1255,28 @@
     "en": "The \"Father of Japanese lighthouses\".",
     "ja": "「日本の灯台の父」。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Scottish engineer who spent about 8 years in Japan and built 26 lighthouses to keep ships safe — including one at Nagasaki!",
+    "ja": "スコットランドの技師。日本で約8年間、船を守る灯台を26基建てたよ。長崎にもあるよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"How many lighthouses?","ja":"灯台は何基？"},
+     "options": [{"en":"26","ja":"26基"}, {"en":"6","ja":"6基"}, {"en":"100","ja":"100基"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which lighthouse city is in Nagasaki?","ja":"長崎にある灯台は？"},
+     "options": [{"en":"Fuji","ja":"富士"}, {"en":"Tokyo","ja":"東京"}, {"en":"Iojima","ja":"伊王島"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Why build lighthouses?","ja":"なぜ建てた？"},
+     "options": [{"en":"To keep ships safe","ja":"船を守るため"}, {"en":"To catch fish","ja":"魚を取るため"}, {"en":"To make light bulbs","ja":"電球を作るため"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "bell",
@@ -733,7 +1300,28 @@
     "en": "Choose the next destination from 3 stations.",
     "ja": "次の目的地を3つから選べる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Edinburgh, he invented the telephone. His first phone call was: \"Mr Watson, come here!\"",
+    "ja": "エディンバラ生まれ。電話を発明したよ。最初の電話は「ワトソン君、来てくれ！」だったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Bell invent?","ja":"発明したものは？"},
+     "options": [{"en":"The telephone","ja":"電話"}, {"en":"The television","ja":"テレビ"}, {"en":"The radio","ja":"ラジオ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was Bell born?","ja":"どこ生まれ？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Edinburgh","ja":"エディンバラ"}, {"en":"Paris","ja":"パリ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What were his first phone words?","ja":"最初の電話の言葉は？"},
+     "options": [{"en":"Hello?","ja":"もしもし？"}, {"en":"Goodbye","ja":"さようなら"}, {"en":"Mr Watson, come here","ja":"ワトソン君、来てくれ"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "stevenson",
@@ -757,7 +1345,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "An Edinburgh writer who wrote the adventure story Treasure Island — pirates, parrots and buried gold!",
+    "ja": "エディンバラの作家。冒険小説『宝島』を書いたよ。海賊とオウムと埋められた金貨！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What book?","ja":"どの本？"},
+     "options": [{"en":"Treasure Island","ja":"宝島"}, {"en":"Harry Potter","ja":"ハリー・ポッター"}, {"en":"Peter Rabbit","ja":"ピーターラビット"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who hunts the treasure?","ja":"宝を狙うのは？"},
+     "options": [{"en":"Pirates","ja":"海賊"}, {"en":"Doctors","ja":"お医者さん"}, {"en":"Teachers","ja":"先生"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was Stevenson from?","ja":"どこ出身？"},
+     "options": [{"en":"Edinburgh","ja":"エディンバラ"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "fleming",
@@ -781,7 +1390,28 @@
     "en": "Shrink your Boggart (a Little Boggart leaves).",
     "ja": "ボガートを小さくする（小ボガートはいなくなる）。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Scottish scientist who discovered penicillin, a medicine made from mould. It saves millions of lives from infections.",
+    "ja": "スコットランドの科学者。カビから薬ペニシリンを発見したよ。感染症から何百万人も救っているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Penicillin is made from?","ja":"ペニシリンは何から？"},
+     "options": [{"en":"Rocks","ja":"石"}, {"en":"Mould","ja":"カビ"}, {"en":"Leaves","ja":"葉っぱ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What does penicillin fight?","ja":"何と戦う薬？"},
+     "options": [{"en":"Hunger","ja":"おなか"}, {"en":"Cold weather","ja":"寒さ"}, {"en":"Infections","ja":"感染症"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Fleming was a...?","ja":"フレミングは？"},
+     "options": [{"en":"Scottish scientist","ja":"スコットランドの科学者"}, {"en":"French chef","ja":"フランスのシェフ"}, {"en":"Italian singer","ja":"イタリアの歌手"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "baird",
@@ -809,7 +1439,28 @@
     "en": "Japan's TV pioneer Takayanagi Kenjirō worked at the same time.",
     "ja": "日本のテレビの父、高柳健次郎も同じころ研究していたよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Scottish inventor who showed the world's first working television in 1926.",
+    "ja": "スコットランドの発明家。1926年に世界初の動くテレビを見せたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Baird show?","ja":"見せたものは？"},
+     "options": [{"en":"A television","ja":"テレビ"}, {"en":"A computer","ja":"コンピュータ"}, {"en":"A phone","ja":"電話"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"When?","ja":"いつ？"},
+     "options": [{"en":"1890","ja":"1890年"}, {"en":"2001","ja":"2001年"}, {"en":"1926","ja":"1926年"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Baird was a...?","ja":"ベアードは？"},
+     "options": [{"en":"Spanish painter","ja":"スペインの画家"}, {"en":"Scottish inventor","ja":"スコットランドの発明家"}, {"en":"American pilot","ja":"アメリカのパイロット"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "murray",
@@ -833,7 +1484,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "From Scotland, he won Wimbledon twice and two Olympic tennis gold medals. The first British man to win Wimbledon in 77 years!",
+    "ja": "スコットランド出身。ウィンブルドン2回、オリンピック金メダル2個！77年ぶりのイギリス人ウィンブルドン王者だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"How many Wimbledons?","ja":"ウィンブルドン何回？"},
+     "options": [{"en":"Once","ja":"1回"}, {"en":"Twice","ja":"2回"}, {"en":"Never","ja":"0回"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Olympic golds?","ja":"オリンピック金メダルは？"},
+     "options": [{"en":"Two","ja":"2個"}, {"en":"Ten","ja":"10個"}, {"en":"None","ja":"0個"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Murray is from...?","ja":"どこ出身？"},
+     "options": [{"en":"Scotland","ja":"スコットランド"}, {"en":"France","ja":"フランス"}, {"en":"Spain","ja":"スペイン"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "dylan",
@@ -857,7 +1529,28 @@
     "en": "If you are last, +3 dice for 2 turns.",
     "ja": "最下位なら2ターン、サイコロ+3個。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A poet from Swansea who loved how words sound. He read his play for voices, Under Milk Wood, on the radio.",
+    "ja": "スワンジーの詩人。言葉の音が大好きだったよ。『ミルクの森で』をラジオで朗読したよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Dylan Thomas from?","ja":"どこ出身？"},
+     "options": [{"en":"Swansea","ja":"スワンジー"}, {"en":"Paris","ja":"パリ"}, {"en":"New York","ja":"ニューヨーク"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did he love?","ja":"何が大好き？"},
+     "options": [{"en":"The sound of words","ja":"言葉の音"}, {"en":"Loud cars","ja":"うるさい車"}, {"en":"Silent films","ja":"無声映画"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How did people hear Under Milk Wood?","ja":"どうやって聞いた？"},
+     "options": [{"en":"On the radio","ja":"ラジオで"}, {"en":"On TV","ja":"テレビで"}, {"en":"By letter","ja":"手紙で"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "dahl",
@@ -881,7 +1574,28 @@
     "en": "Your Food properties pay +50% this year.",
     "ja": "今年の食べ物の物件の利益+50%。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Cardiff, he wrote Matilda, Charlie and the Chocolate Factory and the BFG — funny, slightly naughty books children love.",
+    "ja": "カーディフ生まれ。『マチルダ』『チョコレート工場』『BFG』など、ちょっと意地悪で面白い本を書いたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Dahl born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Cardiff","ja":"カーディフ"}, {"en":"Paris","ja":"パリ"}, {"en":"Sydney","ja":"シドニー"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What is made in his factory?","ja":"工場で作るものは？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Shoes","ja":"靴"}, {"en":"Chocolate","ja":"チョコレート"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Who is the BFG?","ja":"BFGって？"},
+     "options": [{"en":"A big friendly giant","ja":"大きなやさしい巨人"}, {"en":"A robot","ja":"ロボット"}, {"en":"A pirate","ja":"海賊"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "campbell",
@@ -905,7 +1619,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Cardiff, she became Wales' first Black head teacher in 1973. She taught children to be proud of Black history — and has a statue in Cardiff!",
+    "ja": "カーディフ生まれ。1973年にウェールズ初の黒人校長になったよ。黒人の歴史に誇りを持つよう教えたよ。カーディフに銅像があるよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What was Campbell first?","ja":"何が初めて？"},
+     "options": [{"en":"First pilot","ja":"初のパイロット"}, {"en":"Wales' first Black head teacher","ja":"ウェールズ初の黒人校長"}, {"en":"First astronaut","ja":"初の宇宙飛行士"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did she teach?","ja":"何を教えた？"},
+     "options": [{"en":"Maths only","ja":"算数だけ"}, {"en":"Proud Black history","ja":"誇れる黒人の歴史"}, {"en":"Swimming","ja":"水泳"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where is her statue?","ja":"銅像はどこ？"},
+     "options": [{"en":"Paris","ja":"パリ"}, {"en":"Cardiff","ja":"カーディフ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "greythompson",
@@ -929,7 +1664,28 @@
     "en": "If you are last, +3 dice for 2 turns.",
     "ja": "最下位なら2ターン、サイコロ+3個。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Cardiff, she raced wheelchairs to armfuls of Paralympic gold medals. Now she helps make laws as a lord in Parliament!",
+    "ja": "カーディフ生まれ。車いすレースでパラリンピックの金メダルをたくさん取ったよ。今は国会議員として法律を作っているよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What sport?","ja":"スポーツは？"},
+     "options": [{"en":"Swimming","ja":"水泳"}, {"en":"Tennis","ja":"テニス"}, {"en":"Wheelchair racing","ja":"車いすレース"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Where was she born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Cardiff","ja":"カーディフ"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What does she do now?","ja":"今は何してる？"},
+     "options": [{"en":"Helps make laws","ja":"法律を作る"}, {"en":"Drives trains","ja":"列車を運転"}, {"en":"Bakes cakes","ja":"ケーキを焼く"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "kelvin",
@@ -957,7 +1713,28 @@
     "en": "Japanese scientists studied with him in Glasgow.",
     "ja": "日本の科学者もグラスゴーで彼に学んだよ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Belfast, he studied heat. Scientists measure super-cold temperatures in kelvin, named after him.",
+    "ja": "ベルファスト生まれ。熱を研究したよ。とても低い温度は彼にちなんでケルビンではかるよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What is named after Kelvin?","ja":"ケルビンの名前のものは？"},
+     "options": [{"en":"A temperature unit","ja":"温度の単位"}, {"en":"A planet","ja":"惑星"}, {"en":"A train","ja":"列車"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was Kelvin born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Dublin","ja":"ダブリン"}, {"en":"Belfast","ja":"ベルファスト"}, {"en":"Cardiff","ja":"カーディフ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did Kelvin study?","ja":"何を研究した？"},
+     "options": [{"en":"Sound","ja":"音"}, {"en":"Heat","ja":"熱"}, {"en":"Light","ja":"光"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "ferguson",
@@ -981,7 +1758,28 @@
     "en": "Your Food properties pay +50% this year.",
     "ja": "今年の食べ物の物件の利益+50%。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "From Northern Ireland, he invented the modern tractor. As a young man he also built and flew his own aeroplane — the first in Ireland!",
+    "ja": "北アイルランド出身。現代のトラクターを発明したよ。若いころ自分で飛行機を作って飛ばした、アイルランド初の快挙！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Ferguson invent?","ja":"発明したものは？"},
+     "options": [{"en":"The tractor","ja":"トラクター"}, {"en":"The car","ja":"車"}, {"en":"The bicycle","ja":"自転車"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"His flight was the first in...?","ja":"初飛行はどこで？"},
+     "options": [{"en":"France","ja":"フランス"}, {"en":"Ireland","ja":"アイルランド"}, {"en":"America","ja":"アメリカ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"When did he fly?","ja":"いつ飛んだ？"},
+     "options": [{"en":"2009","ja":"2009年"}, {"en":"1809","ja":"1809年"}, {"en":"1909","ja":"1909年"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "lewis",
@@ -1005,7 +1803,28 @@
     "en": "Jump to any station where you own property.",
     "ja": "物件を持っている駅へジャンプ。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Belfast, he wrote the Narnia books, where children step through a wardrobe into a land of talking lions.",
+    "ja": "ベルファスト生まれ。タンスの奥の国ナルニアの物語を書いたよ。しゃべるライオンが出てくるよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"How do children reach Narnia?","ja":"どうやって行く？"},
+     "options": [{"en":"Through a wardrobe","ja":"タンスを通って"}, {"en":"By rocket","ja":"ロケットで"}, {"en":"By submarine","ja":"潜水艦で"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who is the lion king?","ja":"ライオンの王は？"},
+     "options": [{"en":"Simba","ja":"シンバ"}, {"en":"Garfield","ja":"ガーフィールド"}, {"en":"Aslan","ja":"アスラン"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Where was Lewis born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Belfast","ja":"ベルファスト"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "beckham",
@@ -1033,7 +1852,28 @@
     "en": "He played at the 2002 World Cup in Japan.",
     "ja": "2002年の日韓ワールドカップで日本でもプレーしたよ。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A London boy who became a Manchester United and England star, famous for bending free kicks. He played at the 2002 World Cup in Japan!",
+    "ja": "ロンドンの少年。マンチェスター・ユナイテッドとイングランドのスター！カーブのかかったフリーキックで有名だよ。2002年の日韓ワールドカップにも出たよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Famous for...?","ja":"何で有名？"},
+     "options": [{"en":"Free kicks","ja":"フリーキック"}, {"en":"Cooking","ja":"料理"}, {"en":"Swimming","ja":"水泳"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which club?","ja":"どのクラブ？"},
+     "options": [{"en":"Manchester United","ja":"マンチェスター・ユナイテッド"}, {"en":"Paris FC","ja":"パリFC"}, {"en":"Tokyo FC","ja":"東京FC"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which World Cup in Japan?","ja":"日本のW杯は？"},
+     "options": [{"en":"2002","ja":"2002年"}, {"en":"1990","ja":"1990年"}, {"en":"2022","ja":"2022年"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "bellingham",
@@ -1045,8 +1885,8 @@
    "station": "birmingham",
    "emoji": "⚽",
    "line": {
-    "en": "A Birmingham boy who became a Real Madrid and England star.",
-    "ja": "バーミンガム生まれ。レアル・マドリードとイングランドのスター！"
+    "en": "He joined Birmingham City as a boy and became a Real Madrid and England star.",
+    "ja": "子どものころバーミンガム・シティに入り、レアル・マドリードとイングランドのスターに！"
    },
    "power": "sportBoost",
    "powerName": {
@@ -1057,7 +1897,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "He joined Birmingham City as a boy, starred in Germany, and became a star for Real Madrid and England!",
+    "ja": "子どものころバーミンガム・シティに入り、ドイツで活躍、レアル・マドリードとイングランドのスターに！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"First club?","ja":"最初のクラブは？"},
+     "options": [{"en":"Birmingham City","ja":"バーミンガム・シティ"}, {"en":"Paris FC","ja":"パリFC"}, {"en":"Tokyo FC","ja":"東京FC"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which German club?","ja":"ドイツのクラブは？"},
+     "options": [{"en":"Borussia Dortmund","ja":"ボルシア・ドルトムント"}, {"en":"Paris FC","ja":"パリFC"}, {"en":"Tokyo FC","ja":"東京FC"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which country?","ja":"どの国代表？"},
+     "options": [{"en":"France","ja":"フランス"}, {"en":"Spain","ja":"スペイン"}, {"en":"England","ja":"イングランド"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "kane",
@@ -1069,8 +1930,8 @@
    "station": "westminster",
    "emoji": "⚽",
    "line": {
-    "en": "England captain and record goal scorer. A goal machine!",
-    "ja": "イングランド代表のキャプテン。歴代最多ゴール！"
+    "en": "A London boy who became England's record goal scorer. A goal machine!",
+    "ja": "ロンドン生まれ。イングランド歴代最多ゴール！ゴールマシーン！"
    },
    "power": "sportBoost",
    "powerName": {
@@ -1081,7 +1942,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A London boy who became England's record goal scorer with 53 goals and more!",
+    "ja": "ロンドンの少年。イングランド代表歴代最多ゴール（53点以上）の記録保持者だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What record?","ja":"どんな記録？"},
+     "options": [{"en":"England's top scorer","ja":"イングランド歴代最多ゴール"}, {"en":"Fastest runner","ja":"最速ランナー"}, {"en":"Tallest player","ja":"最高身長の選手"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How many England goals?","ja":"代表何ゴール？"},
+     "options": [{"en":"5","ja":"5点"}, {"en":"53 and more","ja":"53点以上"}, {"en":"500","ja":"500点"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Whose record did he break?","ja":"だれの記録を抜いた？"},
+     "options": [{"en":"Rooney's","ja":"ルーニーの"}, {"en":"Pele's","ja":"ペレの"}, {"en":"Nobody's","ja":"だれのでもない"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "raducanu",
@@ -1105,7 +1987,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Toronto, she moved to London at 2. At 18 she won the US Open — the first qualifier ever to win a Grand Slam!",
+    "ja": "トロント生まれ。2歳でロンドンに移ったよ。18歳で全米オープン優勝！予選からの優勝は史上初だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Raducanu born?","ja":"どこ生まれ？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Toronto","ja":"トロント"}, {"en":"Paris","ja":"パリ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did she win at 18?","ja":"18歳で優勝したのは？"},
+     "options": [{"en":"The US Open","ja":"全米オープン"}, {"en":"A pie contest","ja":"パイ大会"}, {"en":"A spelling bee","ja":"スペル大会"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Why historic?","ja":"なぜ歴史的？"},
+     "options": [{"en":"First qualifier to win a Slam","ja":"予選からの優勝は史上初"}, {"en":"Shortest match","ja":"最短試合"}, {"en":"Most rain delays","ja":"最多の雨中断"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "itoje",
@@ -1129,7 +2032,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in London, he is England's rugby star — famous for stealing the ball at the lineout and giant tackles!",
+    "ja": "ロンドン生まれ。イングランドのラグビーのスター！ラインアウトの争奪と大きなタックルで有名だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What sport?","ja":"スポーツは？"},
+     "options": [{"en":"Football","ja":"サッカー"}, {"en":"Rugby","ja":"ラグビー"}, {"en":"Tennis","ja":"テニス"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Famous for...?","ja":"何で有名？"},
+     "options": [{"en":"Lineout steals","ja":"ラインアウトの争奪"}, {"en":"Cooking","ja":"料理"}, {"en":"Singing","ja":"歌"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which team?","ja":"どのチーム？"},
+     "options": [{"en":"England","ja":"イングランド"}, {"en":"France","ja":"フランス"}, {"en":"Japan","ja":"日本"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "hamilton",
@@ -1153,7 +2077,28 @@
     "en": "+2 dice this turn.",
     "ja": "このターン、サイコロ+2個。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Stevenage, he became a 7-time Formula 1 world champion — the first Black driver to win the title!",
+    "ja": "スティーブネッジ生まれ。F1で7回世界チャンピオン！初の黒人王者だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"How many F1 titles?","ja":"F1何回優勝？"},
+     "options": [{"en":"One","ja":"1回"}, {"en":"Seven","ja":"7回"}, {"en":"Seventy","ja":"70回"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where was Hamilton born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Stevenage","ja":"スティーブネッジ"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Historic first?","ja":"歴史的初は？"},
+     "options": [{"en":"First Black F1 champion","ja":"初の黒人王者"}, {"en":"First flying car","ja":"初の空飛ぶ車"}, {"en":"First robot driver","ja":"初のロボット運転手"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "deng",
@@ -1177,7 +2122,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Sudan, he grew up in London and became a two-time NBA All-Star. He played basketball for Britain too!",
+    "ja": "スーダン生まれ。ロンドンで育ち、2回NBAオールスターに！イギリス代表でもプレーしたよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Deng born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Sudan","ja":"スーダン"}, {"en":"France","ja":"フランス"}, {"en":"Canada","ja":"カナダ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where did he grow up?","ja":"どこで育った？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Paris","ja":"パリ"}, {"en":"Mars","ja":"火星"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How many All-Star games?","ja":"オールスター何回？"},
+     "options": [{"en":"Never","ja":"0回"}, {"en":"Twice","ja":"2回"}, {"en":"Fifty","ja":"50回"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "michel",
@@ -1201,7 +2167,28 @@
     "en": "Only in last place: draw a rare card.",
     "ja": "最下位のときだけ：レアカードを1枚ひく。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "She played volleyball for Team GB at London 2012, then became the first British player in Europe's top club competition!",
+    "ja": "ロンドン五輪でイギリス代表としてプレーし、ヨーロッパ最高峰のクラブ大会初のイギリス人選手になったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Which Olympics?","ja":"どの五輪？"},
+     "options": [{"en":"London 2012","ja":"ロンドン2012"}, {"en":"Paris 2024","ja":"パリ2024"}, {"en":"Tokyo 1964","ja":"東京1964"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Historic first?","ja":"歴史的初は？"},
+     "options": [{"en":"First Brit in top club volleyball","ja":"欧州最高峰初のイギリス人"}, {"en":"First person on the moon","ja":"初の月面着陸"}, {"en":"First flying car","ja":"初の空飛ぶ車"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which team?","ja":"どのチーム？"},
+     "options": [{"en":"Team GB","ja":"イギリス代表"}, {"en":"Team France","ja":"フランス代表"}, {"en":"Team Mars","ja":"火星代表"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "bello",
@@ -1213,8 +2200,8 @@
    "station": "bournemouth",
    "emoji": "🏐",
    "line": {
-    "en": "Born in Madrid, they moved to London at 11 and won medals for Britain!",
-    "ja": "マドリード生まれ。11歳でロンドンに移り、イギリスのためにメダルを取ったよ！"
+    "en": "Born in Madrid, they moved to London at 10 and won medals for Britain!",
+    "ja": "マドリード生まれ。10歳でロンドンに移り、イギリスのためにメダルを取ったよ！"
    },
    "power": "twinpower",
    "powerName": {
@@ -1225,7 +2212,28 @@
     "en": "+2 dice this turn, and your next quiz pays double.",
     "ja": "このターン、サイコロ+2個。次のクイズはヒント付きで2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Twin brothers! Born in Madrid, they moved to London at 10. Bronze at the Commonwealth Games, then gold in Rio beating the Olympic champions!",
+    "ja": "双子の兄弟！マドリード生まれ。10歳でロンドンに移ったよ。コモンウェルス大会で銅、リオでは五輪王者を倒して金メダル！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where were the twins born?","ja":"どこ生まれ？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Madrid","ja":"マドリード"}, {"en":"Paris","ja":"パリ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Moved to London at...?","ja":"何歳で移った？"},
+     "options": [{"en":"10","ja":"10歳"}, {"en":"30","ja":"30歳"}, {"en":"50","ja":"50歳"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who did they beat in Rio?","ja":"リオで倒した相手は？"},
+     "options": [{"en":"The Olympic champions","ja":"五輪王者"}, {"en":"A school team","ja":"学校チーム"}, {"en":"Nobody","ja":"だれも"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "doyle",
@@ -1253,7 +2261,28 @@
     "en": "The manga detective Conan is named after Conan Doyle!",
     "ja": "名探偵コナンの「コナン」はコナン・ドイルからもらった名前だよ！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A doctor from Edinburgh who created Sherlock Holmes, the detective who solves crimes by noticing tiny clues. The manga detective Conan is named after him!",
+    "ja": "エディンバラのお医者さん。小さな手がかりで事件を解く名探偵シャーロック・ホームズを生んだよ。漫画の名探偵コナンの名前の由来だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who did Doyle create?","ja":"生んだ探偵は？"},
+     "options": [{"en":"Hercule Poirot","ja":"エルキュール・ポアロ"}, {"en":"Sherlock Holmes","ja":"シャーロック・ホームズ"}, {"en":"Miss Marple","ja":"ミス・マープル"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"How does Holmes solve crimes?","ja":"どうやって解く？"},
+     "options": [{"en":"Tiny clues","ja":"小さな手がかり"}, {"en":"Magic","ja":"魔法"}, {"en":"Guessing","ja":"当てずっぽう"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which manga detective is named after him?","ja":"名前をもらった漫画探偵は？"},
+     "options": [{"en":"Doraemon","ja":"ドラえもん"}, {"en":"Pikachu","ja":"ピカチュウ"}, {"en":"Conan","ja":"コナン"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "faraday",
@@ -1277,7 +2306,28 @@
     "en": "+2 dice this turn.",
     "ja": "このターン、サイコロ+2個。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A London scientist. He showed that moving magnets make electricity — every power station uses his idea. He never went to university and taught himself!",
+    "ja": "ロンドンの科学者。動く磁石が電気を作ることを発見。発電所はみんなこの仕組み！大学には行かず独学だったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What makes electricity in his discovery?","ja":"発見の主役は？"},
+     "options": [{"en":"Telescopes","ja":"望遠鏡"}, {"en":"Moving magnets","ja":"動く磁石"}, {"en":"Microscopes","ja":"顕微鏡"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What uses his idea?","ja":"何がこの仕組み？"},
+     "options": [{"en":"Bakeries","ja":"パン屋"}, {"en":"Shoe shops","ja":"靴屋"}, {"en":"Power stations","ja":"発電所"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Did Faraday go to university?","ja":"大学に行った？"},
+     "options": [{"en":"Yes, Oxford","ja":"うん、オックスフォード"}, {"en":"No — he taught himself","ja":"いいえ、独学だった"}, {"en":"Yes, Cambridge","ja":"うん、ケンブリッジ"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "watt",
@@ -1301,7 +2351,28 @@
     "en": "+2 dice this turn.",
     "ja": "このターン、サイコロ+2個。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A Scottish inventor. With Matthew Boulton in Birmingham he made steam engines powerful enough for factories and trains. The watt is named after him!",
+    "ja": "スコットランドの発明家。バーミンガムのボールトンと組み、工場や列車を動かせる蒸気機関にしたよ。「ワット」は彼の名前！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who was his partner?","ja":"相方はだれ？"},
+     "options": [{"en":"Edison","ja":"エジソン"}, {"en":"Boulton","ja":"ボールトン"}, {"en":"Bell","ja":"ベル"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What is named after Watt?","ja":"ワットの名前のものは？"},
+     "options": [{"en":"The volt","ja":"ボルト"}, {"en":"The ohm","ja":"オーム"}, {"en":"The watt","ja":"ワット"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Where did they build engines?","ja":"どこで作った？"},
+     "options": [{"en":"Paris","ja":"パリ"}, {"en":"Birmingham","ja":"バーミンガム"}, {"en":"Madrid","ja":"マドリード"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "jenner",
@@ -1325,7 +2396,28 @@
     "en": "Shrink your Boggart (a Little Boggart leaves).",
     "ja": "ボガートを小さくする（小ボガートはいなくなる）。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A country doctor in Berkeley. Hearing that milkmaids who caught cowpox never got smallpox, he tested the idea in 1796 — the first vaccination!",
+    "ja": "バークレーの町医者。牛痘にかかった乳しぼり娘は天然痘にならないと聞き、1796年に試したよ。世界初のワクチン！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What gave Jenner the clue?","ja":"ヒントは何？"},
+     "options": [{"en":"Sick cows","ja":"病気の牛"}, {"en":"Milkmaids with cowpox","ja":"牛痘の乳しぼり娘"}, {"en":"Dirty water","ja":"汚い水"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"When did he test it?","ja":"いつ試した？"},
+     "options": [{"en":"1896","ja":"1896年"}, {"en":"1796","ja":"1796年"}, {"en":"1696","ja":"1696年"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did Jenner make?","ja":"作ったものは？"},
+     "options": [{"en":"The first car","ja":"最初の車"}, {"en":"The first phone","ja":"最初の電話"}, {"en":"The first vaccine","ja":"最初のワクチン"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "atkinson",
@@ -1349,7 +2441,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "He plays Mr Bean, the clumsy man-child with a teddy. But Rowan himself studied electrical engineering at Oxford University — a real-life genius!",
+    "ja": "テディを持つドジなミスター・ビーンの中の人。でも本人はオックスフォード大学で電気工学を学んだ秀才だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Atkinson study?","ja":"何を学んだ？"},
+     "options": [{"en":"Cooking","ja":"料理"}, {"en":"Electrical engineering","ja":"電気工学"}, {"en":"Football","ja":"サッカー"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where?","ja":"どこで？"},
+     "options": [{"en":"Oxford","ja":"オックスフォード"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who does he play?","ja":"演じる役は？"},
+     "options": [{"en":"Mr Bean","ja":"ミスター・ビーン"}, {"en":"Superman","ja":"スーパーマン"}, {"en":"Sherlock","ja":"シャーロック"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "chaplin",
@@ -1373,7 +2486,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A London boy who became the world's first film star without saying a word! As the Tramp he made everyone laugh, and his Great Dictator speech asked for peace.",
+    "ja": "ロンドンの少年。言葉なしで世界初の映画スターになったよ！放浪者チャーリーでみんなを笑わせ、『独裁者』の演説では平和をうったえたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Did Chaplin's films have sound?","ja":"音はあった？"},
+     "options": [{"en":"Silent films","ja":"無声映画"}, {"en":"Musicals","ja":"ミュージカル"}, {"en":"Radio plays","ja":"ラジオ劇"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"His famous character?","ja":"有名な役は？"},
+     "options": [{"en":"Superman","ja":"スーパーマン"}, {"en":"Batman","ja":"バットマン"}, {"en":"The Tramp","ja":"放浪者"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"What did his Dictator speech ask for?","ja":"演説で求めたものは？"},
+     "options": [{"en":"Peace","ja":"平和"}, {"en":"Cooking","ja":"料理"}, {"en":"Football","ja":"サッカー"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "rashford",
@@ -1397,7 +2531,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Manchester, he is an England star. When schools closed, he campaigned so hungry children still got dinners — and the government listened!",
+    "ja": "マンチェスター生まれ。イングランド代表のスター！学校が閉まっても、おなかのすいた子に給食が届くよう運動し、政府を動かしたよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Rashford born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Manchester","ja":"マンチェスター"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did he campaign for?","ja":"何の運動？"},
+     "options": [{"en":"School dinners","ja":"学校の給食"}, {"en":"Faster cars","ja":"速い車"}, {"en":"Bigger stadiums","ja":"大きな球場"}],
+     "answer": 0
+     },
+     {
+      "q": {"en":"Which national team?","ja":"どの国代表？"},
+      "options": [{"en":"England","ja":"イングランド"}, {"en":"France","ja":"フランス"}, {"en":"Japan","ja":"日本"}],
+      "answer": 0
+     }
+   ]
   },
   {
    "id": "bond",
@@ -1421,7 +2576,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "He created Paddington Bear, who arrives from far away with a tag saying \"Please look after this bear\" — and loves marmalade sandwiches!",
+    "ja": "遠い国から「このクマをよろしく」という札を下げて来たパディントンの生みの親！マーマレードサンドが大好きだよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What is his bear called?","ja":"クマの名前は？"},
+     "options": [{"en":"Winnie-the-Pooh","ja":"くまのプーさん"}, {"en":"Ted","ja":"テッド"}, {"en":"Paddington","ja":"パディントン"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"What does Paddington love?","ja":"大好物は？"},
+     "options": [{"en":"Pizza","ja":"ピザ"}, {"en":"Marmalade sandwiches","ja":"マーマレードサンド"}, {"en":"Sushi","ja":"おすし"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where was Paddington found?","ja":"どこで見つかった？"},
+     "options": [{"en":"Paddington station","ja":"パディントン駅"}, {"en":"An airport","ja":"空港"}, {"en":"A school","ja":"学校"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "farah",
@@ -1445,7 +2621,28 @@
     "en": "If you are last, +3 dice for 2 turns.",
     "ja": "最下位なら2ターン、サイコロ+3個。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Somalia, he moved to London at 8. He became Olympic champion over 5000m AND 10000m — at two Olympics in a row!",
+    "ja": "ソマリア生まれ。8歳でロンドンに移ったよ。5000mと10000mの2種目で、2大会連続オリンピック王者になったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Which distances?","ja":"どの種目？"},
+     "options": [{"en":"100m only","ja":"100mだけ"}, {"en":"5000m and 10000m","ja":"5000mと10000m"}, {"en":"Marathon only","ja":"マラソンだけ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Moved to London at...?","ja":"何歳で移った？"},
+     "options": [{"en":"8","ja":"8歳"}, {"en":"28","ja":"28歳"}, {"en":"80","ja":"80歳"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How many Olympics champion?","ja":"何大会連続王者？"},
+     "options": [{"en":"One","ja":"1大会"}, {"en":"Two in a row","ja":"2大会連続"}, {"en":"Ten","ja":"10大会"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "watson",
@@ -1473,7 +2670,28 @@
     "en": "She speaks for girls' education at the United Nations.",
     "ja": "国連で女の子の教育を応援しているよ。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Paris, she moved to England as a girl and played Hermione, the clever witch. She speaks at the United Nations for girls' schools.",
+    "ja": "パリ生まれ。子どものころイングランドに移り、かしこい魔女ハーマイオニーを演じたよ。国連で女の子の学校を応援しているよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who did Watson play?","ja":"演じた役は？"},
+     "options": [{"en":"Cinderella","ja":"シンデレラ"}, {"en":"Hermione","ja":"ハーマイオニー"}, {"en":"Matilda","ja":"マチルダ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Where was Watson born?","ja":"どこ生まれ？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What does she support at the UN?","ja":"国連で応援するものは？"},
+     "options": [{"en":"Race cars","ja":"レース"}, {"en":"Pizza","ja":"ピザ"}, {"en":"Schools for girls","ja":"女の子の学校"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "malala",
@@ -1497,7 +2715,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Pakistan, she moved to England and fights so every girl can go to school. She won the Nobel Peace Prize as a teenager!",
+    "ja": "パキスタン生まれ。イギリスに移り、女の子みんなが学校に行けるよう戦っているよ。10代でノーベル平和賞を取ったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What does Malala fight for?","ja":"何のために戦う？"},
+     "options": [{"en":"Race cars","ja":"レース"}, {"en":"Pizza","ja":"ピザ"}, {"en":"Schools for girls","ja":"女の子の学校"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Which prize?","ja":"どの賞？"},
+     "options": [{"en":"Nobel Peace Prize","ja":"ノーベル平和賞"}, {"en":"Best singer","ja":"最優秀歌手賞"}, {"en":"Fastest runner","ja":"最速ランナー賞"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where did Malala move to?","ja":"どこへ移った？"},
+     "options": [{"en":"England","ja":"イングランド"}, {"en":"Mars","ja":"火星"}, {"en":"The moon","ja":"月"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "turner",
@@ -1521,7 +2760,28 @@
     "en": "Your Culture properties pay double this year.",
     "ja": "今年の文化の物件の利益2倍。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "A London painter who painted light and storms like nobody before. The gallery in Margate carries his name.",
+    "ja": "ロンドンの画家。光と嵐をだれよりも美しく描いたよ。マーゲートの美術館は彼の名前だよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"What did Turner paint?","ja":"何を描いた？"},
+     "options": [{"en":"Cars","ja":"車"}, {"en":"Light and storms","ja":"光と嵐"}, {"en":"Food","ja":"食べ物"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Which town has his gallery?","ja":"美術館のある町は？"},
+     "options": [{"en":"Margate","ja":"マーゲート"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Turner was a...?","ja":"ターナーは？"},
+     "options": [{"en":"Painter","ja":"画家"}, {"en":"Pilot","ja":"パイロット"}, {"en":"Chef","ja":"シェフ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "banksy",
@@ -1545,7 +2805,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A mystery street artist from the Bristol scene. Nobody knows his real name! One of his paintings shredded itself right after being sold.",
+    "ja": "ブリストル出身のなぞの落書きアーティスト。本名はだれも知らない！売れた直後に細断された絵が有名だよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where did Banksy start?","ja":"どこで始めた？"},
+     "options": [{"en":"Bristol","ja":"ブリストル"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Do we know his real name?","ja":"本名は？"},
+     "options": [{"en":"Yes, Bob","ja":"うん、ボブ"}, {"en":"Nobody knows!","ja":"だれも知らない！"}, {"en":"Yes, Jim","ja":"うん、ジム"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What happened to one painting?","ja":"ある絵はどうなった？"},
+     "options": [{"en":"It was stolen","ja":"盗まれた"}, {"en":"It burned","ja":"燃えた"}, {"en":"It shredded itself after sale","ja":"売れた直後に細断された"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "wilberforce",
@@ -1569,7 +2850,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Hull, he fought for many years in Parliament until Britain ended the slave trade. Freedom for all!",
+    "ja": "ハル生まれ。国会で何年も戦い、イギリスは奴隷貿易をやめたよ。みんなに自由を！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Wilberforce born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Hull","ja":"ハル"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What did he fight?","ja":"何と戦った？"},
+     "options": [{"en":"The slave trade","ja":"奴隷貿易"}, {"en":"Homework","ja":"宿題"}, {"en":"Rain","ja":"雨"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"How long did he fight?","ja":"どれくらい戦った？"},
+     "options": [{"en":"One day","ja":"1日"}, {"en":"One week","ja":"1週間"}, {"en":"Many years","ja":"何年も"}],
+     "answer": 2
+    }
+   ]
   },
   {
    "id": "fry",
@@ -1593,7 +2895,28 @@
     "en": "Give £200 × year to last place; get double back in March.",
     "ja": "最下位の人に£200×年をあげて、3月に2倍もどってくる。"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Norwich, she visited prisons and was shocked. She made them kinder and gave prisoners second chances — schools and work!",
+    "ja": "ノリッジ生まれ。刑務所を見てショックを受け、やさしく変えたよ。学校や仕事でやりなおしのチャンスをあげたよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Fry born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Norwich","ja":"ノリッジ"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Who did Fry help?","ja":"だれを助けた？"},
+     "options": [{"en":"Kings","ja":"王様"}, {"en":"Prisoners","ja":"囚人"}, {"en":"Pirates","ja":"海賊"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What did she give them?","ja":"何をあげた？"},
+     "options": [{"en":"Second chances","ja":"やりなおしのチャンス"}, {"en":"Faster cars","ja":"速い車"}, {"en":"Bigger hats","ja":"大きな帽子"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "lennon",
@@ -1617,7 +2940,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": false
+   "living": false,
+   "bio": {
+    "en": "Born in Liverpool, he sang with the Beatles, then wrote Imagine, a song dreaming of a peaceful world.",
+    "ja": "リバプール生まれ。ビートルズで歌い、『イマジン』で平和な世界を夢見て歌ったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Which band?","ja":"どのバンド？"},
+     "options": [{"en":"Queen","ja":"クイーン"}, {"en":"The Beatles","ja":"ビートルズ"}, {"en":"ABBA","ja":"アバ"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Which song dreams of peace?","ja":"平和を歌った曲は？"},
+     "options": [{"en":"Yesterday","ja":"イエスタデイ"}, {"en":"Let It Be","ja":"レット・イット・ビー"}, {"en":"Imagine","ja":"イマジン"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Where was Lennon born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Liverpool","ja":"リバプール"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "ishiguro",
@@ -1645,7 +2989,28 @@
     "en": "Born in Nagasaki! Books like The Remains of the Day and Never Let Me Go are read worldwide. A Nagasaki kid can move the world with stories.",
     "ja": "長崎生まれ！『日の名残り』『わたしを離さないで』は世界中で読まれているよ。長崎の子も物語で世界を動かせる証拠だよ！"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Nagasaki, he moved to England at 5. His quiet, beautiful novels like The Remains of the Day won the Nobel Prize in Literature.",
+    "ja": "長崎生まれ。5歳でイギリスへ移ったよ。『日の名残り』などの静かで美しい小説でノーベル文学賞を取ったよ。"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Ishiguro born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Tokyo","ja":"東京"}, {"en":"Nagasaki","ja":"長崎"}, {"en":"Osaka","ja":"大阪"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"What prize did he win?","ja":"取った賞は？"},
+     "options": [{"en":"Nobel Prize in Literature","ja":"ノーベル文学賞"}, {"en":"Nobel Peace Prize","ja":"ノーベル平和賞"}, {"en":"Nobel Prize in Physics","ja":"ノーベル物理学賞"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Famous book?","ja":"有名な本は？"},
+     "options": [{"en":"Harry Potter","ja":"ハリー・ポッター"}, {"en":"The Remains of the Day","ja":"日の名残り"}, {"en":"Treasure Island","ja":"宝島"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "rooney",
@@ -1669,7 +3034,28 @@
     "en": "Your Sport properties pay double this year.",
     "ja": "今年のスポーツの物件の利益が2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A Liverpool boy who became Manchester United and England's goal machine — 53 England goals, a record until Kane broke it!",
+    "ja": "リバプールの少年。マンチェスター・ユナイテッドとイングランドのゴールマシーン！代表53ゴールはケインに抜かれるまでの記録だったよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where was Rooney born?","ja":"どこ生まれ？"},
+     "options": [{"en":"Liverpool","ja":"リバプール"}, {"en":"Paris","ja":"パリ"}, {"en":"Tokyo","ja":"東京"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Which club?","ja":"どのクラブ？"},
+     "options": [{"en":"Manchester United","ja":"マンチェスター・ユナイテッド"}, {"en":"Paris FC","ja":"パリFC"}, {"en":"Tokyo FC","ja":"東京FC"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"England goals?","ja":"代表ゴール数は？"},
+     "options": [{"en":"5","ja":"5点"}, {"en":"53","ja":"53点"}, {"en":"530","ja":"530点"}],
+     "answer": 1
+    }
+   ]
   },
   {
    "id": "cumberbatch",
@@ -1693,7 +3079,28 @@
     "en": "Your next 3 quizzes show a hint and pay double.",
     "ja": "次の3回のクイズはヒント付きでごほうび2倍。"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "A London actor who played Sherlock Holmes on TV — the detective created by Edinburgh's own Conan Doyle!",
+    "ja": "ロンドンの俳優。ドラマでシャーロック・ホームズを演じたよ。原作者コナン・ドイルもエディンバラの人だよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Who did he play?","ja":"演じた役は？"},
+     "options": [{"en":"Harry Potter","ja":"ハリー・ポッター"}, {"en":"Sherlock Holmes","ja":"シャーロック・ホームズ"}, {"en":"James Bond","ja":"ジェームズ・ボンド"}],
+     "answer": 1
+    },
+    {
+     "q": {"en":"Who created Sherlock?","ja":"原作者は？"},
+     "options": [{"en":"Conan Doyle","ja":"コナン・ドイル"}, {"en":"Shakespeare","ja":"シェイクスピア"}, {"en":"Dickens","ja":"ディケンズ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"Where was Cumberbatch born?","ja":"どこ生まれ？"},
+     "options": [{"en":"London","ja":"ロンドン"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    }
+   ]
   },
   {
    "id": "sheeran",
@@ -1717,7 +3124,28 @@
     "en": "Every player gains £300 × year. Friendship!",
     "ja": "みんな+£300×年。友情！"
    },
-   "living": true
+   "living": true,
+   "bio": {
+    "en": "Born in Yorkshire and raised in Suffolk, he sings songs the whole world sings — like Shape of You — with just a guitar.",
+    "ja": "ヨークシャー生まれ、サフォーク育ち。「シェイプ・オブ・ユー」など世界中が歌う歌を、ギター1本で歌うよ！"
+   },
+   "quiz": [
+    {
+     "q": {"en":"Where did Sheeran grow up?","ja":"どこで育った？"},
+     "options": [{"en":"Suffolk","ja":"サフォーク"}, {"en":"Paris","ja":"パリ"}, {"en":"Rome","ja":"ローマ"}],
+     "answer": 0
+    },
+    {
+     "q": {"en":"What does he play?","ja":"弾く楽器は？"},
+     "options": [{"en":"Drums","ja":"ドラム"}, {"en":"Piano","ja":"ピアノ"}, {"en":"Guitar","ja":"ギター"}],
+     "answer": 2
+    },
+    {
+     "q": {"en":"Famous song?","ja":"有名な曲は？"},
+     "options": [{"en":"Shape of You","ja":"シェイプ・オブ・ユー"}, {"en":"Let It Be","ja":"レット・イット・ビー"}, {"en":"Bohemian Rhapsody","ja":"ボヘミアン・ラプソディ"}],
+     "answer": 0
+    }
+   ]
   }
  ]
 }

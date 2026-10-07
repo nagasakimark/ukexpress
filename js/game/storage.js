@@ -23,7 +23,7 @@ export const teacher = loadJSON(TEACHER_KEY, {
 });
 export function saveTeacher() { saveJSON(TEACHER_KEY, teacher); }
 export const BOOK_KEY = 'britainExpressBook';
-export const book = loadJSON(BOOK_KEY, { stations: [], heroes: [], cards: [], events: [], games: 0 });
+export const book = loadJSON(BOOK_KEY, { stations: [], heroes: [], cards: [], events: [], games: 0, heroQuiz: {} });
 export function saveBook() { saveJSON(BOOK_KEY, book); }
 export function collect(kind, id) {
     if (!book[kind].includes(id)) {

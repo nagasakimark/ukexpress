@@ -2,7 +2,7 @@ import { STATION_BY_ID, STATIONS } from './content/stations.js';
 import { CARD_BY_ID, TRAINS } from './content/game-data.js';
 import { HERO_BY_ID } from './content/heroes.js';
 import { board, distancesTo, stationDist } from './map.js';
-import { rnd, rchance, rpick, priceOf, assets, lastPlace, leader, distToDest, diceCount, ownedProps, monopolyOwner } from './rules.js';
+import { rnd, rchance, rpick, priceOf, assets, lastPlace, leader, distToDest, diceCount, ownedProps, monopolyOwner, payoutYear } from './rules.js';
 const ACC = { gentle: 0.5, normal: 0.7, clever: 0.85 };
 const CARD_USE = { gentle: 0.45, normal: 0.8, clever: 1 };
 function me(g, id) { return g.players.find((p) => p.id === id); }
@@ -66,7 +66,7 @@ function cpuCommand(g, p) {
             return { type: 'hero', id };
         if (pw === 'allGain' && g.month === 9)
             return { type: 'hero', id };
-        if (pw === 'kindness' && lastPlace(g).id !== p.id && p.cash > 1500 * g.year)
+        if (pw === 'kindness' && lastPlace(g).id !== p.id && p.cash > 1500 * payoutYear(g))
             return { type: 'hero', id };
         if (pw === 'warpOwned') {
             const owned = [...new Set(ownedProps(g, p).map((x) => x.stationId))];
@@ -134,7 +134,7 @@ function cpuJunction(g, p, options) {
 function cpuShop(g, p, stationId) {
     const st = STATION_BY_ID[stationId];
     const reserveBase = p.style === 'collector' ? 60 : p.style === 'speedy' ? 250 : 150;
-    const reserve = reserveBase * g.year;
+    const reserve = reserveBase * payoutYear(g);
     let cash = p.cash;
     let train = null;
     // Train upgrade at train shops
@@ -175,7 +175,7 @@ function cpuCardShop(g, p, stock) {
         if (out.length >= Math.min(2, room))
             break;
         const price = CARD_BY_ID[c].price;
-        if (cash - price > 800 * g.year) {
+        if (cash - price > 800 * payoutYear(g)) {
             out.push(c);
             cash -= price;
         }

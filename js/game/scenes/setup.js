@@ -4,11 +4,12 @@ import { audio } from '../../engine/audio.js';
 import { AVATARS } from '../../core/content/game-data.js';
 import { lang, lines, t2, main } from '../i18n.js';
 import { renderWorld } from '../mapart.js';
+/** Avatar button x: classic spacing for 8, tighter when the roster grows. */
+const avX = (i) => AVATARS.length > 8 ? 640 - ((AVATARS.length - 1) * 132 + 130) / 2 + i * 132 : 70 + i * 145;
 export class SetupScene {
     constructor(onStart, onBack) {
         this.onStart = onStart;
         this.onBack = onBack;
-        /** the avatar each human player picked; tab = which player is being edited */
         this.avs = [0, 1, 2, 3];
         this.tab = 0;
         this.humans = 1;
@@ -29,7 +30,7 @@ export class SetupScene {
         const used = [];
         for (let i = 0; i < this.humans; i++) {
             if (used.includes(this.avs[i]))
-                this.avs[i] = [0, 1, 2, 3, 4, 5, 6, 7].find((a) => !used.includes(a) && !this.avs.slice(0, this.humans).includes(a)) ?? this.avs[i];
+                this.avs[i] = AVATARS.map((_, a) => a).find((a) => !used.includes(a) && !this.avs.slice(0, this.humans).includes(a)) ?? this.avs[i];
             used.push(this.avs[i]);
         }
     }
@@ -43,7 +44,7 @@ export class SetupScene {
             for (let i = 0; i < this.humans; i++)
                 add('tabs', new Button({ x: 640 - (this.humans * 160) / 2 + i * 160, y: 58, w: 150, h: 40, label: lines(t2(`Player ${i + 1}`, `プレイヤー${i + 1}`)).main, size: 19, color: this.tab === i ? C.players[i] : '#5f7d6a', onClick: () => { this.tab = i; this.build(); } }));
         }
-        AVATARS.forEach((a, i) => add('avatar', new Button({ x: 70 + i * 145, y: 106, w: 130, h: 112, label: '', enabled: !takenByOther(i), color: this.avs[this.tab] === i ? '#e6a817' : '#5f7d6a', onClick: () => { this.avs[this.tab] = i; this.build(); } })));
+        AVATARS.forEach((a, i) => add('avatar', new Button({ x: avX(i), y: 106, w: 130, h: 112, label: '', enabled: !takenByOther(i), color: this.avs[this.tab] === i ? '#e6a817' : '#5f7d6a', onClick: () => { this.avs[this.tab] = i; this.build(); } })));
         const row = (group, y, opts, x0 = 360, w = 230) => opts.forEach((o, i) => add(group, new Button({ x: x0 + i * (w + 20), y, w, h: 56, label: lines(o.label).main, sub: lines(o.label).sub ?? undefined, size: 21, enabled: o.enabled ?? true, color: o.on ? '#d7263d' : '#5f7d6a', onClick: () => { o.fn(); this.build(); } })));
         row('humans', 276, [1, 2, 3, 4].map((n) => ({ label: t2(`${n} player${n > 1 ? 's' : ''}`, `${n}人`), on: this.humans === n, fn: () => (this.humans = n) })), 360, 170);
         row('rivals', 342, [0, 1, 2, 3].map((n) => ({ label: t2(`${n} CPU`, `CPU ${n}人`), on: this.rivals === n, enabled: this.humans + n <= 4 && this.humans + n >= 2, fn: () => (this.rivals = n) })), 360, 170);
@@ -96,7 +97,7 @@ export class SetupScene {
         const kbd = !!window.__kbd;
         this.buttons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));
         AVATARS.forEach((a, i) => {
-            const x = 70 + i * 145 + 65;
+            const x = avX(i) + 65;
             emoji(ctx, a.emoji, x, 150, 54);
             text(ctx, main(a.name), x, 200, { size: 18, color: '#fff', align: 'center', outline: 4, outlineColor: '#123d27' });
         });
@@ -104,7 +105,7 @@ export class SetupScene {
             const ai = this.avs[i];
             if (i === this.tab && this.humans > 1)
                 continue;
-            const x = 70 + ai * 145 + 120, y = 112;
+            const x = avX(ai) + 120, y = 112;
             ctx.fillStyle = '#1b1b1b';
             ctx.beginPath();
             ctx.arc(x, y, 14, 0, 7);

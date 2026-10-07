@@ -10,7 +10,7 @@ import { app } from './app.js';
 import { CARD_BY_ID, TRAINS, REGIONS, AVATARS, STYLES, SEASONS } from '../core/content/game-data.js';
 import { STATION_BY_ID, STATIONS } from '../core/content/stations.js';
 import { HERO_BY_ID } from '../core/content/heroes.js';
-import { priceOf, assets, monopolyOwner } from '../core/rules.js';
+import { priceOf, assets, monopolyOwner, payoutYear } from '../core/rules.js';
 import { realMonth, daysInMonth, firstWeekday, eventDate, dateText, MONTH_NAMES, WEEKDAYS } from '../core/calendar.js';
 import { drawPortrait } from './mapart.js';
 import { drawPic, drawPicWhole, drawPhotoCircle, PhotoBrowser } from './images.js';
@@ -486,7 +486,7 @@ export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false, year
         cy += sm.size * 1.25;
     }
     const room = y + h - 10 - cy;
-    const desc = year > 0 ? payoutT(c.desc, year) : c.desc;
+    const desc = year > 0 ? payoutT(c.desc, Math.min(year, 5)) : c.desc;
     const dm = fitWrap(ctx, lines(desc).main, iw, Math.max(1, Math.floor(room / 14)), 14, 10, 500);
     cy += Math.max(0, (room - dm.lines.length * dm.size * 1.2) / 2);
     for (const s of dm.lines) {
@@ -634,8 +634,8 @@ export class HandModal extends PModal {
         });
         const it = this.items[this.sel];
         if (it) {
-            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, this.g.year) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
-            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Keep this card: it works by itself.', '持っているだけで効果があるよ。')
+            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, payoutYear(this.g)) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
+            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Hold this card: it protects you by itself, once.', '持っているだけで1回守ってくれるよ。')
                 : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月に復活するよ。')
                     : (it.id === 'rowan' || it.id === 'tea') && !it.usable ? t2('Use this when the Boggart is on your train.', 'ボガートがついているときに使おう。') : null;
             const top = L[L.length - 1].y + L[L.length - 1].h + 18;

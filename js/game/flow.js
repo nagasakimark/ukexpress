@@ -4,7 +4,7 @@ import { CARD_BY_ID, REGIONS, SHOP_STOCK, TRAINS, AVATARS } from '../core/conten
 import { CUSTOM_QUIZ } from '../core/content/stations.js';
 import { eventDate, dateText, realMonth } from '../core/calendar.js';
 import { HEROES, HERO_BY_ID, HEROES_AT, SENSEI } from '../core/content/heroes.js';
-import { addCash, assets, arrivalPrize, arrivalRanking, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, snapshot, } from '../core/rules.js';
+import { addCash, assets, arrivalPrize, arrivalRanking, blueAmount, redAmount, boggartAct, boggartMonth, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, payoutYear, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, pickBoggartHolder, snapshot, } from '../core/rules.js';
 import { C, money } from '../engine/draw.js';
 import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
@@ -54,22 +54,7 @@ export class Director {
     /** Names a CPU watcher by name ("Pip skips…"), keeps "you" for a human's own turn. */
     voice(p, human, cpu) { return this.isHuman(p) ? human : cpu; }
     /** This year's actual payout ("£100 × year" in the content files confuses the class). */
-    payout(t) { return payoutT(t, this.g.year); }
-    /** The humans, in turn order starting after the given player (or with the given player first). */
-    humansFrom(first, includeFirst = true) {
-        const hs = this.g.players.filter((q) => this.isHuman(q));
-        if (!first)
-            return hs;
-        const all = this.g.players;
-        const start = all.findIndex((q) => q.id === first.id);
-        const order = [];
-        for (let i = 0; i < all.length; i++) {
-            const q = all[(start + (includeFirst ? 0 : 1) + i) % all.length];
-            if (this.isHuman(q))
-                order.push(q);
-        }
-        return order;
-    }
+    payout(t) { return payoutT(t, payoutYear(this.g)); }
     get multi() { return this.g.players.filter((q) => q.controller === 'human').length > 1 && !app.autoplay; }
     setSpeed(_p) {
         if (app.autoplay) {
@@ -99,7 +84,7 @@ export class Director {
                 await this.monthStart();
             }
             while (g.turn < g.players.length && !this.stopped) {
-                await this.playTurn(g.players[g.turn]);
+                await this.playTurn(g.players[((g.firstPlayer ?? 0) + g.turn) % g.players.length]);
                 g.turn++;
             }
             if (this.stopped)
@@ -158,6 +143,10 @@ export class Director {
     async monthStart() {
         const g = this.g;
         this.setSpeed(null);
+        if (!(g.year === 1 && g.month === 0)) {
+            const first = g.players[(g.firstPlayer ?? 0) % g.players.length];
+            await banner(t2(`${first.name.en} goes first this month! (Order rotates.)`, `${first.name.ja}が今月はじめ！（順番は毎月変わるよ）`), C.players[first.color], '🔄', 1600);
+        }
         const pick = pickMonthEvent(g);
         if (pick)
             await app.show(new CalendarModal(g, pick.ev));
@@ -181,7 +170,7 @@ export class Director {
     /** The month's event: a factfile with a picture, a simple quiz for each player in turn, then the effect or mini-game. */
     async eventDay(ev, extra) {
         const g = this.g;
-        const Y = g.year;
+        const Y = payoutYear(g);
         const { m } = realMonth(g.year, g.month);
         const d = eventDate(ev, g.year);
         const inMonth = !!d && d.getMonth() === m;
@@ -209,7 +198,9 @@ export class Director {
                 pic: this.pic('events', extra.image, extra.emoji, extra.title.en, '#b5651d'), button: t2('Quiz time!', 'クイズ！'), buttonColor: '#8e5cc4',
             }));
         }
-        await this.groupQuiz([ev.quiz], 100 * Y, ev.title, null, (g.year * 12 + g.month) % Math.max(1, this.humansFrom(null).length));
+        // Monthly quiz: whoever moves first this month answers (humans play, CPU answers its own).
+        const first = g.players[((g.firstPlayer ?? 0)) % g.players.length];
+        await this.askQuiz(first, ev.quiz, 100 * Y, t2(`Quiz for ${first.name.en}!`, `${first.name.ja}へのクイズ！`));
         if (false && ev.minigame && MINIGAMES[ev.minigame]) { // mini-games are switched off for now
             await say({ title: ev.title, icon: ev.emoji, body: [this.payout(ev.effect)], color: '#b5651d' });
             await this.miniGame(ev.minigame, ev.title);
@@ -220,7 +211,7 @@ export class Director {
     }
     async applyFx(f) {
         const g = this.g;
-        const Y = g.year;
+        const Y = payoutYear(g);
         const regionOf = (p) => board.nodes[p.pos].region;
         switch (f.t) {
             case 'all':
@@ -286,19 +277,6 @@ export class Director {
             }
         }
     }
-    /** Players take turns answering: each human gets a question in turn order. One player alone gets two questions. */
-    async groupQuiz(qs, reward, title, first = null, offset = 0) {
-        const hs = this.humansFrom(first, true);
-        if (!hs.length || !qs.length)
-            return;
-        const asked = hs.length === 1 ? Math.min(2, qs.length) : Math.min(qs.length, hs.length);
-        for (let i = 0; i < asked; i++) {
-            const p = hs[(i + offset) % hs.length];
-            const q = qs[i];
-            const t = this.multi ? t2(`${p.name.en}'s turn: ${title.en}`, `${p.name.ja}の番：${title.ja}`) : t2(`Quiz: ${title.en}`, `クイズ：${title.ja}`);
-            await this.askQuiz(p, q, reward, t);
-        }
-    }
     /** Simple questions about a place: the station quiz, plus "which team?" and "what is it famous for?" made from its factfile. */
     placeQuestions(st) {
         const g = this.g;
@@ -331,7 +309,7 @@ export class Director {
     /** Everyone takes part: the human plays, CPU rivals get a score for their level. Prizes by rank. */
     async miniGame(id, title) {
         const g = this.g;
-        const Y = g.year;
+        const Y = payoutYear(g);
         if (!teacher.minigames) {
             const w = rpick(g, g.players);
             addCash(g, w, 300 * Y, 'prize');
@@ -378,7 +356,7 @@ export class Director {
                 if (giveCard(last, c))
                     await this.tell(null, { title: t2("Mr Whistle's gift", 'ホイッスルさんのプレゼント'), icon: '🎁', body: [t2(`${last.name.en} is in last place, so Mr Whistle gives a ${CARD_BY_ID[c].name.en} card. Keep going!`, `最下位の${last.name.ja}に「${CARD_BY_ID[c].name.ja}」カードをプレゼント。がんばれ！`)] });
                 else {
-                    addCash(g, last, 500 * g.year, 'prize');
+                    addCash(g, last, 500 * payoutYear(g), 'prize');
                 }
             }
             newYearReset(g);
@@ -394,6 +372,8 @@ export class Director {
             await banner(t2(`Year ${g.year} begins!`, `${g.year}年目スタート！`), C.brass, '🎉', 1500);
         }
         g.month = (g.month + 1) % 12;
+        // Fairness: the first player rotates every month, so nobody keeps the opening-move edge.
+        g.firstPlayer = (((g.firstPlayer ?? 0) + 1) % g.players.length);
     }
     // ======================= a turn =======================
     async playTurn(p) {
@@ -628,11 +608,11 @@ export class Director {
     }
     async quizSquare(p) {
         const g = this.g;
-        await this.askQuiz(p, this.pickQuiz(p), 100 * g.year);
+        await this.askQuiz(p, this.pickQuiz(p), 100 * payoutYear(g));
     }
     async eventSquare(p) {
         const g = this.g;
-        const Y = g.year;
+        const Y = payoutYear(g);
         const kinds = ['rainbow', 'tea', 'hero', 'umbrella', 'movie', 'match', 'royal'];
         const k = rweighted(g, kinds, (x) => ({ rainbow: 2, tea: 2, hero: 3, umbrella: 2, movie: 2, match: 2, royal: 1 }[x]));
         switch (k) {
@@ -740,7 +720,7 @@ export class Director {
     }
     async hometown(p) {
         const g = this.g;
-        const m = 500 * g.year;
+        const m = 500 * payoutYear(g);
         addCash(g, p, m, 'prize');
         const c = drawRareCardId(g);
         const got = giveCard(p, c);
@@ -834,11 +814,16 @@ export class Director {
                 pic: this.pic('places', st.image, st.emoji, st.name.en, REGIONS[st.region].color), button: t2('Quiz time!', 'クイズ！'), buttonColor: '#8e5cc4',
             }));
         }
-        const bonus = Math.max(100 * g.year, Math.round(prize * 0.1 / 10) * 10);
-        if (this.humansFrom(null).length)
-            await this.groupQuiz(this.placeQuestions(st), bonus, t2(st.name.en, st.name.ja), p);
+        const bonus = Math.max(100 * payoutYear(g), Math.round(prize * 0.1 / 10) * 10);
+        // Arrival quiz: only the arriver answers (humans get up to 2 questions, CPU answers its own).
+        const aqs = this.placeQuestions(st);
+        const atitle = t2(`${st.name.en} quiz — ${p.name.en} answers!`, `${st.name.ja}クイズ — ${p.name.ja}が答えるよ！`);
+        if (this.isHuman(p))
+            for (let i = 0; i < Math.min(2, aqs.length); i++)
+                await this.askQuiz(p, aqs[i], bonus, atitle);
         else
-            await this.askQuiz(p, st.quiz, bonus, t2('Quick Quiz: +10% bonus!', 'クイックイズ：+10%ボーナス！'));
+            for (const q of aqs)
+                await this.askQuiz(p, q, bonus, atitle);
         // The Boggart goes to someone far behind (but not the same player every time)
         const f = pickBoggartHolder(g, p.id);
         if (f && g.players.length > 1) {
@@ -935,7 +920,7 @@ export class Director {
         const c = CARD_BY_ID[id];
         removeCard(p, id);
         audio.play('card');
-        const Y = g.year;
+        const Y = payoutYear(g);
         await this.note(p, t2(`${p.name.en} used ${c.name.en}!`, `${p.name.ja}は「${c.name.ja}」を使った！`), c.emoji);
         switch (id) {
             case 'express':
@@ -1055,7 +1040,7 @@ export class Director {
     async useHero(p, id) {
         const g = this.g;
         const h = HERO_BY_ID[id];
-        const Y = g.year;
+        const Y = payoutYear(g);
         p.heroUsedYear[id] = g.year;
         audio.play('fanfare');
         await banner(t2(`${h.name.en}: ${h.powerName?.en ?? ''}!`, `${h.name.ja}：${h.powerName?.ja ?? ''}！`), '#8a6a10', h.emoji, 1300);

@@ -11,17 +11,18 @@ export class Screen {
         /** Called after every resize with the game area in CSS pixels (used to line up the 3D canvas). */
         this.onLayout = null;
         this.cap = 1.5;
-        this.q = 1;
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.resize();
         window.addEventListener('resize', () => this.resize());
         this.pattern = this.makePattern();
     }
-    /** Slow machines: lower the pixel density (cap) and the render scale (q); the picture is stretched to fit by CSS. */
-    setQuality(cap, q) { this.cap = cap; this.q = q; this.resize(); }
+    /** Pixel-density cap for the canvas. The canvas itself always stays sharp: slow machines
+        save work by shrinking the board's scenery layer instead (see BoardView.sceneQ),
+        so text, trains, signs and dialogs are never dulled. */
+    setQuality(cap) { this.cap = cap; this.resize(); }
     resize() {
-        this.dpr = Math.min(window.devicePixelRatio || 1, this.cap) * this.q;
+        this.dpr = Math.min(window.devicePixelRatio || 1, this.cap);
         const cw = window.innerWidth;
         const ch = window.innerHeight;
         this.canvas.width = Math.round(cw * this.dpr);

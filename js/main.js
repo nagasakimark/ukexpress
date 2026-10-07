@@ -113,7 +113,8 @@ async function boot() {
     applyGuest();
     app.boot(canvas);
     // Remember how much detail this computer can manage, so slow Chromebooks start at the right level next time.
-    const applyTier = (t) => { app.screen.setQuality(t >= 1 ? 1 : 1.5, t >= 2 ? 0.75 : 1); try {
+    // The canvas itself always stays sharp: only the board's scenery layer shrinks, so words never blur.
+    const applyTier = (t) => { app.screen.setQuality(1.5); view.sceneQ = t >= 2 ? 0.75 : 1; try {
         localStorage.setItem('ukExpressTier', String(t));
     }
     catch { /* ignore */ } };

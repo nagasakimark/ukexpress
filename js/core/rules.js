@@ -21,6 +21,9 @@ export function rweighted(g, items, w) {
     return items[items.length - 1];
 }
 // ---------- setup ----------
+/** Year multiplier for square/card/event/Boggart payouts: capped so late-game cash stays sane.
+ * Arrival prizes and property rents use their own gentler curves and are untouched. */
+export function payoutYear(g) { return Math.min(g.year, 5); }
 export function createGame(s) {
     const rng = new Rng(s.seed);
     const humans = Math.max(1, Math.min(4, s.humans ?? 1));
@@ -28,9 +31,9 @@ export function createGame(s) {
     const chosen = [];
     for (let i = 0; i < humans; i++) {
         const want = i === 0 ? s.avatar : s.avatars?.[i];
-        chosen.push(want !== undefined && !chosen.includes(want) ? want : [0, 1, 2, 3, 4, 5, 6, 7].find((a) => !chosen.includes(a)));
+        chosen.push(want !== undefined && !chosen.includes(want) ? want : AVATARS.map((_, a) => a).find((a) => !chosen.includes(a)));
     }
-    const others = rng.shuffle([0, 1, 2, 3, 4, 5, 6, 7].filter((a) => !chosen.includes(a)));
+    const others = rng.shuffle(AVATARS.map((_, a) => a).filter((a) => !chosen.includes(a)));
     const styles = rng.shuffle(['speedy', 'collector', 'trickster', 'scholar']);
     const start = board.stationNode['kingscross'];
     const mk = (i, avatar, controller, style) => ({
@@ -44,7 +47,7 @@ export function createGame(s) {
     for (let i = 0; i < rivals; i++)
         players.push(mk(humans + i, others[i], 'cpu', styles[i]));
     const g = {
-        version: SAVE_VERSION, settings: s, rng: rng.state, year: 1, month: 0, turn: 0, players, owners: {},
+        version: SAVE_VERSION, settings: s, rng: rng.state, year: 1, month: 0, turn: 0, firstPlayer: 0, players, owners: {},
         destination: '', prevDestination: 'kingscross',
         boggart: { holder: null, form: 'boggart', months: 0, calm: 0, grandTurns: 0, brownieTurns: 3, turns: 0 },
         globalBoosts: {}, over: false, log: [], monthEvent: null, seenEvents: [], boggartLog: {},
@@ -144,13 +147,13 @@ export function snapshot(g) {
 export function roundTo10(n) { return Math.round(n / 10) * 10; }
 // ---------- squares ----------
 export function blueAmount(g) {
-    let a = rint(g, 2, 10) * 10 * g.year;
+    let a = rint(g, 2, 10) * 10 * payoutYear(g);
     if (g.month >= 2 && g.month <= 4)
         a *= 2; // Jun-Aug summer
     return a;
 }
 export function redAmount(g) {
-    let a = rint(g, 2, 10) * 10 * g.year;
+    let a = rint(g, 2, 10) * 10 * payoutYear(g);
     if (g.month >= 8 && g.month <= 10)
         a *= 2; // Dec-Feb winter: leaves and snow on the line
     return a;
@@ -248,7 +251,7 @@ export function boggartAct(g, p) {
 }
 function boggartActInner(g, p) {
     const b = g.boggart;
-    const Y = g.year;
+    const Y = payoutYear(g);
     if (b.calm > 0) {
         b.calm--;
         return { text: { en: 'The Boggart is sipping tea. It does nothing.', ja: 'ボガートは紅茶を飲んでいる。何もしない。' } };
@@ -284,14 +287,20 @@ function boggartActInner(g, p) {
         b.grandTurns--;
         const r = rint(g, 0, 2);
         if (r === 0) {
-            const props = ownedProps(g, p).sort((a, c) => a.price - c.price);
-            if (props.length) {
-                const pr = props[0];
+            const all = ownedProps(g, p);
+            // It can only carry small things, and never your last property.
+            const small = all.filter((pr) => priceOf(g, pr) <= 2000).sort((a, c) => a.price - c.price);
+            if (small.length && all.length > 1) {
+                const pr = small[0];
                 delete g.owners[pr.id];
                 const m = Math.round(priceOf(g, pr) / 2);
                 addCash(g, p, m, 'sale', 'prop:' + pr.id);
                 return { text: { en: `The Grand Boggart sold your ${pr.name.en}!`, ja: `大ボガートが「${pr.name.ja}」を売っちゃった！` } };
             }
+            const m = 300 * Y;
+            const res = addCash(g, p, -m, 'fee');
+            p.lastBoggartLoss = -res.change;
+            return { text: { en: `The Grand Boggart shook £${m.toLocaleString('en-GB')} out of your pockets!`, ja: `大ボガートがポケットから£${m.toLocaleString('en-GB')}ふり落とした！` }, money: -m };
         }
         if (r === 1 && p.cards.length) {
             p.cards = [];

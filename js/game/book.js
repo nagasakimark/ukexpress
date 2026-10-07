@@ -6,12 +6,12 @@ import { audio } from '../engine/audio.js';
 import { STATIONS, STATION_BY_ID } from '../core/content/stations.js';
 import { HEROES, HERO_BY_ID } from '../core/content/heroes.js';
 import { CARDS, CARD_BY_ID, EVENTS, REGIONS } from '../core/content/game-data.js';
-import { PModal, say, drawCard, drawHeroCard } from './dialogs.js';
+import { PModal, say, drawCard, drawHeroCard, QuizModal } from './dialogs.js';
 import { drawPortrait } from './mapart.js';
 import { drawPhotoCircle, picStatus, picVersion } from './images.js';
 import { lines, t2, UI } from './i18n.js';
 import { app } from './app.js';
-import { book } from './storage.js';
+import { book, saveBook } from './storage.js';
 const lbl = (t) => lines(t).main;
 export class BookModal extends PModal {
     constructor() {
@@ -133,12 +133,23 @@ export class BookModal extends PModal {
         }
         else if (this.tab === 'heroes') {
             const hd = HERO_BY_ID[id];
-            const body = [hd.line];
+            const body = [hd.line, hd.bio];
             if (hd.japan)
                 body.push(t2('🇯🇵 Japan link: ' + hd.japan.en, '🇯🇵 日本とのつながり：' + hd.japan.ja));
             if (hd.powerDesc)
                 body.push(t2(`★ ${hd.powerName.en}: ${hd.powerDesc.en}`, `★ ${hd.powerName.ja}：${hd.powerDesc.ja}`));
-            await say({ title: hd.name, photo: { kind: 'heroes', name: hd.image, emoji: hd.emoji, label: hd.name.en, color: '#8a6a10' }, badge: hd.lived, body, color: '#8a6a10' });
+            const done = book.heroQuiz[id] ?? 0;
+            if (done > 0)
+                body.push(t2(`🏆 Perfect quizzes: ${done}`, `🏆 パーフェクト：${done}回`));
+            const go = await say({
+                title: hd.name, photo: { kind: 'heroes', name: hd.image, emoji: hd.emoji, label: hd.name.en, color: '#8a6a10' }, badge: hd.lived, body, color: '#8a6a10',
+                buttons: [
+                    { label: t2('Quiz! (3 questions)', 'クイズ！（3もん）'), value: 'quiz', color: '#2e9b46' },
+                    { label: UI.back, value: undefined, color: '#7a6a55' },
+                ],
+            });
+            if (go === 'quiz')
+                await this.heroQuiz(id);
         }
         else if (this.tab === 'cards') {
             const c = CARD_BY_ID[id];
@@ -150,10 +161,34 @@ export class BookModal extends PModal {
         }
     }
     autoValue() { return undefined; }
+    /** The book's own quiz: 3 questions about one hero. Only a perfect score earns the star. */
+    async heroQuiz(id) {
+        const hd = HERO_BY_ID[id];
+        let right = 0;
+        for (let i = 0; i < hd.quiz.length; i++) {
+            const q = hd.quiz[i];
+            const ans = await app.show(new QuizModal(q, false, 0, t2(`Hero quiz ${i + 1}/${hd.quiz.length}: ${hd.name.en}`, `ヒーロークイズ ${i + 1}/${hd.quiz.length}：${hd.name.ja}`)));
+            if (ans === q.answer)
+                right++;
+        }
+        const perfect = right === hd.quiz.length;
+        if (perfect) {
+            book.heroQuiz[id] = (book.heroQuiz[id] ?? 0) + 1;
+            saveBook();
+        }
+        audio.play(perfect ? 'fanfare' : 'coin');
+        await say({
+            title: t2(`Quiz complete: ${right}/${hd.quiz.length}!`, `クイズ終了：${right}/${hd.quiz.length}！`),
+            icon: perfect ? '🏆' : '💪',
+            body: [perfect
+                    ? t2(`Perfect! You really know ${hd.name.en}! Star earned!`, `${hd.name.ja}博士だね！パーフェクト！星ゲット！`)
+                    : t2('Good try! Only a perfect score earns a star — read the profile and try again!', 'よくがんばった！星はパーフェクトだけ。プロフィールを読んでもう一度！')],
+        });
+    }
     /** The page is painted once into a picture and reused, because it only changes when you turn the page or move the cursor. */
     drawBody(ctx) {
         const sc = Math.min(2, app.screen.dpr * app.screen.scale);
-        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${sc}|${picVersion()}`;
+        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${HEROES.reduce((a, h) => a + (book.heroQuiz[h.id] ?? 0), 0)}|${sc}|${picVersion()}`;
         if (!this.cache || key !== this.cacheKey) {
             if (!this.cache)
                 this.cache = document.createElement('canvas');
@@ -206,6 +241,16 @@ export class BookModal extends PModal {
                 ctx.lineWidth = 4;
                 roundRect(ctx, r.x, r.y, r.w, r.h, 12);
                 ctx.stroke();
+                if (ok && this.tab === 'heroes') {
+                    const qn = book.heroQuiz[id] ?? 0;
+                    if (qn > 0) {
+                        ctx.strokeStyle = '#e6a817';
+                        ctx.lineWidth = 6;
+                        roundRect(ctx, r.x - 2, r.y - 2, r.w + 4, r.h + 4, 14);
+                        ctx.stroke();
+                        text(ctx, qn > 1 ? `★${qn}` : '★', r.x + r.w - 8, r.y + 18, { size: 17, color: '#8a6a10', align: 'right' });
+                    }
+                }
                 let e = '', name = t2('', '');
                 if (this.tab === 'stations') {
                     const s = STATION_BY_ID[id];

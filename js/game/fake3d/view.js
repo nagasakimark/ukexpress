@@ -28,12 +28,19 @@ export class BoardView {
         catch {
             return 0;
         } })();
+        /** Locked to at least tier 1 by ?lite=1: may step down further, but never back up past 1. */
+        this.tierFloor = /[?&]lite=1/.test(location.search) ? 1 : 0;
+        /** Render scale for the ground+scenery layer only: no text lives there, so lowering it
+            keeps every word crisp while still saving fill-rate. Trains, signs, HUD and dialogs
+            always draw at full resolution. */
+        this.sceneQ = 1;
         this.onTier = null;
         this.still = 0;
         this.lastKey = '';
         this.baseCache = null;
         this.baseKey = '';
         this.frames = [];
+        this.goodWindows = 0;
         this.signList = null;
         this.sw = new Map();
     }
@@ -56,24 +63,51 @@ export class BoardView {
         // The ground and scenery only change when the camera moves (or the month changes), so once the camera has been
         // still for a couple of frames they are painted into a picture that is simply reused until something changes.
         const m = ctx.getTransform();
-        const key = `${this.cam.x.toFixed(4)},${this.cam.z.toFixed(4)},${this.cam.zoom},${this.month},${this.tier},${top},${m.a.toFixed(3)},${m.e.toFixed(1)},${m.f.toFixed(1)}`;
+        const q = this.sceneQ;
+        const key = `${this.cam.x.toFixed(4)},${this.cam.z.toFixed(4)},${this.cam.zoom},${this.month},${this.tier},${top},${m.a.toFixed(3)},${m.e.toFixed(1)},${m.f.toFixed(1)},${q}`;
         this.still = key === this.lastKey ? this.still + 1 : 0;
         this.lastKey = key;
         const cv = ctx.canvas;
-        if (this.still >= 2 && m.b === 0 && m.c === 0) {
-            if (!this.baseCache || this.baseCache.width !== cv.width || this.baseCache.height !== cv.height || this.baseKey !== key) {
-                if (!this.baseCache)
-                    this.baseCache = document.createElement('canvas');
-                this.baseCache.width = cv.width;
-                this.baseCache.height = cv.height;
+        if (q >= 1) {
+            if (this.still >= 2 && m.b === 0 && m.c === 0) {
+                if (!this.baseCache || this.baseCache.width !== cv.width || this.baseCache.height !== cv.height || this.baseKey !== key) {
+                    if (!this.baseCache)
+                        this.baseCache = document.createElement('canvas');
+                    this.baseCache.width = cv.width;
+                    this.baseCache.height = cv.height;
+                    const bc = this.baseCache.getContext('2d');
+                    bc.setTransform(m);
+                    this.drawBase(bc, top);
+                    this.baseKey = this.ground.missed ? '' : key;
+                }
+                ctx.save();
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.drawImage(this.baseCache, 0, 0);
+                ctx.restore();
+            }
+            else
+                this.drawBase(ctx, top);
+        }
+        else if (m.b === 0 && m.c === 0) {
+            // Lighter layer: paint ground+scenery small, then stretch. Trains, signs and all
+            // text draw afterwards at full resolution, so words stay sharp.
+            const lw = Math.max(2, Math.round(cv.width * q)), lh = Math.max(2, Math.round(cv.height * q));
+            if (!this.baseCache)
+                this.baseCache = document.createElement('canvas');
+            if (this.baseCache.width !== lw || this.baseCache.height !== lh) {
+                this.baseCache.width = lw;
+                this.baseCache.height = lh;
+                this.baseKey = '';
+            }
+            if (this.baseKey !== key) {
                 const bc = this.baseCache.getContext('2d');
-                bc.setTransform(m);
+                bc.setTransform(m.a * q, 0, 0, m.d * q, m.e * q, m.f * q);
                 this.drawBase(bc, top);
                 this.baseKey = this.ground.missed ? '' : key;
             }
             ctx.save();
             ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.drawImage(this.baseCache, 0, 0);
+            ctx.drawImage(this.baseCache, 0, 0, cv.width, cv.height);
             ctx.restore();
         }
         else
@@ -90,7 +124,9 @@ export class BoardView {
         this.drawSigns(ctx, destNode, ov);
         if (dn)
             this.flag(ctx, dn.x, dn.y, tt);
-        // automatic detail level: if the last 30 moving frames averaged more than 18 ms, step down (never back up)
+        // automatic detail level: if the last 30 moving frames averaged more than 18 ms, step down.
+        // If frames stay fast for a while, step back up again (a single slow spell no longer
+        // dulls the picture forever). Wide gap between the two limits so it never flickers.
         if (this.still < 2) {
             this.frames.push(performance.now() - t0);
             if (this.frames.length >= 30) {
@@ -98,9 +134,20 @@ export class BoardView {
                 this.frames.length = 0;
                 if (avg > 18 && this.tier < 2) {
                     this.tier++;
+                    this.goodWindows = 0;
                     console.info('board: detail level', this.tier);
                     this.onTier?.(this.tier);
                 }
+                else if (avg < 9 && this.tier > this.tierFloor) {
+                    if (++this.goodWindows >= 4) {
+                        this.goodWindows = 0;
+                        this.tier--;
+                        console.info('board: detail level', this.tier);
+                        this.onTier?.(this.tier);
+                    }
+                }
+                else
+                    this.goodWindows = 0;
             }
         }
     }

@@ -193,6 +193,21 @@
     "en": "Onsen time!",
     "ja": "温泉タイム！"
    }
+  },
+  {
+   "emoji": "🐉",
+   "name": {
+    "en": "Dewi",
+    "ja": "デウィ"
+   },
+   "from": {
+    "en": "Wales",
+    "ja": "ウェールズ"
+   },
+   "line": {
+    "en": "Cymru am byth! (Wales forever!)",
+    "ja": "ウェールズばんざい！"
+   }
   }
  ],
  "cpuStyles": {
