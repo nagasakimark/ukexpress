@@ -4,7 +4,7 @@ import { app } from './app.js';
 import { ShopModal, CardShopModal, QuizModal, choose } from './dialogs.js';
 import { t2 } from './i18n.js';
 import { HERO_BY_ID } from '../core/content/heroes.js';
-import { CARD_BY_ID } from '../core/content/game-data.js';
+import { CARD_BY_ID, REGIONS } from '../core/content/game-data.js';
 import { STATION_BY_ID } from '../core/content/stations.js';
 export class CpuController {
     async decide(g, prompt) {
@@ -33,6 +33,8 @@ export class HumanController {
                 return choose(t2('Choose the next destination!', '次の目的地を選ぼう！'), null, pr.options.map((id) => ({ label: STATION_BY_ID[id].name, value: id, icon: STATION_BY_ID[id].emoji })));
             case 'warpTo':
                 return choose(t2('Jump to which station?', 'どの駅へジャンプする？'), null, pr.options.map((id) => ({ label: STATION_BY_ID[id].name, value: id, icon: STATION_BY_ID[id].emoji })));
+            case 'warpRegion':
+                return choose(t2('Which region?', 'どの地方へ？'), null, Object.keys(REGIONS).map((r) => ({ label: REGIONS[r].name, value: r, icon: REGIONS[r].mascot })));
             case 'discard': {
                 const opts = p.cards.map((id, i) => ({ label: CARD_BY_ID[id].name, value: i, icon: CARD_BY_ID[id].emoji }));
                 return choose(t2(`Your hand is full! Throw one away to keep ${CARD_BY_ID[pr.newCard].name.en}?`, `カードがいっぱい！「${CARD_BY_ID[pr.newCard].name.ja}」のために1枚すてる？`), null, opts, -1);

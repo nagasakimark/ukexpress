@@ -1,4 +1,4 @@
-import { STATION_BY_ID } from './content/stations.js';
+import { STATION_BY_ID, STATIONS } from './content/stations.js';
 import { CARD_BY_ID, TRAINS } from './content/game-data.js';
 import { HERO_BY_ID } from './content/heroes.js';
 import { board, distancesTo, stationDist } from './map.js';
@@ -17,6 +17,11 @@ export function cpuDecide(g, pr) {
         case 'heroReplace': return 0;
         case 'chooseDest': return pr.options.slice().sort((a, b) => distancesTo(board.stationNode[a])[p.pos] - distancesTo(board.stationNode[b])[p.pos])[0];
         case 'warpTo': return pr.options.slice().sort((a, b) => stationDist(a, g.destination) - stationDist(b, g.destination))[0];
+        case 'warpRegion': {
+            const regs = [...new Set(STATIONS.map((s) => s.region))];
+            const best = (r) => Math.min(...STATIONS.filter((s) => s.region === r).map((s) => stationDist(s.id, g.destination)));
+            return regs.sort((a, b) => best(a) - best(b))[0];
+        }
         case 'discard': {
             // throw away the cheapest card
             const all = p.cards.map((c, i) => ({ i, v: CARD_BY_ID[c].rarity * 100 + CARD_BY_ID[c].price })).sort((a, b) => a.v - b.v);
@@ -78,8 +83,12 @@ function cpuCommand(g, p) {
         return { type: 'card', id: 'jubilee' };
     if (has('guidebook') && !p.effects.guidebook)
         return { type: 'card', id: 'guidebook' };
+    if (has('signalbox') && !p.effects.chooseDest && d > 14 && rnd(g) < use)
+        return { type: 'card', id: 'signalbox' };
     if (has('royal') && d > 10)
         return { type: 'card', id: 'royal' };
+    if (has('scotsman') && d > 10)
+        return { type: 'card', id: 'scotsman' };
     const lead = leader(g);
     const attackP = p.style === 'trickster' ? 0.7 : p.level === 'clever' ? 0.5 : 0.25;
     const helperHolds = g.settings.helper && g.players.some((x) => x.controller === 'human' && lastPlace(g).id === x.id);
@@ -88,6 +97,8 @@ function cpuCommand(g, p) {
             return { type: 'card', id: 'leaves' };
         if (has('queue') && rchance(g, attackP))
             return { type: 'card', id: 'queue' };
+        if (has('turpin') && lead.cards.length && rchance(g, attackP))
+            return { type: 'card', id: 'turpin' };
     }
     for (const c of ['tourism', 'harvest']) {
         if (has(c) && g.month >= 7) {

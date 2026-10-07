@@ -949,11 +949,47 @@ export class Director {
             case 'queue': {
                 const r = g.players.slice().sort((a, b) => assets(g, b) - assets(g, a));
                 const target = r[0].id === p.id ? r[1] : r[0];
+                if (target && target.cards.includes('wellies')) {
+                    await say({ title: t2('Splashed through!', 'へっちゃら！'), icon: '🥾', body: [this.voice(p, t2('Your wellies kept you out of the queue!', '長ぐつのおかげで、行列に並ばなくてすんだ！'), t2(`${target.name.en}'s wellies kept them out of the queue!`, `${target.name.ja}は長ぐつのおかげで、行列に並ばなくてすんだ！`))], color: C.players[target.color] });
+                    return {};
+                }
                 if (target) {
                     target.effects.skipTurn = true;
                     await say({ title: t2('Queue!', '行列！'), icon: '🧍', body: [t2(`${target.name.en} must wait in a queue next turn!`, `${target.name.ja}は次、行列で1回休み！`)], color: C.players[target.color] });
                 }
                 return {};
+            }
+            case 'turpin': {
+                const r = g.players.slice().sort((a, b) => assets(g, b) - assets(g, a));
+                const target = r[0].id === p.id ? r[1] : r[0];
+                if (!target)
+                    return {};
+                if (target.cards.length) {
+                    const stolen = rpick(g, target.cards);
+                    removeCard(target, stolen);
+                    giveCard(p, stolen); // always fits: using this card just freed a slot
+                    audio.play('coin');
+                    await say({ title: t2('Stand and deliver!', '金を出せ！'), icon: '🦹', body: [this.voice(p, t2(`You took ${target.name.en}'s ${CARD_BY_ID[stolen].name.en} card!`, `${target.name.ja}から「${CARD_BY_ID[stolen].name.ja}」をうばった！`), t2(`${p.name.en} took ${target.name.en}'s ${CARD_BY_ID[stolen].name.en} card!`, `${p.name.ja}が${target.name.ja}から「${CARD_BY_ID[stolen].name.ja}」をうばった！`))], color: C.players[target.color] });
+                }
+                else {
+                    const fee = addCash(g, target, -100 * Y, 'fee');
+                    addCash(g, p, -fee.change, 'prize');
+                    audio.play('coin');
+                    await say({ title: t2('Stand and deliver!', '金を出せ！'), icon: '🦹', body: [this.voice(p, t2(`${target.name.en} had no cards, so they paid you a toll instead!`, `${target.name.ja}はカードを持っていなかったので、通行料をはらった！`), t2(`${target.name.en} had no cards, so they paid ${p.name.en} a toll instead!`, `${target.name.ja}はカードを持っていなかったので、${p.name.ja}に通行料をはらった！`))], color: C.players[target.color] });
+                }
+                return {};
+            }
+            case 'signalbox': {
+                p.effects.chooseDest = true;
+                await say({ title: t2('Signal set!', '信号オーライ！'), icon: '🚦', body: [this.voice(p, t2('At the next destination, you will pick the new one from 3 stations!', '次の目的地では、新しい目的地を3つの駅から選べるよ！'), t2(`At the next destination, ${p.name.en} will pick the new one from 3 stations!`, `次の目的地では、${p.name.ja}が新しい目的地を3つの駅から選ぶよ！`))], color: C.players[p.color] });
+                return {};
+            }
+            case 'scotsman': {
+                const region = await this.ask({ kind: 'warpRegion', playerId: p.id });
+                const cands = STATIONS.filter((s) => s.region === region).map((s) => s.id);
+                await say({ title: t2('All aboard the Flying Scotsman!', 'フライング・スコッツマンに乗車！'), icon: '🚂', body: [t2(`Off to ${REGIONS[region].name.en}!`, `${REGIONS[region].name.ja}へ出発！`)], color: '#2a6a5a' });
+                await this.warpTo(p, rpick(g, cands));
+                return { endTurn: true };
             }
             case 'rowan': {
                 const others = g.players.filter((q) => q.id !== p.id).sort((a, b) => distancesTo(p.pos)[a.pos] - distancesTo(p.pos)[b.pos]);

@@ -243,49 +243,114 @@
     "ja": "持っていると、ボガートが大きくならない。"
    }
   },
-  {
-   "id": "guidebook",
-   "name": {
-    "en": "Guidebook",
-    "ja": "ガイドブック"
+   {
+    "id": "guidebook",
+    "name": {
+     "en": "Guidebook",
+     "ja": "ガイドブック"
+    },
+    "emoji": "📘",
+    "rarity": 1,
+    "price": 100,
+    "kind": "learn",
+    "desc": {
+     "en": "Your next quiz shows a hint and pays double.",
+     "ja": "次のクイズはヒント付きで、ごほうび2倍。"
+    }
    },
-   "emoji": "📘",
-   "rarity": 1,
-   "price": 100,
-   "kind": "learn",
-   "desc": {
-    "en": "Your next quiz shows a hint and pays double.",
-    "ja": "次のクイズはヒント付きで、ごほうび2倍。"
+   {
+    "id": "scotsman",
+    "name": {
+     "en": "Flying Scotsman",
+     "ja": "フライング・スコッツマン"
+    },
+    "emoji": "🚂",
+    "rarity": 3,
+    "price": 0,
+    "kind": "warp",
+    "desc": {
+     "en": "Fly to any region you choose! You land at a random station there.",
+     "ja": "好きな地方へひとっとび！着く駅はランダム。"
+    }
+   },
+   {
+    "id": "turpin",
+    "name": {
+     "en": "Richard Turpin",
+     "ja": "リチャード・ターピン"
+    },
+    "emoji": "🦹",
+    "rarity": 2,
+    "price": 1000,
+    "kind": "attack",
+    "desc": {
+     "en": "Steal a random card from the leader. Stand and deliver!",
+     "ja": "1位の人からカードを1枚うばう！"
+    }
+   },
+   {
+    "id": "wellies",
+    "name": {
+     "en": "Wellies",
+     "ja": "長ぐつ"
+    },
+    "emoji": "🥾",
+    "rarity": 1,
+    "price": 800,
+    "kind": "defence",
+    "desc": {
+     "en": "Keep it: Leaves on the Line and queues can't touch you.",
+     "ja": "持っていると、落ち葉も行列もへっちゃら。"
+    }
+   },
+   {
+    "id": "signalbox",
+    "name": {
+     "en": "Signal Box",
+     "ja": "信号所"
+    },
+    "emoji": "🚦",
+    "rarity": 2,
+    "price": 900,
+    "kind": "control",
+    "desc": {
+     "en": "Choose the next destination from 3 stations.",
+     "ja": "次の目的地を3つの駅から選べる。"
+    }
    }
-  }
- ],
+  ],
  "shopStock": {
-  "london": [
-   "leaves",
-   "guidebook",
-   "express",
-   "intercity"
-  ],
-  "southeast": [
-   "express",
-   "umbrella",
-   "return"
-  ],
-  "east": [
-   "guidebook",
-   "umbrella",
-   "return"
-  ],
-  "southwest": [
-   "balloon",
-   "return",
-   "umbrella"
-  ],
-  "midlands": [
-   "intercity",
-   "guidebook",
-   "express"
-  ],
+   "london": [
+    "leaves",
+    "guidebook",
+    "express",
+    "intercity",
+    "tourism"
+   ],
+   "southeast": [
+    "express",
+    "umbrella",
+    "return",
+    "signalbox"
+   ],
+   "east": [
+    "guidebook",
+    "umbrella",
+    "return",
+    "harvest"
+   ],
+   "southwest": [
+    "balloon",
+    "return",
+    "umbrella",
+    "wellies"
+   ],
+   "midlands": [
+    "intercity",
+    "guidebook",
+    "express",
+    "turpin"
+   ],
   "north": [
    "azuma",
    "leaves",

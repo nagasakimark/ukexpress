@@ -433,7 +433,7 @@ export class QuizModal extends PModal {
 }
 export function quiz(q, hint, reward, title) { return app.show(new QuizModal(q, hint, reward, title)); }
 // ---------- Card tiles ----------
-const KIND_COL = { move: '#3a7be8', warp: '#2aa198', money: '#e6a817', defence: '#6c7a89', attack: '#d7263d', boggart: '#7a5c99', learn: '#2e9b46' };
+const KIND_COL = { move: '#3a7be8', warp: '#2aa198', money: '#e6a817', defence: '#6c7a89', attack: '#d7263d', boggart: '#7a5c99', learn: '#2e9b46', control: '#ef6c00' };
 /** A card tile. All text is fitted to the card: names shrink, descriptions wrap and shrink.
  * Pass the game year and "£100 × year" descriptions show the actual amount. */
 export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false, year = 0) {
@@ -550,7 +550,7 @@ export function drawHeroCard(ctx, id, x, y, w, h, selected = false, dim = false,
     }
     ctx.restore();
 }
-const PASSIVE = ['umbrella', 'horseshoe'];
+const PASSIVE = ['umbrella', 'horseshoe', 'wellies'];
 export class HandModal extends PModal {
     constructor(g, p) {
         super();
