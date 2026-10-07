@@ -6,45 +6,10 @@ import { C, panel, text, emoji, roundRect } from '../engine/draw.js';
 import { audio } from '../engine/audio.js';
 import { app } from './app.js';
 import { lines, t2, UI } from './i18n.js';
-import { PModal, header, dual, dualHeight } from './dialogs.js';
-import { drawPic, drawPicWhole, PhotoBrowser } from './images.js';
+import { PModal, header, dual, dualHeight, ImageViewer, photoCounter } from './dialogs.js';
+import { drawPic, PhotoBrowser } from './images.js';
 const lbl = (t) => lines(t).main;
 const sub = (t) => lines(t).sub ?? undefined;
-/** A "2 / 5" pill over a photo, so players can see there is more to browse. */
-function photoCounter(ctx, cx, cy, pos, total) {
-    ctx.fillStyle = 'rgba(0,0,0,0.55)';
-    roundRect(ctx, cx - 52, cy - 17, 104, 34, 17);
-    ctx.fill();
-    text(ctx, `${pos} / ${total}`, cx, cy + 1, { size: 20, color: '#fff', align: 'center' });
-}
-/** The picture, full screen, so students can look closely. */
-export class ImageViewer extends PModal {
-    constructor(pic, caption, photos) {
-        super();
-        this.pic = pic;
-        this.caption = caption;
-        this.photos = photos;
-        this.dim = 0.8;
-        this.buttons.push(new Button({ x: 640 - 130, y: 640, w: 260, h: 62, label: lbl(UI.back), sub: sub(UI.back), color: '#7a6a55', onClick: () => this.resolveWith(undefined) }));
-        this.prevBtn = new Button({ x: 52, y: 324, w: 60, h: 52, label: '◀', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(-1) });
-        this.nextBtn = new Button({ x: 1168, y: 324, w: 60, h: 52, label: '▶', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(1) });
-        this.buttons.push(this.prevBtn, this.nextBtn);
-        this.onBack = () => this.resolveWith(undefined);
-        this.focus = 0;
-    }
-    drawBody(ctx) {
-        ctx.fillStyle = '#11151a';
-        ctx.fillRect(0, 0, 1280, 720);
-        const multi = (this.photos?.count() ?? 0) > 1;
-        this.prevBtn.hidden = this.nextBtn.hidden = !multi;
-        if (!multi && this.focus > 0)
-            this.focus = 0;
-        drawPicWhole(ctx, this.pic.kind, this.photos ? this.photos.name() : this.pic.name, 40, 76, 1200, 548, { emoji: this.pic.emoji, label: this.pic.label, color: this.pic.color });
-        if (multi)
-            photoCounter(ctx, 640, 598, this.photos.index() + 1, this.photos.count());
-        text(ctx, lbl(this.caption), 640, 40, { size: 30, color: '#fff', align: 'center', maxWidth: 1100 });
-    }
-}
 /** Full-screen factfile with a picture on the left (tap the magnifier to see it big). */
 export class ProfileModal extends PModal {
     constructor(o) {
@@ -113,6 +78,7 @@ export class PlaceModal extends PModal {
         this.h = 460;
         this.photos = new PhotoBrowser(pic.kind, pic.name);
         this.buttons.push(new Button({ x: 640 - 130, y: this.y + this.h - 84, w: 260, h: 64, label: lbl(UI.ok), sub: sub(UI.ok), color: C.green, onClick: () => this.resolveWith(undefined) }));
+        this.buttons.push(new Button({ x: this.x + 36 + 330 - 150, y: this.y + 106 + 248 - 58, w: 140, h: 48, label: lbl(t2('Big', '大きく')), icon: '🔍', size: 20, color: '#3a5a8a', onClick: () => app.show(new ImageViewer(this.pic, this.title, this.photos)) }));
         this.prevBtn = new Button({ x: this.x + 46, y: this.y + 206, w: 52, h: 48, label: '◀', size: 22, color: '#3a5a8a', onClick: () => this.photos.step(-1) });
         this.nextBtn = new Button({ x: this.x + 304, y: this.y + 206, w: 52, h: 48, label: '▶', size: 22, color: '#3a5a8a', onClick: () => this.photos.step(1) });
         this.buttons.push(this.prevBtn, this.nextBtn);
@@ -130,7 +96,7 @@ export class PlaceModal extends PModal {
         if (!multi && this.focus > 0)
             this.focus = 0;
         if (multi)
-            photoCounter(ctx, x + 36 + 165, y + 106 + 248 - 24, this.photos.index() + 1, this.photos.count());
+            photoCounter(ctx, x + 36 + 70, y + 106 + 248 - 24, this.photos.index() + 1, this.photos.count());
         if (this.badge)
             text(ctx, this.badge, x + 36 + 165, y + 380, { size: 18, color: '#5a5a50', align: 'center', maxWidth: 320 });
         let size = 30;

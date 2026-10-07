@@ -5,7 +5,7 @@ import { C, FONT, panel, text, wrap, fitWrap, emoji, money, roundRect, shade } f
 import { clock, Ease } from '../engine/tween.js';
 import { audio } from '../engine/audio.js';
 import { fx } from '../engine/fx.js';
-import { lines, lang, UI, t2 } from './i18n.js';
+import { lines, lang, UI, t2, payoutT } from './i18n.js';
 import { app } from './app.js';
 import { CARD_BY_ID, TRAINS, REGIONS, AVATARS, STYLES, SEASONS } from '../core/content/game-data.js';
 import { STATION_BY_ID, STATIONS } from '../core/content/stations.js';
@@ -13,6 +13,7 @@ import { HERO_BY_ID } from '../core/content/heroes.js';
 import { priceOf, assets, monopolyOwner } from '../core/rules.js';
 import { realMonth, daysInMonth, firstWeekday, eventDate, dateText, MONTH_NAMES, WEEKDAYS } from '../core/calendar.js';
 import { drawPortrait } from './mapart.js';
+import { drawPic, drawPicWhole, drawPhotoCircle, PhotoBrowser } from './images.js';
 export const CAT_EMOJI = { food: '🍽️', tourism: '📷', industry: '⚙️', culture: '🎭', sport: '⚽' };
 export const CAT_NAME = { food: t2('Food', '食べ物'), tourism: t2('Tourism', '観光'), industry: t2('Industry', '工業'), culture: t2('Culture', '文化'), sport: t2('Sport', 'スポーツ') };
 const SUB_RATIO = 0.64;
@@ -75,6 +76,41 @@ export function header(ctx, title, x, y, w, color) {
     if (tl.sub)
         text(ctx, tl.sub, x + w / 2, y + 62, { size: 17, color: '#fff3c4', align: 'center', weight: 500, maxWidth: w - 60 });
 }
+/** A "2 / 5" pill over a photo, so players can see there is more to browse. */
+export function photoCounter(ctx, cx, cy, pos, total) {
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    roundRect(ctx, cx - 52, cy - 17, 104, 34, 17);
+    ctx.fill();
+    text(ctx, `${pos} / ${total}`, cx, cy + 1, { size: 20, color: '#fff', align: 'center' });
+}
+/** The picture, full screen, so students can look closely (tap any photo's 🔍 to get here). */
+export class ImageViewer extends PModal {
+    constructor(pic, caption, photos) {
+        super();
+        this.pic = pic;
+        this.caption = caption;
+        this.photos = photos;
+        this.dim = 0.8;
+        this.buttons.push(new Button({ x: 640 - 130, y: 640, w: 260, h: 62, label: lbl(UI.back), sub: sub(UI.back), color: '#7a6a55', onClick: () => this.resolveWith(undefined) }));
+        this.prevBtn = new Button({ x: 52, y: 324, w: 60, h: 52, label: '◀', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(-1) });
+        this.nextBtn = new Button({ x: 1168, y: 324, w: 60, h: 52, label: '▶', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(1) });
+        this.buttons.push(this.prevBtn, this.nextBtn);
+        this.onBack = () => this.resolveWith(undefined);
+        this.focus = 0;
+    }
+    drawBody(ctx) {
+        ctx.fillStyle = '#11151a';
+        ctx.fillRect(0, 0, 1280, 720);
+        const multi = (this.photos?.count() ?? 0) > 1;
+        this.prevBtn.hidden = this.nextBtn.hidden = !multi;
+        if (!multi && this.focus > 0)
+            this.focus = 0;
+        drawPicWhole(ctx, this.pic.kind, this.photos ? this.photos.name() : this.pic.name, 40, 76, 1200, 548, { emoji: this.pic.emoji, label: this.pic.label, color: this.pic.color });
+        if (multi)
+            photoCounter(ctx, 640, 598, this.photos.index() + 1, this.photos.count());
+        text(ctx, lbl(this.caption), 640, 40, { size: 30, color: '#fff', align: 'center', maxWidth: 1100 });
+    }
+}
 const BODY_SIZE = 26;
 const MAX_BODY_H = 380;
 export class MessageModal extends PModal {
@@ -88,6 +124,8 @@ export class MessageModal extends PModal {
         this.pages = [];
         this.page = 0;
         this.size = BODY_SIZE;
+        /** Where the photo was drawn (for tap-to-enlarge); null when there is no photo. */
+        this.photoRect = null;
         const ctx = app.screen.ctx;
         const tw = this.textW();
         const body = o.body ?? [];
@@ -115,7 +153,7 @@ export class MessageModal extends PModal {
         for (const pg of this.pages)
             maxH = Math.max(maxH, pageH(pg));
         maxH += extra;
-        const artH = this.hasArt() ? 220 : 0;
+        const artH = this.hasArt() ? (o.photo ? 260 : 220) : 0;
         this.h = Math.min(640, Math.max(250, 96 + Math.max(maxH, artH) + 116));
         this.x = 640 - this.w / 2;
         this.y = 360 - this.h / 2;
@@ -123,7 +161,7 @@ export class MessageModal extends PModal {
         if (o.confetti)
             setTimeout(() => fx.burst(640, 200, 'confetti', 60, { speed: 9, up: 6 }), 120);
     }
-    hasArt() { return !!(this.o.portrait || this.o.icon || this.o.iconDraw || this.o.pageArt); }
+    hasArt() { return !!(this.o.portrait || this.o.icon || this.o.iconDraw || this.o.pageArt || this.o.photo); }
     textW() { return this.w - 80 - (this.hasArt() ? 210 : 0); }
     lastPage() { return this.page >= this.pages.length - 1; }
     nextPage() { this.page++; audio.play('card'); this.buildButtons(); }
@@ -165,10 +203,13 @@ export class MessageModal extends PModal {
         if (this.hasArt()) {
             const py = (areaTop + areaBot) / 2 - (o.badge ? 12 : 0);
             const art = o.pageArt?.[this.page];
+            this.photoRect = null;
             if (art)
                 art(ctx, x + 120, py);
             else if (o.iconDraw)
                 o.iconDraw(ctx, x + 120, py);
+            else if (o.photo)
+                this.drawPhoto(ctx, x, py);
             else if (o.portrait)
                 drawPortrait(ctx, o.portrait, x + 120, py, 68, o.portraitRing);
             else
@@ -194,6 +235,44 @@ export class MessageModal extends PModal {
                 ctx.fill();
             }
         }
+    }
+    /** The photo in the art slot (heroes as a circle, like their portraits). A 🔍 badge shows it can be tapped bigger. */
+    drawPhoto(ctx, x, py) {
+        const p = this.o.photo;
+        if (p.kind === 'heroes') {
+            const cx = x + 120;
+            if (!drawPhotoCircle(ctx, p.kind, p.name, cx, py, 60, this.o.portraitRing))
+                drawPortrait(ctx, p.emoji, cx, py, 68, this.o.portraitRing);
+            this.photoRect = { x: cx - 62, y: py - 62, w: 124, h: 124 };
+            // the badge sits outside the ring, bottom-right, so it never covers the face
+            const bx = cx + 48, by = py + 48;
+            ctx.fillStyle = 'rgba(0,0,0,0.55)';
+            ctx.beginPath();
+            ctx.arc(bx, by, 15, 0, 7);
+            ctx.fill();
+            emoji(ctx, '🔍', bx, by, 19);
+        }
+        else {
+            drawPic(ctx, p.kind, p.name, x + 25, py - 70, 190, 140, { emoji: p.emoji, label: p.label, color: p.color });
+            this.photoRect = { x: x + 25, y: py - 70, w: 190, h: 140 };
+            const r = this.photoRect;
+            ctx.fillStyle = 'rgba(0,0,0,0.55)';
+            ctx.beginPath();
+            ctx.arc(r.x + r.w - 20, r.y + 22, 15, 0, 7);
+            ctx.fill();
+            emoji(ctx, '🔍', r.x + r.w - 20, r.y + 22, 19);
+        }
+    }
+    pointerUp(x, y, wasDrag) {
+        if (!wasDrag && this.o.photo && this.photoRect) {
+            const r = this.photoRect;
+            if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
+                const p = this.o.photo;
+                app.show(new ImageViewer(p, this.o.title, new PhotoBrowser(p.kind, p.name)));
+                return true;
+            }
+        }
+        return super.pointerUp(x, y, wasDrag);
     }
 }
 export function say(o) { return app.show(new MessageModal(o)); }
@@ -355,8 +434,9 @@ export class QuizModal extends PModal {
 export function quiz(q, hint, reward, title) { return app.show(new QuizModal(q, hint, reward, title)); }
 // ---------- Card tiles ----------
 const KIND_COL = { move: '#3a7be8', warp: '#2aa198', money: '#e6a817', defence: '#6c7a89', attack: '#d7263d', boggart: '#7a5c99', learn: '#2e9b46' };
-/** A card tile. All text is fitted to the card: names shrink, descriptions wrap and shrink. */
-export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false) {
+/** A card tile. All text is fitted to the card: names shrink, descriptions wrap and shrink.
+ * Pass the game year and "£100 × year" descriptions show the actual amount. */
+export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false, year = 0) {
     ctx.save();
     if (dim)
         ctx.globalAlpha *= 0.5;
@@ -406,7 +486,8 @@ export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false) {
         cy += sm.size * 1.25;
     }
     const room = y + h - 10 - cy;
-    const dm = fitWrap(ctx, lines(c.desc).main, iw, Math.max(1, Math.floor(room / 14)), 14, 10, 500);
+    const desc = year > 0 ? payoutT(c.desc, year) : c.desc;
+    const dm = fitWrap(ctx, lines(desc).main, iw, Math.max(1, Math.floor(room / 14)), 14, 10, 500);
     cy += Math.max(0, (room - dm.lines.length * dm.size * 1.2) / 2);
     for (const s of dm.lines) {
         text(ctx, s, x + w / 2, cy + dm.size / 2, { size: dm.size, align: 'center', weight: 500, color: '#333' });
@@ -439,7 +520,8 @@ export function drawHeroCard(ctx, id, x, y, w, h, selected = false, dim = false,
     ctx.fill();
     text(ctx, 'HERO', x + w / 2, y + 15, { size: 12, align: 'center', color: '#8a6a10' });
     const pr = Math.min(38, w * 0.26);
-    drawPortrait(ctx, hd.emoji, x + w / 2, y + 26 + pr, pr);
+    if (!drawPhotoCircle(ctx, 'heroes', hd.image, x + w / 2, y + 26 + pr, pr))
+        drawPortrait(ctx, hd.emoji, x + w / 2, y + 26 + pr, pr);
     let cy = y + 34 + pr * 2 + 6;
     const iw = w - 16;
     const l = lines(hd.name);
@@ -546,13 +628,13 @@ export class HandModal extends PModal {
             const r = L[i];
             const lift = i === this.sel ? -10 : 0;
             if (it.kind === 'card')
-                drawCard(ctx, CARD_BY_ID[it.id], r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable);
+                drawCard(ctx, CARD_BY_ID[it.id], r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable, this.g.year);
             else
                 drawHeroCard(ctx, it.id, r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable, this.p.heroUsedYear[it.id] === this.g.year);
         });
         const it = this.items[this.sel];
         if (it) {
-            const desc = it.kind === 'card' ? CARD_BY_ID[it.id].desc : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
+            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, this.g.year) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
             const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Keep this card: it works by itself.', '持っているだけで効果があるよ。')
                 : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月に復活するよ。')
                     : (it.id === 'rowan' || it.id === 'tea') && !it.usable ? t2('Use this when the Boggart is on your train.', 'ボガートがついているときに使おう。') : null;
@@ -756,7 +838,7 @@ export class CardShopModal extends PModal {
         panel(ctx, 140, 40, 1000, 640);
         header(ctx, t2('Card Shop', 'カード売り場'), 140, 40, 1000, '#17a2a2');
         text(ctx, `${lbl(UI.cash)} ${money(this.cash())}`, 1110, 81, { size: 22, align: 'right', color: '#fff', outline: 4, outlineColor: '#0b5a5a' });
-        this.stock.forEach((id, i) => drawCard(ctx, CARD_BY_ID[id], this.cardX(i), 140, 180, 320, this.cart.includes(id)));
+        this.stock.forEach((id, i) => drawCard(ctx, CARD_BY_ID[id], this.cardX(i), 140, 180, 320, this.cart.includes(id), false, this.g.year));
     }
 }
 // ---------- Settlement ----------

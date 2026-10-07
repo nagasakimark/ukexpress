@@ -1,5 +1,5 @@
 import { app } from '../app.js';
-import { board, distancesTo } from '../../core/map.js';
+import { board, distancesTo, nextOptions } from '../../core/map.js';
 import { STATIONS, STATION_BY_ID } from '../../core/content/stations.js';
 import { AVATARS, MONTHS, SEASON_EMOJI, STYLES, TRAINS } from '../../core/content/game-data.js';
 import { assets, monopolyOwner, ownedProps, ranking } from '../../core/rules.js';
@@ -32,6 +32,8 @@ export class BoardScene {
         this.juncResolve = null;
         this.juncOptions = [];
         this.juncSel = 0;
+        /** The option on the shortest route to the destination (highlighted pink). */
+        this.juncBest = null;
         this.onMenu = null;
         this.overview = new Overview();
         this.puffT = 0;
@@ -149,8 +151,53 @@ export class BoardScene {
         this.mode = 'junction';
         this.juncOptions = options;
         this.juncSel = 0;
+        this.juncBest = null;
+        if (options.length) {
+            // point the player at the destination: fewest squares from here with legal
+            // moves (no U-turns, exactly like the train itself moves)
+            const best = this.junctionBest(options);
+            this.juncBest = best;
+            this.juncSel = Math.max(0, options.indexOf(best));
+        }
         this.follow = this.current?.id ?? null;
         return new Promise((r) => (this.juncResolve = r));
+    }
+    /** Shortest legal route to the destination, as a first step: BFS over
+     * (square, previous square) states from the current player, so the answer
+     * never starts with an illegal U-turn back onto the square we came from. */
+    junctionBest(options) {
+        const cur = this.current;
+        const dest = board.stationNode[this.g.destination];
+        if (!cur || dest === undefined)
+            return options[0];
+        const C = cur.pos, P = cur.prev;
+        if (C === dest)
+            return options[0];
+        if (options.includes(dest))
+            return dest;
+        const N = board.nodes.length;
+        const seen = new Set();
+        const q = [];
+        for (const o of options) {
+            const k = o * (N + 1) + (C + 1);
+            if (seen.has(k))
+                continue;
+            seen.add(k);
+            q.push({ v: o, u: C, first: o });
+        }
+        for (let i = 0; i < q.length; i++) {
+            const s = q[i];
+            for (const w of nextOptions(s.v, s.u)) {
+                if (w === dest)
+                    return s.first;
+                const k = w * (N + 1) + (s.v + 1);
+                if (seen.has(k))
+                    continue;
+                seen.add(k);
+                q.push({ v: w, u: s.v, first: s.first });
+            }
+        }
+        return options[0];
     }
     pickJunction(n) {
         if (!this.juncResolve)
@@ -420,9 +467,12 @@ export class BoardScene {
             ctx.lineTo(-10, 36);
             ctx.closePath();
             ctx.fill();
-            ctx.fillStyle = sel ? C.gold : '#ffffff';
-            ctx.strokeStyle = '#1b1b1b';
-            ctx.lineWidth = 4;
+            // hover/keyboard selection is gold; the shortest way to the destination is always pink
+            // (pink with a gold outline when it is also the selected one)
+            const best = ar.node === this.juncBest;
+            ctx.fillStyle = best ? '#ff3399' : sel ? C.gold : '#ffffff';
+            ctx.strokeStyle = sel && best ? C.gold : '#1b1b1b';
+            ctx.lineWidth = sel && best ? 7 : 4;
             ctx.lineJoin = 'round';
             ctx.beginPath();
             ctx.moveTo(30, 0);
@@ -565,7 +615,7 @@ export class BoardScene {
             this.pill(ctx, main(t2('Drag to look around · pinch or scroll to zoom', 'ドラッグで移動・ピンチで拡大')), '🗺️', 520, 666, 'rgba(255,250,240,0.95)', '#1d1d1b', 20);
         }
         else if (this.mode === 'junction') {
-            this.pill(ctx, main(t2('Which way? Tap an arrow!', 'どっちに行く？やじるしをタップ！')), '👉', 640, 662, '#fffaf0', '#1d1d1b', 26);
+            this.pill(ctx, main(t2('Which way? Pink is the shortcut!', 'どっちに行く？ピンクが近道！')), '👉', 640, 662, '#fffaf0', '#1d1d1b', 26);
         }
         if (this.movesLeft > 0) {
             ctx.fillStyle = 'rgba(0,0,0,0.3)';

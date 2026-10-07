@@ -3,12 +3,12 @@
 import { Button } from '../engine/ui.js';
 import { C, text, emoji, roundRect, fitWrap, panel, shade } from '../engine/draw.js';
 import { audio } from '../engine/audio.js';
-import { fixedDay } from '../core/calendar.js';
 import { STATIONS, STATION_BY_ID } from '../core/content/stations.js';
 import { HEROES, HERO_BY_ID } from '../core/content/heroes.js';
 import { CARDS, CARD_BY_ID, EVENTS, REGIONS } from '../core/content/game-data.js';
-import { PModal, say, drawCard, drawHeroCard, drawCalendarTile } from './dialogs.js';
+import { PModal, say, drawCard, drawHeroCard } from './dialogs.js';
 import { drawPortrait } from './mapart.js';
+import { drawPhotoCircle, picStatus, picVersion } from './images.js';
 import { lines, t2, UI } from './i18n.js';
 import { app } from './app.js';
 import { book } from './storage.js';
@@ -129,7 +129,7 @@ export class BookModal extends PModal {
             const body = [s.fact];
             if (s.film)
                 body.push(t2('🎬 ' + s.film.en, '🎬 ' + s.film.ja));
-            await say({ title: s.name, icon: s.emoji, badge: lines(REGIONS[s.region].name).main, body, color: REGIONS[s.region].color });
+            await say({ title: s.name, photo: { kind: 'places', name: s.image, emoji: s.emoji, label: s.name.en, color: REGIONS[s.region].color }, badge: lines(REGIONS[s.region].name).main, body, color: REGIONS[s.region].color });
         }
         else if (this.tab === 'heroes') {
             const hd = HERO_BY_ID[id];
@@ -138,7 +138,7 @@ export class BookModal extends PModal {
                 body.push(t2('🇯🇵 Japan link: ' + hd.japan.en, '🇯🇵 日本とのつながり：' + hd.japan.ja));
             if (hd.powerDesc)
                 body.push(t2(`★ ${hd.powerName.en}: ${hd.powerDesc.en}`, `★ ${hd.powerName.ja}：${hd.powerDesc.ja}`));
-            await say({ title: hd.name, portrait: hd.emoji, badge: hd.lived, body, color: '#8a6a10' });
+            await say({ title: hd.name, photo: { kind: 'heroes', name: hd.image, emoji: hd.emoji, label: hd.name.en, color: '#8a6a10' }, badge: hd.lived, body, color: '#8a6a10' });
         }
         else if (this.tab === 'cards') {
             const c = CARD_BY_ID[id];
@@ -146,14 +146,14 @@ export class BookModal extends PModal {
         }
         else {
             const ev = EVENTS.find((e) => e.id === id);
-            await say({ title: ev.title, iconDraw: (ctx, x, y) => drawCalendarTile(ctx, x, y, ev.cal, fixedDay(ev), ev.emoji), body: [ev.why, ev.fact], color: '#b5651d' });
+            await say({ title: ev.title, photo: { kind: 'events', name: ev.image, emoji: ev.emoji, label: ev.title.en, color: '#b5651d' }, badge: ev.label ? lines(ev.label).main : undefined, body: [ev.why, ev.fact], color: '#b5651d' });
         }
     }
     autoValue() { return undefined; }
     /** The page is painted once into a picture and reused, because it only changes when you turn the page or move the cursor. */
     drawBody(ctx) {
         const sc = Math.min(2, app.screen.dpr * app.screen.scale);
-        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${sc}`;
+        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${sc}|${picVersion()}`;
         if (!this.cache || key !== this.cacheKey) {
             if (!this.cache)
                 this.cache = document.createElement('canvas');
@@ -222,11 +222,21 @@ export class BookModal extends PModal {
                     e = ev.emoji;
                     name = ev.title;
                 }
+                // Collected heroes show their real photo (it pops in once loaded); everything else keeps its emoji art.
+                let photoed = false;
+                if (ok && this.tab === 'heroes') {
+                    const hd = HERO_BY_ID[id];
+                    if (picStatus('heroes', hd.image) === 'ok') {
+                        photoed = drawPhotoCircle(ctx, 'heroes', hd.image, r.x + r.w / 2, r.y + 30, 21);
+                    }
+                }
                 if (this.tab === 'heroes') {
-                    if (ok)
-                        drawPortrait(ctx, e, r.x + r.w / 2, r.y + 30, 21);
-                    else
-                        emoji(ctx, '👤', r.x + r.w / 2, r.y + 30, 36, 0.35);
+                    if (!photoed) {
+                        if (ok)
+                            drawPortrait(ctx, e, r.x + r.w / 2, r.y + 30, 21);
+                        else
+                            emoji(ctx, '👤', r.x + r.w / 2, r.y + 30, 36, 0.35);
+                    }
                 }
                 else
                     emoji(ctx, e, r.x + r.w / 2, r.y + (this.tab === 'events' ? 40 : 24), this.tab === 'events' ? 44 : 28, ok ? 1 : 0.3);

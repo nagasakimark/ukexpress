@@ -9,6 +9,14 @@ export function lines(t) {
     return { main: t.en, sub: t.ja };
 }
 export const main = (t) => lines(t).main;
+/** Turns a "£100 × year" formula into this year's actual amount ("£300" in year 3).
+ * Content files describe payouts per year; players should see the real money. */
+export function payoutText(s, year) {
+    const amt = (n) => '£' + (parseInt(n.replace(/,/g, ''), 10) * year).toLocaleString('en-GB');
+    return s.replace(/£([\d,]+) × year/g, (_, n) => amt(n)).replace(/£([\d,]+)×年/g, (_, n) => amt(n));
+}
+/** Same as payoutText, for both languages at once. */
+export function payoutT(t, year) { return { en: payoutText(t.en, year), ja: payoutText(t.ja, year) }; }
 export const UI = {
     start: t2('Tap to start', 'タップしてスタート'),
     newGame: t2('New Game', 'はじめから'),

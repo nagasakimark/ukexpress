@@ -10,11 +10,13 @@ import { createGame } from './core/rules.js';
 import { board } from './core/map.js';
 import { loadContent } from './core/content/load.js';
 import { lang, t2, normLang } from './game/i18n.js';
-import { choose } from './game/dialogs.js';
+import { choose, ImageViewer, say } from './game/dialogs.js';
+import { ProfileModal, PlaceModal } from './game/profile.js';
 import { howToPlay } from './game/tutorial.js';
 import { BookModal } from './game/book.js';
 import { applyGuest } from './game/teacher.js';
 import { teacher } from './game/storage.js';
+import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
@@ -121,7 +123,7 @@ async function boot() {
     spritesLoading = sprites.load().catch((e) => { console.error('sprites', e); });
     window.__view = view;
     window.__app = app;
-    window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay }; // handy for automated UI tests
+    window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay, ProfileModal, PlaceModal, ImageViewer, say, book, createGame, BoardScene, board }; // handy for automated UI tests
     loading.classList.add('hidden');
     // The title screen draws the normal 3D board, so wait for the board
     // pictures first (showing progress meanwhile). The render-scale step-down

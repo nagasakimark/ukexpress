@@ -10,7 +10,7 @@ import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
 import { audio } from '../engine/audio.js';
 import { app } from './app.js';
-import { t2, lines } from './i18n.js';
+import { t2, lines, payoutT } from './i18n.js';
 import { HumanController, CpuController } from './controllers.js';
 import { say, toast, banner, rollDice, RouletteModal, SettlementModal, CalendarModal, drawCard, drawHeroCard } from './dialogs.js';
 import { ProfileModal, PlaceModal } from './profile.js';
@@ -51,6 +51,10 @@ export class Director {
             return toast(t, icon, C.players[p.color], 1200);
         return say({ title: p.name, icon, body: [t], color: C.players[p.color] });
     }
+    /** Names a CPU watcher by name ("Pip skips…"), keeps "you" for a human's own turn. */
+    voice(p, human, cpu) { return this.isHuman(p) ? human : cpu; }
+    /** This year's actual payout ("£100 × year" in the content files confuses the class). */
+    payout(t) { return payoutT(t, this.g.year); }
     /** The humans, in turn order starting after the given player (or with the given player first). */
     humansFrom(first, includeFirst = true) {
         const hs = this.g.players.filter((q) => this.isHuman(q));
@@ -202,11 +206,11 @@ export class Director {
         }
         await this.groupQuiz([ev.quiz], 100 * Y, ev.title, null, (g.year * 12 + g.month) % Math.max(1, this.humansFrom(null).length));
         if (false && ev.minigame && MINIGAMES[ev.minigame]) { // mini-games are switched off for now
-            await say({ title: ev.title, icon: ev.emoji, body: [ev.effect], color: '#b5651d' });
+            await say({ title: ev.title, icon: ev.emoji, body: [this.payout(ev.effect)], color: '#b5651d' });
             await this.miniGame(ev.minigame, ev.title);
             return;
         }
-        await say({ title: ev.title, icon: ev.emoji, body: [ev.effect], color: '#b5651d' });
+        await say({ title: ev.title, icon: ev.emoji, body: [this.payout(ev.effect)], color: '#b5651d' });
         await this.applyFx(ev.fx);
     }
     async applyFx(f) {
@@ -401,7 +405,7 @@ export class Director {
         await banner(t2(`${p.name.en}'s turn!`, `${p.name.ja}の番！`), C.players[p.color], AVATARS[p.avatar].emoji, this.isHuman(p) ? 1000 : 800);
         if (p.effects.skipTurn) {
             p.effects.skipTurn = false;
-            await this.tell(p, { title: t2('Waiting in the queue…', '行列に並んでいる…'), icon: '🧍', body: [t2('You skip this turn. In the UK, people queue politely!', '1回休み。イギリスの人はきちんと並ぶよ！')] });
+            await this.tell(p, { title: t2('Waiting in the queue…', '行列に並んでいる…'), icon: '🧍', body: [this.voice(p, t2('You skip this turn. In the UK, people queue politely!', '1回休み。イギリスの人はきちんと並ぶよ！'), t2(`${p.name.en} skips this turn. In the UK, people queue politely!`, '1回休み。イギリスの人はきちんと並ぶよ！'))] });
             return;
         }
         let extra = 0;
@@ -502,7 +506,7 @@ export class Director {
             case 'red': {
                 if (p.cards.includes('umbrella')) {
                     removeCard(p, 'umbrella');
-                    await this.tell(p, { title: t2('Umbrella saves the day!', 'かさで助かった！'), icon: '☂️', body: [t2('A surprise shower! But your umbrella kept you dry, so no money was lost!', 'とつぜんのにわか雨！でも、かさのおかげでお金は減らなかった！')] });
+                    await this.tell(p, { title: t2('Umbrella saves the day!', 'かさで助かった！'), icon: '☂️', body: [this.voice(p, t2('A surprise shower! But your umbrella kept you dry, so no money was lost!', 'とつぜんのにわか雨！でも、かさのおかげでお金は減らなかった！'), t2(`A surprise shower! But ${p.name.en}'s umbrella kept them dry, so no money was lost!`, 'とつぜんのにわか雨！でも、かさのおかげでお金は減らなかった！'))] });
                     break;
                 }
                 const a = redAmount(g);
@@ -510,10 +514,10 @@ export class Director {
                 audio.play('bad');
                 fx.shake(8);
                 fx.float('-' + money(a), s.x, s.y - 80, C.red);
-                const f = this.redFlavour();
+                const f = this.redFlavour(p);
                 await this.tell(p, { title: t2('Red square!', '赤マス！'), icon: f.icon, body: [t2(f.en, f.ja)], money: r.change }, f.icon);
                 if (r.forgiven)
-                    await this.tell(p, { title: t2("Don't worry!", 'だいじょうぶ！'), icon: '🎩', body: [t2('Mr Whistle helps: your money will not go below -£500.', 'ホイッスルさんが助けてくれた。お金は-£500より下がらないよ。')] });
+                    await this.tell(p, { title: t2("Don't worry!", 'だいじょうぶ！'), icon: '🎩', body: [this.voice(p, t2('Mr Whistle helps: your money will not go below -£500.', 'ホイッスルさんが助けてくれた。お金は-£500より下がらないよ。'), t2(`Mr Whistle helps: ${p.name.en}'s money will not go below -£500.`, 'ホイッスルさんが助けてくれた。お金は-£500より下がらないよ。'))] });
                 break;
             }
             case 'card':
@@ -550,15 +554,17 @@ export class Director {
         this.checkBadges(p);
     }
     /** Why a red square costs money. Rain is only one reason among many, and it is rare. */
-    redFlavour() {
+    redFlavour(p) {
         const g = this.g;
+        const cpu = !this.isHuman(p);
+        const nm = p.name.en;
         const autumn = g.month >= 5 && g.month <= 7, winter = g.month >= 8 && g.month <= 10;
         const list = [
             { icon: '🚧', en: 'Roadworks! The engineers are mending the track. Repairs cost money.', ja: '工事中！技師さんが線路を直している。修理代がかかった。', w: 3 },
             { icon: '🚦', en: 'Signal failure! The train waits and waits. Sorry for the delay!', ja: '信号の故障！電車は待たされた。ごめんなさい！', w: 3 },
-            { icon: '🎫', en: 'The ticket machine is broken! You lose some ticket money.', ja: '切符の機械がこわれた！切符のお金が減った。', w: 2 },
+            { icon: '🎫', en: cpu ? `The ticket machine is broken! ${nm} loses some ticket money.` : 'The ticket machine is broken! You lose some ticket money.', ja: '切符の機械がこわれた！切符のお金が減った。', w: 2 },
             { icon: '🐑', en: 'Sheep on the track! The driver stopped and waited for them to move.', ja: '線路にひつじ！運転士さんは、どいてくれるのを待った。', w: 2 },
-            { icon: '🔧', en: 'A wheel needs fixing. The workshop sends you a bill.', ja: '車輪の修理が必要。工場から請求書がきた。', w: 2 },
+            { icon: '🔧', en: cpu ? `A wheel needs fixing. The workshop sends ${nm} a bill.` : 'A wheel needs fixing. The workshop sends you a bill.', ja: '車輪の修理が必要。工場から請求書がきた。', w: 2 },
             { icon: '🌧️', en: 'A heavy shower! Water on the track slows the train.', ja: 'どしゃぶり！線路に水がたまって電車がおそくなった。', w: 1 },
         ];
         if (autumn)
@@ -579,7 +585,9 @@ export class Director {
             p.cards.splice(k, 1);
             p.cards.push(id);
         }
-        await this.tell(p, { title: t2(`New card: ${c.name.en}!`, `カードゲット：${c.name.ja}！`), body: [c.desc], iconDraw: (ctx, x, y) => drawCard(ctx, c, x - 65, y - 95, 130, 190) }, c.emoji);
+        await this.tell(p, { title: t2(`New card: ${c.name.en}!`, `カードゲット：${c.name.ja}！`), body: [this.isHuman(p) ? this.payout(c.desc) : this.payout({
+                    en: c.desc.en.replace(/\b[Yy]ou\b/g, p.name.en).replace(/\bYour\b/g, `${p.name.en}'s`), ja: c.desc.ja,
+                })], iconDraw: (ctx, x, y) => drawCard(ctx, c, x - 65, y - 95, 130, 190, false, false, this.g.year) }, c.emoji);
     }
     pickQuiz(p) {
         const g = this.g;
@@ -709,7 +717,7 @@ export class Director {
             addCash(g, p, -TRAINS[ans.train].price, 'buy', 'train:' + ans.train);
             p.train = ans.train;
             audio.play('whistle');
-            await this.tell(p, { title: t2(`New train: ${TRAINS[p.train].name.en}!`, `新しい列車：${TRAINS[p.train].name.ja}！`), icon: '🚂', body: [TRAINS[p.train].fact, t2(`Now you roll ${TRAINS[p.train].dice} dice!`, `サイコロが${TRAINS[p.train].dice}個になった！`)], confetti: true });
+            await this.tell(p, { title: t2(`New train: ${TRAINS[p.train].name.en}!`, `新しい列車：${TRAINS[p.train].name.ja}！`), icon: '🚂', body: [TRAINS[p.train].fact, this.voice(p, t2(`Now you roll ${TRAINS[p.train].dice} dice!`, `サイコロが${TRAINS[p.train].dice}個になった！`), t2(`Now ${p.name.en} rolls ${TRAINS[p.train].dice} dice!`, `サイコロが${TRAINS[p.train].dice}個になった！`))], confetti: true });
         }
         if (bought.length && !this.isHuman(p))
             await this.note(p, t2(`${p.name.en} bought ${bought.map((b) => PROP_BY_ID[b].name.en).join(', ')}`, `${p.name.ja}が${bought.map((b) => PROP_BY_ID[b].name.ja).join('、')}を買った`), '🏠');
@@ -719,7 +727,8 @@ export class Director {
             fx.burst(s.x, s.y - 40, 'star', 30, { color: C.gold, speed: 8 });
             if (st.hometown)
                 p.hometownCompanion = true;
-            await this.tell(p, { title: t2(`Monopoly at ${st.name.en}!`, `${st.name.ja}を独占！`), icon: '👑', body: [t2('You own every property here. Profits are doubled every March!', 'ここの物件をぜんぶ持っている！毎年3月の利益が2倍！'), ...(st.hometown ? [t2(`${SENSEI.name.en} joins you as a companion: every quiz now has a hint!`, `${SENSEI.name.ja}が仲間になった！クイズにいつもヒントが出るよ！`)] : [])], confetti: true }, '👑');
+            await this.tell(p, { title: t2(`Monopoly at ${st.name.en}!`, `${st.name.ja}を独占！`), icon: '👑', body: [this.voice(p, t2('You own every property here. Profits are doubled every March!', 'ここの物件をぜんぶ持っている！毎年3月の利益が2倍！'), t2(`${p.name.en} owns every property here. Profits are doubled every March!`, 'ここの物件をぜんぶ持っている！毎年3月の利益が2倍！')),
+                    ...(st.hometown ? [this.voice(p, t2(`${SENSEI.name.en} joins you as a companion: every quiz now has a hint!`, `${SENSEI.name.ja}が仲間になった！クイズにいつもヒントが出るよ！`), t2(`${SENSEI.name.en} joins ${p.name.en} as a companion: every quiz now has a hint!`, `${SENSEI.name.ja}が仲間になった！クイズにいつもヒントが出るよ！`))] : [])], confetti: true }, '👑');
         }
     }
     async hometown(p) {
@@ -918,7 +927,7 @@ export class Director {
                         addCash(g, p, -r.change, 'prize');
                     }
                 audio.play('coin');
-                await this.tell(p, { title: t2('Happy birthday!', 'お誕生日おめでとう！'), icon: '🎂', body: [t2('Everyone gave you a present!', 'みんながプレゼントをくれた！')] });
+                await this.tell(p, { title: t2('Happy birthday!', 'お誕生日おめでとう！'), icon: '🎂', body: [this.voice(p, t2('Everyone gave you a present!', 'みんながプレゼントをくれた！'), t2(`Everyone gave ${p.name.en} a present!`, `${p.name.ja}がプレゼントをもらった！`))] });
                 return {};
             }
             case 'tourism':
@@ -1012,7 +1021,7 @@ export class Director {
                     return {};
                 }
                 delete p.heroUsedYear[id];
-                await this.tell(p, { title: t2('Not yet!', 'まだだよ！'), icon: '🏅', body: [t2('This power only works when you are in last place.', 'このパワーは最下位のときだけ使えるよ。')] });
+                await this.tell(p, { title: t2('Not yet!', 'まだだよ！'), icon: '🏅', body: [this.voice(p, t2('This power only works when you are in last place.', 'このパワーは最下位のときだけ使えるよ。'), t2(`This power only works when ${p.name.en} is in last place.`, 'このパワーは最下位のときだけ使えるよ。'))] });
                 return {};
             case 'quizHints':
                 p.effects.heroHints = 3;

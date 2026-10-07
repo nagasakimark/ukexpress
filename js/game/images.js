@@ -18,14 +18,18 @@ export function getPic(kind, name) {
     const c = cache.get(key);
     if (c === undefined) {
         cache.set(key, 'loading');
+        picVer++;
         const img = new Image();
-        img.onload = () => cache.set(key, img);
-        img.onerror = () => cache.set(key, null);
+        img.onload = () => { cache.set(key, img); picVer++; };
+        img.onerror = () => { cache.set(key, null); picVer++; };
         img.src = picUrl(kind, name);
         return null;
     }
     return c === 'loading' ? null : c;
 }
+/** Bumps every time a picture finishes loading (or fails), so cached screens can repaint. */
+let picVer = 0;
+export function picVersion() { return picVer; }
 /** How many numbered variants are probed after the base picture: <name>2.png … <name>7.png. */
 export const MAX_PHOTOS = 7;
 const galleries = new Map();
@@ -89,7 +93,8 @@ export class PhotoBrowser {
         this.locked = true;
     }
 }
-/** Draws a picture to fill the box (cropped to fit), with rounded corners and a frame. */
+/** Draws a picture fitted inside the box (the whole photo is always visible; narrow
+ * photos get dark side bars instead of being cropped). With rounded corners and a frame. */
 export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
     const r = o.radius ?? 14;
     ctx.fillStyle = '#20170a';
@@ -100,11 +105,14 @@ export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
     ctx.clip();
     const img = getPic(kind, name);
     if (img && img.naturalWidth) {
-        const k = Math.max(w / img.naturalWidth, h / img.naturalHeight);
-        const sw = w / k, sh = h / k;
-        ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) / 2, sw, sh, x, y, w, h);
+        // letterbox behind the photo, then the whole photo fitted inside (never cropped)
+        ctx.fillStyle = '#22271f';
+        ctx.fillRect(x, y, w, h);
+        const k = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+        const dw = img.naturalWidth * k, dh = img.naturalHeight * k;
+        ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
     }
-    else {
+    else if (!o.bare) {
         const col = o.color ?? '#5f7d6a';
         const g = ctx.createLinearGradient(x, y, x, y + h);
         g.addColorStop(0, shade(col, 0.25));
@@ -121,7 +129,42 @@ export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
             ctx.fillText(o.label, x + w / 2, y + h * 0.82, w - 20);
         }
     }
+    else {
+        const col = o.color ?? '#5f7d6a';
+        ctx.fillStyle = shade(col, -0.1);
+        ctx.fillRect(x, y, w, h);
+    }
     ctx.restore();
+}
+/** Draws a photo clipped in a circle (for hero portraits): a square taken from the
+ * upper part of the picture, where faces usually are. Returns false while loading
+ * or when the file does not exist, so the caller can draw its emoji fallback. */
+export function drawPhotoCircle(ctx, kind, name, x, y, r, ring = '#c99a1a') {
+    const img = getPic(kind, name);
+    if (!img || !img.naturalWidth)
+        return false;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath();
+    ctx.arc(x + 3, y + 6, r + 4, 0, 7);
+    ctx.fill();
+    ctx.fillStyle = '#1d1d1b';
+    ctx.beginPath();
+    ctx.arc(x, y, r + 5, 0, 7);
+    ctx.fill();
+    ctx.fillStyle = ring;
+    ctx.beginPath();
+    ctx.arc(x, y, r + 2, 0, 7);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(x, y, r - 2, 0, 7);
+    ctx.clip();
+    const s = Math.min(img.naturalWidth, img.naturalHeight);
+    const sx = (img.naturalWidth - s) / 2;
+    const sy = img.naturalHeight > img.naturalWidth ? (img.naturalHeight - s) * 0.18 : (img.naturalHeight - s) / 2;
+    ctx.drawImage(img, sx, sy, s, s, x - (r - 2), y - (r - 2), (r - 2) * 2, (r - 2) * 2);
+    ctx.restore();
+    return true;
 }
 /** The picture shown whole (not cropped) inside the box. */
 export function drawPicWhole(ctx, kind, name, x, y, w, h, o = {}) {
