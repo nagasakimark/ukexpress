@@ -198,9 +198,10 @@ export class Director {
                 pic: this.pic('events', extra.image, extra.emoji, extra.title.en, '#b5651d'), button: t2('Quiz time!', 'クイズ！'), buttonColor: '#8e5cc4',
             }));
         }
-        // Monthly quiz: whoever moves first this month answers (humans play, CPU answers its own).
-        const first = g.players[((g.firstPlayer ?? 0)) % g.players.length];
-        await this.askQuiz(first, ev.quiz, 100 * Y, t2(`Quiz for ${first.name.en}!`, `${first.name.ja}へのクイズ！`));
+        // Monthly quiz: the solo student always answers; otherwise whoever moves first this month does.
+        const hs = g.players.filter((q) => this.isHuman(q));
+        const who = hs.length === 1 ? hs[0] : g.players[((g.firstPlayer ?? 0)) % g.players.length];
+        await this.askQuiz(who, ev.quiz, 100 * Y, t2(`Quiz for ${who.name.en}!`, `${who.name.ja}へのクイズ！`));
         if (false && ev.minigame && MINIGAMES[ev.minigame]) { // mini-games are switched off for now
             await say({ title: ev.title, icon: ev.emoji, body: [this.payout(ev.effect)], color: '#b5651d' });
             await this.miniGame(ev.minigame, ev.title);
@@ -815,15 +816,25 @@ export class Director {
             }));
         }
         const bonus = Math.max(100 * payoutYear(g), Math.round(prize * 0.1 / 10) * 10);
-        // Arrival quiz: only the arriver answers (humans get up to 2 questions, CPU answers its own).
+        // Solo student answers everything (whoever arrived); with several humans only the arriver answers.
+        const hs = g.players.filter((q) => this.isHuman(q));
         const aqs = this.placeQuestions(st);
-        const atitle = t2(`${st.name.en} quiz — ${p.name.en} answers!`, `${st.name.ja}クイズ — ${p.name.ja}が答えるよ！`);
-        if (this.isHuman(p))
+        if (hs.length === 1) {
+            const who = hs[0];
+            const t = t2(`${st.name.en} quiz — ${who.name.en} answers!`, `${st.name.ja}クイズ — ${who.name.ja}が答えるよ！`);
             for (let i = 0; i < Math.min(2, aqs.length); i++)
-                await this.askQuiz(p, aqs[i], bonus, atitle);
-        else
+                await this.askQuiz(who, aqs[i], bonus, t);
+        }
+        else if (this.isHuman(p)) {
+            const t = t2(`${st.name.en} quiz — ${p.name.en} answers!`, `${st.name.ja}クイズ — ${p.name.ja}が答えるよ！`);
+            for (let i = 0; i < Math.min(2, aqs.length); i++)
+                await this.askQuiz(p, aqs[i], bonus, t);
+        }
+        else {
+            const t = t2(`${st.name.en} quiz — ${p.name.en} answers!`, `${st.name.ja}クイズ — ${p.name.ja}が答えるよ！`);
             for (const q of aqs)
-                await this.askQuiz(p, q, bonus, atitle);
+                await this.askQuiz(p, q, bonus, t);
+        }
         // The Boggart goes to someone far behind (but not the same player every time)
         const f = pickBoggartHolder(g, p.id);
         if (f && g.players.length > 1) {
