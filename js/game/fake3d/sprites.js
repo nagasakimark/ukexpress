@@ -5,6 +5,7 @@ import { LAY } from '../layout.js';
 import { board } from '../../core/map.js';
 import { STATION_BY_ID } from '../../core/content/stations.js';
 import { UNITS_PER_CELL } from './proj.js';
+import { loadLmWater } from './lmwater.js';
 import { isDryLand, townRadius, BIG_CITIES, setPaving } from './ground.js';
 export const sprites = {
     atlases: [],
@@ -13,6 +14,7 @@ export const sprites = {
     async load(base = 'assets/sprites/') {
         const r = await fetch(base + 'sprites.json', { cache: 'no-cache' });
         const j = await r.json();
+        await loadLmWater(base);
         this.defs = j.sprites;
         this.atlases = await Promise.all(j.atlases.map((f) => new Promise((ok, bad) => {
             const im = new Image();

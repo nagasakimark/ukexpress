@@ -5,6 +5,7 @@ import { LAY } from '../layout.js';
 import { board, R, L, D, U } from '../../core/map.js';
 import { STATION_BY_ID } from '../../core/content/stations.js';
 import { hash, landUse } from './noise.js';
+import { lmWater, LM_SCALE } from './lmwater.js';
 export const P = 96; // texture pixels per cell
 const CH = 4; // cells per chunk side
 const CPX = P * CH;
@@ -297,6 +298,49 @@ export class Ground {
                     g.stroke();
                 }
             g.restore();
+        }
+        // water that belongs to a landmark: a sandy rim on the land only, then sea that joins the real coast
+        for (const [sid, st] of Object.entries(grid.stations)) {
+            const ws = st.lm && lmWater[sid];
+            if (!ws)
+                continue;
+            for (const [wx, wz, ww, wd, round] of ws) {
+                const cx = st.lm[0] + wx * LM_SCALE, cy = st.lm[1] + wz * LM_SCALE, hw = ww * LM_SCALE / 2, hd = wd * LM_SCALE / 2;
+                if (cx + hw + 0.3 < x0 || cx - hw - 0.3 > x0 + w || cy + hd + 0.3 < y0 || cy - hd - 0.3 > y0 + h)
+                    continue;
+                const shape = (e) => { g.beginPath(); if (round)
+                    g.ellipse(cx, cy, hw + e, hd + e, 0, 0, Math.PI * 2);
+                else
+                    g.roundRect(cx - hw - e, cy - hd - e, (hw + e) * 2, (hd + e) * 2, 0.12 + e); };
+                g.save();
+                g.clip(landPath);
+                shape(0.1);
+                g.fillStyle = this.season === 'winter' ? '#b9b2a2' : '#c9a35f';
+                g.fill();
+                shape(0.05);
+                g.fillStyle = this.season === 'winter' ? '#cfc8b8' : '#ddb977';
+                g.fill();
+                g.restore();
+                shape(0);
+                g.fillStyle = this.season === 'winter' ? '#4f9fd8' : '#3fa3e8';
+                g.fill();
+                if (detail) {
+                    g.save();
+                    shape(0);
+                    g.clip();
+                    g.strokeStyle = 'rgba(255,255,255,0.35)';
+                    g.lineWidth = 0.035;
+                    g.lineCap = 'round';
+                    for (let k = 0; k < 10; k++) {
+                        const px = cx - hw + hash(k, Math.round(cx * 7), 3) * hw * 2, py = cy - hd + hash(k, Math.round(cy * 7), 4) * hd * 2;
+                        g.beginPath();
+                        g.moveTo(px - 0.09, py);
+                        g.quadraticCurveTo(px, py - 0.05, px + 0.09, py);
+                        g.stroke();
+                    }
+                    g.restore();
+                }
+            }
         }
         // towns: grey city blocks under the buildings, with white kerbs
         const pv = towns ?? paving.map((_, i) => i);

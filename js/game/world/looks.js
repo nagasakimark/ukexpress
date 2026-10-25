@@ -14,7 +14,7 @@ function hill(sh, r, h, color = G.grass, x = 0, z = 0) {
     void h;
 }
 function mound(sh, r, h, color = G.grass, x = 0, z = 0) { sh.add(new THREE.CylinderGeometry(r * 0.55, r, h, 12), color, x, h / 2, z); }
-function water(sh, w, d, x = 0, z = 0) { sh.box(w, 0.6, d, WATER, x, 0, z); }
+function water(sh, w, d, x = 0, z = 0) { sh.water(w, d, x, z); }
 function quay(sh, w, d, x = 0, z = 0) { sh.box(w, 3, d, '#b9b2a2', x, 0, z); }
 function lighthouse(sh, x, z, s = 1, a = RED, b = WHITE) {
     for (let i = 0; i < 5; i++)
@@ -237,7 +237,7 @@ export const LOOKS = {
     },
     lake: (c) => {
         const sh = new Shape();
-        sh.cyl(38, 38, 0.6, WATER, 0, 0, 10, 20);
+        sh.water(76, 76, 0, 10, true);
         boat(sh, 4, 14, '#e8e8e8', 0.6);
         c.shape(sh, 0, 0);
         pines(c, [[-44, -14, 26], [-30, -26, 22], [40, -22, 24], [50, -6, 20]]);

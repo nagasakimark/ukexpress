@@ -101,10 +101,14 @@ function model(path, scale, ry = 0, tint) {
     b.addModel(path, 0, 0, 0, ry, scale, tint);
     return batchToGroup(b);
 }
+Shape.drawWater = false; // the board paints a landmark's water itself, so it meets the real coast
+const LM_WATER = {};
 function landmark(id) {
     const build = STATION_BUILDERS[id] ?? LANDMARKS[id];
     if (!build)
         return null;
+    const waters = [];
+    LM_WATER[id] = waters;
     const b = new Batcher(1e6);
     const group = new THREE.Group();
     const vc = materialFor('vc');
@@ -118,7 +122,8 @@ function landmark(id) {
             b.addModel(path, dx, dy, dz, ry, s, tint);
         },
         seaModel: () => { }, seaShape: () => { }, animAt: () => { },
-        shape: (sh, dx = 0, dz = 0, dy = 0) => b.addGeo(sh.geometry(), new THREE.Matrix4().makeTranslation(dx, dy, dz)),
+        shape: (sh, dx = 0, dz = 0, dy = 0) => { for (const w of sh.waters)
+            waters.push([w[0] + dx, w[1] + dz, w[2], w[3], w[4]]); b.addGeo(sh.geometry(), new THREE.Matrix4().makeTranslation(dx, dy, dz)); },
         anim: (sh, dx, dz, dy, update) => { const m = new THREE.Mesh(sh.geometry(), vc); m.position.set(dx, dy, dz); update(m, 0); group.add(m); },
     };
     build(ctx);
@@ -418,6 +423,8 @@ const MODELS = [
 ];
 window.__studio = {
     ready: false,
+    lmWater: () => { for (const id of Object.keys({ ...LANDMARKS, ...STATION_BUILDERS }))
+        landmark(id); return LM_WATER; },
     list: () => jobs().map((j) => j.name),
     async render(names) {
         const all = jobs();

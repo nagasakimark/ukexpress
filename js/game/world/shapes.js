@@ -18,6 +18,18 @@ export function prismGeo(w, h, d) {
 export class Shape {
     constructor() {
         this.list = [];
+        /** Open water this shape wants beside it: [x, z, w, d, round]. The sprite studio leaves it out of the sprite and the board paints it instead. */
+        this.waters = [];
+    }
+    water(w, d, x = 0, z = 0, round = false, color = '#5fb6e6') {
+        this.waters.push([x, z, w, d, round ? 1 : 0]);
+        if (Shape.drawWater) {
+            if (round)
+                this.cyl(w / 2, w / 2, 0.6, color, x, 0, z, 20);
+            else
+                this.box(w, 0.6, d, color, x, 0, z);
+        }
+        return this;
     }
     add(g, color, x = 0, y = 0, z = 0, ry = 0, rx = 0, rz = 0) {
         const gg = g.index ? g.toNonIndexed() : g.clone();
@@ -37,12 +49,16 @@ export class Shape {
     cone(r, h, color, x = 0, y = 0, z = 0, seg = 10) { return this.add(new THREE.ConeGeometry(r, h, seg), color, x, y + h / 2, z); }
     sphere(r, color, x = 0, y = 0, z = 0, seg = 8) { return this.add(new THREE.SphereGeometry(r, seg, Math.max(4, seg - 2)), color, x, y, z); }
     roof(w, h, d, color, x = 0, y = 0, z = 0, ry = 0) { return this.add(prismGeo(w, h, d), color, x, y, z, ry); }
-    merge(other) { this.list.push(...other.list); return this; }
+    merge(other) { this.list.push(...other.list); this.waters.push(...other.waters); return this; }
     /** Copies another shape in, turned about y by ry and moved to (x, y, z). */
     place(other, x, y, z, ry = 0) {
         const m = new THREE.Matrix4().makeRotationY(ry).setPosition(x, y, z);
         for (const g of other.list)
             this.list.push(g.clone().applyMatrix4(m));
+        for (const [wx, wz, w, d, r] of other.waters) {
+            const c = Math.cos(ry), sn = Math.sin(ry);
+            this.waters.push([x + wx * c + wz * sn, z - wx * sn + wz * c, Math.abs(c) > 0.7 ? w : d, Math.abs(c) > 0.7 ? d : w, r]);
+        }
         return this;
     }
     /** A round clock dial (white face, dark rim, 12 ticks, two hands) standing upright, facing +z, centred at (x, y, z). */
@@ -68,4 +84,5 @@ export class Shape {
         return g;
     }
 }
+Shape.drawWater = true;
 //# sourceMappingURL=shapes.js.map

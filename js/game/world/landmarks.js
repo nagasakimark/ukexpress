@@ -19,52 +19,80 @@ export function hillBase(sh, r, h, dx = 0, dz = 0) {
     sh.add(new THREE.CylinderGeometry(r * 0.6, r * 0.66, 2, 10), G.grass, dx, h + 1, dz);
 }
 const WIN = '#4f7fb2';
+/** A pointed window standing flush on a wall that faces +z (sg = 1) or -z (sg = -1): glass, a pointed head and a stone mullion. */
+function winZ(sh, x, y, z, w, h, sg, s) {
+    const t = 0.4 * s, zz = z + sg * t / 2;
+    sh.box(w, h, t, WIN, x, y, zz);
+    sh.roof(t, w * 0.62, w, WIN, x, y + h, zz, Math.PI / 2);
+    sh.box(w * 0.12, h, t * 1.4, STONE, x, y, z + sg * t * 0.7);
+}
+/** A tall window on a wall that faces +x / -x. */
+function winX(sh, x, y, z, w, h, sg, s) {
+    const t = 0.4 * s, xx = x + sg * t / 2;
+    sh.box(t, h, w, WIN, xx, y, z);
+    sh.roof(t, w * 0.62, w, WIN, xx, y + h, z);
+    sh.box(t * 1.4, h, w * 0.12, STONE, x + sg * t * 0.7, y, z);
+}
 export function cathedral(sh, s = 1, tower = true, lantern = true) {
     const L = 56 * s, D = 22 * s, ROOF = '#4d5c72', LEAD = '#5f6f86';
+    const TX0 = -4 * s, TX1 = 16 * s; // the transept spans these x values
+    const inTransept = (x) => x > TX0 - 2 * s && x < TX1 + 2 * s;
+    const inTower = (x) => tower && x < -13 * s;
     sh.box(L, 22 * s, D, STONE, 0, 0, 0);
     sh.roof(L, 12 * s, D, ROOF, 0, 22 * s, 0);
-    // side aisles with their own low roofs, and flying buttresses between the windows
     for (const sg of [-1, 1]) {
+        // side aisle with its own low roof; the nave wall above it carries the clerestory windows
         sh.box(L * 0.96, 11 * s, 7 * s, STONE_D, 0, 0, sg * (D / 2 + 3 * s));
         sh.roof(L * 0.96, 4.5 * s, 7 * s, LEAD, 0, 11 * s, sg * (D / 2 + 3 * s));
         for (let i = -3; i <= 3; i++) {
-            sh.box(1.6 * s, 14 * s, 2.4 * s, STONE_D, i * 7.4 * s, 0, sg * (D / 2 + 7 * s));
-            sh.add(new THREE.BoxGeometry(1 * s, 1 * s, 6 * s), STONE_D, i * 7.4 * s, 17 * s, sg * (D / 2 + 3.6 * s), 0, 0.5 * sg);
-            sh.box(1.8 * s, 3 * s, 1.8 * s, STONE, i * 7.4 * s, 14 * s, sg * (D / 2 + 7 * s));
-        }
-        for (let i = -3; i <= 3; i += 1) { // pointed windows in the aisle wall and the clerestory
-            const wx = i * 7.4 * s + 3.7 * s;
-            sh.box(1.7 * s, 5 * s, 0.4 * s, WIN, wx, 3.2 * s, sg * (D / 2 + 6.75 * s));
-            sh.add(new THREE.ConeGeometry(0.85 * s, 1.6 * s, 4), WIN, wx, 8.2 * s + 0.8 * s, sg * (D / 2 + 6.75 * s), Math.PI / 4);
+            const bx = i * 7.4 * s, wx = bx + 3.7 * s;
+            if (!inTransept(bx) && !inTower(bx)) { // flying buttress and its pier
+                sh.box(1.6 * s, 14 * s, 2.4 * s, STONE_D, bx, 0, sg * (D / 2 + 7 * s));
+                sh.add(new THREE.BoxGeometry(1 * s, 1 * s, 6 * s), STONE_D, bx, 17 * s, sg * (D / 2 + 3.6 * s), 0, 0.5 * sg);
+                sh.box(1.8 * s, 3 * s, 1.8 * s, STONE, bx, 14 * s, sg * (D / 2 + 7 * s));
+            }
+            if (!inTransept(wx) && !inTower(wx)) {
+                winZ(sh, wx, 3 * s, sg * (D / 2 + 6.5 * s), 2.2 * s, 5.5 * s, sg, s); // aisle window, on the aisle's outer wall
+                winZ(sh, wx, 14 * s, sg * (D / 2), 2 * s, 5.5 * s, sg, s); // clerestory window, on the nave wall above the aisle roof
+            }
         }
     }
-    // the transept, with a gable window at each end
-    sh.box(20 * s, 18 * s, 34 * s, STONE, 6 * s, 0, 0);
-    sh.roof(20 * s, 10 * s, 34 * s, ROOF, 6 * s, 18 * s, 0, Math.PI / 2);
+    // the transept, long enough to stand clear of the aisles, with a tall gable window at each end
+    const TZ = 20 * s;
+    sh.box(20 * s, 18 * s, TZ * 2, STONE, 6 * s, 0, 0);
+    sh.roof(20 * s, 10 * s, TZ * 2, ROOF, 6 * s, 18 * s, 0, Math.PI / 2);
     for (const sg of [-1, 1]) {
-        sh.box(3 * s, 8 * s, 0.5 * s, WIN, 6 * s, 6 * s, sg * 17.2 * s);
-        sh.add(new THREE.ConeGeometry(1.5 * s, 3 * s, 4), WIN, 6 * s, 16 * s, sg * 17.2 * s, Math.PI / 4);
+        winZ(sh, 6 * s - 2.4 * s, 5 * s, sg * TZ, 2.4 * s, 9 * s, sg, s);
+        winZ(sh, 6 * s + 2.4 * s, 5 * s, sg * TZ, 2.4 * s, 9 * s, sg, s);
+        winZ(sh, 6 * s, 19 * s, sg * TZ, 2.2 * s, 4 * s, sg, s);
     }
-    // the south porch and door
-    sh.box(8 * s, 11 * s, 5 * s, STONE_D, -12 * s, 0, D / 2 + 9.5 * s);
-    sh.roof(8 * s, 5 * s, 5 * s, ROOF, -12 * s, 11 * s, D / 2 + 9.5 * s, Math.PI / 2);
-    sh.box(3.6 * s, 7 * s, 0.6 * s, '#5a3a22', -12 * s, 0, D / 2 + 12.2 * s);
-    if (lantern) { // the crossing tower with four pinnacles
+    // the south porch and its door, joined to the aisle wall
+    const PZ = D / 2 + 6.5 * s + 2.5 * s;
+    sh.box(8 * s, 11 * s, 5 * s, STONE_D, -12 * s, 0, PZ);
+    sh.roof(8 * s, 5 * s, 5 * s, ROOF, -12 * s, 11 * s, PZ, Math.PI / 2);
+    sh.box(3.6 * s, 7 * s, 0.5 * s, '#5a3a22', -12 * s, 0, PZ + 2.5 * s + 0.2 * s);
+    sh.roof(0.5 * s, 2 * s, 3.6 * s, '#5a3a22', -12 * s, 7 * s, PZ + 2.5 * s + 0.2 * s, Math.PI / 2);
+    if (lantern) { // the crossing tower with four pinnacles and a window pair on each face
         sh.box(11 * s, 12 * s, 11 * s, STONE_D, 6 * s, 24 * s, 0);
         for (const [dx, dz] of [[-5, -5], [5, -5], [-5, 5], [5, 5]])
             sh.cone(1.2 * s, 5 * s, STONE_D, 6 * s + dx * s, 36 * s, dz * s, 4);
-        sh.box(2.2 * s, 6 * s, 0.5 * s, WIN, 6 * s, 27 * s, 5.8 * s);
-    }
-    if (tower) {
-        sh.box(15 * s, 50 * s, 15 * s, STONE_D, -22 * s, 0, 2 * s);
-        for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
-            sh.cone(1.6 * s, 7 * s, STONE_D, -22 * s + dx * s, 50 * s, 2 * s + dz * s, 4);
         for (const sg of [-1, 1])
-            sh.box(2.6 * s, 9 * s, 0.5 * s, GLASS, -22 * s + sg * 3 * s, 30 * s, 9.8 * s);
+            for (const dx of [-2.2, 2.2])
+                winZ(sh, 6 * s + dx * s, 27 * s, sg * 5.5 * s, 1.8 * s, 6 * s, sg, s);
     }
-    for (let i = -2; i <= 2; i++)
-        sh.box(3 * s, 9 * s, 0.6 * s, WIN, i * 9 * s + 4 * s, 8 * s, 11.1 * s);
-    sh.cyl(4.5 * s, 4.5 * s, 0.8 * s, '#7fb8e8', -22 * s, 34 * s, 9.6 * s, 12); // rose window
+    if (tower) { // the west tower: belfry windows high up and a round window on the south face
+        const TXc = -22 * s, TZc = 2 * s, TW = 15 * s;
+        sh.box(TW, 50 * s, TW, STONE_D, TXc, 0, TZc);
+        for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
+            sh.cone(1.6 * s, 7 * s, STONE_D, TXc + dx * s, 50 * s, TZc + dz * s, 4);
+        for (const sx of [-1, 1]) {
+            winZ(sh, TXc + sx * 3 * s, 38 * s, TZc + TW / 2, 2.4 * s, 8 * s, 1, s);
+            winZ(sh, TXc + sx * 3 * s, 38 * s, TZc - TW / 2, 2.4 * s, 8 * s, -1, s);
+        }
+        winX(sh, TXc - TW / 2, 24 * s, TZc, 5 * s, 10 * s, -1, s);
+        sh.add(new THREE.CylinderGeometry(3 * s, 3 * s, 0.5 * s, 14), '#7fb8e8', TXc, 31 * s, TZc + TW / 2 + 0.2 * s, 0, Math.PI / 2); // the round window, standing on the wall
+        sh.add(new THREE.TorusGeometry(3 * s, 0.35 * s, 5, 14), STONE, TXc, 31 * s, TZc + TW / 2 + 0.3 * s);
+    }
 }
 export function castleShape(sh, s = 1, wall = STONE_D, roof = '#4a6fb0', kind = 'england') {
     const w = 52 * s, d = 36 * s;
@@ -208,7 +236,7 @@ export const LANDMARKS = {
         frame.box(80, 3, 16, '#c9c2b0', 0, 0, 3);
         frame.box(30, 1, 10, '#8fb8cf', 0, 3, 8);
         frame.box(110, 3, 2.5, '#b9b2a2', 0, 0, 20); // the boarding platform
-        frame.box(110, 0.6, 40, '#5bb4e8', 0, 0, 41); // the Thames
+        frame.water(110, 40, 0, 41); // the Thames
         c.shape(frame, 0, 0);
     },
     greenwich: (c) => {
@@ -288,7 +316,7 @@ export const LANDMARKS = {
         for (let i = 0; i < 7; i++)
             sh.box(7 + (i % 3) * 3, 5, 2, '#d9d9cf', -34 + i * 11, 6 + (i % 2) * 14, 19.2); // ledges and gulls' nests
         sh.box(86, 2, 34, G.grass, 0, y, 8);
-        sh.box(100, 0.6, 30, '#5bb4e8', 0, 0, 44); // the Channel
+        sh.water(100, 30, 0, 44); // the Channel
         sh.box(60, 1.4, 6, '#c9bfa6', 0, 0, 29); // shingle beach
         const cs = new Shape();
         castleShape(cs, 0.55);
@@ -615,7 +643,7 @@ export const LANDMARKS = {
             sh.box(1.2, 1.2, 12, '#3b3d42', -22 + (i - 2) * 0.1, 8 + i * 8, 0);
         for (const [dx, r] of [[18, 13], [34, 11], [48, 9]])
             sh.add(new THREE.SphereGeometry(r, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), '#cfd6de', dx, 0, -8); // the Armadillo
-        sh.box(60, 0.6, 22, '#5bb4e8', 14, 0, 14);
+        sh.water(60, 22, 14, 14);
         c.shape(sh, 0, 0);
         c.seaModel('pirate/ship-medium', 4.5, -0.3);
     },
