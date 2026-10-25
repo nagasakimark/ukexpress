@@ -1,4 +1,3 @@
-import { LAY } from '../layout.js';
 // The fixed Momotetsu-style camera: it only ever slides and zooms, never turns, so every object can be a
 // picture rendered once from this same angle (see tools/studio.html). The ground is drawn in true perspective.
 //
@@ -18,8 +17,8 @@ export class Camera {
         this.z = 0;
         this.zoom = 1;
         /** Where on the screen the look-at point appears. */
-        this.cx = LAY.cx;
-        this.cy = LAY.cy;
+        this.cx = 640;
+        this.cy = 400;
         this.sin = Math.sin(PITCH);
         this.cos = Math.cos(PITCH);
         this.D = 10;

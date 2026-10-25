@@ -1,4 +1,3 @@
-import { LAY } from '../layout.js';
 // The flat ground of the board, Momotetsu style: bright grass, blue sea with a cliff edge, grey city paving,
 // black-and-white ladder track and raised coloured squares. It is painted once into small square chunks
 // (cached), then drawn in perspective one thin screen row at a time - no WebGL needed.
@@ -551,31 +550,41 @@ export class Ground {
         return c;
     }
     /** Draws the ground in perspective, from screen row top to bottom. */
-    draw(ctx, cam, top = 0, bottom = LAY.mapBot) {
+    draw(ctx, cam, top = 0, bottom = 720) {
         this.frame++;
         if (!landPath)
             buildLand();
         this.index();
         this.missed = false;
-        let budget = 3; // chunks we may paint this frame
-        const budget0 = budget;
+        const t0 = performance.now();
+        let painted = 0;
         const BAND = this.band;
+        const sea = this.season === 'winter' ? '#4f9fd8' : '#3fa3e8';
+        // Chunk columns/rows that touch the board; anything else is open sea and never painted or cached.
+        const maxI = Math.ceil(board.grid.w / CH), maxJ = Math.ceil(board.grid.h / CH);
+        const edgeR = board.grid.w - 0.5;
         ctx.imageSmoothingEnabled = true;
         for (let sy = top; sy < bottom; sy += BAND) {
             const a = cam.groundRow(sy), b = cam.groundRow(sy + BAND), mid = cam.groundRow(sy + BAND / 2);
             if (!a || !b || !mid)
                 continue;
             const s = mid.s;
-            const xl = cam.x + (0 - cam.cx) / s, xr = cam.x + (LAY.mapW - cam.cx) / s;
+            const xl = cam.x + (0 - cam.cx) / s, xr = cam.x + (1280 - cam.cx) / s;
             const zt = a.z, zb = b.z;
-            const j0 = Math.floor((zt + 0.5) / CH), j1 = Math.floor((zb + 0.5) / CH);
+            // Open sea first, in one fill: the chunk strips below only cover the board itself.
+            // (Skipped when the whole band is over land chunks, to avoid pointless overdraw.)
+            if (xl < -0.5 || xr > edgeR || zt < -0.5 || zb > board.grid.h - 0.5) {
+                ctx.fillStyle = sea;
+                ctx.fillRect(0, sy, 1280, BAND + 0.6);
+            }
+            const j0 = Math.max(0, Math.floor((zt + 0.5) / CH)), j1 = Math.min(maxJ, Math.floor((zb + 0.5) / CH));
+            const i0 = Math.max(0, Math.floor((xl + 0.5) / CH)), i1 = Math.min(maxI, Math.floor((xr + 0.5) / CH));
             for (let j = j0; j <= j1; j++) {
                 const cz0 = j * CH - 0.5;
                 const za = Math.max(zt, cz0), zz = Math.min(zb, cz0 + CH);
                 if (zz <= za)
                     continue;
                 const dy0 = sy + (za - zt) / (zb - zt) * BAND, dy1 = sy + (zz - zt) / (zb - zt) * BAND;
-                const i0 = Math.floor((xl + 0.5) / CH), i1 = Math.floor((xr + 0.5) / CH);
                 for (let i = i0; i <= i1; i++) {
                     const cx0 = i * CH - 0.5;
                     const xa = Math.max(xl, cx0), xz = Math.min(xr, cx0 + CH);
@@ -583,13 +592,15 @@ export class Ground {
                         continue;
                     const key = `${i},${j}`;
                     if (!this.cache.has(key)) {
-                        if (budget <= 0) {
+                        // New chunks are capped per frame by count AND time, so a fast camera move costs a
+                        // bounded hitch; anything not painted yet falls back to plain green below.
+                        if (painted >= 3 || (painted >= 1 && performance.now() - t0 > 6)) {
                             this.missed = true;
                             ctx.fillStyle = '#5fbf45';
                             ctx.fillRect(cam.cx + (xa - cam.x) * s, dy0, (xz - xa) * s, dy1 - dy0 + 0.5);
                             continue;
                         }
-                        budget--;
+                        painted++;
                     }
                     const c = this.chunk(i, j);
                     const dx = cam.cx + (xa - cam.x) * s;
@@ -597,7 +608,7 @@ export class Ground {
                 }
             }
         } // Nothing was missing this frame: paint one chunk just outside the view, so the camera never has to wait for one.
-        if (budget === budget0)
+        if (painted === 0 && !this.missed)
             this.prefetch(cam);
     }
     prefetch(cam) {

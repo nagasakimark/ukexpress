@@ -1,22 +1,21 @@
 import { app } from '../app.js';
-import { board } from '../../core/map.js';
+import { board, distancesTo, nextOptions } from '../../core/map.js';
 import { STATIONS, STATION_BY_ID } from '../../core/content/stations.js';
-import { AVATARS, STYLES, TRAINS } from '../../core/content/game-data.js';
+import { AVATARS, MONTHS, SEASON_EMOJI, STYLES, TRAINS } from '../../core/content/game-data.js';
 import { assets, monopolyOwner, ownedProps, ranking } from '../../core/rules.js';
 import { C, FONT, text, emoji, money, roundRect } from '../../engine/draw.js';
 import { Button, navigate } from '../../engine/ui.js';
 import { clock, Ease } from '../../engine/tween.js';
 import { fx } from '../../engine/fx.js';
 import { audio } from '../../engine/audio.js';
-import { lines, UI, t2, main, lang } from '../i18n.js';
+import { drawBoggart } from '../mapart.js';
+import { lines, UI, t2, main } from '../i18n.js';
 import { HandModal, say } from '../dialogs.js';
 import { view } from '../fake3d/view.js';
 import { Overview } from '../fake3d/overview.js';
-import { LAY, useView } from '../layout.js';
-import { stationProfile } from '../profile.js';
-import { drawTopBar, drawPlayerList, drawGuide } from '../hud.js';
+import { CompanyModal } from '../company.js';
 const ZOOM = 1;
-const TOP = LAY.mapTop; // height of the top bar
+const TOP = 74; // height of the top bar
 const DIR_OF = (dx, dy) => (Math.abs(dx) >= Math.abs(dy) ? (dx >= 0 ? 'e' : 'w') : dy >= 0 ? 's' : 'n');
 export class BoardScene {
     constructor(g) {
@@ -33,6 +32,8 @@ export class BoardScene {
         this.juncResolve = null;
         this.juncOptions = [];
         this.juncSel = 0;
+        /** The option on the shortest route to the destination (highlighted pink). */
+        this.juncBest = null;
         this.onMenu = null;
         this.overview = new Overview();
         this.puffT = 0;
@@ -46,20 +47,19 @@ export class BoardScene {
         const n0 = board.nodes[g.players[0].pos];
         this.cam.x = n0.x;
         this.cam.y = n0.y;
-        const mk = (x, y, w, h, label, icon, color, onClick, pulse = false, size = 24, subOn = true) => new Button({ x, y, w, h, label: lines(label).main, sub: subOn ? lines(label).sub ?? undefined : undefined, icon, color, size, pulse, onClick });
-        const px = LAY.panelX + 8, pw = LAY.panelW - 16;
+        const mk = (x, w, label, icon, color, onClick, pulse = false, size = 24) => new Button({ x, y: 628, w, h: 76, label: lines(label).main, sub: lines(label).sub ?? undefined, icon, color, size, pulse, onClick });
         this.commandButtons = [
-            mk(px, 562, pw, 64, UI.roll, '🎲', '#d7263d', () => this.resolveCommand({ type: 'roll' }), true, 30),
-            mk(px, 634, pw / 2 - 4, 36, UI.cards, '🃏', '#d99a0b', () => this.openCards(), false, 17, false),
-            mk(px + pw / 2 + 4, 634, pw / 2 - 4, 36, UI.map, '🗺️', '#17a2a2', () => this.enterMap(), false, 17, false),
-            mk(px, 676, pw / 2 - 4, 36, UI.info, '📊', '#3a7be8', () => this.openInfo(), false, 17, false),
-            mk(px + pw / 2 + 4, 676, pw / 2 - 4, 36, UI.menu, '⚙️', '#7a6a55', () => this.onMenu && this.onMenu(), false, 17, false),
+            mk(240, 230, UI.roll, '🎲', '#d7263d', () => this.resolveCommand({ type: 'roll' }), true, 32),
+            mk(484, 140, UI.cards, '🃏', '#d99a0b', () => this.openCards()),
+            mk(638, 140, UI.map, '🗺️', '#17a2a2', () => this.enterMap()),
+            mk(792, 140, t2('Company', '会社'), '💼', '#6a3fb5', () => this.openCompany()),
+            mk(946, 140, UI.info, '📊', '#3a7be8', () => this.openInfo()),
+            mk(1100, 140, UI.menu, '⚙️', '#7a6a55', () => this.onMenu && this.onMenu()),
         ];
-        this.moreBtn = new Button({ x: LAY.panelX + 8, y: 634, w: LAY.panelW - 16, h: 52, label: lines(t2('More about this place', 'もっと しりたい！')).main, sub: lines(t2('More about this place', 'もっと しりたい！')).sub ?? undefined, icon: '🔍', color: '#3a7be8', size: 20, onClick: () => { stationProfile(this.guideStation().sid); } });
-        this.mapBack = new Button({ x: LAY.panelX + 8, y: 562, w: LAY.panelW - 16, h: 64, label: lines(UI.back).main, sub: lines(UI.back).sub ?? undefined, icon: '↩️', color: '#7a6a55', size: 24, onClick: () => this.exitMap() });
+        this.mapBack = new Button({ x: 1044, y: 628, w: 200, h: 76, label: lines(UI.back).main, sub: lines(UI.back).sub ?? undefined, icon: '↩️', color: '#7a6a55', size: 24, onClick: () => this.exitMap() });
     }
     // ---------- camera ----------
-    syncCamera() { useView(false); view.cam.cx = LAY.cx; view.cam.cy = LAY.cy; view.cam.x = this.cam.x; view.cam.z = this.cam.y; view.cam.zoom = this.cam.zoom; view.cam.update(); }
+    syncCamera() { view.cam.x = this.cam.x; view.cam.z = this.cam.y; view.cam.zoom = this.cam.zoom; view.cam.update(); }
     worldToScreen(x, y) {
         if (this.mode === 'map')
             return this.overview.toScreen(x, y);
@@ -151,8 +151,53 @@ export class BoardScene {
         this.mode = 'junction';
         this.juncOptions = options;
         this.juncSel = 0;
+        this.juncBest = null;
+        if (options.length) {
+            // point the player at the destination: fewest squares from here with legal
+            // moves (no U-turns, exactly like the train itself moves)
+            const best = this.junctionBest(options);
+            this.juncBest = best;
+            this.juncSel = Math.max(0, options.indexOf(best));
+        }
         this.follow = this.current?.id ?? null;
         return new Promise((r) => (this.juncResolve = r));
+    }
+    /** Shortest legal route to the destination, as a first step: BFS over
+     * (square, previous square) states from the current player, so the answer
+     * never starts with an illegal U-turn back onto the square we came from. */
+    junctionBest(options) {
+        const cur = this.current;
+        const dest = board.stationNode[this.g.destination];
+        if (!cur || dest === undefined)
+            return options[0];
+        const C = cur.pos, P = cur.prev;
+        if (C === dest)
+            return options[0];
+        if (options.includes(dest))
+            return dest;
+        const N = board.nodes.length;
+        const seen = new Set();
+        const q = [];
+        for (const o of options) {
+            const k = o * (N + 1) + (C + 1);
+            if (seen.has(k))
+                continue;
+            seen.add(k);
+            q.push({ v: o, u: C, first: o });
+        }
+        for (let i = 0; i < q.length; i++) {
+            const s = q[i];
+            for (const w of nextOptions(s.v, s.u)) {
+                if (w === dest)
+                    return s.first;
+                const k = w * (N + 1) + (s.v + 1);
+                if (seen.has(k))
+                    continue;
+                seen.add(k);
+                q.push({ v: w, u: s.v, first: s.first });
+            }
+        }
+        return options[0];
     }
     pickJunction(n) {
         if (!this.juncResolve)
@@ -168,6 +213,9 @@ export class BoardScene {
         const pick = await app.show(new HandModal(this.g, p));
         if (pick)
             this.resolveCommand(pick);
+    }
+    async openCompany() {
+        await app.show(new CompanyModal(this.g, this.current?.id));
     }
     enterMap() {
         this.mode = 'map';
@@ -187,7 +235,7 @@ export class BoardScene {
         const body = r.map((p, i) => t2(`${i + 1}. ${p.name.en} Railway: ${money(assets(this.g, p))}`, `${i + 1}位 ${p.name.ja}鉄道：${money(assets(this.g, p))}`));
         const me = this.current;
         const total = STATIONS.length;
-        body.push(t2(`Your train: ${TRAINS[me.train].name.en} (${TRAINS[me.train].dice} dice). Stations visited: ${me.visited.length} of ${total}. Heroes: ${me.heroCollection.length}.`, `あなたの列車：${TRAINS[me.train].name.ja}（サイコロ${TRAINS[me.train].dice}こ）。おとずれた駅：${me.visited.length}/${total}。ヒーロー：${me.heroCollection.length}人。`));
+        body.push(t2(`Your train: ${TRAINS[me.train].name.en} (${TRAINS[me.train].dice} dice). Stations visited: ${me.visited.length} of ${total}. Heroes: ${me.heroCollection.length}.`, `あなたの列車：${TRAINS[me.train].name.ja}（サイコロ${TRAINS[me.train].dice}個）。訪れた駅：${me.visited.length}/${total}。ヒーロー：${me.heroCollection.length}人。`));
         await say({ title: t2('Rankings', 'ランキング'), body, icon: '📊' });
     }
     // ---------- input ----------
@@ -195,7 +243,7 @@ export class BoardScene {
         if (this.mode === 'command')
             return this.commandButtons;
         if (this.mode === 'map')
-            return [this.mapBack, this.moreBtn];
+            return [this.mapBack];
         return [];
     }
     /** One arrow for each way out of the junction: up, down, left or right. */
@@ -258,7 +306,7 @@ export class BoardScene {
             return true;
         }
         this.syncCamera();
-        const a = view.toWorld(LAY.cx, LAY.cy), b = view.toWorld(LAY.cx - dx, LAY.cy - dy);
+        const a = view.toWorld(640, 400), b = view.toWorld(640 - dx, 400 - dy);
         this.cam.x += b.x - a.x;
         this.cam.y += b.z - a.z;
         this.clampCam();
@@ -344,35 +392,24 @@ export class BoardScene {
             this.puff(this.vis[cur.id]);
         }
     }
-    ownerColors(sid) {
+    ownerColors(sid, mono) {
         const g = this.g;
-        if (monopolyOwner(g, sid))
+        if (mono)
             return [];
         return [...new Set(STATION_BY_ID[sid].props.map((pr) => g.owners[pr.id]).filter(Boolean))].map((o) => C.players[g.players.find((p) => p.id === o).color]);
     }
     draw(ctx) {
         const g = this.g;
         const tt = clock.realTime;
-        useView(false);
-        window.__mode = this.mode;
         const dest = board.stationNode[g.destination];
         if (this.mode === 'map') {
             view.setMonth(g.month);
-            ctx.save();
-            ctx.beginPath();
-            ctx.rect(0, TOP, LAY.mapW, LAY.mapBot - TOP);
-            ctx.clip();
             this.overview.draw(ctx, view.ground, dest, g.players.map((p) => ({ x: this.vis[p.id].x, y: this.vis[p.id].y, color: C.players[p.color], avatar: AVATARS[p.avatar].emoji, current: p.id === this.current?.id })), tt);
-            ctx.restore();
             this.drawHud(ctx);
             return;
         }
         this.syncCamera();
         view.setMonth(g.month);
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(0, TOP, LAY.mapW, LAY.mapBot - TOP);
-        ctx.clip();
         // trains on the same square sit exactly on top of each other: only the active player's is shown
         const keyOf = (p) => { const vv = this.vis[p.id]; return `${Math.round(vv.x * 4)},${Math.round(vv.y * 4)}`; };
         const cur = this.current;
@@ -391,14 +428,23 @@ export class BoardScene {
             const boat = cell >= 0 && board.nodes[cell].type === 'sea';
             trains.push({ id: p.id, x: vv.x, z: vv.y, dir: vv.dir, type: p.train, color: p.color, cars, trail: vv.trail, lift: vv.h, scale: 1, boat });
         }
+        // Each sign asks for its crown and owner colours: share one monopoly lookup per station per frame.
+        const monoOf = new Map();
+        const mono = (sid) => {
+            let m = monoOf.get(sid);
+            if (m === undefined) {
+                m = monopolyOwner(g, sid);
+                monoOf.set(sid, m);
+            }
+            return m;
+        };
         view.draw(ctx, trains, dest, tt, {
-            owners: (sid) => this.ownerColors(sid),
-            crowned: (sid) => monopolyOwner(g, sid),
+            owners: (sid) => this.ownerColors(sid, mono(sid)),
+            crowned: (sid) => mono(sid),
         }, TOP);
         this.drawMarkers(ctx, tt);
         if (this.mode === 'junction')
             this.drawJunction(ctx, tt);
-        ctx.restore();
         this.drawHud(ctx);
     }
     drawJunction(ctx, tt) {
@@ -421,9 +467,12 @@ export class BoardScene {
             ctx.lineTo(-10, 36);
             ctx.closePath();
             ctx.fill();
-            ctx.fillStyle = sel ? C.gold : '#ffffff';
-            ctx.strokeStyle = '#1b1b1b';
-            ctx.lineWidth = 4;
+            // hover/keyboard selection is gold; the shortest way to the destination is always pink
+            // (pink with a gold outline when it is also the selected one)
+            const best = ar.node === this.juncBest;
+            ctx.fillStyle = best ? '#ff3399' : sel ? C.gold : '#ffffff';
+            ctx.strokeStyle = sel && best ? C.gold : '#1b1b1b';
+            ctx.lineWidth = sel && best ? 7 : 4;
             ctx.lineJoin = 'round';
             ctx.beginPath();
             ctx.moveTo(30, 0);
@@ -446,6 +495,10 @@ export class BoardScene {
             const isCur = p.id === this.current?.id;
             const head = view.toScreen(vv.x, vv.y, (isCur ? 0.62 : 0.45) + vv.h);
             const k = Math.max(0.6, Math.min(1.2, head.s / 190));
+            if (g.boggart.holder === p.id) {
+                const sz = (g.boggart.form === 'little' ? 26 : g.boggart.form === 'grand' ? 46 : 34) * k;
+                drawBoggart(ctx, head.x + 34 * k, head.y + 20 * k, sz, g.boggart.form, tt);
+            }
             if (isCur) {
                 // while choosing a way, the marker steps aside so it never hides the up arrow
                 if (this.mode === 'junction') {
@@ -484,82 +537,102 @@ export class BoardScene {
         }
     }
     // ---------- HUD ----------
-    /** Which station the side guide shows: the one under the map magnifier, the one the train stands on, or the destination. */
-    guideStation() {
-        const g = this.g;
-        if (this.mode === 'map') {
-            let best = '', bd = 3.5 / Math.max(0.5, this.overview.ppc / 22);
-            for (const [sid, st] of Object.entries(board.grid.stations)) {
-                const d = Math.hypot(st.x - this.overview.x, st.y - this.overview.y);
-                if (d < bd) {
-                    bd = d;
-                    best = sid;
-                }
-            }
-            if (best)
-                return { sid: best, tag: 'look' };
-        }
-        const p = this.current;
-        const sid = p ? board.nodes[p.pos].stationId : undefined;
-        if (sid && this.mode !== 'map')
-            return { sid, tag: 'here' };
-        return { sid: g.destination, tag: 'dest' };
-    }
     drawHud(ctx) {
         const g = this.g;
         const p = this.current ?? g.players[0];
-        const tt = clock.realTime;
-        // the map is clipped to its window; everything else is drawn on top
-        let off = null;
+        const grad = ctx.createLinearGradient(0, 0, 0, TOP);
+        grad.addColorStop(0, 'rgba(23,74,47,0.97)');
+        grad.addColorStop(1, 'rgba(15,52,33,0.97)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1280, TOP);
+        ctx.fillStyle = C.brass;
+        ctx.fillRect(0, TOP, 1280, 4);
+        ctx.fillStyle = 'rgba(0,0,0,0.22)';
+        ctx.fillRect(0, TOP + 4, 1280, 5);
+        ctx.fillStyle = '#20170a';
+        ctx.beginPath();
+        ctx.arc(46, 38, 29, 0, 7);
+        ctx.fill();
+        ctx.fillStyle = C.players[p.color];
+        ctx.beginPath();
+        ctx.arc(46, 38, 26, 0, 7);
+        ctx.fill();
+        emoji(ctx, AVATARS[p.avatar].emoji, 46, 38, 34);
+        const rank = ranking(g).findIndex((q) => q.id === p.id);
+        emoji(ctx, ['🥇', '🥈', '🥉', '🎖️'][rank] ?? '', 72, 60, 22);
+        text(ctx, main(p.name) + main(UI.railway) + (p.controller === 'cpu' ? `  ${STYLES[p.style].badge} CPU` : ''), 90, 22, { size: 18, color: '#cfe8d5', maxWidth: 300 });
+        text(ctx, money(p.cash), 90, 52, { size: 32, color: p.cash < 0 ? '#ff8a8a' : C.cream });
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        roundRect(ctx, 470, 10, 340, 56, 14);
+        ctx.fill();
+        emoji(ctx, SEASON_EMOJI[g.month], 500, 38, 30);
+        const ys = lines(UI.year).main === 'Year' ? `Year ${g.year} of ${g.settings.years}` : `${g.year}年目（全${g.settings.years}年）`;
+        text(ctx, main(MONTHS[g.month]), 645, 28, { size: 26, color: C.cream, align: 'center' });
+        text(ctx, ys, 645, 54, { size: 15, color: '#cfe8d5', align: 'center', weight: 500 });
+        const st = STATION_BY_ID[g.destination];
+        ctx.fillStyle = 'rgba(255,214,60,0.18)';
+        roundRect(ctx, 880, 10, 386, 56, 14);
+        ctx.fill();
+        emoji(ctx, '🚩', 908, 38, 30);
+        text(ctx, main(st.name), 934, 30, { size: 26, color: C.gold, maxWidth: 240 });
+        const d = distancesTo(board.stationNode[g.destination])[p.pos];
+        text(ctx, `${d} ${main(UI.squaresAway)}`, 934, 56, { size: 15, color: '#fff3c4', weight: 500 });
         const dn = board.nodes[board.stationNode[g.destination]];
         const ds = this.worldToScreen(dn.x, dn.y);
-        if (ds.x < 0 || ds.x > LAY.mapW || ds.y < TOP || ds.y > LAY.mapBot)
-            off = { a: Math.atan2(dn.y - this.cam.y, dn.x - this.cam.x) };
-        drawTopBar(ctx, g, p, off);
-        drawPlayerList(ctx, g, this.current);
-        const gs = this.guideStation();
-        drawGuide(ctx, gs.sid, gs.tag, tt);
-        const kbd = !!window.__kbd;
-        if (this.mode === 'command')
-            this.commandButtons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));
-        else if (this.mode === 'map') {
-            // the magnifier: whatever sits in the ring is shown in the Station guide
+        if (ds.x < 0 || ds.x > 1280 || ds.y < TOP || ds.y > 720) {
+            const a = Math.atan2(dn.y - this.cam.y, dn.x - this.cam.x);
             ctx.save();
+            ctx.translate(1236, 38);
+            ctx.rotate(a);
+            ctx.fillStyle = C.gold;
             ctx.strokeStyle = '#20170a';
-            ctx.lineWidth = 7;
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.arc(LAY.cx, LAY.cy, 30, 0, 7);
-            ctx.stroke();
-            ctx.strokeStyle = '#ffd23c';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.arc(LAY.cx, LAY.cy, 30, 0, 7);
+            ctx.moveTo(18, 0);
+            ctx.lineTo(-11, -13);
+            ctx.lineTo(-5, 0);
+            ctx.lineTo(-11, 13);
+            ctx.closePath();
+            ctx.fill();
             ctx.stroke();
             ctx.restore();
+        }
+        else
+            emoji(ctx, st.emoji, 1236, 38, 30);
+        const kbd = !!window.__kbd;
+        if (this.mode === 'command') {
+            ctx.fillStyle = 'rgba(15,52,33,0.88)';
+            roundRect(ctx, 232, 612, 1024, 104, 24);
+            ctx.fill();
+            ctx.strokeStyle = C.brass;
+            ctx.lineWidth = 3;
+            roundRect(ctx, 232, 612, 1024, 104, 24);
+            ctx.stroke();
+            this.commandButtons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));
+        }
+        else if (this.mode === 'map') {
             this.mapBack.draw(ctx, kbd);
-            this.moreBtn.draw(ctx, false);
-            this.pill(ctx, main(t2('Drag to look around · pinch or scroll to zoom', 'ドラッグでうごかす・ピンチでおおきく')), '🗺️', LAY.cx, LAY.mapBot - 34, 'rgba(255,250,240,0.95)', '#1d1d1b', 17);
+            this.pill(ctx, main(t2('Drag to look around · pinch or scroll to zoom', 'ドラッグで移動・ピンチで拡大')), '🗺️', 520, 666, 'rgba(255,250,240,0.95)', '#1d1d1b', 20);
         }
         else if (this.mode === 'junction') {
-            this.pill(ctx, main(t2('Which way? Tap an arrow!', 'どっちにいく？やじるしをタップ！')), '👉', LAY.cx, LAY.mapBot - 34, '#fffaf0', '#1d1d1b', 21);
+            this.pill(ctx, main(t2('Which way? Pink is the shortcut!', 'どっちに行く？ピンクが近道！')), '👉', 640, 662, '#fffaf0', '#1d1d1b', 26);
         }
         if (this.movesLeft > 0) {
-            const bx = LAY.mapW - 128, by = TOP + 10;
             ctx.fillStyle = 'rgba(0,0,0,0.3)';
-            roundRect(ctx, bx + 5, by + 5, 112, 82, 20);
+            roundRect(ctx, 1124, 100, 140, 96, 22);
             ctx.fill();
             ctx.fillStyle = '#20170a';
-            roundRect(ctx, bx, by, 112, 82, 20);
+            roundRect(ctx, 1118, 94, 140, 96, 22);
             ctx.fill();
             ctx.fillStyle = '#fffaf0';
-            roundRect(ctx, bx + 4, by + 4, 104, 74, 17);
+            roundRect(ctx, 1122, 98, 132, 88, 19);
             ctx.fill();
-            text(ctx, String(this.movesLeft), bx + 56, by + 36, { size: 46, color: C.red, align: 'center' });
-            text(ctx, lang.mode === 'en' ? 'to go' : 'あと マス', bx + 56, by + 65, { size: 15, color: '#1d1d1b', align: 'center' });
+            text(ctx, String(this.movesLeft), 1188, 134, { size: 54, color: C.red, align: 'center' });
+            text(ctx, main(t2('to go', 'マス')), 1188, 172, { size: 17, color: '#1d1d1b', align: 'center' });
         }
         if (this.current && this.current.controller === 'cpu' && this.mode === 'idle') {
             const s = STYLES[this.current.style];
-            this.pill(ctx, `${main(this.current.name)} · ${main(s.name)}`, s.badge, LAY.cx, TOP + 28, 'rgba(15,52,33,0.88)', C.cream, 17);
+            this.pill(ctx, `${main(this.current.name)} · ${main(s.name)}`, s.badge, 640, 684, 'rgba(15,52,33,0.88)', C.cream, 20);
         }
     }
     pill(ctx, s, icon, cx, cy, bg, fg, size) {

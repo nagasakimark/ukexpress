@@ -5,15 +5,15 @@ import { C, FONT, panel, text, wrap, fitWrap, emoji, money, roundRect, shade } f
 import { clock, Ease } from '../engine/tween.js';
 import { audio } from '../engine/audio.js';
 import { fx } from '../engine/fx.js';
-import { lines, lang, UI, t2 } from './i18n.js';
+import { lines, lang, UI, t2, payoutT } from './i18n.js';
 import { app } from './app.js';
 import { CARD_BY_ID, TRAINS, REGIONS, AVATARS, STYLES, SEASONS } from '../core/content/game-data.js';
 import { STATION_BY_ID, STATIONS } from '../core/content/stations.js';
 import { HERO_BY_ID } from '../core/content/heroes.js';
-import { priceOf, assets, monopolyOwner } from '../core/rules.js';
+import { priceOf, assets, monopolyOwner, payoutYear } from '../core/rules.js';
 import { realMonth, daysInMonth, firstWeekday, eventDate, dateText, MONTH_NAMES, WEEKDAYS } from '../core/calendar.js';
 import { drawPortrait } from './mapart.js';
-import { LAY } from './layout.js';
+import { drawPic, drawPicWhole, drawPhotoCircle, PhotoBrowser } from './images.js';
 export const CAT_EMOJI = { food: '🍽️', tourism: '📷', industry: '⚙️', culture: '🎭', sport: '⚽' };
 export const CAT_NAME = { food: t2('Food', '食べ物'), tourism: t2('Tourism', '観光'), industry: t2('Industry', '工業'), culture: t2('Culture', '文化'), sport: t2('Sport', 'スポーツ') };
 const SUB_RATIO = 0.64;
@@ -76,109 +76,110 @@ export function header(ctx, title, x, y, w, color) {
     if (tl.sub)
         text(ctx, tl.sub, x + w / 2, y + 62, { size: 17, color: '#fff3c4', align: 'center', weight: 500, maxWidth: w - 60 });
 }
-const BODY_SIZE = 22;
-const MAX_BODY_H = 150;
-const BIG_BODY_SIZE = 26;
-const BIG_MAX_BODY_H = 380;
-/**
- * The message box. Normally a see-through bar at the bottom of the map (one tap carries on, like the
- * Momotetsu text window); tutorial pages with pictures (pageArt) use a large centred panel.
- */
+/** A "2 / 5" pill over a photo, so players can see there is more to browse. */
+export function photoCounter(ctx, cx, cy, pos, total) {
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    roundRect(ctx, cx - 52, cy - 17, 104, 34, 17);
+    ctx.fill();
+    text(ctx, `${pos} / ${total}`, cx, cy + 1, { size: 20, color: '#fff', align: 'center' });
+}
+/** The picture, full screen, so students can look closely (tap any photo's 🔍 to get here). */
+export class ImageViewer extends PModal {
+    constructor(pic, caption, photos) {
+        super();
+        this.pic = pic;
+        this.caption = caption;
+        this.photos = photos;
+        this.dim = 0.8;
+        this.buttons.push(new Button({ x: 640 - 130, y: 640, w: 260, h: 62, label: lbl(UI.back), sub: sub(UI.back), color: '#7a6a55', onClick: () => this.resolveWith(undefined) }));
+        this.prevBtn = new Button({ x: 52, y: 324, w: 60, h: 52, label: '◀', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(-1) });
+        this.nextBtn = new Button({ x: 1168, y: 324, w: 60, h: 52, label: '▶', size: 24, color: '#3a5a8a', onClick: () => this.photos?.step(1) });
+        this.buttons.push(this.prevBtn, this.nextBtn);
+        this.onBack = () => this.resolveWith(undefined);
+        this.focus = 0;
+    }
+    drawBody(ctx) {
+        ctx.fillStyle = '#11151a';
+        ctx.fillRect(0, 0, 1280, 720);
+        const multi = (this.photos?.count() ?? 0) > 1;
+        this.prevBtn.hidden = this.nextBtn.hidden = !multi;
+        if (!multi && this.focus > 0)
+            this.focus = 0;
+        drawPicWhole(ctx, this.pic.kind, this.photos ? this.photos.name() : this.pic.name, 40, 76, 1200, 548, { emoji: this.pic.emoji, label: this.pic.label, color: this.pic.color });
+        if (multi)
+            photoCounter(ctx, 640, 598, this.photos.index() + 1, this.photos.count());
+        text(ctx, lbl(this.caption), 640, 40, { size: 30, color: '#fff', align: 'center', maxWidth: 1100 });
+    }
+}
+const BODY_SIZE = 26;
+const MAX_BODY_H = 380;
 export class MessageModal extends PModal {
     constructor(o) {
         super();
         this.o = o;
-        this.w = 872;
-        this.h = 200;
-        this.x = 24;
+        this.w = 860;
+        this.h = 300;
+        this.x = 0;
         this.y = 0;
         this.pages = [];
         this.page = 0;
         this.size = BODY_SIZE;
-        this.big = !!o.pageArt;
+        /** Where the photo was drawn (for tap-to-enlarge); null when there is no photo. */
+        this.photoRect = null;
         const ctx = app.screen.ctx;
-        const maxH = this.big ? BIG_MAX_BODY_H : MAX_BODY_H;
-        this.size = this.big ? BIG_BODY_SIZE : BODY_SIZE;
-        if (this.big)
-            this.w = 860;
         const tw = this.textW();
         const body = o.body ?? [];
-        const pageH = (pg) => pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + 8, 0);
+        const extra = o.money !== undefined ? 70 : 0;
+        const pageH = (pg) => pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + 14, 0);
+        // Split the body into pages that fit; one very long paragraph shrinks a little instead.
         if (o.pageArt)
             this.pages = body.map((b) => [b]);
         else {
             let cur = [];
             for (const b of body) {
-                if (cur.length && pageH([...cur, b]) > maxH) {
+                if (cur.length && pageH([...cur, b]) + extra > MAX_BODY_H) {
                     this.pages.push(cur);
                     cur = [];
                 }
                 cur.push(b);
             }
             this.pages.push(cur);
-            while (this.size > 16 && this.pages.some((pg) => pageH(pg) > maxH))
+            while (this.size > 18 && this.pages.some((pg) => pageH(pg) + extra > MAX_BODY_H))
                 this.size -= 1;
         }
         if (!this.pages.length)
             this.pages = [[]];
-        let mh = 0;
+        let maxH = 0;
         for (const pg of this.pages)
-            mh = Math.max(mh, pageH(pg));
-        if (this.big) {
-            this.h = Math.min(640, Math.max(250, 96 + Math.max(mh, this.hasArt() ? 220 : 0) + 116));
-            this.x = 640 - this.w / 2;
-            this.y = 360 - this.h / 2;
-        }
-        else {
-            this.dim = 0;
-            this.h = Math.max(this.hasArt() ? 132 : 112, 50 + mh + (this.multi() ? 66 : 14));
-            this.y = LAY.mapBot - 12 - this.h;
-        }
+            maxH = Math.max(maxH, pageH(pg));
+        maxH += extra;
+        const artH = this.hasArt() ? (o.photo ? 260 : 220) : 0;
+        this.h = Math.min(640, Math.max(250, 96 + Math.max(maxH, artH) + 116));
+        this.x = 640 - this.w / 2;
+        this.y = 360 - this.h / 2;
         this.buildButtons();
         if (o.confetti)
-            setTimeout(() => fx.burst(this.x + this.w / 2, 200, 'confetti', 60, { speed: 9, up: 6 }), 120);
+            setTimeout(() => fx.burst(640, 200, 'confetti', 60, { speed: 9, up: 6 }), 120);
     }
-    multi() { return (this.o.buttons?.length ?? 0) > 1; }
-    hasArt() { return !!(this.o.portrait || this.o.icon || this.o.iconDraw || this.o.pageArt); }
-    textW() { return this.w - (this.big ? 80 : 56) - (this.hasArt() ? (this.big ? 210 : 112) : 0) - (!this.big && this.o.money !== undefined ? 150 : 0); }
+    hasArt() { return !!(this.o.portrait || this.o.icon || this.o.iconDraw || this.o.pageArt || this.o.photo); }
+    textW() { return this.w - 80 - (this.hasArt() ? 210 : 0); }
     lastPage() { return this.page >= this.pages.length - 1; }
     nextPage() { this.page++; audio.play('card'); this.buildButtons(); }
     buildButtons() {
         this.buttons = [];
-        if (this.big) {
-            const by = this.y + this.h - 88;
-            if (!this.lastPage()) {
-                this.buttons.push(new Button({ x: 640 - 140, y: by, w: 280, h: 66, label: lbl(UI.next) + ' ▶', sub: sub(UI.next), color: C.green, onClick: () => this.nextPage() }));
-                this.onBack = () => this.nextPage();
-            }
-            else {
-                const btns = this.o.buttons ?? [{ label: UI.ok, value: true }];
-                const bw = Math.min(290, (this.w - 80) / btns.length - 20);
-                const total = btns.length * bw + (btns.length - 1) * 24;
-                btns.forEach((b, i) => this.buttons.push(new Button({ x: 640 - total / 2 + i * (bw + 24), y: by, w: bw, h: 66, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
-                this.onBack = btns.length === 1 ? () => this.resolveWith(btns[0].value) : null;
-            }
-            this.focus = 0;
-            return;
-        }
-        if (this.lastPage() && this.multi()) {
-            const btns = this.o.buttons;
-            const bw = Math.min(250, (this.w - 48) / btns.length - 14);
-            const total = btns.length * bw + (btns.length - 1) * 14;
-            btns.forEach((b, i) => this.buttons.push(new Button({ x: this.x + this.w - 24 - total + i * (bw + 14), y: this.y + this.h - 62, w: bw, h: 50, size: 20, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
-            this.onBack = null;
-            this.focus = 0;
+        const by = this.y + this.h - 88;
+        if (!this.lastPage()) {
+            this.buttons.push(new Button({ x: 640 - 140, y: by, w: 280, h: 66, label: lbl(UI.next) + ' ▶', sub: sub(UI.next), color: C.green, onClick: () => this.nextPage() }));
+            this.onBack = () => this.nextPage();
         }
         else {
-            this.onBack = () => this.advance();
-            this.focus = -1;
+            const btns = this.o.buttons ?? [{ label: UI.ok, value: true }];
+            const bw = Math.min(290, (this.w - 80) / btns.length - 20);
+            const total = btns.length * bw + (btns.length - 1) * 24;
+            btns.forEach((b, i) => this.buttons.push(new Button({ x: 640 - total / 2 + i * (bw + 24), y: by, w: bw, h: 66, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
+            this.onBack = btns.length === 1 ? () => this.resolveWith(btns[0].value) : null;
         }
-    }
-    advance() {
-        if (!this.lastPage())
-            this.nextPage();
-        else if (!this.multi())
-            this.resolveWith((this.o.buttons ?? [{ value: true }])[0].value);
+        this.focus = 0;
     }
     autoValue() {
         if (!this.lastPage()) {
@@ -187,113 +188,91 @@ export class MessageModal extends PModal {
         }
         return (this.o.buttons ?? [{ value: true }])[0].value;
     }
-    tapOutside() { if (this.big) {
+    tapOutside() {
         if (!this.lastPage())
             this.nextPage();
         else if ((this.o.buttons ?? []).length <= 1)
             this.resolveWith((this.o.buttons ?? [{ value: true }])[0].value);
     }
-    else
-        this.advance(); }
-    pointerUp(x, y, wasDrag) {
-        if (this.closing || wasDrag)
-            return true;
-        for (const b of this.buttons)
-            if (b.hit(x, y)) {
-                b.click();
-                return true;
-            }
-        if (!this.big)
-            this.advance();
-        return true;
-    }
-    draw(ctx) {
-        if (this.big) {
-            super.draw(ctx);
-            return;
-        }
-        const a = Math.max(0, Math.min(1, this.appear));
-        ctx.save();
-        ctx.globalAlpha = Math.min(1, a * 1.6);
-        ctx.translate(0, (1 - a) * 40);
-        this.drawBody(ctx);
-        for (let i = 0; i < this.buttons.length; i++)
-            this.buttons[i].draw(ctx, i === this.focus && !!window.__kbd);
-        ctx.restore();
-    }
     drawBody(ctx) {
         const { x, y, w, h, o } = this;
-        const col = o.color ?? C.green;
-        if (this.big) {
-            panel(ctx, x, y, w, h);
-            header(ctx, o.title, x, y, w, col);
-        }
-        else {
-            ctx.fillStyle = 'rgba(0,0,0,0.28)';
-            roundRect(ctx, x + 3, y + 6, w, h, 20);
-            ctx.fill();
-            ctx.fillStyle = 'rgba(255,250,238,0.93)';
-            roundRect(ctx, x, y, w, h, 20);
-            ctx.fill();
-            ctx.strokeStyle = col;
-            ctx.lineWidth = 5;
-            roundRect(ctx, x + 2.5, y + 2.5, w - 5, h - 5, 18);
-            ctx.stroke();
-            const tl = lines(o.title);
-            ctx.font = `800 20px ${FONT}`;
-            const tw = Math.min(w - 120, ctx.measureText(tl.main).width + (tl.sub ? 0 : 0) + 36);
-            ctx.fillStyle = col;
-            roundRect(ctx, x + 18, y - 17, tw, 36, 18);
-            ctx.fill();
-            text(ctx, tl.main, x + 18 + tw / 2, y + 1, { size: 20, color: '#fff', align: 'center', maxWidth: tw - 20 });
-        }
-        let tx = x + (this.big ? 40 : 28);
-        const areaTop = y + (this.big ? 82 : 26), areaBot = y + h - (this.big ? (this.pages.length > 1 ? 124 : 100) : (this.multi() && this.lastPage() ? 70 : 28));
+        panel(ctx, x, y, w, h);
+        header(ctx, o.title, x, y, w, o.color ?? C.green);
+        let tx = x + 40;
+        const areaTop = y + 82, areaBot = y + h - (this.pages.length > 1 ? 124 : 100);
         if (this.hasArt()) {
-            const ax = this.big ? x + 120 : x + 62;
-            const py = this.big ? (areaTop + areaBot) / 2 - (o.badge ? 12 : 0) : y + h / 2 + (this.multi() && this.lastPage() ? -22 : 0);
+            const py = (areaTop + areaBot) / 2 - (o.badge ? 12 : 0);
             const art = o.pageArt?.[this.page];
+            this.photoRect = null;
             if (art)
-                art(ctx, ax, py);
+                art(ctx, x + 120, py);
             else if (o.iconDraw)
-                o.iconDraw(ctx, ax, py);
+                o.iconDraw(ctx, x + 120, py);
+            else if (o.photo)
+                this.drawPhoto(ctx, x, py);
             else if (o.portrait)
-                drawPortrait(ctx, o.portrait, ax, py, this.big ? 68 : 44, o.portraitRing);
+                drawPortrait(ctx, o.portrait, x + 120, py, 68, o.portraitRing);
             else
-                emoji(ctx, o.icon, ax, py, this.big ? 96 : 62);
+                emoji(ctx, o.icon, x + 120, py, 96);
             if (o.badge)
-                text(ctx, o.badge, ax, py + (this.big ? 92 : 50), { size: 14, align: 'center', color: '#5a5a50', maxWidth: this.big ? 190 : 100 });
-            tx = x + (this.big ? 230 : 118);
+                text(ctx, o.badge, x + 120, py + 92, { size: 17, align: 'center', color: '#5a5a50', maxWidth: 190 });
+            tx = x + 230;
         }
         const pg = this.pages[this.page] ?? [];
-        const tw = this.textW();
-        const gap = this.big ? 14 : 8;
-        const contentH = pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + gap, 0) - gap;
-        let cy = areaTop + Math.max(6, (areaBot - areaTop - contentH) / 2);
+        const contentH = pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, this.textW()) + 14, 0) - 14 + (this.lastPage() && o.money !== undefined ? 70 : 0);
+        let cy = areaTop + Math.max(8, (areaBot - areaTop - contentH) / 2);
         for (const b of pg)
-            cy = dual(ctx, b, tx, cy, this.size, tw) + gap;
+            cy = dual(ctx, b, tx, cy, this.size, this.textW()) + 14;
         if (o.money !== undefined && this.lastPage()) {
             const m = o.money;
-            text(ctx, (m > 0 ? '+' : '') + money(m), this.big ? tx + tw / 2 : x + w - 88, this.big ? cy + 24 : y + h / 2 - 8, { size: this.big ? 48 : 36, color: m >= 0 ? '#c8921a' : C.red, align: 'center', outline: 7, outlineColor: m >= 0 ? '#fff6d0' : '#ffe0e0', maxWidth: 160 });
-        }
-        if (!this.big && !(this.multi() && this.lastPage())) {
-            const bob = Math.sin(clock.realTime / 180) * 4;
-            ctx.fillStyle = col;
-            ctx.beginPath();
-            ctx.moveTo(x + w - 40, y + h - 30 + bob);
-            ctx.lineTo(x + w - 20, y + h - 30 + bob);
-            ctx.lineTo(x + w - 30, y + h - 17 + bob);
-            ctx.closePath();
-            ctx.fill();
+            text(ctx, (m > 0 ? '+' : '') + money(m), tx + this.textW() / 2, cy + 24, { size: 48, color: m >= 0 ? C.gold : C.red, align: 'center', outline: 8 });
         }
         if (this.pages.length > 1) {
             for (let i = 0; i < this.pages.length; i++) {
-                ctx.fillStyle = i === this.page ? col : '#cfc4a3';
+                ctx.fillStyle = i === this.page ? C.green : '#cfc4a3';
                 ctx.beginPath();
-                ctx.arc(this.big ? 640 + (i - (this.pages.length - 1) / 2) * 22 : x + w - 70 - (this.pages.length - 1 - i) * 14, this.big ? y + h - 112 : y + h - 22, 5, 0, 7);
+                ctx.arc(640 + (i - (this.pages.length - 1) / 2) * 22, y + h - 112, 6, 0, 7);
                 ctx.fill();
             }
         }
+    }
+    /** The photo in the art slot (heroes as a circle, like their portraits). A 🔍 badge shows it can be tapped bigger. */
+    drawPhoto(ctx, x, py) {
+        const p = this.o.photo;
+        if (p.kind === 'heroes') {
+            const cx = x + 120;
+            if (!drawPhotoCircle(ctx, p.kind, p.name, cx, py, 60, this.o.portraitRing))
+                drawPortrait(ctx, p.emoji, cx, py, 68, this.o.portraitRing);
+            this.photoRect = { x: cx - 62, y: py - 62, w: 124, h: 124 };
+            // the badge sits outside the ring, bottom-right, so it never covers the face
+            const bx = cx + 48, by = py + 48;
+            ctx.fillStyle = 'rgba(0,0,0,0.55)';
+            ctx.beginPath();
+            ctx.arc(bx, by, 15, 0, 7);
+            ctx.fill();
+            emoji(ctx, '🔍', bx, by, 19);
+        }
+        else {
+            drawPic(ctx, p.kind, p.name, x + 25, py - 70, 190, 140, { emoji: p.emoji, label: p.label, color: p.color });
+            this.photoRect = { x: x + 25, y: py - 70, w: 190, h: 140 };
+            const r = this.photoRect;
+            ctx.fillStyle = 'rgba(0,0,0,0.55)';
+            ctx.beginPath();
+            ctx.arc(r.x + r.w - 20, r.y + 22, 15, 0, 7);
+            ctx.fill();
+            emoji(ctx, '🔍', r.x + r.w - 20, r.y + 22, 19);
+        }
+    }
+    pointerUp(x, y, wasDrag) {
+        if (!wasDrag && this.o.photo && this.photoRect) {
+            const r = this.photoRect;
+            if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
+                const p = this.o.photo;
+                app.show(new ImageViewer(p, this.o.title, new PhotoBrowser(p.kind, p.name)));
+                return true;
+            }
+        }
+        return super.pointerUp(x, y, wasDrag);
     }
 }
 export function say(o) { return app.show(new MessageModal(o)); }
@@ -454,9 +433,10 @@ export class QuizModal extends PModal {
 }
 export function quiz(q, hint, reward, title) { return app.show(new QuizModal(q, hint, reward, title)); }
 // ---------- Card tiles ----------
-const KIND_COL = { move: '#3a7be8', warp: '#2aa198', money: '#e6a817', defence: '#6c7a89', learn: '#2e9b46' };
-/** A card tile. All text is fitted to the card: names shrink, descriptions wrap and shrink. */
-export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false) {
+const KIND_COL = { move: '#3a7be8', warp: '#2aa198', money: '#e6a817', defence: '#6c7a89', attack: '#d7263d', boggart: '#7a5c99', learn: '#2e9b46', control: '#ef6c00' };
+/** A card tile. All text is fitted to the card: names shrink, descriptions wrap and shrink.
+ * Pass the game year and "£100 × year" descriptions show the actual amount. */
+export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false, year = 0) {
     ctx.save();
     if (dim)
         ctx.globalAlpha *= 0.5;
@@ -506,7 +486,8 @@ export function drawCard(ctx, c, x, y, w, h, selected = false, dim = false) {
         cy += sm.size * 1.25;
     }
     const room = y + h - 10 - cy;
-    const dm = fitWrap(ctx, lines(c.desc).main, iw, Math.max(1, Math.floor(room / 14)), 14, 10, 500);
+    const desc = year > 0 ? payoutT(c.desc, Math.min(year, 5)) : c.desc;
+    const dm = fitWrap(ctx, lines(desc).main, iw, Math.max(1, Math.floor(room / 14)), 14, 10, 500);
     cy += Math.max(0, (room - dm.lines.length * dm.size * 1.2) / 2);
     for (const s of dm.lines) {
         text(ctx, s, x + w / 2, cy + dm.size / 2, { size: dm.size, align: 'center', weight: 500, color: '#333' });
@@ -539,7 +520,8 @@ export function drawHeroCard(ctx, id, x, y, w, h, selected = false, dim = false,
     ctx.fill();
     text(ctx, 'HERO', x + w / 2, y + 15, { size: 12, align: 'center', color: '#8a6a10' });
     const pr = Math.min(38, w * 0.26);
-    drawPortrait(ctx, hd.emoji, x + w / 2, y + 26 + pr, pr);
+    if (!drawPhotoCircle(ctx, 'heroes', hd.image, x + w / 2, y + 26 + pr, pr))
+        drawPortrait(ctx, hd.emoji, x + w / 2, y + 26 + pr, pr);
     let cy = y + 34 + pr * 2 + 6;
     const iw = w - 16;
     const l = lines(hd.name);
@@ -568,7 +550,7 @@ export function drawHeroCard(ctx, id, x, y, w, h, selected = false, dim = false,
     }
     ctx.restore();
 }
-const PASSIVE = ['umbrella', 'horseshoe'];
+const PASSIVE = ['umbrella', 'horseshoe', 'wellies'];
 export class HandModal extends PModal {
     constructor(g, p) {
         super();
@@ -577,7 +559,7 @@ export class HandModal extends PModal {
         this.sel = 0;
         this.items = [];
         for (const id of p.cards)
-            this.items.push({ kind: 'card', id, usable: !PASSIVE.includes(id) && !(id === 'return' && !p.lastBuyStation) });
+            this.items.push({ kind: 'card', id, usable: !PASSIVE.includes(id) && !(id === 'return' && !p.lastBuyStation) && !((id === 'rowan' || id === 'tea') && g.boggart.holder !== p.id) });
         for (const id of p.heroes) {
             const hd = HERO_BY_ID[id];
             this.items.push({ kind: 'hero', id, usable: hd.power !== 'none' && p.heroUsedYear[id] !== g.year });
@@ -646,16 +628,16 @@ export class HandModal extends PModal {
             const r = L[i];
             const lift = i === this.sel ? -10 : 0;
             if (it.kind === 'card')
-                drawCard(ctx, CARD_BY_ID[it.id], r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable);
+                drawCard(ctx, CARD_BY_ID[it.id], r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable, this.g.year);
             else
                 drawHeroCard(ctx, it.id, r.x, r.y + lift, r.w, r.h, i === this.sel, !it.usable, this.p.heroUsedYear[it.id] === this.g.year);
         });
         const it = this.items[this.sel];
         if (it) {
-            const desc = it.kind === 'card' ? CARD_BY_ID[it.id].desc : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローのでんどうに記録されたよ。'));
-            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Keep this card: it works by itself.', '持っているだけでこうかがあるよ。')
-                : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月にふっかつするよ。')
-                    : null;
+            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, payoutYear(this.g)) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
+            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Hold this card: it protects you by itself, once.', '持っているだけで1回守ってくれるよ。')
+                : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月に復活するよ。')
+                    : (it.id === 'rowan' || it.id === 'tea') && !it.usable ? t2('Use this when the Boggart is on your train.', 'ボガートがついているときに使おう。') : null;
             const top = L[L.length - 1].y + L[L.length - 1].h + 18;
             ctx.fillStyle = 'rgba(255,255,255,0.6)';
             roundRect(ctx, 200, top, 880, 602 - top, 14);
@@ -674,10 +656,10 @@ export class ShopModal extends PModal {
         this.stationId = stationId;
         this.cart = new Set();
         this.train = null;
-        this.x = 16;
-        this.y = 16;
-        this.w = 888;
-        this.h = 688;
+        this.x = 120;
+        this.y = 24;
+        this.w = 1040;
+        this.h = 672;
         this.rows = [];
         this.trainBtn = null;
         this.rowH = 82;
@@ -698,7 +680,7 @@ export class ShopModal extends PModal {
             this.trainBtn = new Button({ x: this.x + this.w - 196, y: this.rowTop + st.props.length * this.rowH + (this.rowH - 58) / 2, w: 160, h: 58, label: lbl(UI.buy), sub: sub(UI.buy), color: '#1e5aa8', size: 24, onClick: () => this.toggleTrain(p.train + 1, next.price) });
             this.buttons.push(this.trainBtn);
         }
-        this.buttons.push(new Button({ x: this.x + this.w / 2 - 130, y: this.y + this.h - 84, w: 260, h: 64, label: lbl(UI.done), sub: sub(UI.done), color: C.green, onClick: () => this.resolveWith({ props: [...this.cart], train: this.train }) }));
+        this.buttons.push(new Button({ x: 640 - 130, y: this.y + this.h - 84, w: 260, h: 64, label: lbl(UI.done), sub: sub(UI.done), color: C.green, onClick: () => this.resolveWith({ props: [...this.cart], train: this.train }) }));
         this.onBack = () => this.resolveWith({ props: [...this.cart], train: this.train });
         // keyboard focus starts on the first thing you can actually buy, or on Done
         this.refresh();
@@ -770,7 +752,7 @@ export class ShopModal extends PModal {
         emoji(ctx, st.emoji, x + 58, y + 45, 50);
         const nl = lines(st.name);
         text(ctx, nl.main, x + 100, y + 36, { size: 32, color: '#fff', outline: 6, outlineColor: shade(col, -0.45), maxWidth: 520 });
-        text(ctx, (nl.sub ? nl.sub + '  ·  ' : '') + lbl(t2('Station shop', '駅のぶっけん')), x + 100, y + 68, { size: 17, color: '#fff', weight: 500, maxWidth: 520 });
+        text(ctx, (nl.sub ? nl.sub + '  ·  ' : '') + lbl(t2('Station shop', '駅の物件')), x + 100, y + 68, { size: 17, color: '#fff', weight: 500, maxWidth: 520 });
         ctx.fillStyle = 'rgba(0,0,0,0.25)';
         roundRect(ctx, x + w - 300, y + 18, 276, 54, 12);
         ctx.fill();
@@ -789,7 +771,7 @@ export class ShopModal extends PModal {
             if (pl.sub)
                 text(ctx, pl.sub, x + 100, ry + rh / 2 + 16, { size: 15, weight: 500, color: '#5a5a50', maxWidth: 440 });
             text(ctx, money(priceOf(this.g, pr)), x + 690, ry + rh / 2 - 10, { size: 26, align: 'right' });
-            text(ctx, `${lbl(t2('earns', 'りえき'))} ${Math.round(pr.ret * 100)}%`, x + 690, ry + rh / 2 + 16, { size: 15, align: 'right', weight: 500, color: '#2e7d32' });
+            text(ctx, `${lbl(t2('earns', '利益'))} ${Math.round(pr.ret * 100)}%`, x + 690, ry + rh / 2 + 16, { size: 15, align: 'right', weight: 500, color: '#2e7d32' });
             const owner = this.g.owners[pr.id];
             if (owner) {
                 const op = this.g.players.find((q) => q.id === owner);
@@ -812,9 +794,9 @@ export class ShopModal extends PModal {
             text(ctx, money(next.price), x + 690, ry + rh / 2, { size: 26, align: 'right' });
         }
         const tip = mono
-            ? `👑 ${lbl(t2('Monopoly', 'どくせん'))}: ${lines(this.g.players.find((q) => q.id === mono).name).main}`
-            : '👑 ' + lbl(t2('Buy everything here for a Monopoly: profits double!', 'ぜんぶ買うとどくせん！りえきが2倍！'));
-        text(ctx, tip, x + w / 2, y + h - 104, { size: 18, color: '#7a5a10', align: 'center', maxWidth: 900 });
+            ? `👑 ${lbl(t2('Monopoly', '独占'))}: ${lines(this.g.players.find((q) => q.id === mono).name).main}`
+            : '👑 ' + lbl(t2('Buy everything here for a Monopoly: profits double!', 'ぜんぶ買うと独占！利益が2倍！'));
+        text(ctx, tip, 640, y + h - 104, { size: 18, color: '#7a5a10', align: 'center', maxWidth: 900 });
     }
 }
 // ---------- Card shop ----------
@@ -856,7 +838,7 @@ export class CardShopModal extends PModal {
         panel(ctx, 140, 40, 1000, 640);
         header(ctx, t2('Card Shop', 'カード売り場'), 140, 40, 1000, '#17a2a2');
         text(ctx, `${lbl(UI.cash)} ${money(this.cash())}`, 1110, 81, { size: 22, align: 'right', color: '#fff', outline: 4, outlineColor: '#0b5a5a' });
-        this.stock.forEach((id, i) => drawCard(ctx, CARD_BY_ID[id], this.cardX(i), 140, 180, 320, this.cart.includes(id)));
+        this.stock.forEach((id, i) => drawCard(ctx, CARD_BY_ID[id], this.cardX(i), 140, 180, 320, this.cart.includes(id), false, this.g.year));
     }
 }
 // ---------- Settlement ----------
@@ -874,8 +856,8 @@ export class SettlementModal extends PModal {
     autoValue() { return true; }
     drawBody(ctx) {
         panel(ctx, 110, 24, 1060, 676, { fill: '#f3ead2' });
-        header(ctx, t2(`End of Year ${this.g.year}: payday!`, `${this.g.year}年目の決算：りえきの日！`), 110, 24, 1060, C.green);
-        text(ctx, lbl(t2('Every March, each property you own pays you money.', '毎年3月、持っているぶっけんがお金をくれるよ。')), 640, 124, { size: 20, align: 'center', color: '#5a5a50', weight: 500 });
+        header(ctx, t2(`End of Year ${this.g.year}: payday!`, `${this.g.year}年目の決算：利益の日！`), 110, 24, 1060, C.green);
+        text(ctx, lbl(t2('Every March, each property you own pays you money.', '毎年3月、持っている物件がお金をくれるよ。')), 640, 124, { size: 20, align: 'center', color: '#5a5a50', weight: 500 });
         const rank = this.g.players.slice().sort((a, b) => assets(this.g, b) - assets(this.g, a));
         const maxA = Math.max(1, ...rank.map((p) => Math.max(1, assets(this.g, p))));
         rank.forEach((p, i) => {
@@ -901,7 +883,7 @@ export class SettlementModal extends PModal {
             ctx.fill();
             text(ctx, money(a * this.t), 592 + Math.max(8, bw), y + 48, { size: 22 });
             if (L.sold.length)
-                text(ctx, lbl(t2('Sold property to pay debts', '借金のためぶっけんをばいきゃく')), 580, y + 84, { size: 14, color: C.red, weight: 500 });
+                text(ctx, lbl(t2('Sold property to pay debts', '借金のため物件を売却')), 580, y + 84, { size: 14, color: C.red, weight: 500 });
         });
     }
 }

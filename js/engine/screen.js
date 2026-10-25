@@ -11,17 +11,18 @@ export class Screen {
         /** Called after every resize with the game area in CSS pixels (used to line up the 3D canvas). */
         this.onLayout = null;
         this.cap = 1.5;
-        this.q = 1;
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.resize();
         window.addEventListener('resize', () => this.resize());
         this.pattern = this.makePattern();
     }
-    /** Slow machines: lower the pixel density (cap) and the render scale (q); the picture is stretched to fit by CSS. */
-    setQuality(cap, q) { this.cap = cap; this.q = q; this.resize(); }
+    /** Pixel-density cap for the canvas. The canvas itself always stays sharp: slow machines
+        save work by shrinking the board's scenery layer instead (see BoardView.sceneQ),
+        so text, trains, signs and dialogs are never dulled. */
+    setQuality(cap) { this.cap = cap; this.resize(); }
     resize() {
-        this.dpr = Math.min(window.devicePixelRatio || 1, this.cap) * this.q;
+        this.dpr = Math.min(window.devicePixelRatio || 1, this.cap);
         const cw = window.innerWidth;
         const ch = window.innerHeight;
         this.canvas.width = Math.round(cw * this.dpr);
@@ -60,17 +61,32 @@ export class Screen {
         const { ctx, dpr } = this;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         const cw = this.canvas.width / dpr, ch = this.canvas.height / dpr;
-        ctx.fillStyle = this.pattern || '#123d27';
+        const x1 = this.ox + W * this.scale, y1 = this.oy + H * this.scale;
         if (transparent) {
             ctx.clearRect(0, 0, cw, ch);
-            const x1 = this.ox + W * this.scale, y1 = this.oy + H * this.scale;
+            ctx.fillStyle = this.pattern || '#123d27';
             ctx.fillRect(0, 0, cw, Math.ceil(this.oy));
             ctx.fillRect(0, Math.floor(y1), cw, ch - y1 + 1);
             ctx.fillRect(0, 0, Math.ceil(this.ox), ch);
             ctx.fillRect(Math.floor(x1), 0, cw - x1 + 1, ch);
         }
-        else
+        else {
+            // Every scene repaints the whole game area each frame, so the (slow) ticket pattern is only
+            // needed on the small letterbox bars; the game area gets one cheap solid fill as a backstop.
+            ctx.fillStyle = '#123d27';
             ctx.fillRect(0, 0, cw, ch);
+            if (this.pattern && (this.ox > 0.5 || this.oy > 0.5)) {
+                ctx.fillStyle = this.pattern;
+                if (this.oy > 0.5) {
+                    ctx.fillRect(0, 0, cw, Math.ceil(this.oy));
+                    ctx.fillRect(0, Math.floor(y1), cw, ch - y1 + 1);
+                }
+                if (this.ox > 0.5) {
+                    ctx.fillRect(0, 0, Math.ceil(this.ox), ch);
+                    ctx.fillRect(Math.floor(x1), 0, cw - x1 + 1, ch);
+                }
+            }
+        }
         ctx.setTransform(dpr * this.scale, 0, 0, dpr * this.scale, dpr * this.ox, dpr * this.oy);
         ctx.save();
         ctx.beginPath();

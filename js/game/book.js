@@ -3,16 +3,15 @@
 import { Button } from '../engine/ui.js';
 import { C, text, emoji, roundRect, fitWrap, panel, shade } from '../engine/draw.js';
 import { audio } from '../engine/audio.js';
-import { fixedDay } from '../core/calendar.js';
 import { STATIONS, STATION_BY_ID } from '../core/content/stations.js';
 import { HEROES, HERO_BY_ID } from '../core/content/heroes.js';
 import { CARDS, CARD_BY_ID, EVENTS, REGIONS } from '../core/content/game-data.js';
-import { stationProfile } from './profile.js';
-import { PModal, say, drawCard, drawHeroCard, drawCalendarTile } from './dialogs.js';
+import { PModal, say, drawCard, drawHeroCard, QuizModal } from './dialogs.js';
 import { drawPortrait } from './mapart.js';
+import { drawPhotoCircle, picStatus, picVersion } from './images.js';
 import { lines, t2, UI } from './i18n.js';
 import { app } from './app.js';
-import { book } from './storage.js';
+import { book, saveBook } from './storage.js';
 const lbl = (t) => lines(t).main;
 export class BookModal extends PModal {
     constructor() {
@@ -118,7 +117,7 @@ export class BookModal extends PModal {
         if (!this.has(id)) {
             const how = {
                 stations: t2('Visit this station in a game to add it to your book!', 'ゲームでこの駅に行くと、本に追加されるよ！'),
-                heroes: t2('Meet this hero at their station, or on a surprise square, to collect them.', 'この人の えきや サプライズマスで あえると、あつめられるよ。'),
+                heroes: t2('Meet this hero at their station and answer "Who am I?" to collect them.', 'この人の駅で「わたしはだれ？」に正解すると集められるよ。'),
                 cards: t2('Get this card in a game to add it to your book.', 'ゲームでこのカードを手に入れると、本に追加されるよ。'),
                 events: t2('Play through this month of the year to see this special day.', 'この月まで遊ぶと、このとくべつな日が見られるよ。'),
             };
@@ -126,16 +125,31 @@ export class BookModal extends PModal {
             return;
         }
         if (this.tab === 'stations') {
-            await stationProfile(id);
+            const s = STATION_BY_ID[id];
+            const body = [s.fact];
+            if (s.film)
+                body.push(t2('🎬 ' + s.film.en, '🎬 ' + s.film.ja));
+            await say({ title: s.name, photo: { kind: 'places', name: s.image, emoji: s.emoji, label: s.name.en, color: REGIONS[s.region].color }, badge: lines(REGIONS[s.region].name).main, body, color: REGIONS[s.region].color });
         }
         else if (this.tab === 'heroes') {
             const hd = HERO_BY_ID[id];
-            const body = [hd.line];
+            const body = [hd.line, hd.bio];
             if (hd.japan)
                 body.push(t2('🇯🇵 Japan link: ' + hd.japan.en, '🇯🇵 日本とのつながり：' + hd.japan.ja));
             if (hd.powerDesc)
                 body.push(t2(`★ ${hd.powerName.en}: ${hd.powerDesc.en}`, `★ ${hd.powerName.ja}：${hd.powerDesc.ja}`));
-            await say({ title: hd.name, portrait: hd.emoji, badge: hd.lived, body, color: '#8a6a10' });
+            const done = book.heroQuiz[id] ?? 0;
+            if (done > 0)
+                body.push(t2(`🏆 Perfect quizzes: ${done}`, `🏆 パーフェクト：${done}回`));
+            const go = await say({
+                title: hd.name, photo: { kind: 'heroes', name: hd.image, emoji: hd.emoji, label: hd.name.en, color: '#8a6a10' }, badge: hd.lived, body, color: '#8a6a10',
+                buttons: [
+                    { label: t2('Quiz! (3 questions)', 'クイズ！（3もん）'), value: 'quiz', color: '#2e9b46' },
+                    { label: UI.back, value: undefined, color: '#7a6a55' },
+                ],
+            });
+            if (go === 'quiz')
+                await this.heroQuiz(id);
         }
         else if (this.tab === 'cards') {
             const c = CARD_BY_ID[id];
@@ -143,14 +157,38 @@ export class BookModal extends PModal {
         }
         else {
             const ev = EVENTS.find((e) => e.id === id);
-            await say({ title: ev.title, iconDraw: (ctx, x, y) => drawCalendarTile(ctx, x, y, ev.cal, fixedDay(ev), ev.emoji), body: [ev.why, ev.fact], color: '#b5651d' });
+            await say({ title: ev.title, photo: { kind: 'events', name: ev.image, emoji: ev.emoji, label: ev.title.en, color: '#b5651d' }, badge: ev.label ? lines(ev.label).main : undefined, body: [ev.why, ev.fact], color: '#b5651d' });
         }
     }
     autoValue() { return undefined; }
+    /** The book's own quiz: 3 questions about one hero. Only a perfect score earns the star. */
+    async heroQuiz(id) {
+        const hd = HERO_BY_ID[id];
+        let right = 0;
+        for (let i = 0; i < hd.quiz.length; i++) {
+            const q = hd.quiz[i];
+            const ans = await app.show(new QuizModal(q, false, 0, t2(`Hero quiz ${i + 1}/${hd.quiz.length}: ${hd.name.en}`, `ヒーロークイズ ${i + 1}/${hd.quiz.length}：${hd.name.ja}`)));
+            if (ans === q.answer)
+                right++;
+        }
+        const perfect = right === hd.quiz.length;
+        if (perfect) {
+            book.heroQuiz[id] = (book.heroQuiz[id] ?? 0) + 1;
+            saveBook();
+        }
+        audio.play(perfect ? 'fanfare' : 'coin');
+        await say({
+            title: t2(`Quiz complete: ${right}/${hd.quiz.length}!`, `クイズ終了：${right}/${hd.quiz.length}！`),
+            icon: perfect ? '🏆' : '💪',
+            body: [perfect
+                    ? t2(`Perfect! You really know ${hd.name.en}! Star earned!`, `${hd.name.ja}博士だね！パーフェクト！星ゲット！`)
+                    : t2('Good try! Only a perfect score earns a star — read the profile and try again!', 'よくがんばった！星はパーフェクトだけ。プロフィールを読んでもう一度！')],
+        });
+    }
     /** The page is painted once into a picture and reused, because it only changes when you turn the page or move the cursor. */
     drawBody(ctx) {
         const sc = Math.min(2, app.screen.dpr * app.screen.scale);
-        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${sc}`;
+        const key = `${this.tab}|${this.page()}|${window.__kbd ? this.sel : -1}|${this.ids().filter((id) => this.has(id)).length}|${HEROES.reduce((a, h) => a + (book.heroQuiz[h.id] ?? 0), 0)}|${sc}|${picVersion()}`;
         if (!this.cache || key !== this.cacheKey) {
             if (!this.cache)
                 this.cache = document.createElement('canvas');
@@ -175,7 +213,7 @@ export class BookModal extends PModal {
         const got = this.ids().filter((id) => this.has(id)).length;
         text(ctx, `${got} / ${this.ids().length}`, 1210, 56, { size: 30, color: '#7a2e1f', align: 'right' });
         if (this.tab === 'heroes')
-            text(ctx, lbl(t2('Hall of Heroes: real people from British history', 'ヒーローのでんどう：イギリスのれきしじょうの人たち')), 640, 56, { size: 18, color: '#7a5a10', align: 'center', weight: 500 });
+            text(ctx, lbl(t2('Hall of Heroes: real people from British history', 'ヒーローの殿堂：イギリスの歴史上の人たち')), 640, 56, { size: 18, color: '#7a5a10', align: 'center', weight: 500 });
         const L = this.layout();
         const kbd = !!window.__kbd;
         this.ids().forEach((id, i) => {
@@ -203,6 +241,16 @@ export class BookModal extends PModal {
                 ctx.lineWidth = 4;
                 roundRect(ctx, r.x, r.y, r.w, r.h, 12);
                 ctx.stroke();
+                if (ok && this.tab === 'heroes') {
+                    const qn = book.heroQuiz[id] ?? 0;
+                    if (qn > 0) {
+                        ctx.strokeStyle = '#e6a817';
+                        ctx.lineWidth = 6;
+                        roundRect(ctx, r.x - 2, r.y - 2, r.w + 4, r.h + 4, 14);
+                        ctx.stroke();
+                        text(ctx, qn > 1 ? `★${qn}` : '★', r.x + r.w - 8, r.y + 18, { size: 17, color: '#8a6a10', align: 'right' });
+                    }
+                }
                 let e = '', name = t2('', '');
                 if (this.tab === 'stations') {
                     const s = STATION_BY_ID[id];
@@ -219,11 +267,21 @@ export class BookModal extends PModal {
                     e = ev.emoji;
                     name = ev.title;
                 }
+                // Collected heroes show their real photo (it pops in once loaded); everything else keeps its emoji art.
+                let photoed = false;
+                if (ok && this.tab === 'heroes') {
+                    const hd = HERO_BY_ID[id];
+                    if (picStatus('heroes', hd.image) === 'ok') {
+                        photoed = drawPhotoCircle(ctx, 'heroes', hd.image, r.x + r.w / 2, r.y + 30, 21);
+                    }
+                }
                 if (this.tab === 'heroes') {
-                    if (ok)
-                        drawPortrait(ctx, e, r.x + r.w / 2, r.y + 30, 21);
-                    else
-                        emoji(ctx, '👤', r.x + r.w / 2, r.y + 30, 36, 0.35);
+                    if (!photoed) {
+                        if (ok)
+                            drawPortrait(ctx, e, r.x + r.w / 2, r.y + 30, 21);
+                        else
+                            emoji(ctx, '👤', r.x + r.w / 2, r.y + 30, 36, 0.35);
+                    }
                 }
                 else
                     emoji(ctx, e, r.x + r.w / 2, r.y + (this.tab === 'events' ? 40 : 24), this.tab === 'events' ? 44 : 28, ok ? 1 : 0.3);

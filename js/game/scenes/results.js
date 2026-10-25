@@ -15,7 +15,7 @@ export class ResultsScene {
         const ex = by((p) => p.visited.length), sc = by((p) => p.stars), he = by((p) => p.heroCollection.length), ar = by((p) => p.arrivals);
         this.awards = [
             { title: t2('Explorer', 'たんけん家'), icon: '🧭', p: ex, value: `${ex.visited.length} stations` },
-            { title: t2('Scholar', '物知りはかせ'), icon: '🎓', p: sc, value: `${sc.stars} ⭐` },
+            { title: t2('Scholar', '物知り博士'), icon: '🎓', p: sc, value: `${sc.stars} ⭐` },
             { title: t2('Hero Collector', 'ヒーロー・コレクター'), icon: '🦸', p: he, value: `${he.heroCollection.length} heroes` },
             { title: t2('Speed Star', 'スピードスター'), icon: '🚩', p: ar, value: `${ar.arrivals} arrivals` },
         ];

@@ -10,14 +10,17 @@ import { createGame } from './core/rules.js';
 import { board } from './core/map.js';
 import { loadContent } from './core/content/load.js';
 import { lang, t2, normLang } from './game/i18n.js';
-import { choose } from './game/dialogs.js';
+import { choose, ImageViewer, say } from './game/dialogs.js';
+import { ProfileModal, PlaceModal } from './game/profile.js';
 import { howToPlay } from './game/tutorial.js';
 import { BookModal } from './game/book.js';
+import { applyGuest } from './game/teacher.js';
 import { teacher } from './game/storage.js';
+import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
-import { preload, PRESENTER_PICS } from './game/images.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
+import { TeacherModal } from './game/teacher.js';
 import { LoadingScene } from './game/scenes/loading.js';
 import { sprites } from './game/fake3d/sprites.js';
 import { view } from './game/fake3d/view.js';
@@ -40,6 +43,11 @@ function continueGame() {
         if (!raw)
             return;
         const g = JSON.parse(raw);
+        if ((g.version ?? 1) < 2) {
+            g.ledger ?? (g.ledger = []);
+            g.history ?? (g.history = []);
+            g.version = 2;
+        }
         lang.mode = normLang(g.settings.lang);
         play(g);
     }
@@ -56,7 +64,6 @@ async function play(g) {
     app.go(board);
     audio.startMusic('board');
     const d = new Director(g, board);
-    window.__dir = d;
     director = d;
     window.__game = g;
     board.onMenu = async () => {
@@ -100,12 +107,14 @@ async function boot() {
     }
     catch (e) {
         loading.classList.add('error');
-        loading.innerHTML = `<p>Could not load the game files. Please start the game with <b>start.bat</b> (or <code>npm start</code>) instead of opening index.html directly.</p><p>ゲームのファイルを読みこめませんでした。index.html をちょくせつ開かず、<b>start.bat</b> から起動してください。</p><p style="opacity:.6">${String(e)}</p>`;
+        loading.innerHTML = `<p>Could not load the game files. Please start the game with <b>start.bat</b> (or <code>npm start</code>) instead of opening index.html directly.</p><p>ゲームのファイルを読みこめませんでした。index.html を直接開かず、<b>start.bat</b> から起動してください。</p><p style="opacity:.6">${String(e)}</p>`;
         return;
     }
+    applyGuest();
     app.boot(canvas);
     // Remember how much detail this computer can manage, so slow Chromebooks start at the right level next time.
-    const applyTier = (t) => { app.screen.setQuality(t >= 1 ? 1 : 1.5, t >= 2 ? 0.75 : 1); try {
+    // The canvas itself always stays sharp: only the board's scenery layer shrinks, so words never blur.
+    const applyTier = (t) => { app.screen.setQuality(1.5); view.sceneQ = t >= 2 ? 0.75 : 1; try {
         localStorage.setItem('ukExpressTier', String(t));
     }
     catch { /* ignore */ } };
@@ -115,9 +124,13 @@ async function boot() {
     spritesLoading = sprites.load().catch((e) => { console.error('sprites', e); });
     window.__view = view;
     window.__app = app;
-    void preload('presenter', PRESENTER_PICS); // warm the TV-studio art in the background
-    window.__test = { BookModal, MINIGAMES, howToPlay }; // handy for automated UI tests
+    window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay, ProfileModal, PlaceModal, ImageViewer, say, book, createGame, BoardScene, board }; // handy for automated UI tests
     loading.classList.add('hidden');
+    // The title screen draws the normal 3D board, so wait for the board
+    // pictures first (showing progress meanwhile). The render-scale step-down
+    // for slow machines is untouched: it still applies on top of the 3D view.
+    app.go(new LoadingScene());
+    await spritesLoading;
     const q = new URLSearchParams(location.search);
     if (q.get('lang'))
         lang.mode = normLang(q.get('lang'));

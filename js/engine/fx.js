@@ -33,6 +33,7 @@ export class Fx {
     update(dt) {
         const k = dt / 16.67;
         this.shakeAmp *= Math.pow(0.85, k);
+        let n = 0;
         for (const p of this.parts) {
             p.life += dt;
             p.x += p.vx * k;
@@ -50,13 +51,18 @@ export class Fx {
                 p.vx += Math.sin(p.life / 120) * 0.05;
             }
             p.rot += p.vr * k;
+            if (p.life < p.max)
+                this.parts[n++] = p;
         }
-        this.parts = this.parts.filter((p) => p.life < p.max);
+        this.parts.length = n;
+        let m = 0;
         for (const f of this.floaters) {
             f.life += dt;
             f.y -= 0.6 * k;
+            if (f.life < 1400)
+                this.floaters[m++] = f;
         }
-        this.floaters = this.floaters.filter((f) => f.life < 1400);
+        this.floaters.length = m;
     }
     draw(ctx) {
         for (const p of this.parts) {

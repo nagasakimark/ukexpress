@@ -1,15 +1,22 @@
 export const lang = { mode: 'bi' };
-export const normLang = (l) => (l === 'en' ? 'en' : l === 'ja' ? 'ja' : 'bi');
+/** Old saves may hold the removed Japanese-first mode: treat it as English with Japanese support. */
+export const normLang = (l) => (l === 'en' ? 'en' : 'bi');
 export const t2 = (en, ja) => ({ en, ja });
 /** Main line and (optional) sub line for the current language mode. */
 export function lines(t) {
     if (lang.mode === 'en')
         return { main: t.en, sub: null };
-    if (lang.mode === 'ja')
-        return { main: t.ja, sub: null };
-    return { main: t.ja, sub: t.en };
+    return { main: t.en, sub: t.ja };
 }
 export const main = (t) => lines(t).main;
+/** Turns a "£100 × year" formula into this year's actual amount ("£300" in year 3).
+ * Content files describe payouts per year; players should see the real money. */
+export function payoutText(s, year) {
+    const amt = (n) => '£' + (parseInt(n.replace(/,/g, ''), 10) * year).toLocaleString('en-GB');
+    return s.replace(/£([\d,]+) × year/g, (_, n) => amt(n)).replace(/£([\d,]+)×年/g, (_, n) => amt(n));
+}
+/** Same as payoutText, for both languages at once. */
+export function payoutT(t, year) { return { en: payoutText(t.en, year), ja: payoutText(t.ja, year) }; }
 export const UI = {
     start: t2('Tap to start', 'タップしてスタート'),
     newGame: t2('New Game', 'はじめから'),
@@ -31,7 +38,7 @@ export const UI = {
     squaresAway: t2('squares away', 'マス'),
     moves: t2('moves', 'マス'),
     cash: t2('Cash', '所持金'),
-    assets: t2('Assets', 'そうしさん'),
+    assets: t2('Assets', '総資産'),
     year: t2('Year', '年目'),
     next: t2('Next', 'つぎへ'),
     skip: t2('Skip', 'スキップ'),

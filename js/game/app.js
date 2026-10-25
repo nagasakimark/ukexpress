@@ -95,7 +95,6 @@ class App {
         }
         if (!this.modals.length)
             this.snapFor = undefined;
-        window.__top = this.modals.length ? this.modals[this.modals.length - 1].constructor.name : '';
         for (const o of this.overlays)
             o.draw(ctx);
         for (const m of this.modals)

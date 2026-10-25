@@ -21,7 +21,7 @@ export function setStations(raw, places = {}) {
         const pl = places[s.id] ?? {};
         def.facts = [s.fact, ...(pl.facts ?? [])];
         if (s.film)
-            def.facts.push({ en: '🎬 Film location: ' + s.film.en, ja: '🎬 えいがのロケ地：' + s.film.ja });
+            def.facts.push({ en: '🎬 Film location: ' + s.film.en, ja: '🎬 映画のロケ地：' + s.film.ja });
         if (pl.team)
             def.team = pl.team;
         if (pl.famous)

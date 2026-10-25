@@ -1,8 +1,8 @@
 import { STATIONS, STATION_BY_ID, PROP_BY_ID } from './content/stations.js';
-import { CARDS, TRAINS, AVATARS, EVENTS } from './content/game-data.js';
+import { CARDS, CARD_BY_ID, TRAINS, AVATARS, EVENTS } from './content/game-data.js';
 import { board, dist, stationDist, distancesTo } from './map.js';
 import { Rng } from './rng.js';
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 2;
 export const CASH_FLOOR = -500;
 // ---------- randomness (seeded, stored in the state) ----------
 export function rnd(g) { const r = new Rng(g.rng); const v = r.next(); g.rng = r.state; return v; }
@@ -21,6 +21,9 @@ export function rweighted(g, items, w) {
     return items[items.length - 1];
 }
 // ---------- setup ----------
+/** Year multiplier for square/card/event/Boggart payouts: capped so late-game cash stays sane.
+ * Arrival prizes and property rents use their own gentler curves and are untouched. */
+export function payoutYear(g) { return Math.min(g.year, 5); }
 export function createGame(s) {
     const rng = new Rng(s.seed);
     const humans = Math.max(1, Math.min(4, s.humans ?? 1));
@@ -28,9 +31,9 @@ export function createGame(s) {
     const chosen = [];
     for (let i = 0; i < humans; i++) {
         const want = i === 0 ? s.avatar : s.avatars?.[i];
-        chosen.push(want !== undefined && !chosen.includes(want) ? want : [0, 1, 2, 3, 4, 5, 6, 7].find((a) => !chosen.includes(a)));
+        chosen.push(want !== undefined && !chosen.includes(want) ? want : AVATARS.map((_, a) => a).find((a) => !chosen.includes(a)));
     }
-    const others = rng.shuffle([0, 1, 2, 3, 4, 5, 6, 7].filter((a) => !chosen.includes(a)));
+    const others = rng.shuffle(AVATARS.map((_, a) => a).filter((a) => !chosen.includes(a)));
     const styles = rng.shuffle(['speedy', 'collector', 'trickster', 'scholar']);
     const start = board.stationNode['kingscross'];
     const mk = (i, avatar, controller, style) => ({
@@ -38,15 +41,17 @@ export function createGame(s) {
         cash: 1000, pos: start, prev: -1, train: 0, cards: [], heroes: [], heroCollection: [], heroUsedYear: {},
         visited: ['kingscross'], stars: 0, lastBuyStation: null,
         effects: { oneDieTurns: 0, bonusDiceTurns: 0, bonusDice: 0, skipTurn: false, guidebook: 0, heroHints: 0, seacoleGift: 0, chooseDest: false, perDieBonus: false },
-        yearBoosts: {}, hometownCompanion: false, badges: [], arrivals: 0,
+        yearBoosts: {}, lastBoggartLoss: 0, hometownCompanion: false, badges: [], arrivals: 0, brownieGiven: false,
     });
     const players = chosen.map((a, i) => mk(i, a, 'human', 'scholar'));
     for (let i = 0; i < rivals; i++)
         players.push(mk(humans + i, others[i], 'cpu', styles[i]));
     const g = {
-        version: SAVE_VERSION, settings: s, rng: rng.state, year: 1, month: 0, turn: 0, players, owners: {},
+        version: SAVE_VERSION, settings: s, rng: rng.state, year: 1, month: 0, turn: 0, firstPlayer: 0, players, owners: {},
         destination: '', prevDestination: 'kingscross',
-        globalBoosts: {}, over: false, log: [], monthEvent: null, seenEvents: [],
+        boggart: { holder: null, form: 'boggart', months: 0, calm: 0, grandTurns: 0, brownieTurns: 3, turns: 0 },
+        globalBoosts: {}, over: false, log: [], monthEvent: null, seenEvents: [], boggartLog: {},
+        ledger: [], history: [],
     };
     // The first destination is a famous city a short ride from London, so the first trip is quick and exciting.
     const ks = board.stationNode['kingscross'];
@@ -108,10 +113,17 @@ export function ranking(g) { return g.players.slice().sort((a, b) => assets(g, b
 export function lastPlace(g) { const r = ranking(g); return r[r.length - 1]; }
 export function leader(g) { return ranking(g)[0]; }
 export function distToDest(g, p) { return distancesTo(board.stationNode[g.destination])[p.pos]; }
+/** Non-arrivers ranked by exact squares from the destination (closest first, poorer player wins ties). */
+export function arrivalRanking(g, arriverId) {
+    const d = distancesTo(board.stationNode[g.destination]);
+    return g.players.filter((p) => p.id !== arriverId)
+        .map((p) => ({ p, dist: d[p.pos] }))
+        .sort((a, b) => a.dist - b.dist || assets(g, a.p) - assets(g, b.p));
+}
 export function handLimit(p) { return TRAINS[p.train].slots; }
 export function diceCount(p) { return TRAINS[p.train].dice; }
-/** Adds money, applying the kid-friendly debt floor. Returns {change, forgiven}. */
-export function addCash(p, amount) {
+/** Adds money, applying the kid-friendly debt floor. Every pound is written into the company books. */
+export function addCash(g, p, amount, kind = 'other', note = '') {
     const before = p.cash;
     p.cash += Math.round(amount);
     let forgiven = false;
@@ -119,20 +131,31 @@ export function addCash(p, amount) {
         p.cash = CASH_FLOOR;
         forgiven = true;
     }
+    g.ledger.push({ y: g.year, m: g.month, playerId: p.id, v: Math.round(amount), k: kind, n: note || undefined });
+    if (g.ledger.length > 500)
+        g.ledger.splice(0, g.ledger.length - 500);
     return { change: p.cash - before, forgiven };
+}
+/** Cash + property value: the number drawn on the company graph. */
+export function worth(g, p) { return assets(g, p); }
+/** Remembers this month for the company graph (called once per month). */
+export function snapshot(g) {
+    g.history.push({ y: g.year, m: g.month, v: g.players.map((p) => [p.cash, worth(g, p)]) });
+    if (g.history.length > 144)
+        g.history.splice(0, g.history.length - 144);
 }
 export function roundTo10(n) { return Math.round(n / 10) * 10; }
 // ---------- squares ----------
 export function blueAmount(g) {
-    let a = rint(g, 2, 10) * 10 * g.year;
+    let a = rint(g, 2, 10) * 10 * payoutYear(g);
     if (g.month >= 2 && g.month <= 4)
         a *= 2; // Jun-Aug summer
     return a;
 }
 export function redAmount(g) {
-    let a = rint(g, 1, 6) * 10 * g.year;
+    let a = rint(g, 2, 10) * 10 * payoutYear(g);
     if (g.month >= 8 && g.month <= 10)
-        a = Math.round((a * 1.5) / 10) * 10; // Dec-Feb winter repairs cost a little more
+        a *= 2; // Dec-Feb winter: leaves and snow on the line
     return a;
 }
 // ---------- cards ----------
@@ -181,6 +204,161 @@ export function arrivalPrize(g) {
         prize = roundTo10(prize * 1.5);
     return prize;
 }
+/** The player furthest (in squares) from the destination gets the Boggart. */
+export function furthestPlayer(g, excludeId) {
+    const d = distancesTo(board.stationNode[g.destination]);
+    const others = g.players.filter((p) => p.id !== excludeId);
+    if (!others.length)
+        return null;
+    return others.sort((a, b) => d[b.pos] - d[a.pos] || assets(g, a) - assets(g, b))[0];
+}
+/** Who gets the Boggart after an arrival: usually someone far behind, but not the player who had it last time, and with some chance. */
+export function pickBoggartHolder(g, arriverId) {
+    const others = g.players.filter((p) => p.id !== arriverId);
+    if (!others.length)
+        return null;
+    const d = distancesTo(board.stationNode[g.destination]);
+    const log = (g.boggartLog || (g.boggartLog = {}));
+    const maxD = Math.max(1, ...others.map((p) => d[p.pos]));
+    const pick = rweighted(g, others, (p) => {
+        let w = 0.6 + (d[p.pos] / maxD) * 1.4; // the further back, the more likely
+        const since = log[p.id] ?? 99; // arrivals since this player last held it
+        if (since <= 1)
+            w *= 0.15;
+        else if (since === 2)
+            w *= 0.5;
+        return w;
+    });
+    for (const p of g.players)
+        log[p.id] = (log[p.id] ?? 99) + 1;
+    log[pick.id] = 0;
+    return pick;
+}
+/** The Boggart naps some turns, and wanders off after a few visits, so it is never on one train for long. */
+export function boggartAct(g, p) {
+    const b = g.boggart;
+    if (b.form !== 'brownie' && b.calm <= 0) {
+        b.turns = (b.turns ?? 0) + 1;
+        if (rchance(g, 0.35)) {
+            const leave = b.turns >= 4;
+            return { text: { en: leave ? 'The Boggart yawned and wandered off to find another train.' : 'The Boggart is having a nap. It does nothing this turn.', ja: leave ? 'ボガートはあくびをして、べつの電車をさがしにいった。' : 'ボガートはお昼ね中。今回は何もしない。' }, leave };
+        }
+    }
+    const res = boggartActInner(g, p);
+    if (b.form !== 'brownie' && (b.turns ?? 0) >= 4 && !res.leave && b.form !== 'grand')
+        res.leave = true;
+    return res;
+}
+function boggartActInner(g, p) {
+    const b = g.boggart;
+    const Y = payoutYear(g);
+    if (b.calm > 0) {
+        b.calm--;
+        return { text: { en: 'The Boggart is sipping tea. It does nothing.', ja: 'ボガートは紅茶を飲んでいる。何もしない。' } };
+    }
+    if (b.form === 'brownie') {
+        b.brownieTurns--;
+        const leave = b.brownieTurns <= 0;
+        if (rchance(g, 0.5)) {
+            const m = 500 * Y;
+            addCash(g, p, m, 'prize');
+            return { text: { en: `The Brownie did your chores! +£${m.toLocaleString('en-GB')}`, ja: `ブラウニーがお手伝い！+£${m.toLocaleString('en-GB')}` }, money: m, good: true, leave };
+        }
+        const c = drawRareCardId(g);
+        giveCard(p, c);
+        return { text: { en: `The Brownie tidied your cards and found a ${CARD_BY_ID[c].name.en} card!`, ja: `ブラウニーがカードを整理して「${CARD_BY_ID[c].name.ja}」をくれた！` }, good: true, leave };
+    }
+    if (b.form === 'little') {
+        const r = rint(g, 0, 2);
+        if (r === 0 && p.cards.length) {
+            const c = rpick(g, p.cards);
+            removeCard(p, c);
+            return { text: { en: `Little Boggart dropped your ${CARD_BY_ID[c].name.en} card. Oops!`, ja: `小ボガートが「${CARD_BY_ID[c].name.ja}」カードを落とした。おっと！` } };
+        }
+        if (r <= 1) {
+            const m = rint(g, 5, 20) * 10;
+            const res = addCash(g, p, -m, 'fee');
+            p.lastBoggartLoss = -res.change;
+            return { text: { en: `Little Boggart spent £${m} on sweets!`, ja: `小ボガートがおかしに£${m}使った！` }, money: -m };
+        }
+        return { text: { en: 'Little Boggart put a silly hat on your train. Nothing happens!', ja: '小ボガートが電車にへんな帽子をのせた。何も起きない！' } };
+    }
+    if (b.form === 'grand') {
+        b.grandTurns--;
+        const r = rint(g, 0, 2);
+        if (r === 0) {
+            const all = ownedProps(g, p);
+            // It can only carry small things, and never your last property.
+            const small = all.filter((pr) => priceOf(g, pr) <= 2000).sort((a, c) => a.price - c.price);
+            if (small.length && all.length > 1) {
+                const pr = small[0];
+                delete g.owners[pr.id];
+                const m = Math.round(priceOf(g, pr) / 2);
+                addCash(g, p, m, 'sale', 'prop:' + pr.id);
+                return { text: { en: `The Grand Boggart sold your ${pr.name.en}!`, ja: `大ボガートが「${pr.name.ja}」を売っちゃった！` } };
+            }
+            const m = 300 * Y;
+            const res = addCash(g, p, -m, 'fee');
+            p.lastBoggartLoss = -res.change;
+            return { text: { en: `The Grand Boggart shook £${m.toLocaleString('en-GB')} out of your pockets!`, ja: `大ボガートがポケットから£${m.toLocaleString('en-GB')}ふり落とした！` }, money: -m };
+        }
+        if (r === 1 && p.cards.length) {
+            p.cards = [];
+            return { text: { en: 'The Grand Boggart threw away all your cards!', ja: '大ボガートがカードを全部すてた！' } };
+        }
+        const far = STATIONS.slice().sort((a, c) => stationDist(c.id, g.destination) - stationDist(a.id, g.destination))[rint(g, 0, 5)];
+        return { text: { en: `Whoosh! The Grand Boggart blew your train to ${far.name.en}!`, ja: `ビューン！大ボガートが電車を${far.name.ja}まで吹き飛ばした！` }, warp: board.stationNode[far.id] };
+    }
+    // standard Boggart
+    const r = rnd(g);
+    if (r < 0.2) {
+        const c = drawCardId(g, false);
+        giveCard(p, c);
+        return { text: { en: `The Boggart felt kind today and gave you a ${CARD_BY_ID[c].name.en} card!`, ja: `ボガートが今日はやさしい！「${CARD_BY_ID[c].name.ja}」カードをくれた！` }, good: true };
+    }
+    if (r < 0.55) {
+        const m = rint(g, 10, 50) * 10 * Y;
+        const res = addCash(g, p, -m, 'fee');
+        p.lastBoggartLoss = -res.change;
+        return { text: { en: `The Boggart spent £${m.toLocaleString('en-GB')} of your money!`, ja: `ボガートがお金を£${m.toLocaleString('en-GB')}使った！` }, money: -m };
+    }
+    if (r < 0.75 && p.cards.length) {
+        const c = rpick(g, p.cards);
+        removeCard(p, c);
+        return { text: { en: `The Boggart threw away your ${CARD_BY_ID[c].name.en} card!`, ja: `ボガートが「${CARD_BY_ID[c].name.ja}」カードをすてた！` } };
+    }
+    if (r < 0.9) {
+        const m = 200 * Y;
+        const res = addCash(g, p, -m, 'fee');
+        p.lastBoggartLoss = -res.change;
+        return { text: { en: `The Boggart bought a giant teapot with your money! -£${m.toLocaleString('en-GB')}`, ja: `ボガートが大きなティーポットを買った！-£${m.toLocaleString('en-GB')}` }, money: -m };
+    }
+    p.effects.oneDieTurns = Math.max(p.effects.oneDieTurns, 1);
+    return { text: { en: 'The Boggart hid your dice! Next turn you roll only 1 die.', ja: 'ボガートがサイコロをかくした！次はサイコロ1個だけ。' } };
+}
+/** Called once per month for the holder: the Boggart grows if kept too long (Full games only). */
+export function boggartMonth(g) {
+    const b = g.boggart;
+    if (!b.holder)
+        return null;
+    b.months++;
+    const holder = player(g, b.holder);
+    if (b.form === 'boggart' && b.months >= 12 && g.settings.years >= 10) {
+        if (holder.cards.includes('horseshoe')) {
+            removeCard(holder, 'horseshoe');
+            return 'blocked';
+        }
+        b.form = 'grand';
+        b.grandTurns = 3;
+        return 'grow';
+    }
+    if (b.form === 'grand' && b.grandTurns <= 0) {
+        b.form = 'boggart';
+        b.months = 0;
+        return 'shrink';
+    }
+    return null;
+}
 export function catMultiplier(g, p, pr) {
     let m = 1;
     const st = STATION_BY_ID[pr.stationId];
@@ -200,22 +378,10 @@ export function catMultiplier(g, p, pr) {
 export function settle(g) {
     const lines = [];
     for (const p of g.players) {
-        let income = 0;
-        const mono = new Set();
-        for (const pr of ownedProps(g, p)) {
-            let v = priceOf(g, pr) * pr.ret * catMultiplier(g, p, pr);
-            if (monopolyOwner(g, pr.stationId) === p.id) {
-                v *= 2;
-                mono.add(pr.stationId);
-            }
-            income += v;
-        }
-        if (p.effects.seacoleGift > 0) {
-            income += p.effects.seacoleGift * 2;
+        const f = forecastIncome(g, p);
+        addCash(g, p, f.total, 'rent');
+        if (p.effects.seacoleGift > 0)
             p.effects.seacoleGift = 0;
-        }
-        income = roundTo10(income);
-        p.cash += income;
         // Kid-friendly debt rule: sell the cheapest properties at half price until cash is not negative.
         const sold = [];
         while (p.cash < 0) {
@@ -223,15 +389,28 @@ export function settle(g) {
             if (!props.length)
                 break;
             delete g.owners[props[0].id];
-            p.cash += Math.round(priceOf(g, props[0]) / 2);
+            addCash(g, p, Math.round(priceOf(g, props[0]) / 2), 'sale', 'prop:' + props[0].id);
             sold.push(props[0].name.en);
         }
         const forgiven = p.cash < CASH_FLOOR;
         if (forgiven)
             p.cash = CASH_FLOOR;
-        lines.push({ player: p, income, monopolies: mono.size, sold, forgiven });
+        lines.push({ player: p, income: f.total, monopolies: f.mono, sold, forgiven });
     }
     return lines;
+}
+/** What the March settlement would pay this player right now (same maths as settle, without paying out). */
+export function forecastIncome(g, p) {
+    const lines = ownedProps(g, p).map((pr) => {
+        let v = priceOf(g, pr) * pr.ret * catMultiplier(g, p, pr);
+        const mono = monopolyOwner(g, pr.stationId) === p.id;
+        if (mono)
+            v *= 2;
+        return { prop: pr, rent: v, mono };
+    });
+    const gift = p.effects.seacoleGift > 0 ? p.effects.seacoleGift * 2 : 0;
+    const mono = new Set(lines.filter((l) => l.mono).map((l) => l.prop.stationId)).size;
+    return { total: roundTo10(lines.reduce((a, l) => a + l.rent, 0) + gift), mono, gift, lines };
 }
 export function newYearReset(g) {
     for (const p of g.players) {
