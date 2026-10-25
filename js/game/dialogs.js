@@ -1181,7 +1181,26 @@ export class CalendarModal extends PModal {
         ctx.restore();
     }
 }
-// ---------- Dice overlay ----------
+const mmul = (a, b) => { const r = []; for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+        r.push(a[i * 3] * b[j] + a[i * 3 + 1] * b[3 + j] + a[i * 3 + 2] * b[6 + j]); return r; };
+const mvec = (m, v) => [m[0] * v[0] + m[1] * v[1] + m[2] * v[2], m[3] * v[0] + m[4] * v[1] + m[5] * v[2], m[6] * v[0] + m[7] * v[1] + m[8] * v[2]];
+const rotX = (t) => { const c = Math.cos(t), s = Math.sin(t); return [1, 0, 0, 0, c, -s, 0, s, c]; };
+const rotY = (t) => { const c = Math.cos(t), s = Math.sin(t); return [c, 0, s, 0, 1, 0, -s, 0, c]; };
+const rotZ = (t) => { const c = Math.cos(t), s = Math.sin(t); return [c, -s, 0, s, c, 0, 0, 0, 1]; };
+function rotAxis(ax, t) {
+    const [x, y, z] = ax, c = Math.cos(t), s = Math.sin(t), k = 1 - c;
+    return [c + x * x * k, x * y * k - z * s, x * z * k + y * s, y * x * k + z * s, c + y * y * k, y * z * k - x * s, z * x * k - y * s, z * y * k + x * s, c + z * z * k];
+}
+/** Rotation that turns face v towards the viewer (+z). Opposite faces add up to 7, like a real die. */
+const FACE_UP = { 1: rotX(0), 6: rotY(Math.PI), 2: rotY(-Math.PI / 2), 5: rotY(Math.PI / 2), 3: rotX(-Math.PI / 2), 4: rotX(Math.PI / 2) };
+const FACES = [
+    { v: 1, n: [0, 0, 1], u: [1, 0, 0], w: [0, 1, 0] }, { v: 6, n: [0, 0, -1], u: [-1, 0, 0], w: [0, 1, 0] },
+    { v: 2, n: [1, 0, 0], u: [0, 0, -1], w: [0, 1, 0] }, { v: 5, n: [-1, 0, 0], u: [0, 0, 1], w: [0, 1, 0] },
+    { v: 3, n: [0, -1, 0], u: [1, 0, 0], w: [0, 0, 1] }, { v: 4, n: [0, 1, 0], u: [1, 0, 0], w: [0, 0, -1] },
+];
+const PIPS = { 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] };
+const VIEW = mmul(rotX(-0.38), rotY(0.3)); // a little from above and the side, so you can see three faces
 export class DiceOverlay {
     constructor(final, extra = 0) {
         this.final = final;
@@ -1189,65 +1208,94 @@ export class DiceOverlay {
         this.done = false;
         this.t = 0;
         this.settled = false;
-        this.vals = final.map(() => 1);
         this.promise = new Promise((r) => (this.resolve = r));
+        this.fin = final.map((v, i) => mmul(rotZ((i % 2 ? 1 : -1) * 0.12), FACE_UP[v]));
+        this.ax = final.map((_, i) => { const a = [0.8 + 0.3 * i, 0.55 - 0.2 * i, 0.25 + 0.3 * i]; const l = Math.hypot(...a); return [a[0] / l, a[1] / l, a[2] / l]; });
+        this.spins = final.map((_, i) => (7 + i * 1.5) * Math.PI);
+        this.fromY = final.map((_, i) => 200 + i * 60);
         audio.play('dice');
     }
     update(dt) {
-        const sdt = dt * clock.timeScale;
-        this.t += sdt;
-        if (this.t < 900) {
-            if (Math.floor(this.t / 70) !== Math.floor((this.t - sdt) / 70))
-                this.vals = this.vals.map(() => 1 + Math.floor(Math.random() * 6));
-        }
-        else if (!this.settled) {
+        this.t += dt * clock.timeScale;
+        if (!this.settled && this.t >= DiceOverlay.ROLL) {
             this.settled = true;
-            this.vals = this.final.slice();
             fx.shake(6);
         }
-        if (this.t > 1700 && !this.done) {
+        if (this.t > 2100 && !this.done) {
             this.done = true;
             this.resolve();
         }
     }
     draw(ctx) {
-        const n = this.vals.length, size = 96, gap = 24;
+        const n = this.final.length, size = 104, gap = 34;
         const total = n * size + (n - 1) * gap;
-        const fade = this.t > 1450 ? 1 - (this.t - 1450) / 250 : 1;
+        const mid = (LAY.mapL + LAY.mapR) / 2, groundY = LAY.cy + 70;
+        const fade = this.t > 1850 ? 1 - (this.t - 1850) / 250 : 1;
         ctx.save();
         ctx.globalAlpha = Math.max(0, fade);
-        this.vals.forEach((v, i) => {
-            const x = 640 - total / 2 + i * (size + gap);
-            const jump = this.settled ? 0 : Math.abs(Math.sin(this.t / 90 + i)) * 40;
-            const rot = this.settled ? 0 : Math.sin(this.t / 60 + i * 2) * 0.5;
-            ctx.save();
-            ctx.translate(x + size / 2, 330 - jump);
-            ctx.rotate(rot);
-            ctx.fillStyle = 'rgba(0,0,0,0.3)';
-            roundRect(ctx, -size / 2 + 4, -size / 2 + 8, size, size, 18);
+        for (let i = 0; i < n; i++) {
+            const p = Math.min(1, this.t / DiceOverlay.ROLL);
+            const ease = 1 - Math.pow(1 - p, 2.2);
+            const tx = mid - total / 2 + size / 2 + i * (size + gap);
+            const x = LAY.mapL - 120 + (tx - (LAY.mapL - 120)) * ease;
+            // two or three bounces that die away
+            const hop = p >= 1 ? 0 : Math.abs(Math.sin(p * Math.PI * 3.2 + 0.4)) * (1 - p) * 190;
+            const y = groundY - size / 2 - hop;
+            // shadow on the ground
+            ctx.fillStyle = `rgba(0,0,0,${0.28 - hop / 900})`;
+            ctx.beginPath();
+            ctx.ellipse(x + 8, groundY + 6, size * 0.55 * (1 - hop / 500), size * 0.17, 0, 0, 7);
             ctx.fill();
-            ctx.fillStyle = '#1d1d1b';
-            roundRect(ctx, -size / 2 - 3, -size / 2 - 3, size + 6, size + 6, 20);
-            ctx.fill();
-            ctx.fillStyle = '#fff';
-            roundRect(ctx, -size / 2, -size / 2, size, size, 18);
-            ctx.fill();
-            ctx.fillStyle = v === 1 ? C.red : '#1d1d1b';
-            const pips = { 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] };
-            for (const [px, py] of pips[v]) {
-                ctx.beginPath();
-                ctx.arc(px * 24, py * 24, v === 1 ? 14 : 9, 0, 7);
-                ctx.fill();
-            }
-            ctx.restore();
-        });
+            const R = mmul(VIEW, mmul(rotAxis(this.ax[i], this.spins[i] * Math.pow(1 - p, 1.4) * (p >= 1 ? 0 : 1)), this.fin[i]));
+            this.cube(ctx, R, x, y, size / 2, this.final[i]);
+        }
         if (this.settled) {
+            const k = Ease.outBack(Math.min(1, (this.t - DiceOverlay.ROLL) / 260));
             const sum = this.final.reduce((a, b) => a + b, 0) + this.extra;
-            text(ctx, this.extra ? `${sum} (+${this.extra})` : `${sum}`, 640, 450, { size: 72, color: C.gold, align: 'center', outline: 10 });
+            ctx.save();
+            ctx.translate(mid, groundY + 80);
+            ctx.scale(k, k);
+            text(ctx, this.extra ? `${sum} (+${this.extra})` : `${sum}`, 0, 0, { size: 76, color: C.gold, align: 'center', outline: 11 });
+            ctx.restore();
         }
         ctx.restore();
     }
+    cube(ctx, R, cx, cy, h, _v) {
+        const F = 700;
+        const pr = (v) => { const q = mvec(R, v); const k = F / (F - q[2] * h); return [cx + q[0] * h * k, cy + q[1] * h * k]; };
+        const faces = FACES.map((f) => ({ f, n: mvec(R, f.n), z: mvec(R, f.n)[2] })).filter((q) => q.z > 0.02).sort((a, b) => a.z - b.z);
+        for (const { f, n } of faces) {
+            const c = f.n, u = f.u, w = f.w;
+            const corner = (a, b) => [c[0] + u[0] * a + w[0] * b, c[1] + u[1] * a + w[1] * b, c[2] + u[2] * a + w[2] * b];
+            const pts = [corner(-1, -1), corner(1, -1), corner(1, 1), corner(-1, 1)].map(pr);
+            const light = Math.max(0, Math.min(1, 0.62 + (-n[0] * 0.25 - n[1] * 0.45 + n[2] * 0.3)));
+            const g = Math.round(150 + 105 * light);
+            ctx.beginPath();
+            ctx.moveTo(pts[0][0], pts[0][1]);
+            for (let i = 1; i < 4; i++)
+                ctx.lineTo(pts[i][0], pts[i][1]);
+            ctx.closePath();
+            ctx.fillStyle = `rgb(${g},${g},${Math.min(255, g + 4)})`;
+            ctx.fill();
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#2a2420';
+            ctx.stroke();
+            // pips, squashed onto the face
+            const o = pr(c), pu = pr([c[0] + u[0], c[1] + u[1], c[2] + u[2]]), pw = pr([c[0] + w[0], c[1] + w[1], c[2] + w[2]]);
+            ctx.save();
+            ctx.transform(pu[0] - o[0], pu[1] - o[1], pw[0] - o[0], pw[1] - o[1], o[0], o[1]);
+            ctx.fillStyle = f.v === 1 ? C.red : '#1d1d1b';
+            for (const [a, b] of PIPS[f.v]) {
+                ctx.beginPath();
+                ctx.arc(a * 0.5, b * 0.5, f.v === 1 ? 0.3 : 0.17, 0, 7);
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+    }
 }
+DiceOverlay.ROLL = 1250;
 export function rollDice(vals, extra = 0) {
     const d = new DiceOverlay(vals, extra);
     app.overlays.push(d);

@@ -18,6 +18,8 @@ export class ProfileModal extends PModal {
         super();
         this.o = o;
         this.size = 26;
+        this.scroll = 0;
+        this.scrollMax = 0;
         this.dim = 0.6;
         this.photos = new PhotoBrowser(o.pic.kind, o.pic.name);
         const zoom = new Button({ x: 60 + 560 - 150, y: 112 + 420 - 58, w: 140, h: 48, label: lbl(t2('Big', '大きく')), icon: '🔍', size: 20, color: '#3a5a8a', onClick: () => app.show(new ImageViewer(o.pic, o.title, this.photos)) });
@@ -30,9 +32,12 @@ export class ProfileModal extends PModal {
         this.focus = 1;
         // Fit the text: shrink until every row fits in the right-hand column.
         const ctx = app.screen.ctx;
-        while (this.size > 16 && this.rowsHeight(ctx) > 470)
+        this.size = 24;
+        while (this.size > 20 && this.rowsHeight(ctx) > 470)
             this.size -= 1;
     }
+    drag(_dx = 0, dy = 0) { this.scroll = Math.max(0, Math.min(this.scrollMax, this.scroll - dy)); return true; }
+    zoom(f = 1) { this.scroll = Math.max(0, Math.min(this.scrollMax, this.scroll + (f > 1 ? -80 : 80))); return true; }
     rowsHeight(ctx) {
         return this.o.rows.reduce((a, r) => a + 22 + dualHeight(ctx, r.text, this.size, 520) + 16, 0);
     }
@@ -56,12 +61,42 @@ export class ProfileModal extends PModal {
             this.focus = 1;
         if (multi)
             photoCounter(ctx, 340, 564, this.photos.index() + 1, this.photos.count());
-        // rows
-        let y = 112;
+        // rows: a scrolling column that stops above the Close button
+        const cx = 660, cy0 = 104, cw = 580, ch = 498;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(cx, cy0, cw, ch);
+        ctx.clip();
+        let y = cy0 + 4 - this.scroll;
         for (const r of o.rows) {
-            emoji(ctx, r.icon, 668, y + 20, 34);
-            text(ctx, lbl(r.label).toUpperCase(), 700, y + 10, { size: 15, color: '#8a7a60', weight: 800 });
-            y = dual(ctx, r.text, 700, y + 22, this.size, 520) + 16;
+            emoji(ctx, r.icon, 684, y + 14, 28);
+            ctx.fillStyle = 'rgba(0,0,0,0.07)';
+            roundRect(ctx, 710, y + 2, 14 + lbl(r.label).length * 15, 24, 12);
+            ctx.fill();
+            text(ctx, lbl(r.label), 720, y + 14, { size: 16, color: '#7a6a4a', weight: 800 });
+            y = dual(ctx, r.text, 712, y + 34, this.size, 500) + 18;
+        }
+        ctx.restore();
+        const total = y + this.scroll - cy0;
+        this.scrollMax = Math.max(0, total - ch);
+        if (this.scroll > this.scrollMax)
+            this.scroll = this.scrollMax;
+        if (this.scrollMax > 0) {
+            const th = Math.max(36, ch * ch / total), ty = cy0 + (ch - th) * (this.scroll / this.scrollMax);
+            ctx.fillStyle = 'rgba(0,0,0,0.08)';
+            roundRect(ctx, 1240, cy0, 6, ch, 3);
+            ctx.fill();
+            ctx.fillStyle = o.color;
+            roundRect(ctx, 1240, ty, 6, th, 3);
+            ctx.fill();
+            if (this.scroll < this.scrollMax - 2) {
+                const g = ctx.createLinearGradient(0, cy0 + ch - 40, 0, cy0 + ch);
+                g.addColorStop(0, 'rgba(255,250,240,0)');
+                g.addColorStop(1, 'rgba(255,250,240,1)');
+                ctx.fillStyle = g;
+                ctx.fillRect(cx, cy0 + ch - 40, cw, 40);
+                text(ctx, '▼', 950, cy0 + ch - 12, { size: 16, color: o.color, align: 'center' });
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ import { teacher } from './storage.js';
 import { realMonth } from '../core/calendar.js';
 import { SENSEI } from '../core/content/heroes.js';
 import { say } from './dialogs.js';
+import { sprites } from './fake3d/sprites.js';
 /** The presenter's TV studio: Mark Sensei talks, one short bubble at a time, with a picture on the TV. */
 class StudioModal extends PModal {
     constructor(ls) {
@@ -485,5 +486,132 @@ class SpinnerModal extends PModal {
 /** Spins the reel and stops on `target` (decided beforehand by the game's own dice, so saves and tests stay fair). */
 export function spin(title, items, target) {
     return app.show(new SpinnerModal(title, items, target));
+}
+// ---------- Station arrival scene ----------
+/** A Momotetsu-style arrival: flat platform art behind, the train (a pre-rendered side view) rolling in and braking, a crowd in front. */
+class ArrivalModal extends PModal {
+    constructor(name, emojiStr, color) {
+        super();
+        this.name = name;
+        this.emojiStr = emojiStr;
+        this.color = color;
+        this.t = 0;
+        this.puff = 0;
+        this.whistled = false;
+        this.dim = 0;
+        this.onBack = () => this.skip();
+    }
+    skip() { if (this.closing)
+        return; if (this.t < ArrivalModal.RUN)
+        this.t = ArrivalModal.RUN;
+    else
+        this.resolveWith(undefined); }
+    update(dt) {
+        super.update(dt);
+        const was = this.t;
+        this.t += dt;
+        if (!this.whistled && this.t > 200) {
+            this.whistled = true;
+            audio.play('whistle');
+        }
+        if (was < ArrivalModal.RUN && this.t >= ArrivalModal.RUN)
+            audio.play('fanfare');
+        if (this.t > ArrivalModal.END && !this.closing)
+            this.resolveWith(undefined);
+        if (this.t < ArrivalModal.RUN) {
+            this.puff += dt;
+            if (this.puff > 180) {
+                const p = this.trainPos();
+                this.puff = 0;
+                fx.puff(p.x - 20, p.y - 150);
+            }
+        }
+    }
+    pointerUp(_x, _y, wasDrag) { if (!this.closing && !wasDrag)
+        this.skip(); return true; }
+    tapOutside() { this.skip(); }
+    trainPos() {
+        const u = Math.min(1, this.t / ArrivalModal.RUN);
+        const e = 1 - Math.pow(1 - u, 2.2);
+        const X = -150 + (860 + 150) * e;
+        return { x: X, y: 588, speed: 1 - u };
+    }
+    draw(ctx) { this.drawBody(ctx); }
+    drawBody(ctx) {
+        const vw = LAY.vr - LAY.vl;
+        ctx.fillStyle = '#cfe9ef';
+        ctx.fillRect(LAY.vl, 0, vw, 720);
+        const bg = getPic('presenter', 'arr_bg');
+        if (bg && bg.naturalWidth) {
+            const k = Math.max(vw / bg.naturalWidth, 720 / bg.naturalHeight), sw = vw / k, sh = 720 / k;
+            ctx.drawImage(bg, (bg.naturalWidth - sw) / 2, (bg.naturalHeight - sh) / 2, sw, sh, LAY.vl, 0, vw, 720);
+        }
+        // the hanging station sign
+        const nm = lines(this.name);
+        ctx.font = `800 54px ${FONT}`;
+        const sw = Math.max(380, ctx.measureText(nm.main).width + 100);
+        const sx = 640 - sw / 2, sy = 122;
+        ctx.strokeStyle = '#2d3844';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(sx + 40, sy - 30);
+        ctx.lineTo(sx + 40, sy);
+        ctx.moveTo(sx + sw - 40, sy - 30);
+        ctx.lineTo(sx + sw - 40, sy);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(0,0,0,0.25)';
+        roundRect(ctx, sx + 4, sy + 6, sw, 100, 14);
+        ctx.fill();
+        ctx.fillStyle = '#1f4e8c';
+        roundRect(ctx, sx, sy, sw, 100, 14);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 4;
+        roundRect(ctx, sx + 7, sy + 7, sw - 14, 86, 9);
+        ctx.stroke();
+        text(ctx, nm.main, 640, sy + (nm.sub ? 42 : 52), { size: 54, color: '#fff', align: 'center', maxWidth: sw - 60 });
+        if (nm.sub)
+            text(ctx, nm.sub, 640, sy + 80, { size: 22, color: '#cfe3ff', align: 'center', weight: 600, maxWidth: sw - 60 });
+        // the train, between the back and front layers
+        const d = sprites.defs['side/' + (this.color % 4)];
+        const tp = this.trainPos();
+        if (d && sprites.atlases[d.a]) {
+            const sc = 1.15, jig = tp.speed > 0.05 ? Math.sin(this.t / 38) * 1.4 * tp.speed : 0;
+            ctx.fillStyle = 'rgba(0,0,0,0.22)';
+            ctx.beginPath();
+            ctx.ellipse(tp.x - d.ax * sc * 0.5 + d.w * sc * 0.5 - 40, tp.y + 8, d.w * sc * 0.5, 9, 0, 0, 7);
+            ctx.fill();
+            ctx.drawImage(sprites.atlases[d.a], d.x, d.y, d.w, d.h, tp.x - d.ax * sc, tp.y - d.ay * sc + jig, d.w * sc, d.h * sc);
+        }
+        // the crowd in front
+        const fg = getPic('presenter', 'arr_fg');
+        if (fg && fg.naturalWidth) {
+            const fw = Math.max(vw, 1280) * 0.55, fh = fg.naturalHeight * fw / fg.naturalWidth;
+            const arrive = Math.min(1, Math.max(0, (this.t - ArrivalModal.RUN + 600) / 600));
+            const bob = this.t > ArrivalModal.RUN ? Math.abs(Math.sin(this.t / 160)) * 8 * arrive : 0;
+            for (let x = 640 - Math.ceil((640 - LAY.vl) / fw) * fw; x < LAY.vr; x += fw)
+                ctx.drawImage(fg, x, 720 - fh + 6 - bob * arrive, fw, fh);
+        }
+        // "arrived!" banner
+        if (this.t > ArrivalModal.RUN) {
+            const a = Math.min(1, (this.t - ArrivalModal.RUN) / 300);
+            ctx.save();
+            ctx.globalAlpha = a;
+            ctx.translate(640, 330);
+            ctx.scale(0.8 + 0.2 * a, 0.8 + 0.2 * a);
+            const l = lines(t2('We arrived!', 'とうちゃく！'));
+            text(ctx, l.main, 0, 0, { size: 84, color: '#ffe066', align: 'center', outline: 14, outlineColor: '#7a1020' });
+            if (l.sub)
+                text(ctx, l.sub, 0, 58, { size: 28, color: '#fff', align: 'center', outline: 7, outlineColor: '#7a1020' });
+            ctx.restore();
+        }
+    }
+}
+ArrivalModal.RUN = 2800;
+ArrivalModal.END = 4300;
+/** Plays the arrival scene for a train of player colour `color` pulling into the station called `name`. */
+export async function arrivalScene(name, color) {
+    await preload('presenter', ['arr_bg', 'arr_fg'], 4000);
+    await app.show(new ArrivalModal(name, '', color));
 }
 //# sourceMappingURL=show.js.map

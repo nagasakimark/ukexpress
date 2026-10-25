@@ -228,7 +228,7 @@ export class Modal {
             this.focus = navigate(this.buttons, this.focus, a);
         return true;
     }
-    drag() { return true; }
-    zoom() { return true; }
+    drag(_dx = 0, _dy = 0) { return true; }
+    zoom(_f = 1, _x = 0, _y = 0) { return true; }
 }
 //# sourceMappingURL=ui.js.map

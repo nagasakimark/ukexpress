@@ -2,15 +2,21 @@ import { board, distancesTo } from '../core/map.js';
 import { STATION_BY_ID } from '../core/content/stations.js';
 import { AVATARS, MONTHS, REGIONS, SEASON_EMOJI, STYLES } from '../core/content/game-data.js';
 import { assets, ranking } from '../core/rules.js';
-import { C, FONT, panel, text, emoji, money, roundRect } from '../engine/draw.js';
+import { blitCache, C, FONT, panel, text, emoji, money, roundRect } from '../engine/draw.js';
 import { lang, lines, main, t2 } from './i18n.js';
-import { dual } from './dialogs.js';
+import { dual, dualHeight } from './dialogs.js';
 import { drawPic, PhotoBrowser } from './images.js';
 import { ImageViewer } from './dialogs.js';
 import { app } from './app.js';
 import { LAY } from './layout.js';
 const GREEN = '#174a2f';
+/** Redrawn at most about five times a second (or at once when the language, window or player changes). */
+const stamp = () => Math.floor(performance.now() / 200);
 export function drawTopBar(ctx, g, p, destOffscreen) {
+    const ang = destOffscreen ? Math.round(destOffscreen.a * 6) : 'x';
+    blitCache(ctx, 'topbar', `${stamp()}|${p.id}|${p.cash}|${g.month}|${g.year}|${g.destination}|${lang.mode}|${ang}|${LAY.mapL}|${LAY.mapR}`, LAY.mapL, 0, LAY.mapR - LAY.mapL, LAY.mapTop, (c) => paintTopBar(c, g, p, destOffscreen));
+}
+function paintTopBar(ctx, g, p, destOffscreen) {
     const L = LAY.mapL, R = LAY.mapR, H = LAY.mapTop;
     const grad = ctx.createLinearGradient(0, 0, 0, H);
     grad.addColorStop(0, 'rgba(23,74,47,0.98)');
@@ -74,6 +80,10 @@ export function drawTopBar(ctx, g, p, destOffscreen) {
     ctx.restore();
 }
 export function drawPlayerList(ctx, g, cur) {
+    const x = LAY.mapL + 8, y = LAY.mapBot + 6, w = LAY.mapR - LAY.mapL - 16;
+    blitCache(ctx, 'players', `${stamp()}|${cur?.id}|${g.players.map((q) => q.cash + ':' + q.pos).join(',')}|${lang.mode}|${LAY.mapL}|${LAY.mapR}`, x - 4, y - 4, w + 8, 170, (c) => paintPlayerList(c, g, cur));
+}
+function paintPlayerList(ctx, g, cur) {
     const x = LAY.mapL + 8, y = LAY.mapBot + 6, w = LAY.mapR - LAY.mapL - 16, rowH = 36;
     panel(ctx, x, y, w, 158, { fill: '#fff8e6', radius: 14, shadow: false });
     const rank = ranking(g);
@@ -194,6 +204,7 @@ function guideItems(sid) {
         items.push({ icon: '⚽', title: t2('Local team', 'ちいきの チーム'), text: st.team });
     return items;
 }
+const gcache = { key: '', cv: null, total: 0, s: 0 };
 export function drawGuide(ctx, sid, tag, tt) {
     const st = STATION_BY_ID[sid];
     const x = LAY.panelX, y = 8, w = LAY.panelW, h = 548;
@@ -211,17 +222,39 @@ export function drawGuide(ctx, sid, tag, tt) {
     // several photos: show them in turn, every 6 seconds
     if (n > 1 && performance.now() - gs.lastStep > 6000)
         guideStep(1);
-    panel(ctx, x, y, w, h, { fill: '#fffaf0' });
-    // header
-    const tg = TAGS[tag];
-    ctx.fillStyle = tg.color;
-    roundRect(ctx, x + 6, y + 6, w - 12, 36, 10);
-    ctx.fill();
-    emoji(ctx, tg.icon, x + 28, y + 24, 22);
-    text(ctx, main(tg.t), x + 50, y + 24, { size: 19, color: '#fff' });
-    text(ctx, main(t2('Station guide', 'えきガイド')), x + w - 16, y + 24, { size: 14, color: '#fff3c4', align: 'right', weight: 600 });
-    // photo (tap to see it big)
     const phX = x + 12, phY = y + 50, phW = w - 24, phH = 172;
+    const bx = x + 10, bw = w - 26, by = phY + phH + 6 + LH * 0.56 + 4, bh = y + h - 8 - by;
+    // 1. the still parts of the panel (frame, tag, name, region) are painted once and copied
+    blitCache(ctx, 'guide', `${sid}|${tag}|${lang.mode}|${x}`, x - 6, y - 6, w + 12, h + 14, (c) => {
+        panel(c, x, y, w, h, { fill: '#fffaf0' });
+        const tg = TAGS[tag];
+        c.fillStyle = tg.color;
+        roundRect(c, x + 6, y + 6, w - 12, 36, 10);
+        c.fill();
+        emoji(c, tg.icon, x + 28, y + 24, 22);
+        text(c, main(tg.t), x + 50, y + 24, { size: 19, color: '#fff' });
+        text(c, main(t2('Station guide', 'えきガイド')), x + w - 16, y + 24, { size: 14, color: '#fff3c4', align: 'right', weight: 600 });
+        const ls0 = 0.56, lw0 = LW * ls0;
+        const nw = w - 36 - lw0 - 6;
+        const nm = lines(st.name);
+        text(c, nm.main, x + 16, phY + phH + 24, { size: 25, color: C.ink, maxWidth: nw });
+        if (nm.sub)
+            text(c, nm.sub, x + 16, phY + phH + 47, { size: 14, color: '#6a5a40', weight: 600, maxWidth: nw });
+        const rn = main(reg.name) + (st.hometown ? '  🏠' : '');
+        c.font = `800 14px ${FONT}`;
+        const rw = Math.min(nw, c.measureText(rn).width + 26);
+        c.fillStyle = reg.color;
+        roundRect(c, x + 16, phY + phH + 56, rw, 22, 11);
+        c.fill();
+        text(c, rn, x + 16 + rw / 2, phY + phH + 67, { size: 14, color: '#fff', align: 'center', maxWidth: rw - 8 });
+        c.strokeStyle = 'rgba(0,0,0,0.12)';
+        c.lineWidth = 1;
+        c.beginPath();
+        c.moveTo(bx + 4, by - 2);
+        c.lineTo(bx + bw, by - 2);
+        c.stroke();
+    });
+    // 2. photo (tap to see it big)
     drawPic(ctx, 'places', pb.name(), phX, phY, phW, phH, { emoji: st.emoji, label: main(st.name), color: reg.color, radius: 12 });
     gs.photo = { x: phX, y: phY, w: phW, h: phH };
     ctx.fillStyle = 'rgba(0,0,0,0.55)';
@@ -246,7 +279,7 @@ export function drawGuide(ctx, sid, tag, tt) {
             ctx.fill();
         }
     }
-    // name + region, with the little UK map beside them (never on top of the photo)
+    // 3. the little UK map beside the name, with a pulsing dot on this place
     const lm = locatorMap();
     const ls = 0.56, lw = LW * ls, lh = LH * ls;
     const lx = x + w - 12 - lw, ly = phY + phH + 6;
@@ -267,45 +300,50 @@ export function drawGuide(ctx, sid, tag, tt) {
         ctx.fill();
         ctx.stroke();
     }
-    const nw = w - 36 - lw - 6;
-    const nm = lines(st.name);
-    text(ctx, nm.main, x + 16, phY + phH + 24, { size: 25, color: C.ink, maxWidth: nw });
-    if (nm.sub)
-        text(ctx, nm.sub, x + 16, phY + phH + 47, { size: 14, color: '#6a5a40', weight: 600, maxWidth: nw });
-    const rn = main(reg.name) + (st.hometown ? '  🏠' : '');
-    ctx.font = `800 14px ${FONT}`;
-    const rw = Math.min(nw, ctx.measureText(rn).width + 26);
-    ctx.fillStyle = reg.color;
-    roundRect(ctx, x + 16, phY + phH + 56, rw, 22, 11);
-    ctx.fill();
-    text(ctx, rn, x + 16 + rw / 2, phY + phH + 67, { size: 14, color: '#fff', align: 'center', maxWidth: rw - 8 });
-    // the write-up: scrolls (drag, mouse wheel, or the arrows)
-    const by = phY + phH + 6 + lh + 4, bh = y + h - 8 - by, bx = x + 10, bw = w - 26;
+    // 4. the write-up: one tall picture of all the topic cards, shown through a window that scrolls
     gs.body = { x: bx, y: by, w: bw + 10, h: bh };
-    ctx.strokeStyle = 'rgba(0,0,0,0.12)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(bx + 4, by - 2);
-    ctx.lineTo(bx + bw, by - 2);
-    ctx.stroke();
-    gs.scroll += (gs.target - gs.scroll) * 0.25;
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(bx, by, bw + 12, bh);
-    ctx.clip();
-    let cy = by + 8 - gs.scroll;
-    for (const it of guideItems(sid)) {
-        emoji(ctx, it.icon, bx + 14, cy + 11, 20);
-        const tl = lines(it.title);
-        text(ctx, tl.main, bx + 32, cy + 11, { size: 17, color: reg.color, maxWidth: bw - 36 });
-        cy += 24;
-        cy = dual(ctx, it.text, bx + 8, cy, 15, bw - 14) + 12;
+    const m = ctx.getTransform(), sc = Math.max(0.5, Math.hypot(m.a, m.b));
+    const ck = `${sid}|${lang.mode}|${bw}|${sc}`;
+    if (gcache.key !== ck || !gcache.cv) {
+        const tw = bw - 40;
+        const its = guideItems(sid);
+        const hs = its.map((it) => 40 + dualHeight(ctx, it.text, 15, tw) + 10);
+        const total = 8 + hs.reduce((a, q) => a + q + 8, 0);
+        const cv = gcache.cv ?? (gcache.cv = document.createElement('canvas'));
+        cv.width = Math.ceil((bw + 12) * sc);
+        cv.height = Math.ceil(total * sc);
+        const c = cv.getContext('2d');
+        c.setTransform(sc, 0, 0, sc, 0, 0);
+        let cy = 8;
+        its.forEach((it, i) => {
+            const ch = hs[i];
+            c.fillStyle = '#ffffff';
+            roundRect(c, 2, cy, bw - 6, ch, 12);
+            c.fill();
+            c.strokeStyle = 'rgba(0,0,0,0.10)';
+            c.lineWidth = 1;
+            c.stroke();
+            c.fillStyle = reg.color;
+            roundRect(c, 2, cy, 7, ch, 4);
+            c.fill();
+            c.fillStyle = 'rgba(0,0,0,0.045)';
+            c.fillRect(9, cy + 1, bw - 16, 30);
+            emoji(c, it.icon, 28, cy + 16, 20);
+            text(c, lines(it.title).main, 46, cy + 16, { size: 17, color: reg.color, maxWidth: bw - 66 });
+            dual(c, it.text, 20, cy + 38, 15, tw);
+            cy += ch + 8;
+        });
+        gcache.key = ck;
+        gcache.total = total;
     }
-    ctx.restore();
-    const total = cy + gs.scroll - by;
+    gs.scroll += (gs.target - gs.scroll) * 0.25;
+    const total = gcache.total;
     gs.max = Math.max(0, total - bh + 6);
     if (gs.target > gs.max)
         gs.target = gs.max;
+    const vh = Math.min(bh, total - gs.scroll);
+    if (vh > 0)
+        ctx.drawImage(gcache.cv, 0, gs.scroll * sc, (bw + 12) * sc, vh * sc, bx, by, bw + 12, vh);
     if (gs.max > 0) {
         // scroll bar, and a soft fade where more text continues
         const th = Math.max(30, bh * bh / total), ty = by + (bh - th) * (gs.scroll / gs.max);

@@ -8,6 +8,8 @@ import { Camera } from './proj.js';
 import { Ground, seasonOf } from './ground.js';
 import { sprites, Scenery, drawSprite, treeSprite } from './sprites.js';
 import { main } from '../i18n.js';
+/** Landmarks are drawn a bit bigger than life so they read clearly. */
+const LMS = 1.3;
 const P = { x: 0, y: 0, s: 0, depth: 0 };
 /** Sorts in place by depth. The train lists passed to draw() are built fresh every frame, so this is safe. */
 const byZ = (p, q) => p.z - q.z;
@@ -135,14 +137,14 @@ export class BoardView {
             if (this.frames.length >= 30) {
                 const avg = this.frames.reduce((a, b) => a + b, 0) / this.frames.length;
                 this.frames.length = 0;
-                if (avg > 18 && this.tier < 2) {
+                if (avg > 26 && this.tier < 2) {
                     this.tier++;
                     this.goodWindows = 0;
                     console.info('board: detail level', this.tier);
                     this.onTier?.(this.tier);
                 }
                 else if (avg < 9 && this.tier > this.tierFloor) {
-                    if (++this.goodWindows >= 4) {
+                    if (++this.goodWindows >= 12) {
                         this.goodWindows = 0;
                         this.tier--;
                         console.info('board: detail level', this.tier);
@@ -193,8 +195,8 @@ export class BoardView {
         }
     }
     lm(ctx, l, sk) {
-        if (!(sk && drawSprite(ctx, this.cam, `lm/${l.sid}/${sk}`, l.x, l.z, 1)))
-            drawSprite(ctx, this.cam, 'lm/' + l.sid, l.x, l.z, 1);
+        if (!(sk && drawSprite(ctx, this.cam, `lm/${l.sid}/${sk}`, l.x, l.z, LMS)))
+            drawSprite(ctx, this.cam, 'lm/' + l.sid, l.x, l.z, LMS);
     }
     glow(ctx, x, z, tt) {
         const p = this.cam.project(x, 0, z, P);

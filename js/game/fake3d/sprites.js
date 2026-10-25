@@ -1,3 +1,4 @@
+import { LAY } from '../layout.js';
 // Pre-rendered sprites (assets/sprites, made by tools/render_sprites.py) and the scenery that uses them:
 // forests, villages, city blocks, farms and a landmark for every station. Everything stands upright and is
 // drawn back to front, scaled by the perspective camera.
@@ -33,7 +34,7 @@ export function drawSprite(ctx, cam, name, x, z, scale = 1, y = 0, alpha = 1) {
     const k = (p.s / (UNITS_PER_CELL * d.ppu)) * scale;
     const w = d.w * k, h = d.h * k;
     const dx = p.x - d.ax * k, dy = p.y - d.ay * k;
-    if (dx > 1300 || dx + w < -20 || dy > 740 || dy + h < -20)
+    if (dx > LAY.vr + 20 || dx + w < LAY.vl - 20 || dy > 740 || dy + h < -20)
         return true;
     if (alpha !== 1)
         ctx.globalAlpha = alpha;
@@ -86,8 +87,9 @@ export class Scenery {
             m.fillRect(sx - hw, sy - 0.3, hw * 2, 0.5);
             if (s.lm) {
                 m.beginPath();
-                m.ellipse(s.lm[0], s.lm[1] + 0.05, 0.85, 0.75, 0, 0, Math.PI * 2);
+                m.ellipse(s.lm[0], s.lm[1] + 0.1, 1.2, 0.95, 0, 0, Math.PI * 2);
                 m.fill();
+                m.fillRect(s.lm[0] - 0.9, s.lm[1] + 0.2, 1.8, 1.0);
                 this.landmarks.push({ sid, x: s.lm[0], z: s.lm[1] });
             }
         }

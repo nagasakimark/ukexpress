@@ -86,6 +86,8 @@ export class BoardScene {
         this.cam.x = Math.max(1, Math.min(gr.w - 2, this.cam.x));
         this.cam.y = Math.max(1, Math.min(gr.h - 2, this.cam.y));
     }
+    parkAt(x, y, zoom) { this.follow = null; this.cam.x = x; this.cam.y = y; if (zoom)
+        this.cam.zoom = zoom; }
     flyTo(x, y, ms = 700, zoom) {
         this.follow = null;
         const to = { x, y };

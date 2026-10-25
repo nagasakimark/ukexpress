@@ -15,7 +15,7 @@ export function setStations(raw, places = {}, guide = {}) {
         }));
         const def = {
             id: s.id, name: s.name, region: s.region, lon: s.lon, lat: s.lat, emoji: s.emoji, props, fact: s.fact, quiz: s.quiz,
-            film: s.film, hometown: !!s.hometown, nature: !!s.nature, trainShop: !!s.trainShop, capital: !!s.capital,
+            film: s.film, hometown: !!s.hometown, nature: !!s.nature, trainShop: false /* basic train only, like Momotetsu: no upgrades */, capital: !!s.capital,
             facts: [], image: '', guide: [],
         };
         const pl = places[s.id] ?? {};

@@ -194,4 +194,28 @@ export function playerShape(ctx, i, x, y, r, color) {
     ctx.stroke();
     ctx.restore();
 }
+// ---------- cached panels ----------
+// HUD panels hold a lot of text, which is slow to lay out sixty times a second on a school Chromebook. blitCache paints a
+// region once into its own small canvas and then just copies it, until the `key` changes (or the screen scale does).
+const blits = new Map();
+export function blitCache(ctx, id, key, x, y, w, h, paint) {
+    const m = ctx.getTransform();
+    const s = Math.max(0.5, Math.hypot(m.a, m.b));
+    const W = Math.max(1, Math.ceil(w * s)), H = Math.max(1, Math.ceil(h * s));
+    let e = blits.get(id);
+    if (!e) {
+        e = { cv: document.createElement('canvas'), key: '', s: 0 };
+        blits.set(id, e);
+    }
+    if (e.key !== key || e.s !== s || e.cv.width !== W || e.cv.height !== H) {
+        e.cv.width = W;
+        e.cv.height = H;
+        const c = e.cv.getContext('2d');
+        c.setTransform(s, 0, 0, s, -x * s, -y * s);
+        paint(c);
+        e.key = key;
+        e.s = s;
+    }
+    ctx.drawImage(e.cv, x, y, w, h);
+}
 //# sourceMappingURL=draw.js.map

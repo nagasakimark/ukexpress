@@ -143,17 +143,17 @@ export class Director {
         this.setSpeed(null);
         const hs = g.players.filter((p) => p.controller === 'human');
         const names = { en: hs.map((p) => p.name.en).join(', '), ja: hs.map((p) => p.name.ja).join('、') };
-        await studio([
+        const pre = [
             { pose: 'excited', tv: null, sfx: 'fanfare', t: T('みんな、こんにちは！マーク先生だよ！「UKエクスプレス」へ ようこそ！', 'Hello everyone! I am Mark Sensei. Welcome to UK Express!') },
             { pose: 'happy', t: hs.length > 1
                     ? T(`${names.ja}、みんなは てつどうがいしゃの しゃちょうさん！イギリスを ぐるぐる まわって、ゆうめいな ばしょを かおう！`, `${names.en}: you are all railway bosses! Travel around the UK and buy famous places!`)
                     : T(`${names.ja}は ${hs[0].name.ja}てつどうの しゃちょうさん！イギリスを ぐるぐる まわって、ゆうめいな ばしょを かおう！`, `You are the boss of ${hs[0].name.en} Railway! Travel around the UK and buy famous places!`) },
             { pose: 'point', t: T('えきの ことは、みぎがわの「えきガイド」に でるよ。ぜひ よんでね！', 'Look at the Station guide on the right to learn about each place!') },
-        ]);
-        await this.announceDestination(true);
+        ];
+        await this.announceDestination(true, pre);
     }
     /** The presenter announces where everyone is going next. */
-    async announceDestination(first = false) {
+    async announceDestination(first = false, pre = []) {
         const g = this.g;
         this.setSpeed(null);
         const st = STATION_BY_ID[g.destination];
@@ -164,7 +164,11 @@ export class Director {
         for (let i = 0; i < 9; i++)
             spinList.push(this.tvPlace(others[Math.floor(Math.random() * others.length)].id));
         const hook = st.guide[0];
+        // park the camera on the destination while the studio screen still covers the map (no flash of the board)
+        const n = board.nodes[board.stationNode[g.destination]];
+        this.board.parkAt(n.x, n.y, 0.7);
         const ls = [
+            ...pre,
             { pose: 'excited', tv: null, sfx: 'whistle', t: first ? T('さいしょの もくてきちは…どこだ！？', 'The first destination is... where?!') : T('つぎの もくてきちは…どこだ！？', 'The next destination is... where?!') },
             { pose: 'surprised', tv: this.tvPlace(g.destination), spin: spinList, t: T('ドキドキ… ルーレット スタート！', 'Drum roll... spin the roulette!') },
             { pose: 'excited', t: T(`${st.name.ja}に きまり！ ${lines(region).main}に あるよ。いちばんに ついたひとが ボーナス！`, `It's ${st.name.en}! It is in ${region.en}. The first one there wins a bonus!`) },
@@ -172,9 +176,7 @@ export class Director {
         if (hook)
             ls.push({ pose: 'point', t: T(`${st.name.ja}と いえば…「${hook.title.ja}」！ えきガイドを 見てね！`, `${st.name.en} is famous for... ${hook.title.en}! Read all about it in the Station guide!`) });
         await studio(ls);
-        const n = board.nodes[board.stationNode[g.destination]];
-        await this.board.flyTo(n.x, n.y, 900, 0.7);
-        await clock.wait(500);
+        await clock.wait(250);
     }
     // ======================= months =======================
     async monthStart() {

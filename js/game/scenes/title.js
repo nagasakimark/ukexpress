@@ -175,18 +175,40 @@ export class TitleScene {
         const dt = this.lastT ? Math.min(50, t - this.lastT) : 16;
         this.lastT = t;
         if (!this.route.length) {
-            // the longest straight east-west stretch of track, so the train never has to turn a corner
-            const g = board.grid;
-            const has = new Set(g.cells.filter((c) => c[2] & 1 && isDryLand(c[0], c[1])).map((c) => c[0] + ',' + c[1]));
-            let best = [];
-            for (const c of g.cells) {
-                if (!(c[2] & 1) || has.has((c[0] - 1) + ',' + c[1]))
-                    continue;
-                const run = [];
-                for (let x = c[0]; has.has(x + ',' + c[1]); x++)
-                    run.push({ x, y: c[1] });
-                if (run.length > best.length)
+            // a winding stretch of real track: follow the rails (the cell bits say which ways the track leads)
+            const cm = new Map();
+            for (const c of board.grid.cells)
+                if (isDryLand(c[0], c[1]))
+                    cm.set(c[0] + ',' + c[1], c[2]);
+            const D = [[1, 0, 2], [-1, 0, 1], [0, 1, 8], [0, -1, 4]];
+            const exits = (x, y) => D.filter(([dx, dy, bit]) => (cm.get(x + ',' + y) & bit) && cm.has((x + dx) + ',' + (y + dy)));
+            let best = [], bestScore = -1, seed = 11;
+            const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+            const keys = [...cm.keys()];
+            for (let tries = 0; tries < 800; tries++) {
+                const [sx, sy] = keys[Math.floor(rnd() * keys.length)].split(',').map(Number);
+                const seen = new Set([sx + ',' + sy]);
+                const run = [{ x: sx, y: sy }];
+                let px = 0, py = 0, turns = 0;
+                for (let n = 0; n < 120; n++) {
+                    const cur = run[run.length - 1];
+                    const opts = exits(cur.x, cur.y).filter(([dx, dy]) => !seen.has((cur.x + dx) + ',' + (cur.y + dy)));
+                    if (!opts.length)
+                        break;
+                    const o = opts[Math.floor(rnd() * opts.length)];
+                    if ((px || py) && (o[0] !== px || o[1] !== py))
+                        turns++;
+                    px = o[0];
+                    py = o[1];
+                    const nx = cur.x + o[0], ny = cur.y + o[1];
+                    seen.add(nx + ',' + ny);
+                    run.push({ x: nx, y: ny });
+                }
+                const score = run.length + Math.min(turns, 10) * 5;
+                if (score > bestScore) {
+                    bestScore = score;
                     best = run;
+                }
             }
             this.route = best.length > 3 ? best : [{ x: 0, y: 0 }, { x: 10, y: 0 }];
             view.build();
@@ -203,6 +225,7 @@ export class TitleScene {
             i = 0;
             rem = 0;
             this.train.trail = [];
+            this.route.reverse();
         }
         const a = this.route[i], b = this.route[Math.min(i + 1, this.route.length - 1)];
         const x = a.x + (b.x - a.x) * rem, z = a.y + (b.y - a.y) * rem;
@@ -280,9 +303,9 @@ export class TitleScene {
         if (!this.started) {
             const a = (Math.sin(t / 300) + 1) / 2;
             const l = lines(UI.start);
-            text(ctx, l.main, 640, 420, { size: 44, color: '#fff', align: 'center', outline: 9, alpha: 0.5 + a * 0.5 });
+            text(ctx, l.main, 640, 420, { size: 44, color: '#fff', align: 'center', outline: 9, outlineColor: '#12324a', alpha: 0.5 + a * 0.5 });
             if (l.sub)
-                text(ctx, l.sub, 640, 470, { size: 22, color: '#fff', align: 'center', outline: 5, alpha: 0.5 + a * 0.5 });
+                text(ctx, l.sub, 640, 470, { size: 22, color: '#fff', align: 'center', outline: 5, outlineColor: '#12324a', alpha: 0.5 + a * 0.5 });
         }
         else {
             const kbd = !!window.__kbd;

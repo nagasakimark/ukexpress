@@ -1,0 +1,24 @@
+3D models
+=========
+All .glb models in this folder are by Kenney (https://kenney.nl), released under
+Creative Commons Zero (CC0 1.0) — free to use in any project. Credit is appreciated, not required.
+
+  nature/     Kenney Nature Kit
+  city/       Kenney City Kit (Commercial)
+  suburban/   Kenney City Kit (Suburban)
+  pirate/     Kenney Pirate Kit
+  cube/       Kenney Cube Pets
+  graveyard/  Kenney Graveyard Kit
+  train/      Kenney Train Kit — track, steam engines, diesel, electric and the passenger carriage
+
+Which engine is which train in the game:
+  Puffing Billy       train-locomotive-b      Flying Scotsman   train-locomotive-a (green)
+  Stephenson's Rocket built in code (yellow)  Mallard           train-locomotive-c (blue)
+  InterCity 125       train-diesel-a          Azuma             train-electric-city-a
+The passenger carriage (train-locomotive-passenger-a) is repainted in each player's colour.
+To change a train, edit KENNEY_FOR_TYPE in src/game/world/trains3d.ts.
+
+Everything else 3D (stations, landmarks, steam engines, sheep, houses) is built in code
+in src/game/world/.
+
+three.js (vendor/three.js) is MIT licensed, © three.js authors (https://threejs.org).
