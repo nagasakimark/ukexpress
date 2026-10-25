@@ -131,6 +131,7 @@ function setSeason(k) { const [c, a] = SEASON[k]; seasonUniforms.uSeasonTint.val
 function setLook(k) { Object.assign(G, SEASON_LOOK[k]); }
 const DECID = ['tree-default', 'tree-oak', 'tree-fat', 'tree-detailed', 'tree-simple'];
 const CONIF = ['tree-pinetalla', 'tree-pinetallb', 'tree-pinerounda', 'tree-cone'];
+const LEAN_STEP = 3.5 * Math.PI / 180;
 function jobs() {
     const out = [];
     // trees, per season: deciduous change colour, conifers only get snow
@@ -193,6 +194,17 @@ function jobs() {
             out.push({ name: `train/${t}/${i}/${d}`, make: () => engine(t, a, col), ppu: 2.6 }); });
     C.players.forEach((col, i) => { for (const [d, a] of DIRS)
         out.push({ name: `car/${i}/${d}`, make: () => carriage(col, a), ppu: 2.6 }); });
+    // up/down the screen the rails lean with the perspective, so the same trains are also drawn turned a few degrees (bins 1-3 either side)
+    for (let b = -3; b <= 3; b++) {
+        if (!b)
+            continue;
+        const tag = (b > 0 ? 'p' : 'm') + Math.abs(b), da = b * LEAN_STEP;
+        for (const [d, a] of [['s', 0], ['n', Math.PI]])
+            C.players.forEach((col, i) => {
+                out.push({ name: `train/0/${i}/${d}/${tag}`, make: () => engine(0, a + da, col), ppu: 2.6 });
+                out.push({ name: `car/${i}/${d}/${tag}`, make: () => carriage(col, a + da), ppu: 2.6 });
+            });
+    }
     // the station-arrival scene: the same trains seen from the side, one long sprite per player colour (engine + carriages)
     C.players.forEach((col, i) => out.push({ name: `side/${i}`, make: () => consist(col, 3), ppu: 5, shadow: false, pitch: 0.12 }));
     return out;

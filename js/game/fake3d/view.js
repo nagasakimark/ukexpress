@@ -4,7 +4,8 @@ import { LAY } from '../layout.js';
 import { board } from '../../core/map.js';
 import { STATION_BY_ID } from '../../core/content/stations.js';
 import { C, FONT, emoji, roundRect } from '../../engine/draw.js';
-import { Camera, UNITS_PER_CELL } from './proj.js';
+import { Camera, UNITS_PER_CELL, PITCH } from './proj.js';
+const LEAN_STEP = 3.5 * Math.PI / 180;
 import { Ground, seasonOf } from './ground.js';
 import { sprites, Scenery, drawSprite, treeSprite } from './sprites.js';
 import { main } from '../i18n.js';
@@ -272,7 +273,20 @@ export class BoardView {
             ctx.beginPath();
             ctx.ellipse(p.x, p.y + p.s * 0.02, p.s * 0.2 * t.scale, p.s * 0.1 * t.scale, 0, 0, Math.PI * 2);
             ctx.fill();
-            drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
+            let nm = c.name;
+            if (c.dir === 'n' || c.dir === 's') {
+                // the rails lean with the perspective: use the sprite turned by the matching few degrees
+                const px = p.x, py = p.y;
+                const q = this.cam.project(c.x, 0, c.z + 1, P2);
+                const lean = Math.atan(Math.tan(Math.atan2(q.x - px, q.y - py)) * Math.sin(PITCH));
+                const bin = Math.max(-3, Math.min(3, Math.round(lean / LEAN_STEP)));
+                if (bin) {
+                    const cand = `${nm}/${bin > 0 ? 'p' : 'm'}${Math.abs(bin)}`;
+                    if (sprites.defs[cand])
+                        nm = cand;
+                }
+            }
+            drawSprite(ctx, this.cam, nm, c.x, c.z, 1.3 * t.scale, t.lift);
         }
     }
     drawSigns(ctx, destNode, ov) {
