@@ -61,7 +61,7 @@
    {
     "name": {
      "en": "Granary Square fountains",
-     "ja": "グラナリー広場の噴水"
+     "ja": "グラナリー広場のふんすい"
     },
     "category": "tourism",
     "price": 200,
@@ -118,7 +118,7 @@
     },
     {
      "en": "The first rocket base",
-     "ja": "世界初のロケット基地"
+     "ja": "世界初のロケットきち"
     }
    ],
    "answer": 0
@@ -145,7 +145,7 @@
    {
     "name": {
      "en": "Elizabeth line depot",
-     "ja": "エリザベス線の車両基地"
+     "ja": "エリザベス線のしゃりょうきち"
     },
     "category": "industry",
     "price": 5000,
@@ -165,7 +165,7 @@
   "emoji": "🎡",
   "fact": {
    "en": "The London Eye is a giant wheel, 135 metres tall. Big Ben is the bell in the clock tower nearby.",
-   "ja": "ロンドン・アイは高さ135メートルの大観覧車。近くの時計台の鐘が「ビッグ・ベン」だよ。"
+   "ja": "ロンドン・アイは高さ135メートルの大観らん車。近くの時計台のかねが「ビッグ・ベン」だよ。"
   },
   "quiz": {
    "q": {
@@ -175,7 +175,7 @@
    "options": [
     {
      "en": "A big wheel",
-     "ja": "大きな観覧車"
+     "ja": "大きなかんらんしゃ"
     },
     {
      "en": "A tall tower",
@@ -192,7 +192,7 @@
    {
     "name": {
      "en": "South Bank theatre",
-     "ja": "サウスバンクの劇場"
+     "ja": "サウスバンクのげきじょう"
     },
     "category": "culture",
     "price": 800,
@@ -266,7 +266,7 @@
    {
     "name": {
      "en": "Cutty Sark tea ship",
-     "ja": "紅茶を運んだ船カティーサーク"
+     "ja": "こうちゃを運んだ船カティーサーク"
     },
     "category": "tourism",
     "price": 1000,
@@ -326,7 +326,7 @@
     },
     {
      "en": "Its desert",
-     "ja": "砂漠"
+     "ja": "さばく"
     }
    ],
    "answer": 0
@@ -344,7 +344,7 @@
    {
     "name": {
      "en": "Punting boats",
-     "ja": "パント舟"
+     "ja": "パントふね"
     },
     "category": "tourism",
     "price": 150,
@@ -378,7 +378,7 @@
   "quiz": {
    "q": {
     "en": "How do many Cambridge students travel?",
-    "ja": "ケンブリッジの学生は何で移動する？"
+    "ja": "ケンブリッジの学生は何でいどうする？"
    },
    "options": [
     {
@@ -438,7 +438,7 @@
   "emoji": "⛪",
   "fact": {
    "en": "Canterbury Cathedral is one of the oldest and most famous churches in England.",
-   "ja": "カンタベリー大聖堂は、イングランドでとても古くて有名な教会だよ。"
+   "ja": "カンタベリーだいせいどうは、イングランドでとても古くて有名な教会だよ。"
   },
   "quiz": {
    "q": {
@@ -448,7 +448,7 @@
    "options": [
     {
      "en": "A cathedral",
-     "ja": "大聖堂"
+     "ja": "だいせいどう"
     },
     {
      "en": "A pyramid",
@@ -456,7 +456,7 @@
     },
     {
      "en": "A pagoda",
-     "ja": "五重塔"
+     "ja": "五重とう"
     }
    ],
    "answer": 0
@@ -465,7 +465,7 @@
    {
     "name": {
      "en": "Cathedral tours",
-     "ja": "大聖堂ツアー"
+     "ja": "だいせいどうツアー"
     },
     "category": "culture",
     "price": 1200,
@@ -482,8 +482,8 @@
    },
    {
     "name": {
-     "en": "Cherry orchard",
-     "ja": "さくらんぼ園"
+     "en": "Hop farm",
+     "ja": "ホップ農園"
     },
     "category": "food",
     "price": 250,
@@ -504,12 +504,12 @@
   "nature": true,
   "fact": {
    "en": "The White Cliffs of Dover are made of chalk. On a clear day you can see France!",
-   "ja": "ドーバーの白い崖はチョークでできているよ。晴れた日にはフランスが見える！"
+   "ja": "ドーバーの白いがけはチョークでできているよ。晴れた日にはフランスが見える！"
   },
   "quiz": {
    "q": {
     "en": "What colour are the cliffs of Dover?",
-    "ja": "ドーバーの崖は何色？"
+    "ja": "ドーバーのがけは何色？"
    },
    "options": [
     {
@@ -531,7 +531,7 @@
    {
     "name": {
      "en": "White Cliffs walk",
-     "ja": "白い崖のハイキング"
+     "ja": "白いがけのハイキング"
     },
     "category": "tourism",
     "price": 400,
@@ -540,7 +540,7 @@
    {
     "name": {
      "en": "Dover Castle",
-     "ja": "ドーバー城"
+     "ja": "ドーバーしろ"
     },
     "category": "tourism",
     "price": 2000,
@@ -569,7 +569,7 @@
   "emoji": "🎢",
   "fact": {
    "en": "Brighton Pier is a seaside pier with rides, games and fish and chips.",
-   "ja": "ブライトンの桟橋には、乗り物やゲーム、フィッシュ・アンド・チップスがあるよ。"
+   "ja": "ブライトンのさんばしには、乗り物やゲーム、フィッシュ・アンド・チップスがあるよ。"
   },
   "quiz": {
    "q": {
@@ -579,7 +579,7 @@
    "options": [
     {
      "en": "A seaside pier",
-     "ja": "海の桟橋"
+     "ja": "海のさんばし"
     },
     {
      "en": "A ski slope",
@@ -596,7 +596,7 @@
    {
     "name": {
      "en": "Brighton Pier",
-     "ja": "ブライトン桟橋"
+     "ja": "ブライトンさんばし"
     },
     "category": "tourism",
     "price": 1500,
@@ -661,7 +661,7 @@
    {
     "name": {
      "en": "Historic dockyard (HMS Victory)",
-     "ja": "歴史ある造船所（ヴィクトリー号）"
+     "ja": "れきしあるぞうせんじょ（ヴィクトリー号）"
     },
     "category": "tourism",
     "price": 2500,
@@ -679,7 +679,7 @@
    {
     "name": {
      "en": "Navy shipyard",
-     "ja": "海軍の造船所"
+     "ja": "海軍のぞうせんじょ"
     },
     "category": "industry",
     "price": 5000,
@@ -744,7 +744,7 @@
    {
     "name": {
      "en": "Aerospace factory",
-     "ja": "航空機工場"
+     "ja": "こうくうき工場"
     },
     "category": "industry",
     "price": 6000,
@@ -773,16 +773,16 @@
   "emoji": "🛁",
   "fact": {
    "en": "The Romans built hot baths here almost 2,000 years ago, a bit like an onsen!",
-   "ja": "2000年くらい前、ローマ人がここに温泉のお風呂を作ったよ。温泉みたい！"
+   "ja": "2000年くらい前、ローマ人がここにおんせんのおふろを作ったよ。おんせんみたい！"
   },
   "film": {
    "en": "Lacock Abbey near Bath was used for Hogwarts classrooms in the films.",
-   "ja": "バースの近くのレイコック修道院は、映画でホグワーツの教室に使われたよ。"
+   "ja": "バースの近くのレイコックしゅうどういんは、えいがでホグワーツの教室に使われたよ。"
   },
   "quiz": {
    "q": {
     "en": "Who built the baths in Bath?",
-    "ja": "バースのお風呂を作ったのは？"
+    "ja": "バースのおふろを作ったのは？"
    },
    "options": [
     {
@@ -842,7 +842,7 @@
   "emoji": "🪨",
   "fact": {
    "en": "Stonehenge is about 5,000 years old. Its stones line up with the summer sunrise.",
-   "ja": "ストーンヘンジは約5000年前のもの。夏至の日の出と石が一直線になるよ。"
+   "ja": "ストーンヘンジは約5000年前のもの。げしの日の出と石が一直線になるよ。"
   },
   "quiz": {
    "q": {
@@ -878,7 +878,7 @@
    {
     "name": {
      "en": "Salisbury Cathedral",
-     "ja": "ソールズベリー大聖堂"
+     "ja": "ソールズベリーだいせいどう"
     },
     "category": "culture",
     "price": 1000,
@@ -908,7 +908,7 @@
   "nature": true,
   "fact": {
    "en": "A cream tea is scones with jam and thick clotted cream, served with tea.",
-   "ja": "クリームティーは、スコーンにジャムとクロテッドクリームをのせて紅茶と食べるよ。"
+   "ja": "クリームティーは、スコーンにジャムとクロテッドクリームをのせてこうちゃと食べるよ。"
   },
   "quiz": {
    "q": {
@@ -1039,7 +1039,7 @@
   "nature": true,
   "fact": {
    "en": "Cornish pasties were the lunch of Cornwall's tin miners.",
-   "ja": "コーニッシュ・パスティは、コーンウォールのすず鉱山で働く人のお弁当だったよ。"
+   "ja": "コーニッシュ・パスティは、コーンウォールのすずこうざんで働く人のおべんとうだったよ。"
   },
   "quiz": {
    "q": {
@@ -1049,11 +1049,11 @@
    "options": [
     {
      "en": "Tin miners",
-     "ja": "すず鉱山の人"
+     "ja": "すずこうざんの人"
     },
     {
      "en": "Astronauts",
-     "ja": "宇宙飛行士"
+     "ja": "うちゅうひこうし"
     },
     {
      "en": "Only kings",
@@ -1093,7 +1093,7 @@
    {
     "name": {
      "en": "Tin mine museum",
-     "ja": "すず鉱山の博物館"
+     "ja": "すずこうざんの博物館"
     },
     "category": "industry",
     "price": 500,
@@ -1113,7 +1113,7 @@
   "emoji": "🍫",
   "fact": {
    "en": "Birmingham has more miles of canals than Venice!",
-   "ja": "バーミンガムには、ベネチアより長い運河があるよ！"
+   "ja": "バーミンガムには、ベネチアより長いうんががあるよ！"
   },
   "quiz": {
    "q": {
@@ -1123,7 +1123,7 @@
    "options": [
     {
      "en": "Canals",
-     "ja": "運河"
+     "ja": "うんが"
     },
     {
      "en": "Volcanoes",
@@ -1131,7 +1131,7 @@
     },
     {
      "en": "Glaciers",
-     "ja": "氷河"
+     "ja": "ひょうが"
     }
    ],
    "answer": 0
@@ -1167,7 +1167,7 @@
    {
     "name": {
      "en": "Canal boat hire",
-     "ja": "運河ボート"
+     "ja": "うんがボート"
     },
     "category": "tourism",
     "price": 200,
@@ -1223,7 +1223,7 @@
    {
     "name": {
      "en": "Royal Shakespeare Theatre",
-     "ja": "ロイヤル・シェイクスピア劇場"
+     "ja": "ロイヤル・シェイクスピアげきじょう"
     },
     "category": "culture",
     "price": 3000,
@@ -1252,7 +1252,7 @@
   "emoji": "🍵",
   "fact": {
    "en": "Stoke is called \"The Potteries\" because it makes cups, plates and teapots.",
-   "ja": "ストークはカップやお皿を作る町なので「ザ・ポッタリーズ」と呼ばれるよ。"
+   "ja": "ストークはカップやお皿を作る町なので「ザ・ポッタリーズ」とよばれるよ。"
   },
   "quiz": {
    "q": {
@@ -1262,7 +1262,7 @@
    "options": [
     {
      "en": "Pottery",
-     "ja": "陶器"
+     "ja": "とうき"
     },
     {
      "en": "Cars",
@@ -1279,7 +1279,7 @@
    {
     "name": {
      "en": "Pottery works",
-     "ja": "陶器工場"
+     "ja": "とうき工場"
     },
     "category": "industry",
     "price": 1500,
@@ -1335,7 +1335,7 @@
     },
     {
      "en": "Momotaro",
-     "ja": "桃太郎"
+     "ja": "ももたろう"
     }
    ],
    "answer": 0
@@ -1382,12 +1382,12 @@
   "emoji": "🚀",
   "fact": {
    "en": "Leicester has the National Space Centre, and one of the biggest Diwali festivals outside India.",
-   "ja": "レスターには国立宇宙センターがあり、インドの外で最大級のディワリ祭りもあるよ。"
+   "ja": "レスターには国立うちゅうセンターがあり、インドの外で最大級のディワリ祭りもあるよ。"
   },
   "quiz": {
    "q": {
     "en": "What can you see at the National Space Centre?",
-    "ja": "国立宇宙センターで見られるものは？"
+    "ja": "国立うちゅうセンターで見られるものは？"
    },
    "options": [
     {
@@ -1396,11 +1396,11 @@
     },
     {
      "en": "Only dinosaurs",
-     "ja": "恐竜だけ"
+     "ja": "きょうりゅうだけ"
     },
     {
      "en": "Ninjas",
-     "ja": "忍者"
+     "ja": "にんじゃ"
     }
    ],
    "answer": 0
@@ -1409,7 +1409,7 @@
    {
     "name": {
      "en": "National Space Centre",
-     "ja": "国立宇宙センター"
+     "ja": "国立うちゅうセンター"
     },
     "category": "culture",
     "price": 2500,
@@ -1447,7 +1447,7 @@
   "emoji": "🎸",
   "fact": {
    "en": "The Beatles came from Liverpool. They played at the Budokan in Tokyo in 1966.",
-   "ja": "ビートルズはリバプール出身。1966年に東京の武道館で演奏したよ。"
+   "ja": "ビートルズはリバプール出身。1966年に東京のぶどうかんでえんそうしたよ。"
   },
   "quiz": {
    "q": {
@@ -1465,7 +1465,7 @@
     },
     {
      "en": "Arashi",
-     "ja": "嵐"
+     "ja": "あらし"
     }
    ],
    "answer": 0
@@ -1548,7 +1548,7 @@
    {
     "name": {
      "en": "Cotton mill museum",
-     "ja": "綿の工場の博物館"
+     "ja": "めんの工場の博物館"
     },
     "category": "culture",
     "price": 1000,
@@ -1595,12 +1595,12 @@
   "emoji": "🗼",
   "fact": {
    "en": "Blackpool Tower was inspired by the Eiffel Tower in Paris, just like Tokyo Tower!",
-   "ja": "ブラックプール・タワーは、東京タワーと同じくパリのエッフェル塔がモデルだよ！"
+   "ja": "ブラックプール・タワーは、東京タワーと同じくパリのエッフェルとうがモデルだよ！"
   },
   "quiz": {
    "q": {
     "en": "Blackpool Tower was inspired by a tower in…",
-    "ja": "ブラックプール・タワーのモデルになった塔はどこ？"
+    "ja": "ブラックプール・タワーのモデルになったとうはどこ？"
    },
    "options": [
     {
@@ -1753,7 +1753,7 @@
    {
     "name": {
      "en": "Yorkshire tea company",
-     "ja": "ヨークシャー紅茶の会社"
+     "ja": "ヨークシャーこうちゃの会社"
     },
     "category": "food",
     "price": 1500,
@@ -1762,7 +1762,7 @@
    {
     "name": {
      "en": "Royal Armouries museum",
-     "ja": "王立武具博物館"
+     "ja": "王立ぶぐ博物館"
     },
     "category": "culture",
     "price": 2000,
@@ -1791,7 +1791,7 @@
   "emoji": "🔪",
   "fact": {
    "en": "Stainless steel was invented in Sheffield in 1913.",
-   "ja": "1913年、シェフィールドでステンレス鋼が発明されたよ。"
+   "ja": "1913年、シェフィールドでステンレスこうが発明されたよ。"
   },
   "quiz": {
    "q": {
@@ -1801,7 +1801,7 @@
    "options": [
     {
      "en": "Stainless steel",
-     "ja": "ステンレス鋼"
+     "ja": "ステンレスこう"
     },
     {
      "en": "Sushi",
@@ -1818,7 +1818,7 @@
    {
     "name": {
      "en": "Steel works",
-     "ja": "製鉄所"
+     "ja": "せいてつしょ"
     },
     "category": "industry",
     "price": 5000,
@@ -1827,7 +1827,7 @@
    {
     "name": {
      "en": "Cutlery workshop",
-     "ja": "ナイフとフォークの工房"
+     "ja": "ナイフとフォークのこうぼう"
     },
     "category": "industry",
     "price": 300,
@@ -1857,11 +1857,11 @@
   "trainShop": true,
   "fact": {
    "en": "Vikings lived in York over 1,000 years ago and called it \"Jórvík\". The National Railway Museum has a real Shinkansen!",
-   "ja": "1000年以上前、バイキングがヨークに住んでいたよ。国立鉄道博物館には本物の新幹線もある！"
+   "ja": "1000年以上前、バイキングがヨークに住んでいたよ。国立鉄道博物館には本物のしんかんせんもある！"
   },
   "film": {
    "en": "Goathland station near York was Hogsmeade station in the first Harry Potter film.",
-   "ja": "ヨークの近くのゴースランド駅は、映画のホグズミード駅になったよ。"
+   "ja": "ヨークの近くのゴースランド駅は、えいがのホグズミード駅になったよ。"
   },
   "quiz": {
    "q": {
@@ -1879,7 +1879,7 @@
     },
     {
      "en": "Astronauts",
-     "ja": "宇宙飛行士"
+     "ja": "うちゅうひこうし"
     }
    ],
    "answer": 0
@@ -1936,29 +1936,29 @@
   "hometown": true,
   "fact": {
    "en": "St Cuthbert loved animals and protected the eider ducks. People still call them \"Cuddy's ducks\"!",
-   "ja": "聖カスバートは動物が大好きで、ケワタガモを守ったよ。今も「カディのアヒル」と呼ばれているんだ！"
+   "ja": "セント・カスバートは動物が大好きで、ケワタガモを守ったよ。今も「カディのアヒル」とよばれているんだ！"
   },
   "film": {
    "en": "The cathedral cloisters were Hogwarts in the first two Harry Potter films.",
-   "ja": "大聖堂の回廊は、ハリー・ポッターの映画でホグワーツとして使われたよ。"
+   "ja": "だいせいどうのかいろうは、ハリー・ポッターのえいがでホグワーツとして使われたよ。"
   },
   "quiz": {
    "q": {
     "en": "Which saint rests in Durham Cathedral?",
-    "ja": "ダラム大聖堂にねむる聖人は？"
+    "ja": "ダラムだいせいどうにねむるせいじんは？"
    },
    "options": [
     {
      "en": "St Cuthbert",
-     "ja": "聖カスバート"
+     "ja": "セント・カスバート"
     },
     {
      "en": "St Nicholas",
-     "ja": "聖ニコラス"
+     "ja": "セント・ニコラス"
     },
     {
      "en": "St Valentine",
-     "ja": "聖バレンタイン"
+     "ja": "セント・バレンタイン"
     }
    ],
    "answer": 0
@@ -1967,7 +1967,7 @@
    {
     "name": {
      "en": "Durham Cathedral",
-     "ja": "ダラム大聖堂"
+     "ja": "ダラムだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -1976,7 +1976,7 @@
    {
     "name": {
      "en": "Durham Castle tours",
-     "ja": "ダラム城ツアー"
+     "ja": "ダラムしろツアー"
     },
     "category": "tourism",
     "price": 1500,
@@ -2023,11 +2023,11 @@
   "emoji": "👼",
   "fact": {
    "en": "The Angel of the North is a giant steel angel. Its wings are 54 metres wide!",
-   "ja": "エンジェル・オブ・ザ・ノースは鉄でできた巨大な天使。つばさの幅は54メートル！"
+   "ja": "エンジェル・オブ・ザ・ノースは鉄でできたきょだいな天使。つばさのはばは54メートル！"
   },
   "film": {
    "en": "Alnwick Castle, north of Newcastle, is where the first flying lessons were filmed.",
-   "ja": "ニューカッスルの北のアニック城で、映画の空飛ぶほうきの授業が撮影されたよ。"
+   "ja": "ニューカッスルの北のアニックしろで、えいがの空飛ぶほうきのじゅぎょうがさつえいされたよ。"
   },
   "quiz": {
    "q": {
@@ -2054,7 +2054,7 @@
    {
     "name": {
      "en": "Angel of the North viewpoint",
-     "ja": "エンジェル・オブ・ザ・ノース展望"
+     "ja": "エンジェル・オブ・ザ・ノースてんぼう"
     },
     "category": "tourism",
     "price": 800,
@@ -2063,7 +2063,7 @@
    {
     "name": {
      "en": "Shipyard",
-     "ja": "造船所"
+     "ja": "ぞうせんじょ"
     },
     "category": "industry",
     "price": 5000,
@@ -2101,12 +2101,12 @@
   "emoji": "🧱",
   "fact": {
    "en": "Hadrian's Wall was built by the Romans. It stretches 73 miles across England.",
-   "ja": "ハドリアヌスの長城はローマ人が作った壁。イングランドを横切って約117キロも続くよ。"
+   "ja": "ハドリアヌスのちょうじょうはローマ人が作ったかべ。イングランドを横切って約117キロも続くよ。"
   },
   "quiz": {
    "q": {
     "en": "Who built Hadrian's Wall?",
-    "ja": "ハドリアヌスの長城を作ったのは？"
+    "ja": "ハドリアヌスのちょうじょうを作ったのは？"
    },
    "options": [
     {
@@ -2128,7 +2128,7 @@
    {
     "name": {
      "en": "Hadrian's Wall fort",
-     "ja": "ハドリアヌスの長城のとりで"
+     "ja": "ハドリアヌスのちょうじょうのとりで"
     },
     "category": "tourism",
     "price": 1500,
@@ -2146,7 +2146,7 @@
    {
     "name": {
      "en": "Carlisle Castle",
-     "ja": "カーライル城"
+     "ja": "カーライルしろ"
     },
     "category": "tourism",
     "price": 800,
@@ -2204,7 +2204,7 @@
    {
     "name": {
      "en": "Cardiff Castle",
-     "ja": "カーディフ城"
+     "ja": "カーディフしろ"
     },
     "category": "tourism",
     "price": 2000,
@@ -2222,7 +2222,7 @@
    {
     "name": {
      "en": "Bay water taxi",
-     "ja": "湾の水上タクシー"
+     "ja": "わんの水上タクシー"
     },
     "category": "tourism",
     "price": 200,
@@ -2243,7 +2243,7 @@
   "nature": true,
   "fact": {
    "en": "The Gower, next to Swansea, was the UK's first \"Area of Outstanding Natural Beauty\".",
-   "ja": "スウォンジーのとなりのガウアー半島は、イギリスで最初の「特別自然美観地域」だよ。"
+   "ja": "スウォンジーのとなりのガウアー半島は、イギリスで最初の「特別自然美観ちいき」だよ。"
   },
   "quiz": {
    "q": {
@@ -2257,11 +2257,11 @@
     },
     {
      "en": "Skyscrapers",
-     "ja": "高層ビル"
+     "ja": "こうそうビル"
     },
     {
      "en": "Deserts",
-     "ja": "砂漠"
+     "ja": "さばく"
     }
    ],
    "answer": 0
@@ -2375,7 +2375,7 @@
   "nature": true,
   "fact": {
    "en": "Snowdon, called Yr Wyddfa in Welsh, is the highest mountain in Wales. A little train climbs to the top!",
-   "ja": "スノードン（ウェールズ語でアル・ウィズヴァ）はウェールズでいちばん高い山。頂上まで小さな列車が登るよ！"
+   "ja": "スノードン（ウェールズ語でアル・ウィズヴァ）はウェールズでいちばん高い山。ちょうじょうまで小さな列車が登るよ！"
   },
   "quiz": {
    "q": {
@@ -2389,7 +2389,7 @@
     },
     {
      "en": "Mount Fuji",
-     "ja": "富士山"
+     "ja": "ふじさん"
     },
     {
      "en": "Ben Nevis",
@@ -2454,7 +2454,7 @@
     },
     {
      "en": "A desert",
-     "ja": "砂漠"
+     "ja": "さばく"
     },
     {
      "en": "A volcano",
@@ -2485,7 +2485,7 @@
    {
     "name": {
      "en": "Pier café",
-     "ja": "桟橋カフェ"
+     "ja": "さんばしカフェ"
     },
     "category": "food",
     "price": 50,
@@ -2505,7 +2505,7 @@
   "emoji": "🏰",
   "fact": {
    "en": "Conwy has the smallest house in Great Britain. It is only 1.8 metres wide!",
-   "ja": "コンウィにはイギリスでいちばん小さな家があるよ。幅はたった1.8メートル！"
+   "ja": "コンウィにはイギリスでいちばん小さな家があるよ。はばはたった1.8メートル！"
   },
   "quiz": {
    "q": {
@@ -2532,7 +2532,7 @@
    {
     "name": {
      "en": "Conwy Castle",
-     "ja": "コンウィ城"
+     "ja": "コンウィしろ"
     },
     "category": "tourism",
     "price": 2000,
@@ -2571,7 +2571,7 @@
   "capital": true,
   "fact": {
    "en": "Edinburgh is the capital of Scotland. Its castle sits on top of an old volcano!",
-   "ja": "エディンバラはスコットランドの首都。お城は昔の火山の上に建っているよ！"
+   "ja": "エディンバラはスコットランドの首都。おしろは昔の火山の上に建っているよ！"
   },
   "film": {
    "en": "The author of Harry Potter lived in Edinburgh and wrote some of the books in its cafés.",
@@ -2580,7 +2580,7 @@
   "quiz": {
    "q": {
     "en": "What is Edinburgh Castle built on?",
-    "ja": "エディンバラ城は何の上に建っている？"
+    "ja": "エディンバラしろは何の上に建っている？"
    },
    "options": [
     {
@@ -2593,7 +2593,7 @@
     },
     {
      "en": "A glacier",
-     "ja": "氷河"
+     "ja": "ひょうが"
     }
    ],
    "answer": 0
@@ -2602,7 +2602,7 @@
    {
     "name": {
      "en": "Edinburgh Castle",
-     "ja": "エディンバラ城"
+     "ja": "エディンバラしろ"
     },
     "category": "tourism",
     "price": 4000,
@@ -2611,7 +2611,7 @@
    {
     "name": {
      "en": "Festival Fringe theatre",
-     "ja": "フリンジ・フェスティバルの劇場"
+     "ja": "フリンジ・フェスティバルのげきじょう"
     },
     "category": "culture",
     "price": 1500,
@@ -2650,7 +2650,7 @@
   "trainShop": true,
   "fact": {
    "en": "Glasgow once built many of the world's ships on the River Clyde. Japanese engineers came here to learn.",
-   "ja": "グラスゴーは昔、クライド川で世界の船をたくさん作ったよ。日本の技術者も学びに来たんだ。"
+   "ja": "グラスゴーは昔、クライド川で世界の船をたくさん作ったよ。日本のぎじゅつしゃも学びに来たんだ。"
   },
   "quiz": {
    "q": {
@@ -2677,7 +2677,7 @@
    {
     "name": {
      "en": "Shipyard on the Clyde",
-     "ja": "クライド川の造船所"
+     "ja": "クライド川のぞうせんじょ"
     },
     "category": "industry",
     "price": 5000,
@@ -2742,7 +2742,7 @@
    {
     "name": {
      "en": "Stirling Castle",
-     "ja": "スターリング城"
+     "ja": "スターリングしろ"
     },
     "category": "tourism",
     "price": 2000,
@@ -2751,7 +2751,7 @@
    {
     "name": {
      "en": "Wallace Monument",
-     "ja": "ウォレス記念塔"
+     "ja": "ウォレス記念とう"
     },
     "category": "culture",
     "price": 1000,
@@ -2845,7 +2845,7 @@
   "emoji": "🛢️",
   "fact": {
    "en": "Aberdeen is called the \"Granite City\" because many buildings are made of grey granite.",
-   "ja": "アバディーンは灰色の花こう岩の建物が多いので「グラナイト・シティ」と呼ばれるよ。"
+   "ja": "アバディーンははいいろの花こう岩の建物が多いので「グラナイト・シティ」とよばれるよ。"
   },
   "quiz": {
    "q": {
@@ -2911,12 +2911,12 @@
   "nature": true,
   "fact": {
    "en": "Loch Ness is a long, deep lake. Some people say a monster called Nessie lives there!",
-   "ja": "ネス湖は長くて深い湖。ネッシーという怪物がすんでいると言う人もいるよ！"
+   "ja": "ネス湖は長くて深い湖。ネッシーというかいぶつがすんでいると言う人もいるよ！"
   },
   "quiz": {
    "q": {
     "en": "What is the name of the Loch Ness monster?",
-    "ja": "ネス湖の怪物の名前は？"
+    "ja": "ネス湖のかいぶつの名前は？"
    },
    "options": [
     {
@@ -2981,7 +2981,7 @@
   },
   "film": {
    "en": "The steam train in the Harry Potter films crosses the Glenfinnan Viaduct near here.",
-   "ja": "映画で汽車がわたるグレンフィナン高架橋は、この近くにあるよ。"
+   "ja": "えいがで汽車がわたるグレンフィナンこうかきょうは、この近くにあるよ。"
   },
   "quiz": {
    "q": {
@@ -2999,7 +2999,7 @@
     },
     {
      "en": "Mount Fuji",
-     "ja": "富士山"
+     "ja": "ふじさん"
     }
    ],
    "answer": 0
@@ -3017,7 +3017,7 @@
    {
     "name": {
      "en": "Glenfinnan Viaduct steam train ride",
-     "ja": "グレンフィナン高架橋のSL"
+     "ja": "グレンフィナンこうかきょうのSL"
     },
     "category": "tourism",
     "price": 2500,
@@ -3047,7 +3047,7 @@
   "nature": true,
   "fact": {
    "en": "Skara Brae on Orkney is a Stone Age village about 5,000 years old, with stone beds!",
-   "ja": "オークニー諸島のスカラ・ブレイは約5000年前の村。石のベッドもあるよ！"
+   "ja": "オークニーしょ島のスカラ・ブレイは約5000年前の村。石のベッドもあるよ！"
   },
   "quiz": {
    "q": {
@@ -3149,7 +3149,7 @@
    {
     "name": {
      "en": "Shipyard cranes tour",
-     "ja": "造船所クレーンツアー"
+     "ja": "ぞうせんじょクレーンツアー"
     },
     "category": "industry",
     "price": 1000,
@@ -3187,7 +3187,7 @@
   "emoji": "🎃",
   "fact": {
    "en": "Derry has one of the biggest Halloween festivals in Europe, and old city walls all the way around.",
-   "ja": "デリーにはヨーロッパ最大級のハロウィン祭りと、町をぐるりと囲む城壁があるよ。"
+   "ja": "デリーにはヨーロッパ最大級のハロウィン祭りと、町をぐるりとかこむじょうへきがあるよ。"
   },
   "quiz": {
    "q": {
@@ -3214,7 +3214,7 @@
    {
     "name": {
      "en": "City Walls tour",
-     "ja": "城壁ツアー"
+     "ja": "じょうへきツアー"
     },
     "category": "tourism",
     "price": 600,
@@ -3253,7 +3253,7 @@
   "nature": true,
   "fact": {
    "en": "The Giant's Causeway has about 40,000 stone columns. A legend says the giant Finn McCool built it!",
-   "ja": "ジャイアンツ・コーズウェーには約4万本の石の柱があるよ。巨人フィン・マックールが作ったという伝説も！"
+   "ja": "ジャイアンツ・コーズウェーには約4万本の石の柱があるよ。きょじんフィン・マックールが作ったという伝説も！"
   },
   "quiz": {
    "q": {
@@ -3327,7 +3327,7 @@
   "emoji": "🕰️",
   "fact": {
    "en": "\"Big Ben\" is really the name of the giant bell inside the clock tower, not the tower itself!",
-   "ja": "「ビッグ・ベン」は、じつは時計塔ではなく、中にある大きな鐘の名前なんだよ！"
+   "ja": "「ビッグ・ベン」は、じつはとけいとうではなく、中にある大きなかねの名前なんだよ！"
   },
   "quiz": {
    "q": {
@@ -3341,7 +3341,7 @@
     },
     {
      "en": "A bell",
-     "ja": "鐘"
+     "ja": "かね"
     },
     {
      "en": "A bridge",
@@ -3390,7 +3390,7 @@
    {
     "name": {
      "en": "Thames river boat",
-     "ja": "テムズ川の遊覧船"
+     "ja": "テムズ川のゆうらんせん"
     },
     "category": "tourism",
     "price": 900,
@@ -3496,12 +3496,12 @@
   "emoji": "🏰",
   "fact": {
    "en": "Windsor Castle is the oldest and biggest castle in the world that people still live in.",
-   "ja": "ウィンザー城は、いまも人が住んでいるお城の中で、世界でいちばん古くて大きいんだ。"
+   "ja": "ウィンザーしろは、いまも人が住んでいるおしろの中で、世界でいちばん古くて大きいんだ。"
   },
   "quiz": {
    "q": {
     "en": "What is special about Windsor Castle?",
-    "ja": "ウィンザー城のすごいところは？"
+    "ja": "ウィンザーしろのすごいところは？"
    },
    "options": [
     {
@@ -3514,7 +3514,7 @@
     },
     {
      "en": "It is the biggest castle people still live in",
-     "ja": "いまも人が住んでいるお城で世界一大きい"
+     "ja": "いまも人が住んでいるおしろで世界一大きい"
     }
    ],
    "answer": 2
@@ -3523,7 +3523,7 @@
    {
     "name": {
      "en": "Windsor Castle",
-     "ja": "ウィンザー城"
+     "ja": "ウィンザーしろ"
     },
     "category": "tourism",
     "price": 3000,
@@ -3532,7 +3532,7 @@
    {
     "name": {
      "en": "Changing of the Guard viewing",
-     "ja": "衛兵交代の見学"
+     "ja": "えいへい交代の見学"
     },
     "category": "culture",
     "price": 500,
@@ -3559,7 +3559,7 @@
    {
     "name": {
      "en": "Fudge shop",
-     "ja": "ファッジ（お菓子）屋さん"
+     "ja": "ファッジ（おかし）屋さん"
     },
     "category": "food",
     "price": 50,
@@ -3616,7 +3616,7 @@
    {
     "name": {
      "en": "Reading Abbey ruins",
-     "ja": "レディング修道院あと"
+     "ja": "レディングしゅうどういんあと"
     },
     "category": "tourism",
     "price": 600,
@@ -3643,7 +3643,7 @@
    {
     "name": {
      "en": "Thames boat hire",
-     "ja": "テムズ川のボート貸し"
+     "ja": "テムズ川のボートかし"
     },
     "category": "tourism",
     "price": 300,
@@ -3669,7 +3669,7 @@
   "quiz": {
    "q": {
     "en": "Whose Round Table hangs in Winchester's Great Hall?",
-    "ja": "ウィンチェスターの大広間にかかっている円卓は、だれのものといわれている？"
+    "ja": "ウィンチェスターの大広間にかかっているえんたくは、だれのものといわれている？"
    },
    "options": [
     {
@@ -3691,7 +3691,7 @@
    {
     "name": {
      "en": "Great Hall and Round Table",
-     "ja": "大広間と円卓"
+     "ja": "大広間とえんたく"
     },
     "category": "culture",
     "price": 1500,
@@ -3700,7 +3700,7 @@
    {
     "name": {
      "en": "Winchester Cathedral",
-     "ja": "ウィンチェスター大聖堂"
+     "ja": "ウィンチェスターだいせいどう"
     },
     "category": "culture",
     "price": 2500,
@@ -3709,7 +3709,7 @@
    {
     "name": {
      "en": "King Alfred statue",
-     "ja": "アルフレッド大王の像"
+     "ja": "アルフレッド大王のぞう"
     },
     "category": "tourism",
     "price": 200,
@@ -3762,7 +3762,7 @@
     },
     {
      "en": "Noah's Ark",
-     "ja": "ノアの方舟"
+     "ja": "ノアのはこぶね"
     },
     {
      "en": "Sea Dragon",
@@ -3793,7 +3793,7 @@
    {
     "name": {
      "en": "Old town walls walk",
-     "ja": "古い城壁さんぽ"
+     "ja": "古いじょうへきさんぽ"
     },
     "category": "tourism",
     "price": 300,
@@ -3832,7 +3832,7 @@
   "emoji": "⚔️",
   "fact": {
    "en": "In 1066, William the Conqueror won the Battle of Hastings and became King of England.",
-   "ja": "1066年、ウィリアム征服王がヘースティングズの戦いに勝って、イングランドの王様になったよ。"
+   "ja": "1066年、ウィリアムせいふく王がヘースティングズの戦いに勝って、イングランドの王様になったよ。"
   },
   "quiz": {
    "q": {
@@ -3859,7 +3859,7 @@
    {
     "name": {
      "en": "Hastings Castle ruins",
-     "ja": "ヘースティングズ城あと"
+     "ja": "ヘースティングズしろあと"
     },
     "category": "tourism",
     "price": 700,
@@ -3868,7 +3868,7 @@
    {
     "name": {
      "en": "Fishermen's net huts",
-     "ja": "漁師の網小屋"
+     "ja": "りょうしのあみ小屋"
     },
     "category": "culture",
     "price": 400,
@@ -3886,7 +3886,7 @@
    {
     "name": {
      "en": "Smugglers' caves",
-     "ja": "密輸業者のどうくつ"
+     "ja": "みつゆ業者のどうくつ"
     },
     "category": "tourism",
     "price": 1200,
@@ -3916,7 +3916,7 @@
   "emoji": "🐚",
   "fact": {
    "en": "Margate has a mysterious underground Shell Grotto with walls covered in millions of tiny shells!",
-   "ja": "マーゲートには「シェル・グロット」という地下のふしぎな洞くつがあって、かべが何百万もの貝がらでおおわれているよ！"
+   "ja": "マーゲートには「シェル・グロット」という地下のふしぎなほらくつがあって、かべが何百万もの貝がらでおおわれているよ！"
   },
   "quiz": {
    "q": {
@@ -3952,7 +3952,7 @@
    {
     "name": {
      "en": "Sandy beach kiosk",
-     "ja": "砂浜のかんたんなお店"
+     "ja": "すなはまのかんたんなお店"
     },
     "category": "food",
     "price": 50,
@@ -3970,7 +3970,7 @@
    {
     "name": {
      "en": "Art gallery by the sea",
-     "ja": "海辺の美術館"
+     "ja": "海辺のびじゅつかん"
     },
     "category": "culture",
     "price": 1500,
@@ -4000,7 +4000,7 @@
   "emoji": "🏘️",
   "fact": {
    "en": "Rye is a tiny hilltop town with cobbled streets and old wooden houses. Long ago it was by the sea, but now the sea is far away.",
-   "ja": "ライは丘の上の小さな町で、石だたみの道と古い木の家がならんでいるよ。むかしは海のそばだったけれど、今は海がとおくなったんだ。"
+   "ja": "ライはおかの上の小さな町で、石だたみの道と古い木の家がならんでいるよ。むかしは海のそばだったけれど、今は海がとおくなったんだ。"
   },
   "quiz": {
    "q": {
@@ -4036,7 +4036,7 @@
    {
     "name": {
      "en": "Pottery workshop",
-     "ja": "やきもの工房"
+     "ja": "やきものこうぼう"
     },
     "category": "industry",
     "price": 250,
@@ -4063,7 +4063,7 @@
    {
     "name": {
      "en": "Rye Harbour nature reserve",
-     "ja": "ライ・ハーバー自然保護区"
+     "ja": "ライ・ハーバーしぜんほご区"
     },
     "category": "tourism",
     "price": 800,
@@ -4084,12 +4084,12 @@
   "emoji": "🐄",
   "fact": {
    "en": "Milton Keynes is a modern \"new town\" built in 1967, and it is famous for its concrete cows!",
-   "ja": "ミルトン・キーンズは1967年に作られた新しい町で、コンクリートでできた牛の像で有名だよ！"
+   "ja": "ミルトン・キーンズは1967年に作られた新しい町で、コンクリートでできた牛のぞうで有名だよ！"
   },
   "quiz": {
    "q": {
     "en": "What animal are the famous statues in Milton Keynes?",
-    "ja": "ミルトン・キーンズで有名な像は何の動物？"
+    "ja": "ミルトン・キーンズで有名なぞうは何の動物？"
    },
    "options": [
     {
@@ -4195,7 +4195,7 @@
    {
     "name": {
      "en": "Norwich Cathedral",
-     "ja": "ノーリッジ大聖堂"
+     "ja": "ノーリッジだいせいどう"
     },
     "category": "culture",
     "price": 2200,
@@ -4204,7 +4204,7 @@
    {
     "name": {
      "en": "Norwich Castle museum",
-     "ja": "ノーリッジ城の博物館"
+     "ja": "ノーリッジしろの博物館"
     },
     "category": "culture",
     "price": 1500,
@@ -4363,7 +4363,7 @@
    {
     "name": {
      "en": "Colchester Castle",
-     "ja": "コルチェスター城"
+     "ja": "コルチェスターしろ"
     },
     "category": "culture",
     "price": 2000,
@@ -4372,7 +4372,7 @@
    {
     "name": {
      "en": "Roman wall walk",
-     "ja": "ローマ時代の城壁さんぽ"
+     "ja": "ローマ時代のじょうへきさんぽ"
     },
     "category": "tourism",
     "price": 300,
@@ -4389,8 +4389,8 @@
    },
    {
     "name": {
-     "en": "Oyster restaurant",
-     "ja": "カキのレストラン"
+     "en": "Oyster bar",
+     "ja": "カキのお店"
     },
     "category": "food",
     "price": 150,
@@ -4420,21 +4420,21 @@
   "emoji": "⛪",
   "fact": {
    "en": "Ely Cathedral is nicknamed the \"Ship of the Fens\" because it rises over the flat marshland like a ship at sea.",
-   "ja": "イーリー大聖堂は「沼地の船」というあだ名があるよ。平らな湿地の上に、海の船みたいにそびえているんだ。"
+   "ja": "イーリーだいせいどうは「ぬまちの船」というあだ名があるよ。平らなしっちの上に、海の船みたいにそびえているんだ。"
   },
   "quiz": {
    "q": {
     "en": "What is Ely Cathedral's nickname?",
-    "ja": "イーリー大聖堂のあだ名は？"
+    "ja": "イーリーだいせいどうのあだ名は？"
    },
    "options": [
     {
      "en": "Ship of the Fens",
-     "ja": "沼地の船"
+     "ja": "ぬまちの船"
     },
     {
      "en": "Castle in the Sky",
-     "ja": "空のお城"
+     "ja": "空のおしろ"
     },
     {
      "en": "Train of the Sea",
@@ -4447,7 +4447,7 @@
    {
     "name": {
      "en": "Ely Cathedral",
-     "ja": "イーリー大聖堂"
+     "ja": "イーリーだいせいどう"
     },
     "category": "culture",
     "price": 2200,
@@ -4474,7 +4474,7 @@
    {
     "name": {
      "en": "Fenland farm shop",
-     "ja": "沼地の農家の直売所"
+     "ja": "ぬまちの農家の直売所"
     },
     "category": "food",
     "price": 70,
@@ -4504,7 +4504,7 @@
   "emoji": "🐟",
   "fact": {
    "en": "Great Yarmouth has miles of sandy beach, and long ago it was famous for catching herring fish.",
-   "ja": "グレート・ヤーマスには長い砂浜があって、むかしはニシンという魚がたくさんとれることで有名だったよ。"
+   "ja": "グレート・ヤーマスには長いすなはまがあって、むかしはニシンという魚がたくさんとれることで有名だったよ。"
   },
   "quiz": {
    "q": {
@@ -4531,7 +4531,7 @@
    {
     "name": {
      "en": "Sandy beach",
-     "ja": "砂浜"
+     "ja": "すなはま"
     },
     "category": "tourism",
     "price": 400,
@@ -4549,7 +4549,7 @@
    {
     "name": {
      "en": "Seaside pier",
-     "ja": "海辺の桟橋"
+     "ja": "海辺のさんばし"
     },
     "category": "tourism",
     "price": 1200,
@@ -4567,7 +4567,7 @@
    {
     "name": {
      "en": "Herring smokehouse",
-     "ja": "ニシンのくん製小屋"
+     "ja": "ニシンのくんせい小屋"
     },
     "category": "industry",
     "price": 500,
@@ -4588,7 +4588,7 @@
   "emoji": "🏖️",
   "fact": {
    "en": "Bournemouth has miles of golden sandy beach, and a pier that stretches out into the sea.",
-   "ja": "ボーンマスには金色の砂浜が何キロも続いていて、海に長くのびる桟橋（さんばし）もあるよ。"
+   "ja": "ボーンマスには金色のすなはまが何キロも続いていて、海に長くのびるさんばし（さんばし）もあるよ。"
   },
   "quiz": {
    "q": {
@@ -4598,7 +4598,7 @@
    "options": [
     {
      "en": "Sandy beaches",
-     "ja": "砂浜"
+     "ja": "すなはま"
     },
     {
      "en": "Snowy mountains",
@@ -4642,7 +4642,7 @@
    {
     "name": {
      "en": "Bournemouth Pier",
-     "ja": "ボーンマス桟橋"
+     "ja": "ボーンマスさんばし"
     },
     "category": "tourism",
     "price": 1800,
@@ -4664,11 +4664,11 @@
   "nature": true,
   "fact": {
    "en": "A girl named Mary Anning found amazing dinosaur-age fossils on the beach here. The cliffs are part of the Jurassic Coast.",
-   "ja": "メアリー・アニングという女の子が、ここの海岸で恐竜時代の化石を見つけたよ。このがけはジュラシック・コーストの一部なんだ。"
+   "ja": "メアリー・アニングという女の子が、ここの海岸できょうりゅうじだいの化石を見つけたよ。このがけはジュラシック・コーストの一部なんだ。"
   },
   "film": {
    "en": "The harbour wall called the Cobb appears in the film The French Lieutenant's Woman.",
-   "ja": "「コッブ」という港の防波堤（ぼうはてい）は、映画『フランス軍中尉の女』に出てくるよ。"
+   "ja": "「コッブ」という港のぼうはてい（ぼうはてい）は、えいが『フランス軍中いの女』に出てくるよ。"
   },
   "quiz": {
    "q": {
@@ -4743,7 +4743,7 @@
   "emoji": "🌴",
   "fact": {
    "en": "Torquay has palm trees and is nicknamed the English Riviera. The mystery writer Agatha Christie was born here.",
-   "ja": "トーキーにはヤシの木があって「イングリッシュ・リビエラ」と呼ばれているよ。ミステリー作家のアガサ・クリスティーはここで生まれたんだ。"
+   "ja": "トーキーにはヤシの木があって「イングリッシュ・リビエラ」とよばれているよ。ミステリー作家のアガサ・クリスティーはここで生まれたんだ。"
   },
   "quiz": {
    "q": {
@@ -4819,7 +4819,7 @@
   "nature": true,
   "fact": {
    "en": "Legend says King Arthur was born at Tintagel Castle, high on a rocky cliff above the sea.",
-   "ja": "海の上のがけにあるティンタジェル城は、アーサー王が生まれた場所だという伝説があるよ。"
+   "ja": "海の上のがけにあるティンタジェルしろは、アーサー王が生まれた場所だという伝説があるよ。"
   },
   "quiz": {
    "q": {
@@ -4873,7 +4873,7 @@
    {
     "name": {
      "en": "Tintagel Castle",
-     "ja": "ティンタジェル城"
+     "ja": "ティンタジェルしろ"
     },
     "category": "tourism",
     "price": 2200,
@@ -4894,7 +4894,7 @@
   "emoji": "🎨",
   "fact": {
    "en": "St Ives has bright light and sandy beaches, so many artists come to paint here. It even has an art gallery by the sea called Tate St Ives.",
-   "ja": "セント・アイヴスは光が明るくて砂浜もきれいだから、絵をかきに来る人がたくさん。海ぞいにはテート・セント・アイヴスという美術館もあるよ。"
+   "ja": "セント・アイヴスは光が明るくてすなはまもきれいだから、絵をかきに来る人がたくさん。海ぞいにはテート・セント・アイヴスというびじゅつかんもあるよ。"
   },
   "quiz": {
    "q": {
@@ -4912,7 +4912,7 @@
     },
     {
      "en": "An art gallery",
-     "ja": "美術館"
+     "ja": "びじゅつかん"
     }
    ],
    "answer": 2
@@ -4987,7 +4987,7 @@
     },
     {
      "en": "It is made of sand",
-     "ja": "砂でできている"
+     "ja": "すなでできている"
     }
    ],
    "answer": 0
@@ -5014,7 +5014,7 @@
    {
     "name": {
      "en": "Pendennis Castle",
-     "ja": "ペンデニス城"
+     "ja": "ペンデニスしろ"
     },
     "category": "tourism",
     "price": 1400,
@@ -5023,7 +5023,7 @@
    {
     "name": {
      "en": "Ship repair yard",
-     "ja": "船の修理ドック"
+     "ja": "船のしゅうりドック"
     },
     "category": "industry",
     "price": 3000,
@@ -5045,7 +5045,7 @@
   "nature": true,
   "fact": {
    "en": "A hill called Glastonbury Tor rises over the town with a tower on top. Nearby is the home of the huge Glastonbury music festival.",
-   "ja": "町の上にグラストンベリー・トーという丘がそびえていて、てっぺんには塔があるよ。近くでは大きな音楽フェスティバルが開かれるんだ。"
+   "ja": "町の上にグラストンベリー・トーというおかがそびえていて、てっぺんにはとうがあるよ。近くでは大きな音楽フェスティバルが開かれるんだ。"
   },
   "quiz": {
    "q": {
@@ -5071,8 +5071,8 @@
   "properties": [
    {
     "name": {
-     "en": "Apple juice farm shop",
-     "ja": "りんごジュースの農場ショップ"
+     "en": "Cider farm shop",
+     "ja": "シードル農家の売店"
     },
     "category": "food",
     "price": 60,
@@ -5121,7 +5121,7 @@
   "nature": true,
   "fact": {
    "en": "Cheddar cheese is named after Cheddar village. Its huge gorge has caves where cheese was once stored.",
-   "ja": "チェダーチーズは、チェダー村の名前がもとだよ。大きな谷には洞くつがあって、昔はチーズをしまっていたんだ。"
+   "ja": "チェダーチーズは、チェダー村の名前がもとだよ。大きな谷にはほらくつがあって、昔はチーズをしまっていたんだ。"
   },
   "quiz": {
    "q": {
@@ -5166,7 +5166,7 @@
    {
     "name": {
      "en": "Cheddar Gorge caves",
-     "ja": "チェダー渓谷の洞くつ"
+     "ja": "チェダーけいこくのほらくつ"
     },
     "category": "tourism",
     "price": 900,
@@ -5200,7 +5200,7 @@
   },
   "film": {
    "en": "Gloucester Cathedral's cloisters were used as Hogwarts corridors in the Harry Potter films.",
-   "ja": "グロスター大聖堂の回廊は、ハリー・ポッターの映画でホグワーツの廊下として使われたよ。"
+   "ja": "グロスターだいせいどうのかいろうは、ハリー・ポッターのえいがでホグワーツのろうかとして使われたよ。"
   },
   "quiz": {
    "q": {
@@ -5245,7 +5245,7 @@
    {
     "name": {
      "en": "Gloucester Cathedral",
-     "ja": "グロスター大聖堂"
+     "ja": "グロスターだいせいどう"
     },
     "category": "culture",
     "price": 1800,
@@ -5254,7 +5254,7 @@
    {
     "name": {
      "en": "Historic docks warehouses",
-     "ja": "歴史あるドックの倉庫"
+     "ja": "れきしあるドックの倉庫"
     },
     "category": "industry",
     "price": 2500,
@@ -5275,7 +5275,7 @@
   "emoji": "🌉",
   "fact": {
    "en": "Newport has a Transporter Bridge. Cars ride across the river on a platform hanging from tall towers!",
-   "ja": "ニューポートにはトランスポーター橋があるよ。車は高い塔からつるされた台にのって川をわたるんだ！"
+   "ja": "ニューポートにはトランスポーター橋があるよ。車は高いとうからつるされた台にのって川をわたるんだ！"
   },
   "quiz": {
    "q": {
@@ -5413,7 +5413,7 @@
    {
     "name": {
      "en": "Harbour lifeboat station",
-     "ja": "港の救命ボート基地"
+     "ja": "港のきゅうめいボートきち"
     },
     "category": "industry",
     "price": 1500,
@@ -5434,25 +5434,25 @@
   "emoji": "⛪",
   "fact": {
    "en": "St Davids is one of the smallest cities in the UK. It is named after David, the patron saint of Wales.",
-   "ja": "セント・デイビッズは、イギリスでいちばん小さい町のひとつの市だよ。ウェールズの守護聖人デイビッドの名前がついているんだ。"
+   "ja": "セント・デイビッズは、イギリスでいちばん小さい町のひとつの市だよ。ウェールズのしゅごせいじんデイビッドの名前がついているんだ。"
   },
   "quiz": {
    "q": {
     "en": "Which saint is St Davids named after?",
-    "ja": "セント・デイビッズはどの聖人の名前からついた？"
+    "ja": "セント・デイビッズはどのせいじんの名前からついた？"
    },
    "options": [
     {
      "en": "St George",
-     "ja": "聖ジョージ"
+     "ja": "セント・ジョージ"
     },
     {
      "en": "St David",
-     "ja": "聖デイビッド"
+     "ja": "セント・デイビッド"
     },
     {
      "en": "St Andrew",
-     "ja": "聖アンドリュー"
+     "ja": "セント・アンドリュー"
     }
    ],
    "answer": 1
@@ -5479,7 +5479,7 @@
    {
     "name": {
      "en": "St Davids Cathedral",
-     "ja": "セント・デイビッズ大聖堂"
+     "ja": "セント・デイビッズだいせいどう"
     },
     "category": "culture",
     "price": 1800,
@@ -5488,7 +5488,7 @@
    {
     "name": {
      "en": "Bishop's Palace ruins",
-     "ja": "司教の宮殿あと"
+     "ja": "司教のきゅうでんあと"
     },
     "category": "tourism",
     "price": 1300,
@@ -5524,7 +5524,7 @@
     },
     {
      "en": "Mount Fuji",
-     "ja": "富士山"
+     "ja": "ふじさん"
     },
     {
      "en": "Pen y Fan",
@@ -5585,12 +5585,12 @@
   "emoji": "🏰",
   "fact": {
    "en": "Caernarfon Castle has many-sided towers and bands of different coloured stone. It is a World Heritage Site.",
-   "ja": "カーナーヴォン城には多角形の塔があって、いろいろな色の石がしましまにならんでいるよ。世界遺産なんだ。"
+   "ja": "カーナーヴォンしろには多角形のとうがあって、いろいろな色の石がしましまにならんでいるよ。世界いさんなんだ。"
   },
   "quiz": {
    "q": {
     "en": "Which country is Caernarfon Castle in?",
-    "ja": "カーナーヴォン城があるのはどの国？"
+    "ja": "カーナーヴォンしろがあるのはどの国？"
    },
    "options": [
     {
@@ -5621,7 +5621,7 @@
    {
     "name": {
      "en": "Castle souvenir shop",
-     "ja": "お城のおみやげ屋"
+     "ja": "おしろのおみやげ屋"
     },
     "category": "tourism",
     "price": 120,
@@ -5639,7 +5639,7 @@
    {
     "name": {
      "en": "Caernarfon Castle",
-     "ja": "カーナーヴォン城"
+     "ja": "カーナーヴォンしろ"
     },
     "category": "tourism",
     "price": 3000,
@@ -5814,11 +5814,11 @@
   "emoji": "⛪",
   "fact": {
    "en": "Lincoln Cathedral was the tallest building in the world for over 200 years!",
-   "ja": "リンカーン大聖堂は、200年以上のあいだ世界でいちばん高い建物だったよ！"
+   "ja": "リンカーンだいせいどうは、200年以上のあいだ世界でいちばん高い建物だったよ！"
   },
   "film": {
    "en": "Lincoln Cathedral appeared in the film The Da Vinci Code.",
-   "ja": "リンカーン大聖堂は、映画『ダ・ヴィンチ・コード』にも登場したよ。"
+   "ja": "リンカーンだいせいどうは、えいが『ダ・ヴィンチ・コード』にも登場したよ。"
   },
   "quiz": {
    "q": {
@@ -5828,11 +5828,11 @@
    "options": [
     {
      "en": "Lincoln Castle",
-     "ja": "リンカーン城"
+     "ja": "リンカーンしろ"
     },
     {
      "en": "Lincoln Cathedral",
-     "ja": "リンカーン大聖堂"
+     "ja": "リンカーンだいせいどう"
     },
     {
      "en": "Lincoln Station",
@@ -5845,7 +5845,7 @@
    {
     "name": {
      "en": "Lincoln Cathedral",
-     "ja": "リンカーン大聖堂"
+     "ja": "リンカーンだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -5854,7 +5854,7 @@
    {
     "name": {
      "en": "Lincoln Castle",
-     "ja": "リンカーン城"
+     "ja": "リンカーンしろ"
     },
     "category": "tourism",
     "price": 1500,
@@ -5902,7 +5902,7 @@
   "emoji": "🐎",
   "fact": {
    "en": "An old legend says Lady Godiva rode a horse through Coventry to help its people.",
-   "ja": "むかしの言い伝えでは、レディ・ゴディバが人々を助けるために馬に乗ってコベントリーを走ったんだって。"
+   "ja": "むかしの言い伝えでは、レディ・ゴディバがひとびとを助けるために馬に乗ってコベントリーを走ったんだって。"
   },
   "quiz": {
    "q": {
@@ -5929,7 +5929,7 @@
    {
     "name": {
      "en": "Coventry Cathedral",
-     "ja": "コベントリー大聖堂"
+     "ja": "コベントリーだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -6022,7 +6022,7 @@
    {
     "name": {
      "en": "Worcester Cathedral",
-     "ja": "ウスター大聖堂"
+     "ja": "ウスターだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -6031,7 +6031,7 @@
    {
     "name": {
      "en": "Porcelain workshop",
-     "ja": "陶磁器の工房"
+     "ja": "とうじきのこうぼう"
     },
     "category": "industry",
     "price": 600,
@@ -6049,7 +6049,7 @@
    {
     "name": {
      "en": "River Severn boat trips",
-     "ja": "セヴァーン川の遊覧船"
+     "ja": "セヴァーン川のゆうらんせん"
     },
     "category": "tourism",
     "price": 300,
@@ -6115,7 +6115,7 @@
    {
     "name": {
      "en": "Shrewsbury Castle",
-     "ja": "シュルーズベリー城"
+     "ja": "シュルーズベリーしろ"
     },
     "category": "tourism",
     "price": 1200,
@@ -6124,7 +6124,7 @@
    {
     "name": {
      "en": "Darwin statue tour",
-     "ja": "ダーウィン像めぐり"
+     "ja": "ダーウィンぞうめぐり"
     },
     "category": "culture",
     "price": 300,
@@ -6172,7 +6172,7 @@
     },
     {
      "en": "Silk",
-     "ja": "絹"
+     "ja": "きぬ"
     }
    ],
    "answer": 2
@@ -6199,7 +6199,7 @@
    {
     "name": {
      "en": "Derby Cathedral",
-     "ja": "ダービー大聖堂"
+     "ja": "ダービーだいせいどう"
     },
     "category": "culture",
     "price": 1500,
@@ -6265,7 +6265,7 @@
    {
     "name": {
      "en": "Iron Bridge viewpoint",
-     "ja": "アイアンブリッジの展望台"
+     "ja": "アイアンブリッジのてんぼうだい"
     },
     "category": "tourism",
     "price": 300,
@@ -6274,7 +6274,7 @@
    {
     "name": {
      "en": "Gorge museums",
-     "ja": "峡谷の博物館"
+     "ja": "きょうこくの博物館"
     },
     "category": "culture",
     "price": 1200,
@@ -6283,7 +6283,7 @@
    {
     "name": {
      "en": "Tile and pottery works",
-     "ja": "タイルと陶器の工房"
+     "ja": "タイルととうきのこうぼう"
     },
     "category": "industry",
     "price": 1500,
@@ -6323,7 +6323,7 @@
   "nature": true,
   "fact": {
    "en": "Buxton is famous for its warm spring water, which people have used since Roman times.",
-   "ja": "バクストンはあたたかい湧き水で有名で、ローマ時代から使われてきたよ。"
+   "ja": "バクストンはあたたかいわき水で有名で、ローマ時代から使われてきたよ。"
   },
   "quiz": {
    "q": {
@@ -6337,11 +6337,11 @@
     },
     {
      "en": "Spring water",
-     "ja": "湧き水"
+     "ja": "わき水"
     },
     {
      "en": "Pearls",
-     "ja": "真珠"
+     "ja": "しんじゅ"
     }
    ],
    "answer": 1
@@ -6350,7 +6350,7 @@
    {
     "name": {
      "en": "Spring water bottling",
-     "ja": "湧き水のボトル工場"
+     "ja": "わき水のボトル工場"
     },
     "category": "industry",
     "price": 1500,
@@ -6433,8 +6433,8 @@
   "properties": [
    {
     "name": {
-     "en": "Apple orchard shop",
-     "ja": "りんご園のショップ"
+     "en": "Cider orchard shop",
+     "ja": "シードルのかじゅえんショップ"
     },
     "category": "food",
     "price": 80,
@@ -6452,7 +6452,7 @@
    {
     "name": {
      "en": "Hereford Cathedral",
-     "ja": "ヘレフォード大聖堂"
+     "ja": "ヘレフォードだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -6461,7 +6461,7 @@
    {
     "name": {
      "en": "Old world map exhibition",
-     "ja": "古い世界地図の展示"
+     "ja": "古い世界地図のてんじ"
     },
     "category": "culture",
     "price": 800,
@@ -6470,7 +6470,7 @@
    {
     "name": {
      "en": "River Wye canoe hire",
-     "ja": "ワイ川のカヌー貸し"
+     "ja": "ワイ川のカヌーかし"
     },
     "category": "sport",
     "price": 250,
@@ -6491,7 +6491,7 @@
   "emoji": "🏰",
   "fact": {
    "en": "Chester still has its old Roman city walls, and you can walk all the way around the city on top of them!",
-   "ja": "チェスターには昔のローマ時代の城壁が残っていて、その上を歩いて町を一周できるよ！"
+   "ja": "チェスターには昔のローマ時代のじょうへきが残っていて、その上を歩いて町を一周できるよ！"
   },
   "quiz": {
    "q": {
@@ -6501,7 +6501,7 @@
    "options": [
     {
      "en": "The old city walls",
-     "ja": "古い城壁"
+     "ja": "古いじょうへき"
     },
     {
      "en": "A huge lake",
@@ -6527,7 +6527,7 @@
    {
     "name": {
      "en": "Tudor-style tea room",
-     "ja": "チューダー様式の喫茶店"
+     "ja": "チューダー様式のきっさてん"
     },
     "category": "food",
     "price": 120,
@@ -6536,7 +6536,7 @@
    {
     "name": {
      "en": "Roman walls walk",
-     "ja": "ローマ城壁さんぽ"
+     "ja": "ローマじょうへきさんぽ"
     },
     "category": "tourism",
     "price": 400,
@@ -6554,7 +6554,7 @@
    {
     "name": {
      "en": "Chester Cathedral",
-     "ja": "チェスター大聖堂"
+     "ja": "チェスターだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -6620,7 +6620,7 @@
    {
     "name": {
      "en": "Old Town walk",
-     "ja": "旧市街さんぽ"
+     "ja": "きゅうしがいさんぽ"
     },
     "category": "tourism",
     "price": 300,
@@ -6659,7 +6659,7 @@
   "emoji": "🏖️",
   "fact": {
    "en": "Scarborough is often called Britain's first seaside holiday town. Its castle stands high on a rocky headland above the beach!",
-   "ja": "スカーバラはイギリスで最初の海辺のリゾートとよく言われるよ。お城は海岸の上の高い岬に立っているんだ！"
+   "ja": "スカーバラはイギリスで最初の海辺のリゾートとよく言われるよ。おしろは海岸の上の高いみさきに立っているんだ！"
   },
   "quiz": {
    "q": {
@@ -6722,7 +6722,7 @@
    {
     "name": {
      "en": "Scarborough Castle",
-     "ja": "スカーバラ城"
+     "ja": "スカーバラしろ"
     },
     "category": "tourism",
     "price": 2000,
@@ -6743,16 +6743,16 @@
   "emoji": "🧛",
   "fact": {
    "en": "The ruined Whitby Abbey on the cliff inspired the writer Bram Stoker when he wrote the vampire story Dracula!",
-   "ja": "崖の上にある廃虚のウィットビー修道院は、作家ブラム・ストーカーが吸血鬼の物語「ドラキュラ」を書くヒントになったよ！"
+   "ja": "がけの上にあるはいきょのウィットビーしゅうどういんは、作家ブラム・ストーカーがきゅうけつきの物語「ドラキュラ」を書くヒントになったよ！"
   },
   "film": {
    "en": "In the book Dracula, the vampire arrives in England at Whitby.",
-   "ja": "小説「ドラキュラ」では、吸血鬼がウィットビーからイギリスにやってくるよ。"
+   "ja": "小説「ドラキュラ」では、きゅうけつきがウィットビーからイギリスにやってくるよ。"
   },
   "quiz": {
    "q": {
     "en": "Which famous story was inspired by Whitby Abbey?",
-    "ja": "ウィットビー修道院からヒントを得た有名な物語は？"
+    "ja": "ウィットビーしゅうどういんからヒントを得た有名な物語は？"
    },
    "options": [
     {
@@ -6783,7 +6783,7 @@
    {
     "name": {
      "en": "Kipper smokehouse",
-     "ja": "くん製ニシンの店"
+     "ja": "くんせいニシンの店"
     },
     "category": "food",
     "price": 90,
@@ -6792,7 +6792,7 @@
    {
     "name": {
      "en": "Jet jewellery shop",
-     "ja": "ジェット(黒い宝石)のアクセサリー屋"
+     "ja": "ジェット(黒いほうせき)のアクセサリー屋"
     },
     "category": "culture",
     "price": 300,
@@ -6810,7 +6810,7 @@
    {
     "name": {
      "en": "Whitby Abbey",
-     "ja": "ウィットビー修道院"
+     "ja": "ウィットビーしゅうどういん"
     },
     "category": "tourism",
     "price": 2200,
@@ -6831,7 +6831,7 @@
   "emoji": "🍵",
   "fact": {
    "en": "Harrogate is a famous spa town. Long ago, people travelled here to drink and bathe in its special spring water!",
-   "ja": "ハロゲートは有名な温泉(スパ)の町だよ。昔の人は、ここの特別な泉の水を飲んだり、おふろに入ったりしにきたんだ！"
+   "ja": "ハロゲートは有名なおんせん(スパ)の町だよ。昔の人は、ここの特別ないずみの水を飲んだり、おふろに入ったりしにきたんだ！"
   },
   "quiz": {
    "q": {
@@ -6849,7 +6849,7 @@
     },
     {
      "en": "For its spring water",
-     "ja": "泉の水のため"
+     "ja": "いずみの水のため"
     }
    ],
    "answer": 2
@@ -6867,7 +6867,7 @@
    {
     "name": {
      "en": "Tea room",
-     "ja": "喫茶店"
+     "ja": "きっさてん"
     },
     "category": "food",
     "price": 150,
@@ -6894,7 +6894,7 @@
    {
     "name": {
      "en": "Spa Pump Room museum",
-     "ja": "温泉ポンプ室博物館"
+     "ja": "おんせんポンプ室博物館"
     },
     "category": "culture",
     "price": 1500,
@@ -6915,11 +6915,11 @@
   "emoji": "📚",
   "fact": {
    "en": "The Brontë sisters lived in Haworth. They wrote famous books like Jane Eyre and Wuthering Heights in their house by the moors!",
-   "ja": "ブロンテ姉妹はハワースに住んでいたよ。荒れ野のそばの家で「ジェーン・エア」や「嵐が丘」などの有名な本を書いたんだ！"
+   "ja": "ブロンテ姉妹はハワースに住んでいたよ。あれ野のそばの家で「ジェーン・エア」や「あらしがおか」などの有名な本を書いたんだ！"
   },
   "film": {
    "en": "Emily Brontë wrote the novel Wuthering Heights, inspired by the wild Yorkshire moors.",
-   "ja": "エミリー・ブロンテは、ヨークシャーの荒れ野をイメージして小説「嵐が丘」を書いたよ。"
+   "ja": "エミリー・ブロンテは、ヨークシャーのあれ野をイメージして小説「あらしがおか」を書いたよ。"
   },
   "quiz": {
    "q": {
@@ -6946,7 +6946,7 @@
    {
     "name": {
      "en": "Sweet shop",
-     "ja": "お菓子屋"
+     "ja": "おかしや"
     },
     "category": "food",
     "price": 40,
@@ -6955,7 +6955,7 @@
    {
     "name": {
      "en": "Moorland tea room",
-     "ja": "荒れ野の喫茶店"
+     "ja": "あれ野のきっさてん"
     },
     "category": "food",
     "price": 120,
@@ -6964,7 +6964,7 @@
    {
     "name": {
      "en": "Moor walking tours",
-     "ja": "荒れ野ウォーキング"
+     "ja": "あれ野ウォーキング"
     },
     "category": "tourism",
     "price": 250,
@@ -6973,7 +6973,7 @@
    {
     "name": {
      "en": "Steam railway",
-     "ja": "蒸気機関車の鉄道"
+     "ja": "じょうききかんしゃの鉄道"
     },
     "category": "tourism",
     "price": 1500,
@@ -6982,7 +6982,7 @@
    {
     "name": {
      "en": "Brontë Parsonage Museum",
-     "ja": "ブロンテ牧師館博物館"
+     "ja": "ブロンテぼくし館博物館"
     },
     "category": "culture",
     "price": 2000,
@@ -7003,7 +7003,7 @@
   "emoji": "🌹",
   "fact": {
    "en": "The red rose is the symbol of Lancaster. Yorkshire has a white rose, so long ago the two sides were called the Red Rose and the White Rose!",
-   "ja": "赤いバラはランカスターのしるしだよ。ヨークシャーは白いバラだから、昔は「赤バラ」と「白バラ」と呼ばれたんだ！"
+   "ja": "赤いバラはランカスターのしるしだよ。ヨークシャーは白いバラだから、昔は「赤バラ」と「白バラ」とよばれたんだ！"
   },
   "quiz": {
    "q": {
@@ -7030,7 +7030,7 @@
    {
     "name": {
      "en": "Potted shrimp shop",
-     "ja": "小エビのバター漬けの店"
+     "ja": "小エビのバターつけの店"
     },
     "category": "food",
     "price": 70,
@@ -7039,7 +7039,7 @@
    {
     "name": {
      "en": "Canal boat trips",
-     "ja": "運河の船旅"
+     "ja": "うんがの船旅"
     },
     "category": "tourism",
     "price": 350,
@@ -7066,7 +7066,7 @@
    {
     "name": {
      "en": "Lancaster Castle",
-     "ja": "ランカスター城"
+     "ja": "ランカスターしろ"
     },
     "category": "tourism",
     "price": 2200,
@@ -7088,7 +7088,7 @@
   "nature": true,
   "fact": {
    "en": "The world's first pencils were made near Keswick, because people found black graphite in the nearby hills. There is a Pencil Museum!",
-   "ja": "世界で初めての鉛筆は、近くの山で黒い黒鉛が見つかったので、キースウィックの近くで作られたよ。鉛筆博物館もあるんだ！"
+   "ja": "世界で初めてのえんぴつは、近くの山で黒いこくえんが見つかったので、キースウィックの近くで作られたよ。えんぴつ博物館もあるんだ！"
   },
   "quiz": {
    "q": {
@@ -7106,7 +7106,7 @@
     },
     {
      "en": "Pencils",
-     "ja": "鉛筆"
+     "ja": "えんぴつ"
     }
    ],
    "answer": 2
@@ -7151,7 +7151,7 @@
    {
     "name": {
      "en": "Pencil Museum",
-     "ja": "鉛筆博物館"
+     "ja": "えんぴつ博物館"
     },
     "category": "culture",
     "price": 1500,
@@ -7164,7 +7164,7 @@
   "id": "hexham",
   "name": {
    "en": "Hadrian's Wall",
-   "ja": "ハドリアヌスの長城"
+   "ja": "ハドリアヌスのちょうじょう"
   },
   "region": "north",
   "lon": -2.1,
@@ -7172,16 +7172,16 @@
   "emoji": "🧱",
   "fact": {
    "en": "Hadrian's Wall was built by the Romans about 1,900 years ago. It is around 120 kilometres long and runs across the north of England!",
-   "ja": "ハドリアヌスの長城は約1900年前にローマ人が作ったよ。長さは約120キロで、イングランド北部をよこぎっているんだ！"
+   "ja": "ハドリアヌスのちょうじょうは約1900年前にローマ人が作ったよ。長さは約120キロで、イングランド北部をよこぎっているんだ！"
   },
   "film": {
    "en": "The Sycamore Gap tree beside the wall appeared in the film Robin Hood: Prince of Thieves.",
-   "ja": "長城のそばのシカモア・ギャップの木は、映画「ロビン・フッド」に登場したよ。"
+   "ja": "ちょうじょうのそばのシカモア・ギャップの木は、えいが「ロビン・フッド」に登場したよ。"
   },
   "quiz": {
    "q": {
     "en": "Who built Hadrian's Wall?",
-    "ja": "ハドリアヌスの長城を作ったのは？"
+    "ja": "ハドリアヌスのちょうじょうを作ったのは？"
    },
    "options": [
     {
@@ -7221,7 +7221,7 @@
    {
     "name": {
      "en": "Wall walking trail",
-     "ja": "長城ハイキング"
+     "ja": "ちょうじょうハイキング"
     },
     "category": "sport",
     "price": 250,
@@ -7230,7 +7230,7 @@
    {
     "name": {
      "en": "Roman fort museum",
-     "ja": "ローマの砦博物館"
+     "ja": "ローマのとりで博物館"
     },
     "category": "culture",
     "price": 1500,
@@ -7239,7 +7239,7 @@
    {
     "name": {
      "en": "Hexham Abbey",
-     "ja": "ヘクサム修道院"
+     "ja": "ヘクサムしゅうどういん"
     },
     "category": "culture",
     "price": 2000,
@@ -7260,7 +7260,7 @@
   "emoji": "🚢",
   "fact": {
    "en": "Sunderland was once one of the biggest shipbuilding towns in the world. Huge ships were built on the River Wear!",
-   "ja": "サンダーランドは、昔は世界で一番大きな造船の町のひとつだったよ。ウェア川で大きな船がたくさん作られたんだ！"
+   "ja": "サンダーランドは、昔は世界で一番大きなぞうせんの町のひとつだったよ。ウェア川で大きな船がたくさん作られたんだ！"
   },
   "quiz": {
    "q": {
@@ -7314,7 +7314,7 @@
    {
     "name": {
      "en": "Glass-making centre",
-     "ja": "ガラス工房センター"
+     "ja": "ガラスこうぼうセンター"
     },
     "category": "industry",
     "price": 1500,
@@ -7323,7 +7323,7 @@
    {
     "name": {
      "en": "Shipyard",
-     "ja": "造船所"
+     "ja": "ぞうせんじょ"
     },
     "category": "industry",
     "price": 3500,
@@ -7344,7 +7344,7 @@
   "emoji": "🌉",
   "fact": {
    "en": "Berwick-upon-Tweed is in England, but very close to Scotland. Three bridges cross the River Tweed here, and the old town walls are still standing!",
-   "ja": "ベリック・アポン・ツイードはイングランドだけど、スコットランドのすぐ近くにあるよ。ツイード川には3つの橋がかかり、古い城壁も残っているんだ！"
+   "ja": "ベリック・アポン・ツイードはイングランドだけど、スコットランドのすぐ近くにあるよ。ツイード川には3つの橋がかかり、古いじょうへきも残っているんだ！"
   },
   "quiz": {
    "q": {
@@ -7380,7 +7380,7 @@
    {
     "name": {
      "en": "Salmon smokehouse",
-     "ja": "サケのくん製屋"
+     "ja": "サケのくんせい屋"
     },
     "category": "food",
     "price": 90,
@@ -7389,7 +7389,7 @@
    {
     "name": {
      "en": "Town walls walk",
-     "ja": "城壁さんぽ"
+     "ja": "じょうへきさんぽ"
     },
     "category": "tourism",
     "price": 300,
@@ -7407,7 +7407,7 @@
    {
     "name": {
      "en": "Barracks museum",
-     "ja": "兵舎博物館"
+     "ja": "へいしゃ博物館"
     },
     "category": "culture",
     "price": 1500,
@@ -7429,7 +7429,7 @@
   "nature": true,
   "fact": {
    "en": "Lindisfarne is also called Holy Island. A road lets you drive there, but twice a day the sea covers it and the island is cut off!",
-   "ja": "リンディスファーンは「聖なる島」とも呼ばれるよ。道を通って行けるけど、1日に2回、海の水でおおわれて島がとりのこされるんだ！"
+   "ja": "リンディスファーンは「せいなる島」ともよばれるよ。道を通って行けるけど、1日に2回、海の水でおおわれて島がとりのこされるんだ！"
   },
   "quiz": {
    "q": {
@@ -7439,7 +7439,7 @@
    "options": [
     {
      "en": "The tide",
-     "ja": "潮(しお)の満ち引き"
+     "ja": "しお(しお)の満ち引き"
     },
     {
      "en": "A drawbridge",
@@ -7464,8 +7464,8 @@
    },
    {
     "name": {
-     "en": "Honey farm shop",
-     "ja": "はちみつ農場ショップ"
+     "en": "Honey mead shop",
+     "ja": "はちみつ酒の店"
     },
     "category": "food",
     "price": 90,
@@ -7483,7 +7483,7 @@
    {
     "name": {
      "en": "Lindisfarne Castle",
-     "ja": "リンディスファーン城"
+     "ja": "リンディスファーンしろ"
     },
     "category": "tourism",
     "price": 1800,
@@ -7492,7 +7492,7 @@
    {
     "name": {
      "en": "Lindisfarne Priory",
-     "ja": "リンディスファーン修道院跡"
+     "ja": "リンディスファーンしゅうどういんあと"
     },
     "category": "culture",
     "price": 2200,
@@ -7593,7 +7593,7 @@
   "quiz": {
    "q": {
     "en": "Which stone was used to crown kings near Perth?",
-    "ja": "パースの近くで王様の戴冠に使われた石は？"
+    "ja": "パースの近くで王様のたいかんに使われた石は？"
    },
    "options": [
     {
@@ -7624,7 +7624,7 @@
    {
     "name": {
      "en": "Scone Palace",
-     "ja": "スクーン宮殿"
+     "ja": "スクーンきゅうでん"
     },
     "category": "tourism",
     "price": 2200,
@@ -7642,7 +7642,7 @@
    {
     "name": {
      "en": "Salmon fishing on the River Tay",
-     "ja": "テイ川のサーモン釣り"
+     "ja": "テイ川のサーモンつり"
     },
     "category": "sport",
     "price": 300,
@@ -7664,7 +7664,7 @@
   "nature": true,
   "fact": {
    "en": "At Pitlochry Dam there is a fish ladder that helps salmon swim up the river. You can watch them through a window!",
-   "ja": "ピトロッホリーのダムには、サケが川をのぼるための「魚の階段」があるよ。窓から見られる！"
+   "ja": "ピトロッホリーのダムには、サケが川をのぼるための「魚のかいだん」があるよ。まどから見られる！"
   },
   "quiz": {
    "q": {
@@ -7674,7 +7674,7 @@
    "options": [
     {
      "en": "A fish ladder",
-     "ja": "魚の階段"
+     "ja": "魚のかいだん"
     },
     {
      "en": "An escalator",
@@ -7691,7 +7691,7 @@
    {
     "name": {
      "en": "Fish ladder visitor centre",
-     "ja": "魚の階段ビジターセンター"
+     "ja": "魚のかいだんビジターセンター"
     },
     "category": "tourism",
     "price": 600,
@@ -7699,8 +7699,8 @@
    },
    {
     "name": {
-     "en": "Highland shortbread factory",
-     "ja": "ハイランドのショートブレッド工場"
+     "en": "Highland whisky distillery",
+     "ja": "ハイランドのウイスキーじょうりゅうじょ"
     },
     "category": "industry",
     "price": 1500,
@@ -7709,7 +7709,7 @@
    {
     "name": {
      "en": "Hill walking trails",
-     "ja": "丘のハイキングコース"
+     "ja": "おかのハイキングコース"
     },
     "category": "sport",
     "price": 100,
@@ -7739,7 +7739,7 @@
   "emoji": "🦞",
   "fact": {
    "en": "Oban is famous for fresh seafood, and ferries leave from here to many Scottish islands.",
-   "ja": "オーバンは新鮮なシーフードで有名だよ。ここからスコットランドのたくさんの島へフェリーが出ているんだ。"
+   "ja": "オーバンはしんせんなシーフードで有名だよ。ここからスコットランドのたくさんの島へフェリーが出ているんだ。"
   },
   "quiz": {
    "q": {
@@ -7753,7 +7753,7 @@
     },
     {
      "en": "Fresh seafood",
-     "ja": "新鮮なシーフード"
+     "ja": "しんせんなシーフード"
     },
     {
      "en": "Pizza",
@@ -7766,7 +7766,7 @@
    {
     "name": {
      "en": "Seafood stall on the pier",
-     "ja": "桟橋のシーフード屋台"
+     "ja": "さんばしのシーフード屋台"
     },
     "category": "food",
     "price": 80,
@@ -7815,7 +7815,7 @@
   "nature": true,
   "fact": {
    "en": "The Isle of Skye has wild mountains, castles and the Fairy Pools, clear blue pools with little waterfalls.",
-   "ja": "スカイ島には、けわしい山やお城、そして小さな滝がある青くすきとおった「フェアリー・プール」があるよ。"
+   "ja": "スカイ島には、けわしい山やおしろ、そして小さなたきがある青くすきとおった「フェアリー・プール」があるよ。"
   },
   "quiz": {
    "q": {
@@ -7833,7 +7833,7 @@
     },
     {
      "en": "Clear blue pools with waterfalls",
-     "ja": "滝のある青くすきとおった池"
+     "ja": "たきのある青くすきとおった池"
     }
    ],
    "answer": 2
@@ -7851,7 +7851,7 @@
    {
     "name": {
      "en": "Dunvegan Castle",
-     "ja": "ダンベガン城"
+     "ja": "ダンベガンしろ"
     },
     "category": "tourism",
     "price": 1800,
@@ -7890,7 +7890,7 @@
   "emoji": "⛴️",
   "fact": {
    "en": "Ullapool is a pretty fishing port in the Highlands. Ferries sail from here to the Outer Hebrides islands.",
-   "ja": "アラプールは、ハイランドにあるきれいな漁港だよ。ここから外ヘブリディーズ諸島へフェリーが出ているんだ。"
+   "ja": "アラプールは、ハイランドにあるきれいな漁港だよ。ここから外ヘブリディーズしょ島へフェリーが出ているんだ。"
   },
   "quiz": {
    "q": {
@@ -7900,7 +7900,7 @@
    "options": [
     {
      "en": "The Outer Hebrides",
-     "ja": "外ヘブリディーズ諸島"
+     "ja": "外ヘブリディーズしょ島"
     },
     {
      "en": "The Isle of Wight",
@@ -7908,7 +7908,7 @@
     },
     {
      "en": "The Canary Islands",
-     "ja": "カナリア諸島"
+     "ja": "カナリアしょ島"
     }
    ],
    "answer": 0
@@ -7917,7 +7917,7 @@
    {
     "name": {
      "en": "Fresh fish shop",
-     "ja": "新鮮な魚屋さん"
+     "ja": "しんせんな魚屋さん"
     },
     "category": "food",
     "price": 70,
@@ -7965,7 +7965,7 @@
   "emoji": "🏉",
   "fact": {
    "en": "Rugby sevens was invented in Melrose in 1883, when a butcher had the idea of a quick game with seven players!",
-   "ja": "7人制ラグビー（セブンズ）は1883年にメルローズで生まれたよ。肉屋さんが、7人でやる短い試合を思いついたんだ！"
+   "ja": "7人せいラグビー（セブンズ）は1883年にメルローズで生まれたよ。肉屋さんが、7人でやる短い試合を思いついたんだ！"
   },
   "quiz": {
    "q": {
@@ -7992,7 +7992,7 @@
    {
     "name": {
      "en": "Melrose Abbey",
-     "ja": "メルローズ修道院"
+     "ja": "メルローズしゅうどういん"
     },
     "category": "culture",
     "price": 1800,
@@ -8001,7 +8001,7 @@
    {
     "name": {
      "en": "Rugby sevens ground",
-     "ja": "ラグビー・セブンズ競技場"
+     "ja": "ラグビー・セブンズきょうぎじょう"
     },
     "category": "sport",
     "price": 600,
@@ -8019,7 +8019,7 @@
    {
     "name": {
      "en": "Tweed weaving mill",
-     "ja": "ツイードの織物工場"
+     "ja": "ツイードのおりもの工場"
     },
     "category": "industry",
     "price": 1200,
@@ -8077,7 +8077,7 @@
    {
     "name": {
      "en": "Tweed weaver's workshop",
-     "ja": "ツイード織りの工房"
+     "ja": "ツイードおりのこうぼう"
     },
     "category": "industry",
     "price": 900,
@@ -8108,7 +8108,7 @@
   "id": "lerwick",
   "name": {
    "en": "Shetland",
-   "ja": "シェトランド諸島"
+   "ja": "シェトランドしょ島"
   },
   "region": "scotland",
   "lon": -1.15,
@@ -8117,12 +8117,12 @@
   "nature": true,
   "fact": {
    "en": "Shetland is home to the Shetland pony, a small but very strong horse!",
-   "ja": "シェトランド諸島は、小さいけれどとても力持ちの「シェトランド・ポニー」のふるさとだよ！"
+   "ja": "シェトランドしょ島は、小さいけれどとても力持ちの「シェトランド・ポニー」のふるさとだよ！"
   },
   "quiz": {
    "q": {
     "en": "Which small, strong horse comes from Shetland?",
-    "ja": "シェトランド諸島生まれの、小さくて力持ちの馬は？"
+    "ja": "シェトランドしょ島生まれの、小さくて力持ちの馬は？"
    },
    "options": [
     {
@@ -8153,7 +8153,7 @@
    {
     "name": {
      "en": "Knitting shop (Fair Isle patterns)",
-     "ja": "ニットのお店（フェアアイル模様）"
+     "ja": "ニットのお店（フェアアイルもよう）"
     },
     "category": "industry",
     "price": 150,
@@ -8192,7 +8192,7 @@
   "emoji": "🍎",
   "fact": {
    "en": "Armagh is called the \"Orchard County\" because it has so many apple trees. In spring the blossom is beautiful!",
-   "ja": "アーマーは、リンゴの木がたくさんあるので「果樹園の州」とよばれているよ。春には花がとてもきれい！"
+   "ja": "アーマーは、リンゴの木がたくさんあるので「かじゅえんの州」とよばれているよ。春には花がとてもきれい！"
   },
   "quiz": {
    "q": {
@@ -8227,8 +8227,8 @@
    },
    {
     "name": {
-     "en": "Apple juice press",
-     "ja": "りんごジュース工場"
+     "en": "Cider and apple juice press",
+     "ja": "リンゴジュースのしぼり場"
     },
     "category": "industry",
     "price": 400,
@@ -8246,7 +8246,7 @@
    {
     "name": {
      "en": "St Patrick's Cathedral",
-     "ja": "聖パトリック大聖堂"
+     "ja": "セント・パトリックだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -8294,7 +8294,7 @@
    {
     "name": {
      "en": "Enniskillen Castle",
-     "ja": "エニスキレン城"
+     "ja": "エニスキレンしろ"
     },
     "category": "tourism",
     "price": 1800,
@@ -8312,7 +8312,7 @@
    {
     "name": {
      "en": "Marble Arch Caves",
-     "ja": "マーブル・アーチ洞くつ"
+     "ja": "マーブル・アーチほらくつ"
     },
     "category": "tourism",
     "price": 1500,
@@ -8342,25 +8342,25 @@
   "emoji": "☘️",
   "fact": {
    "en": "Downpatrick is linked to St Patrick, and people say he is buried near Down Cathedral. The town's name means \"Patrick's fort\"!",
-   "ja": "ダウンパトリックは聖パトリックにゆかりがあって、ダウン大聖堂のそばにねむっていると言われているよ。"
+   "ja": "ダウンパトリックはセント・パトリックにゆかりがあって、ダウンだいせいどうのそばにねむっていると言われているよ。"
   },
   "quiz": {
    "q": {
     "en": "Which saint is linked to Downpatrick?",
-    "ja": "ダウンパトリックにゆかりのある聖人は？"
+    "ja": "ダウンパトリックにゆかりのあるせいじんは？"
    },
    "options": [
     {
      "en": "St Patrick",
-     "ja": "聖パトリック"
+     "ja": "セント・パトリック"
     },
     {
      "en": "St George",
-     "ja": "聖ジョージ"
+     "ja": "セント・ジョージ"
     },
     {
      "en": "St David",
-     "ja": "聖デイビッド"
+     "ja": "セント・デイビッド"
     }
    ],
    "answer": 0
@@ -8369,7 +8369,7 @@
    {
     "name": {
      "en": "Down Cathedral",
-     "ja": "ダウン大聖堂"
+     "ja": "ダウンだいせいどう"
     },
     "category": "culture",
     "price": 2000,
@@ -8378,7 +8378,7 @@
    {
     "name": {
      "en": "Steam railway rides",
-     "ja": "蒸気機関車の旅"
+     "ja": "じょうききかんしゃの旅"
     },
     "category": "tourism",
     "price": 800,
@@ -8387,7 +8387,7 @@
    {
     "name": {
      "en": "Inch Abbey",
-     "ja": "インチ修道院"
+     "ja": "インチしゅうどういん"
     },
     "category": "culture",
     "price": 1000,
@@ -8529,7 +8529,7 @@
    {
     "name": {
      "en": "Newry Canal towpath",
-     "ja": "ニューリー運河の散歩道"
+     "ja": "ニューリーうんがの散歩道"
     },
     "category": "tourism",
     "price": 150,
@@ -8568,12 +8568,12 @@
   "emoji": "🏰",
   "fact": {
    "en": "Carrickfergus Castle is over 800 years old and still stands by the sea. It has cannons and a great tower.",
-   "ja": "キャリクファーガス城は800年以上前にたてられて、今も海のそばに立っているよ。大砲や大きな塔もある。"
+   "ja": "キャリクファーガスしろは800年以上前にたてられて、今も海のそばに立っているよ。たいほうや大きなとうもある。"
   },
   "quiz": {
    "q": {
     "en": "About how old is Carrickfergus Castle?",
-    "ja": "キャリクファーガス城は、およそ何年前にたてられた？"
+    "ja": "キャリクファーガスしろは、およそ何年前にたてられた？"
    },
    "options": [
     {
@@ -8595,7 +8595,7 @@
    {
     "name": {
      "en": "Carrickfergus Castle",
-     "ja": "キャリクファーガス城"
+     "ja": "キャリクファーガスしろ"
     },
     "category": "tourism",
     "price": 2000,
