@@ -1,10 +1,9 @@
 import { board, nextOptions } from '../core/map.js';
 import { STATIONS, STATION_BY_ID, PROP_BY_ID } from '../core/content/stations.js';
 import { CARD_BY_ID, REGIONS, SHOP_STOCK, TRAINS, AVATARS } from '../core/content/game-data.js';
-import { CUSTOM_QUIZ } from '../core/content/stations.js';
 import { eventDate, dateText, realMonth } from '../core/calendar.js';
 import { HEROES, HERO_BY_ID, HEROES_AT, SENSEI } from '../core/content/heroes.js';
-import { addCash, assets, arrivalPrize, arrivalRanking, blueAmount, redAmount, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, payoutYear, pickDestination, priceOf, removeCard, rint, rpick, rchance, rnd, settle, rweighted, pickMonthEvent, snapshot, } from '../core/rules.js';
+import { addCash, assets, arrivalPrize, arrivalRanking, blueAmount, redAmount, boostCat, destinationChoices, diceCount, drawCardId, drawRareCardId, giveCard, lastPlace, monopolyOwner, nearestStationTo, newYearReset, ownedProps, payoutYear, pickDestination, priceOf, removeCard, rint, rpick, rnd, settle, rweighted, pickMonthEvent, snapshot, } from '../core/rules.js';
 import { C, money } from '../engine/draw.js';
 import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
@@ -277,48 +276,6 @@ export class Director {
             }
         }
     }
-    // ======================= quizzes (only when the teacher turns them on) =======================
-    /** Players take turns answering: each human gets a question in turn order. */
-    async groupQuiz(qs, reward, title, first = null, offset = 0) {
-        const hs = this.humansFrom(first, true);
-        if (!hs.length || !qs.length)
-            return;
-        const asked = Math.min(qs.length, Math.max(1, hs.length));
-        for (let i = 0; i < asked; i++) {
-            const p = hs[(i + offset) % hs.length];
-            const t = this.multi ? T(`${p.name.ja}の番：${title.ja}`, `${p.name.en}'s turn: ${title.en}`) : T(`クイズ：${title.ja}`, `Quiz: ${title.en}`);
-            await this.askQuiz(p, qs[i], reward, t);
-        }
-    }
-    /** Simple questions about a place: the station quiz, plus "which team?" and "what is it famous for?" made from its factfile. */
-    placeQuestions(st) {
-        const g = this.g;
-        const out = [st.quiz];
-        const others = STATIONS.filter((x) => x.id !== st.id);
-        const make = (q, right, pool) => {
-            const wrong = [];
-            const cands = pool.filter((x) => x.en !== right.en);
-            while (wrong.length < 2 && cands.length) {
-                const c = cands.splice(Math.floor(rnd(g) * cands.length), 1)[0];
-                if (!wrong.some((w) => w.en === c.en))
-                    wrong.push(c);
-            }
-            const idx = Math.floor(rnd(g) * 3);
-            const options = [...wrong];
-            options.splice(idx, 0, right);
-            return { q, options, answer: idx };
-        };
-        const extra = [];
-        if (st.famous)
-            extra.push(make(T(`${st.name.ja}で ゆうめいな ものは？`, `What is ${st.name.en} famous for?`), st.famous, others.map((x) => x.famous).filter(Boolean)));
-        if (st.team)
-            extra.push(make(T(`${st.name.ja}の チームは どれ？`, `Which team is from ${st.name.en}?`), st.team, others.map((x) => x.team).filter(Boolean)));
-        for (let i = extra.length - 1; i > 0; i--) {
-            const j = Math.floor(rnd(g) * (i + 1));
-            [extra[i], extra[j]] = [extra[j], extra[i]];
-        }
-        return [...out, ...extra];
-    }
     /** Everyone takes part: the human plays, CPU rivals get a score for their level. Prizes by rank. (Mini-games are switched off for now.) */
     async miniGame(id, title) {
         const g = this.g;
@@ -365,13 +322,6 @@ export class Director {
                 else {
                     addCash(g, last, 500 * payoutYear(g), 'prize');
                 }
-            }
-            if (teacher.quizMode === 'year' && !timeUp && this.humansFrom(null).length) {
-                await studio([{ pose: 'excited', tv: null, t: T('ここで クイズの じかん！みんなで こたえてね！', "Quiz time! Let's answer together!") }]);
-                const qs = [];
-                for (const p of this.humansFrom(null))
-                    qs.push(this.pickQuiz(p));
-                await this.groupQuiz(qs, 200 * g.year, T('1ねんの まとめ', 'Year review'));
             }
             newYearReset(g);
             if (timeUp) {
@@ -609,36 +559,6 @@ export class Director {
         if (!this.isHuman(p))
             await this.note(p, T(`ラッキー！ +${yen(amts[k])}`, `Lucky! +${yen(amts[k])}`), '🍀');
     }
-    pickQuiz(p) {
-        const g = this.g;
-        if (CUSTOM_QUIZ.length && rchance(g, 0.3))
-            return rpick(g, CUSTOM_QUIZ);
-        const pool = rchance(g, 0.5) && p.visited.length > 2 ? p.visited.map((id) => STATION_BY_ID[id]) : STATIONS;
-        return rpick(g, pool).quiz;
-    }
-    quizHint(p) { return p.effects.guidebook > 0 || p.effects.heroHints > 0 || p.hometownCompanion; }
-    async askQuiz(p, q, reward, title) {
-        const hint = this.quizHint(p);
-        let mult = 1;
-        if (p.effects.guidebook > 0) {
-            p.effects.guidebook = 0;
-            mult = 2;
-        }
-        else if (p.effects.heroHints > 0) {
-            p.effects.heroHints--;
-            mult = 2;
-        }
-        const ans = await this.ask({ kind: 'quiz', playerId: p.id, quiz: q, hint, reward: reward * mult, title });
-        const right = ans === q.answer;
-        if (right) {
-            p.stars++;
-            if (reward)
-                addCash(this.g, p, reward * mult);
-        }
-        if (!this.isHuman(p))
-            await this.note(p, T(`クイズに ${right ? 'せいかい！' : 'ざんねん。'}`, `answered the quiz ${right ? 'correctly!' : 'wrong.'}`), right ? '⭕' : '❌');
-        return right;
-    }
     async eventSquare(p) {
         const g = this.g;
         const Y = payoutYear(g);
@@ -820,11 +740,6 @@ export class Director {
             audio.play('coin');
             await say({ title: T('しゃしん はんてい！', 'Photo finish!'), icon: '🏁', body: awards.map((a) => T(`${a.placeJa}：${a.who.name.ja}（あと${a.dist}マス）：+${money(a.bonus)}`, `${a.place}: ${a.who.name.en} (${a.dist} squares away): +${money(a.bonus)}`)), color: C.brass });
         }
-        // a quick question at the destination, only if the teacher switched quizzes on
-        if (teacher.quizMode === 'dest' && this.humansFrom(null).length) {
-            const bonus = Math.max(100 * g.year, Math.round(base * 0.1 / 10) * 10);
-            await this.groupQuiz(this.placeQuestions(st), bonus, st.name, p);
-        }
         // New destination
         g.prevDestination = g.destination;
         if (p.effects.chooseDest) {
@@ -913,9 +828,6 @@ export class Director {
                 await this.warpTo(p, rpick(g, cands));
                 return { endTurn: true };
             }
-            case 'guidebook':
-                p.effects.guidebook = 1;
-                return {};
         }
         return {};
     }
@@ -960,9 +872,7 @@ export class Director {
                 await this.gainCard(p, drawRareCardId(g));
                 return {};
             }
-            case 'twinpower':
-                p.effects.guidebook = 1;
-                return { extraDice: 2 };
+            case 'twinpower': return { extraDice: 2 };
             case 'neverGiveUp':
                 if (lastPlace(g).id === p.id) {
                     p.effects.bonusDice = 3;
@@ -971,9 +881,6 @@ export class Director {
                 }
                 delete p.heroUsedYear[id];
                 await this.tell(p, { title: T('まだだよ！', 'Not yet!'), icon: '🏅', body: [T('このパワーは さいかいの ときだけ つかえるよ。', 'This power only works when you are in last place.')] });
-                return {};
-            case 'quizHints':
-                p.effects.heroHints = 3;
                 return {};
             case 'cardDraw':
                 await this.gainCard(p, drawCardId(g, false));

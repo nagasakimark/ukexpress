@@ -184,21 +184,6 @@
    }
   },
   {
-   "id": "guidebook",
-   "name": {
-    "en": "Guidebook",
-    "ja": "ガイドブック"
-   },
-   "emoji": "📘",
-   "rarity": 1,
-   "price": 100,
-   "kind": "learn",
-   "desc": {
-    "en": "Your next quiz shows a hint and pays double.",
-    "ja": "次のクイズはヒント付きで、ごほうび2倍。"
-   }
-  },
-  {
    "id": "scotsman",
    "name": {
     "en": "Flying Scotsman",
@@ -231,7 +216,6 @@
  ],
  "shopStock": {
   "london": [
-   "guidebook",
    "express",
    "intercity",
    "tourism",
@@ -244,7 +228,6 @@
    "signalbox"
   ],
   "east": [
-   "guidebook",
    "umbrella",
    "return",
    "harvest"
@@ -257,7 +240,6 @@
   ],
   "midlands": [
    "intercity",
-   "guidebook",
    "express",
    "signalbox"
   ],

@@ -31,7 +31,7 @@ Drag to pan the map, and pinch or use the scroll wheel to zoom. Drag or scroll i
 - **Arrivals:** the first train gets a spinner bonus; the next two closest trains get a smaller "photo finish" bonus.
 - **Junctions:** the pink arrow is always the shortest way to the destination.
 - Heroes appear at their station or on surprise squares and give you their card, with a power you can use once a year. The 📖 UK Book keeps everything you have collected.
-- Quizzes are switched off in this version (there is no teacher menu). Hero quizzes remain in the UK Book.
+- Quizzes are removed from this version: no quiz squares or questions, no Guidebook card, and no hero quiz in the UK Book.
 
 ## Pictures
 

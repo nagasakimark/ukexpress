@@ -76,8 +76,6 @@ function cpuCommand(g, p) {
         return { type: 'card', id: 'birthday' };
     if (has('jubilee') && lastPlace(g).id === p.id)
         return { type: 'card', id: 'jubilee' };
-    if (has('guidebook') && !p.effects.guidebook)
-        return { type: 'card', id: 'guidebook' };
     if (has('signalbox') && !p.effects.chooseDest && d > 14 && rnd(g) < use)
         return { type: 'card', id: 'signalbox' };
     if (has('royal') && d > 10)
