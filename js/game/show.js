@@ -173,31 +173,14 @@ class StudioModal extends PModal {
                 text(ctx, sb, x + 26, y + h - 20, { size: 20, color: '#ffeaa0', weight: 600, maxWidth: w - 52 });
         }
         else {
-            // the idle screen: the "UK Express News" title card
+            // the idle screen: the "UK Express News" title card (the artwork carries its own title)
             const nb = getPic('presenter', 'news');
             ctx.fillStyle = '#5aa8e0';
             ctx.fillRect(x, y, w, h);
-            // scaled so the whole map sits above the title strip
             if (nb && nb.naturalWidth) {
-                const k = (h - 70) / (nb.naturalHeight * 0.8), dw = nb.naturalWidth * k, dh = nb.naturalHeight * k;
-                ctx.drawImage(nb, x + (w - dw) / 2, y - nb.naturalHeight * 0.07 * k, dw, dh);
+                const k = Math.max(w / nb.naturalWidth, h / nb.naturalHeight), dw = nb.naturalWidth * k, dh = nb.naturalHeight * k;
+                ctx.drawImage(nb, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
             }
-            const by = y + h - 84;
-            const bg2 = ctx.createLinearGradient(0, by, 0, by + 72);
-            bg2.addColorStop(0, '#e23a56');
-            bg2.addColorStop(1, '#a8142f');
-            ctx.fillStyle = 'rgba(0,0,0,0.25)';
-            roundRect(ctx, x + 60, by + 5, w - 120, 72, 16);
-            ctx.fill();
-            ctx.fillStyle = bg2;
-            roundRect(ctx, x + 60, by, w - 120, 72, 16);
-            ctx.fill();
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 3;
-            roundRect(ctx, x + 65, by + 5, w - 130, 62, 12);
-            ctx.stroke();
-            text(ctx, 'UK Express News', x + w / 2, by + 28, { size: 36, color: '#fff', align: 'center', outline: 6, outlineColor: '#6e0d20' });
-            text(ctx, lines(t2('Live from the studio!', 'スタジオから ライブ！')).main, x + w / 2, by + 56, { size: 16, color: '#ffe3ee', align: 'center', weight: 700 });
         }
         if (this.flash > 0) {
             ctx.fillStyle = `rgba(255,255,255,${this.flash})`;
