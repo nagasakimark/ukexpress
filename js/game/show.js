@@ -278,6 +278,8 @@ export const MONTH_HELLO = [
     t2("It's November! Fireworks and bonfires!", '11月だよ！はなびと たきび！'),
     t2("It's December! Christmas is coming!", '12月だよ！クリスマスが くるよ！'),
 ];
+/** Quietly loads all twelve month stickers so the card never waits for the network. */
+export function warmMonthCards() { void preload('months', MONTH_FILES, 20000); }
 class MonthCard extends PModal {
     constructor(m, year, yearsTotal) {
         super();
@@ -342,7 +344,7 @@ class MonthCard extends PModal {
 }
 /** `gameMonth` is the game's month index (0 = April); the card needs the calendar month. */
 export async function monthCard(gameMonth, year, years) {
-    await preload('months', [MONTH_FILES[realMonth(year, gameMonth).m]]);
+    await preload('months', [MONTH_FILES[realMonth(year, gameMonth).m]], 800);
     audio.play('fanfare');
     await app.show(new MonthCard(realMonth(year, gameMonth).m, year, years));
 }

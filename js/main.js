@@ -18,6 +18,7 @@ import { teacher } from './game/storage.js';
 import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
 import { preload, PRESENTER_PICS, loadThumbIndex, warmThumbs } from './game/images.js';
+import { warmMonthCards } from './game/show.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
 import { LoadingScene } from './game/scenes/loading.js';
@@ -132,7 +133,8 @@ async function boot() {
     await loadThumbIndex();
     app.go(new LoadingScene());
     await spritesLoading;
-    warmThumbs(); // quietly fetch all the small station previews so the side panel never waits
+    warmThumbs();
+    warmMonthCards(); // quietly fetch all the small station previews so the side panel never waits
     const q = new URLSearchParams(location.search);
     if (q.get('lang'))
         lang.mode = normLang(q.get('lang'));

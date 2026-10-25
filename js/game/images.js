@@ -5,7 +5,7 @@
 import { C, FONT, roundRect, emoji, shade } from '../engine/draw.js';
 const cache = new Map();
 const BASE = 'assets/images/';
-export function picUrl(kind, name) { return `${BASE}${kind}/${name}.png`; }
+export function picUrl(kind, name) { return `${BASE}${kind}/${name}.${kind === 'months' ? 'webp' : 'png'}`; }
 /** Starts loading the picture if needed and reports what is known right now. */
 export function picStatus(kind, name) {
     getPic(kind, name);

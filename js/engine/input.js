@@ -12,6 +12,7 @@ export class Input {
         this.pinchStart = 0;
         this.usingKeyboard = false;
         this.onFirstGesture = null;
+        this.downSeen = new Set();
         const c = screen.canvas;
         c.addEventListener('pointerdown', (e) => this.down(e));
         window.addEventListener('pointermove', (e) => this.move(e));
@@ -23,7 +24,10 @@ export class Input {
             this.dispatch((h) => h.zoom && h.zoom(e.deltaY < 0 ? 1.1 : 1 / 1.1, p.x, p.y));
         }, { passive: false });
         c.addEventListener('contextmenu', (e) => e.preventDefault());
-        window.addEventListener('keydown', (e) => this.keydown(e));
+        window.addEventListener('keydown', (e) => { this.downSeen.add(e.code); this.keydown(e); });
+        // some keyboards / input methods swallow Enter's keydown: still act on its key-up
+        window.addEventListener('keyup', (e) => { if (!this.downSeen.delete(e.code) && /^(Enter|NumpadEnter|Space)$/.test(e.code))
+            this.keydown(e); });
     }
     gesture() {
         if (this.onFirstGesture) {
@@ -108,7 +112,9 @@ export class Input {
             return; // typing into a text field
         this.gesture();
         let a = 'other';
-        switch (e.key) {
+        // Enter / Space by physical key as well, so an input method that reports 'Process' or 'Unidentified' still works
+        const k = /^(Enter|NumpadEnter|Space)$/.test(e.code) ? (e.code === 'Space' ? ' ' : 'Enter') : e.key;
+        switch (k) {
             case 'ArrowUp':
             case 'w':
             case 'W':
