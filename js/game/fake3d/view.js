@@ -272,20 +272,7 @@ export class BoardView {
             ctx.beginPath();
             ctx.ellipse(p.x, p.y + p.s * 0.02, p.s * 0.2 * t.scale, p.s * 0.1 * t.scale, 0, 0, Math.PI * 2);
             ctx.fill();
-            // up and down the screen the perspective tilts the rails, so tilt the sprite the same way
-            if (c.dir === 'n' || c.dir === 's') {
-                const px = p.x, py = p.y;
-                const q = this.cam.project(c.x, 0, c.z + 1, P2);
-                const th = Math.atan2(-(q.x - px), q.y - py);
-                ctx.save();
-                ctx.translate(px, py);
-                ctx.rotate(th);
-                ctx.translate(-px, -py);
-                drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
-                ctx.restore();
-            }
-            else
-                drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
+            drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
         }
     }
     drawSigns(ctx, destNode, ov) {

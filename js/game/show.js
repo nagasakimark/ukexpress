@@ -307,34 +307,46 @@ class MonthCard extends PModal {
         this.resolveWith(undefined); }
     drawBody(ctx) {
         const k = Ease.outBack(Math.min(1, this.age / 520));
-        const cx = LAY.cx, cy = 322;
+        const cx = (LAY.mapL + LAY.mapR) / 2, cy = (LAY.mapTop + LAY.mapBot) / 2;
         // the sticker-style picture floats free (no frame), lifted off the background by a soft drop shadow
         const pic = getPic('months', MONTH_FILES[this.m]);
-        const iw = 520;
-        const ih = pic && pic.naturalWidth ? iw * pic.naturalHeight / pic.naturalWidth : 440;
+        const ratio = pic && pic.naturalWidth ? pic.naturalWidth / pic.naturalHeight : 1.1;
+        const ih = 312, iw = Math.min(460, ih * ratio);
         const hello = lines(MONTH_HELLO[this.m]);
-        const textH = 96, h = ih + textH, w = iw;
+        const ys = lines(t2(`Year ${this.year} of ${this.yearsTotal}`, `${this.year}ねんめ`)).main;
+        const ph = 82, gap = 8, h = ih + gap + ph;
+        const pw = Math.min(LAY.mapR - LAY.mapL - 40, 640);
         ctx.save();
         ctx.translate(cx, cy + (1 - Math.min(1, this.age / 400)) * 400);
         ctx.rotate((1 - k) * -0.25 + Math.sin(this.age / 700) * 0.01);
         ctx.scale(0.4 + 0.6 * k, 0.4 + 0.6 * k);
-        const x = -w / 2, y = -h / 2;
+        const y = -h / 2;
         if (pic && pic.naturalWidth) {
             ctx.save();
             ctx.shadowColor = 'rgba(0,0,0,0.55)';
-            ctx.shadowBlur = 30;
+            ctx.shadowBlur = 26;
             ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 16;
-            ctx.drawImage(pic, x, y, iw, ih);
+            ctx.shadowOffsetY = 12;
+            ctx.drawImage(pic, -iw / 2, y, iw, ih);
             ctx.restore();
         }
         else {
-            drawPic(ctx, 'months', MONTH_FILES[this.m], x, y, iw, ih, { emoji: '📅', label: main({ en: MONTH_FILES[this.m], ja: `${this.m + 1}月` }), color: '#e0457b', radius: 20 });
+            drawPic(ctx, 'months', MONTH_FILES[this.m], -iw / 2, y, iw, ih, { emoji: '📅', label: main({ en: MONTH_FILES[this.m], ja: `${this.m + 1}月` }), color: '#e0457b', radius: 20 });
         }
-        const by = y + ih + 6;
-        text(ctx, hello.main, 0, by + 30, { size: 34, color: '#fff', align: 'center', outline: 9, outlineColor: '#4a1030', maxWidth: w + 100 });
-        const ys = lines(t2(`Year ${this.year} of ${this.yearsTotal}`, `${this.year}ねんめ`)).main;
-        text(ctx, hello.sub ? `${hello.sub}  ·  ${ys}` : ys, 0, by + 70, { size: 19, color: '#ffe8f0', align: 'center', weight: 700, outline: 6, outlineColor: '#4a1030', maxWidth: w + 100 });
+        // the words sit on their own little card
+        const py = y + ih + gap;
+        ctx.fillStyle = 'rgba(0,0,0,0.3)';
+        roundRect(ctx, -pw / 2 + 3, py + 6, pw, ph, 20);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,250,238,0.97)';
+        roundRect(ctx, -pw / 2, py, pw, ph, 20);
+        ctx.fill();
+        ctx.strokeStyle = '#e0457b';
+        ctx.lineWidth = 5;
+        roundRect(ctx, -pw / 2 + 2.5, py + 2.5, pw - 5, ph - 5, 18);
+        ctx.stroke();
+        text(ctx, hello.main, 0, py + 31, { size: 29, color: '#b0204f', align: 'center', maxWidth: pw - 40 });
+        text(ctx, hello.sub ? `${hello.sub}  ·  ${ys}` : ys, 0, py + 63, { size: 16, color: '#7a5a50', align: 'center', weight: 600, maxWidth: pw - 40 });
         ctx.restore();
     }
 }
