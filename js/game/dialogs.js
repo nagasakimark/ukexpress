@@ -1200,7 +1200,7 @@ const FACES = [
     { v: 3, n: [0, -1, 0], u: [1, 0, 0], w: [0, 0, 1] }, { v: 4, n: [0, 1, 0], u: [1, 0, 0], w: [0, 0, -1] },
 ];
 const PIPS = { 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] };
-const VIEW = mmul(rotX(-0.38), rotY(0.3)); // a little from above and the side, so you can see three faces
+const VIEW = rotX(-0.16); // looking down at the board: the face lying on top (towards the screen) is the number rolled; a sliver of the near side shows
 export class DiceOverlay {
     constructor(final, extra = 0) {
         this.final = final;
@@ -1209,7 +1209,7 @@ export class DiceOverlay {
         this.t = 0;
         this.settled = false;
         this.promise = new Promise((r) => (this.resolve = r));
-        this.fin = final.map((v, i) => mmul(rotZ((i % 2 ? 1 : -1) * 0.12), FACE_UP[v]));
+        this.fin = final.map((v, i) => mmul(rotZ((i % 2 ? 1 : -1) * (0.09 + 0.06 * i)), FACE_UP[v]));
         this.ax = final.map((_, i) => { const a = [0.8 + 0.3 * i, 0.55 - 0.2 * i, 0.25 + 0.3 * i]; const l = Math.hypot(...a); return [a[0] / l, a[1] / l, a[2] / l]; });
         this.spins = final.map((_, i) => (7 + i * 1.5) * Math.PI);
         this.fromY = final.map((_, i) => 200 + i * 60);
@@ -1227,7 +1227,7 @@ export class DiceOverlay {
         }
     }
     draw(ctx) {
-        const n = this.final.length, size = 104, gap = 34;
+        const n = this.final.length, size = 98, gap = 52;
         const total = n * size + (n - 1) * gap;
         const mid = (LAY.mapL + LAY.mapR) / 2, groundY = LAY.cy + 70;
         const fade = this.t > 1850 ? 1 - (this.t - 1850) / 250 : 1;
@@ -1244,7 +1244,7 @@ export class DiceOverlay {
             // shadow on the ground
             ctx.fillStyle = `rgba(0,0,0,${0.28 - hop / 900})`;
             ctx.beginPath();
-            ctx.ellipse(x + 8, groundY + 6, size * 0.55 * (1 - hop / 500), size * 0.17, 0, 0, 7);
+            ctx.ellipse(x + 10 + hop * 0.15, groundY - size * 0.02 + 6, size * 0.56 * (1 - hop / 500), size * 0.42 * (1 - hop / 500), 0, 0, 7);
             ctx.fill();
             const R = mmul(VIEW, mmul(rotAxis(this.ax[i], this.spins[i] * Math.pow(1 - p, 1.4) * (p >= 1 ? 0 : 1)), this.fin[i]));
             this.cube(ctx, R, x, y, size / 2, this.final[i]);

@@ -307,7 +307,7 @@ class MonthCard extends PModal {
         this.resolveWith(undefined); }
     drawBody(ctx) {
         const k = Ease.outBack(Math.min(1, this.age / 520));
-        const cx = LAY.cx, cy = 340;
+        const cx = LAY.cx, cy = 322;
         // the sticker-style picture floats free (no frame), lifted off the background by a soft drop shadow
         const pic = getPic('months', MONTH_FILES[this.m]);
         const iw = 520;
