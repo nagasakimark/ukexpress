@@ -1,12 +1,13 @@
 export const lang = { mode: 'bi' };
-/** Old saves may hold the removed Japanese-first mode: treat it as English with Japanese support. */
-export const normLang = (l) => (l === 'en' ? 'en' : 'bi');
+export const normLang = (l) => (l === 'en' ? 'en' : l === 'ja' ? 'ja' : 'bi');
 export const t2 = (en, ja) => ({ en, ja });
 /** Main line and (optional) sub line for the current language mode. */
 export function lines(t) {
     if (lang.mode === 'en')
         return { main: t.en, sub: null };
-    return { main: t.en, sub: t.ja };
+    if (lang.mode === 'ja')
+        return { main: t.ja, sub: null };
+    return { main: t.ja, sub: t.en };
 }
 export const main = (t) => lines(t).main;
 /** Turns a "£100 × year" formula into this year's actual amount ("£300" in year 3).
@@ -38,7 +39,7 @@ export const UI = {
     squaresAway: t2('squares away', 'マス'),
     moves: t2('moves', 'マス'),
     cash: t2('Cash', '所持金'),
-    assets: t2('Assets', '総資産'),
+    assets: t2('Assets', 'そうしさん'),
     year: t2('Year', '年目'),
     next: t2('Next', 'つぎへ'),
     skip: t2('Skip', 'スキップ'),

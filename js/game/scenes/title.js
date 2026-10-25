@@ -10,6 +10,7 @@ import { howToPlay } from '../tutorial.js';
 import { BookModal } from '../book.js';
 import { board } from '../../core/map.js';
 import { view } from '../fake3d/view.js';
+import { useView, LAY } from "../layout.js";
 import { isDryLand } from '../fake3d/ground.js';
 // The title picture (assets/images/title.png). Loads in the background while the
 // title screen is showing; the drawn text logo below is only a fallback.
@@ -215,6 +216,7 @@ export class TitleScene {
             tr.trail.push({ x, z });
         if (tr.trail.length > 60)
             tr.trail.shift();
+        useView(true);
         view.setMonth(1);
         view.cam.x = x - 2.4;
         view.cam.z = z - 1.5;
@@ -238,7 +240,7 @@ export class TitleScene {
         v.addColorStop(0.75, 'rgba(10,40,25,0)');
         v.addColorStop(1, 'rgba(10,40,25,0.4)');
         ctx.fillStyle = v;
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.vl, 0, LAY.vr - LAY.vl, 720);
         this.drawFront(ctx, t);
     }
     drawFront(ctx, t) {

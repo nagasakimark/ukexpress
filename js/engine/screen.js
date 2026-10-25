@@ -10,6 +10,9 @@ export class Screen {
         this.pattern = null;
         /** Called after every resize with the game area in CSS pixels (used to line up the 3D canvas). */
         this.onLayout = null;
+        /** Extra virtual width on each side when the window is wider than 16:9 (the game fills it). */
+        this.ext = 0;
+        this.onExt = null;
         this.cap = 1.5;
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
@@ -32,6 +35,8 @@ export class Screen {
         this.scale = Math.min(cw / W, ch / H);
         this.ox = (cw - W * this.scale) / 2;
         this.oy = (ch - H * this.scale) / 2;
+        this.ext = Math.max(0, Math.min(320, (cw / this.scale - W) / 2));
+        this.onExt?.(this.ext);
         this.onLayout?.(this.ox, this.oy, W * this.scale, H * this.scale);
     }
     // A railway-ticket pattern for the letterbox border, so there is never plain empty space.
@@ -90,7 +95,7 @@ export class Screen {
         ctx.setTransform(dpr * this.scale, 0, 0, dpr * this.scale, dpr * this.ox, dpr * this.oy);
         ctx.save();
         ctx.beginPath();
-        ctx.rect(0, 0, W, H);
+        ctx.rect(-this.ext, 0, W + this.ext * 2, H);
         ctx.clip();
     }
     end() {

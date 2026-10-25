@@ -1,3 +1,4 @@
+import { LAY } from '../layout.js';
 // The Momotetsu-style board view: perspective ground, pre-rendered scenery, trains, name signs and markers.
 // Pure drawing - the board scene owns the game logic and the HUD.
 import { board } from '../../core/map.js';
@@ -58,13 +59,15 @@ export class BoardView {
     draw(ctx, trains, destNode, tt, ov = {}, top = 0) {
         const t0 = performance.now();
         this.build();
+        this.cam.cx = LAY.cx;
+        this.cam.cy = LAY.cy;
         this.cam.update();
         const dn = board.nodes[destNode];
         // The ground and scenery only change when the camera moves (or the month changes), so once the camera has been
         // still for a couple of frames they are painted into a picture that is simply reused until something changes.
         const m = ctx.getTransform();
         const q = this.sceneQ;
-        const key = `${this.cam.x.toFixed(4)},${this.cam.z.toFixed(4)},${this.cam.zoom},${this.month},${this.tier},${top},${m.a.toFixed(3)},${m.e.toFixed(1)},${m.f.toFixed(1)},${q}`;
+        const key = `${this.cam.x.toFixed(4)},${this.cam.z.toFixed(4)},${this.cam.zoom},${this.month},${this.tier},${top},${LAY.mapL},${LAY.mapR},${LAY.mapBot},${m.a.toFixed(3)},${m.e.toFixed(1)},${m.f.toFixed(1)},${q}`;
         this.still = key === this.lastKey ? this.still + 1 : 0;
         this.lastKey = key;
         const cv = ctx.canvas;
@@ -153,10 +156,10 @@ export class BoardView {
     }
     drawBase(ctx, top) {
         this.ground.band = this.tier >= 2 ? 8 : this.tier === 1 ? 6 : 4;
-        this.ground.draw(ctx, this.cam, top, 720);
+        this.ground.draw(ctx, this.cam, top, LAY.mapBot);
         // scenery back to front
         const season = seasonOf(this.month);
-        const a = this.cam.unproject(0, top), b = this.cam.unproject(0, 720);
+        const a = this.cam.unproject(0, top), b = this.cam.unproject(0, LAY.mapBot);
         const [i0, i1] = this.scenery.range(a.z - 1.2, b.z + 2.2);
         const items = this.scenery.items;
         const lmSorted = this.scenery.landmarks;

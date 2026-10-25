@@ -1,3 +1,5 @@
+// Game setup: pick an avatar, number and level of CPU rivals, game length and language mode.
+import { LAY } from '../layout.js';
 import { Button, navigate } from '../../engine/ui.js';
 import { C, panel, text, emoji, roundRect } from '../../engine/draw.js';
 import { audio } from '../../engine/audio.js';
@@ -10,13 +12,14 @@ export class SetupScene {
     constructor(onStart, onBack) {
         this.onStart = onStart;
         this.onBack = onBack;
+        /** the avatar each human player picked; tab = which player is being edited */
         this.avs = [0, 1, 2, 3];
         this.tab = 0;
         this.humans = 1;
         this.rivals = 3;
-        this.level = 'normal';
+        this.level = "normal";
         this.years = 1;
-        this.lng = lang.mode === 'en' ? 'en' : 'bi';
+        this.lng = lang.mode;
         this.buttons = [];
         this.focus = 0;
         this.groups = {};
@@ -50,7 +53,7 @@ export class SetupScene {
         row('rivals', 342, [0, 1, 2, 3].map((n) => ({ label: t2(`${n} CPU`, `CPU ${n}人`), on: this.rivals === n, enabled: this.humans + n <= 4 && this.humans + n >= 2, fn: () => (this.rivals = n) })), 360, 170);
         row('level', 408, ['gentle', 'normal', 'clever'].map((l) => ({ label: { gentle: t2('Gentle', 'やさしい'), normal: t2('Normal', 'ふつう'), clever: t2('Clever', 'つよい') }[l], on: this.level === l, fn: () => (this.level = l) })));
         row('years', 474, [[1, t2('Short: 1 year', 'みじかい：1年')], [3, t2('Medium: 3 years', 'ふつう：3年')], [10, t2('Long: 10 years', 'ながい：10年')]].map(([n, l]) => ({ label: l, on: this.years === n, fn: () => (this.years = n) })));
-        row('lang', 540, [['bi', t2('English + 日本語', 'English + 日本語')], ['en', t2('English only', 'English only')]].map(([l, label]) => ({ label: { en: label.en, ja: label.ja }, on: this.lng === l, fn: () => { this.lng = l; lang.mode = l; } })));
+        row('lang', 540, [['bi', t2('日本語 + English', '日本語 + English')], ['ja', t2('日本語だけ', '日本語だけ')], ['en', t2('English only', 'English only')]].map(([l, label]) => ({ label: { en: label.en, ja: label.ja }, on: this.lng === l, fn: () => { this.lng = l; lang.mode = l; } })));
         this.buttons.push(new Button({ x: 820, y: 622, w: 300, h: 72, label: main(t2("Let's go!", 'しゅっぱつ！')), sub: lines(t2("Let's go!", 'しゅっぱつ！')).sub ?? undefined, color: '#d7263d', pulse: true, onClick: () => this.start() }));
         this.buttons.push(new Button({ x: 160, y: 622, w: 220, h: 72, label: main(t2('Back', 'もどる')), sub: lines(t2('Back', 'もどる')).sub ?? undefined, color: '#7a6a55', onClick: () => this.onBack() }));
         if (this.focus >= this.buttons.length)
@@ -92,7 +95,7 @@ export class SetupScene {
         g.addColorStop(0, '#1F5E3B');
         g.addColorStop(1, '#123d27');
         ctx.fillStyle = g;
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.vl, 0, LAY.vr - LAY.vl, 720);
         text(ctx, main(t2('Choose your railway', '鉄道会社をつくろう')), this.humans > 1 ? 180 : 640, 34, { size: 34, color: C.cream, align: 'center', outline: 7, outlineColor: '#0b2818', maxWidth: 340 });
         const kbd = !!window.__kbd;
         this.buttons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));

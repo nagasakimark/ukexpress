@@ -30,6 +30,24 @@ export function getPic(kind, name) {
 /** Bumps every time a picture finishes loading (or fails), so cached screens can repaint. */
 let picVer = 0;
 export function picVersion() { return picVer; }
+/** Loads pictures ahead of time. Resolves when all are loaded or failed (or after `timeout` ms), so a scene never draws half-loaded art. */
+export function preload(kind, names, timeout = 6000) {
+    const done = Promise.all(names.map((n) => new Promise((res) => {
+        const key = kind + '/' + n;
+        const c = cache.get(key);
+        if (c !== undefined && c !== 'loading') {
+            res();
+            return;
+        }
+        const img = new Image();
+        img.onload = () => { cache.set(key, img); picVer++; res(); };
+        img.onerror = () => { cache.set(key, null); picVer++; res(); };
+        cache.set(key, 'loading');
+        img.src = picUrl(kind, n);
+    }))).then(() => undefined);
+    return Promise.race([done, new Promise((res) => setTimeout(res, timeout))]);
+}
+export const PRESENTER_PICS = ['studio', 'news', 'mark_happy', 'mark_excited', 'mark_surprised', 'mark_sad', 'mark_point'];
 /** How many numbered variants are probed after the base picture: <name>2.png … <name>7.png. */
 export const MAX_PHOTOS = 7;
 const galleries = new Map();

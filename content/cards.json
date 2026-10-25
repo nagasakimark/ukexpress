@@ -13,7 +13,7 @@
    "dice": 1,
    "desc": {
     "en": "Roll +1 die this turn.",
-    "ja": "サイコロ+1個！"
+    "ja": "サイコロ+1こ！"
    }
   },
   {
@@ -29,7 +29,7 @@
    "dice": 2,
    "desc": {
     "en": "Roll +2 dice this turn.",
-    "ja": "サイコロ+2個！"
+    "ja": "サイコロ+2こ！"
    }
   },
   {
@@ -45,7 +45,7 @@
    "dice": 3,
    "desc": {
     "en": "Roll +3 dice. Built by Hitachi!",
-    "ja": "サイコロ+3個！日立の列車！"
+    "ja": "サイコロ+3こ！日立の列車！"
    }
   },
   {
@@ -82,7 +82,7 @@
    "id": "return",
    "name": {
     "en": "Return Ticket",
-    "ja": "往復きっぷ"
+    "ja": "おうふくきっぷ"
    },
    "emoji": "🎫",
    "rarity": 1,
@@ -90,7 +90,7 @@
    "kind": "warp",
    "desc": {
     "en": "Go back to the last station where you bought property.",
-    "ja": "最後に物件を買った駅へもどる。"
+    "ja": "最後にぶっけんを買った駅へもどる。"
    }
   },
   {
@@ -120,14 +120,14 @@
    "kind": "money",
    "desc": {
     "en": "Your Tourism properties pay double this March.",
-    "ja": "今年の観光の物件の利益が2倍！"
+    "ja": "今年の観光のぶっけんのりえきが2倍！"
    }
   },
   {
    "id": "harvest",
    "name": {
     "en": "Harvest Festival",
-    "ja": "収穫祭"
+    "ja": "しゅうかくさい"
    },
    "emoji": "🌾",
    "rarity": 2,
@@ -135,26 +135,26 @@
    "kind": "money",
    "desc": {
     "en": "Your Food properties pay double this March.",
-    "ja": "今年の食べ物の物件の利益が2倍！"
+    "ja": "今年の食べ物のぶっけんのりえきが2倍！"
    }
+  },
+  {
+   "id": "cupfinal",
+   "name": {
+    "en": "Cup Final",
+    "ja": "カップ決勝"
    },
-   {
-    "id": "cupfinal",
-    "name": {
-     "en": "Cup Final",
-     "ja": "カップ決勝"
-    },
-    "emoji": "🏆",
-    "rarity": 2,
-    "price": 1500,
-    "kind": "money",
-    "desc": {
-     "en": "Your Sport properties pay double this March.",
-     "ja": "今年のスポーツの物件の利益が2倍！"
-    }
-   },
-   {
-    "id": "jubilee",
+   "emoji": "🏆",
+   "rarity": 2,
+   "price": 1500,
+   "kind": "money",
+   "desc": {
+    "en": "Your Sport properties pay double this March.",
+    "ja": "今年のスポーツのぶっけんのりえきが2倍！"
+   }
+  },
+  {
+   "id": "jubilee",
    "name": {
     "en": "Jubilee Party",
     "ja": "ジュビリー・パーティー"
@@ -178,214 +178,108 @@
    "rarity": 1,
    "price": 150,
    "kind": "defence",
-    "desc": {
-     "en": "Blocks your next red square, then it breaks.",
-     "ja": "次の赤マスを1回ふせぐけど、こわれちゃう。"
-    }
-   },
-   {
-    "id": "leaves",
-   "name": {
-    "en": "Leaves on the Line",
-    "ja": "線路に落ち葉"
-   },
-   "emoji": "🍂",
-   "rarity": 2,
-   "price": 1200,
-   "kind": "attack",
    "desc": {
-    "en": "Everyone else rolls only 1 die for 2 turns.",
-    "ja": "ほかの人は2ターン、サイコロ1個だけ。"
+    "en": "Blocks your next red square, then it breaks.",
+    "ja": "次の赤マスを1回ふせぐけど、こわれちゃう。"
    }
   },
   {
-   "id": "queue",
+   "id": "guidebook",
    "name": {
-    "en": "Queue",
-    "ja": "行列"
+    "en": "Guidebook",
+    "ja": "ガイドブック"
    },
-   "emoji": "🧍",
-   "rarity": 2,
+   "emoji": "📘",
+   "rarity": 1,
+   "price": 100,
+   "kind": "learn",
+   "desc": {
+    "en": "Your next quiz shows a hint and pays double.",
+    "ja": "次のクイズはヒント付きで、ごほうび2倍。"
+   }
+  },
+  {
+   "id": "scotsman",
+   "name": {
+    "en": "Flying Scotsman",
+    "ja": "フライング・スコッツマン"
+   },
+   "emoji": "🚂",
+   "rarity": 3,
    "price": 0,
-   "kind": "attack",
+   "kind": "warp",
    "desc": {
-    "en": "The player in 1st place waits in a queue and skips a turn.",
-    "ja": "1位の人は行列に並んで1回休み。"
+    "en": "Fly to any region you choose! You land at a random station there.",
+    "ja": "好きな地方へひとっとび！着く駅はランダム。"
    }
   },
   {
-   "id": "rowan",
+   "id": "signalbox",
    "name": {
-    "en": "Rowan Twig",
-    "ja": "ナナカマドの小枝"
+    "en": "Signal Box",
+    "ja": "信号所"
    },
-   "emoji": "🌿",
+   "emoji": "🚦",
    "rarity": 2,
-   "price": 1500,
-   "kind": "boggart",
+   "price": 900,
+   "kind": "control",
    "desc": {
-    "en": "Send your Boggart to the nearest player.",
-    "ja": "ボガートをいちばん近い人へ送る。"
+    "en": "Choose the next destination from 3 stations.",
+    "ja": "次の目的地を3つの駅から選べる。"
    }
-  },
-  {
-   "id": "tea",
-   "name": {
-    "en": "Cup of Tea",
-    "ja": "紅茶"
-   },
-   "emoji": "☕",
-   "rarity": 1,
-   "price": 400,
-   "kind": "boggart",
-   "desc": {
-    "en": "Calm the Boggart: it does nothing for 2 turns. Let's have a cup of tea!",
-    "ja": "ボガートが2ターンおとなしくなる。"
-   }
-  },
-  {
-   "id": "horseshoe",
-   "name": {
-    "en": "Horseshoe",
-    "ja": "馬のていてつ"
-   },
-   "emoji": "🐴",
-   "rarity": 1,
-   "price": 600,
-   "kind": "defence",
-    "desc": {
-     "en": "Stops your Boggart growing once, then it breaks.",
-     "ja": "ボガートが大きくなるのを1回ふせぐけど、こわれちゃう。"
-    }
-  },
-   {
-    "id": "guidebook",
-    "name": {
-     "en": "Guidebook",
-     "ja": "ガイドブック"
-    },
-    "emoji": "📘",
-    "rarity": 1,
-    "price": 100,
-    "kind": "learn",
-    "desc": {
-     "en": "Your next quiz shows a hint and pays double.",
-     "ja": "次のクイズはヒント付きで、ごほうび2倍。"
-    }
-   },
-   {
-    "id": "scotsman",
-    "name": {
-     "en": "Flying Scotsman",
-     "ja": "フライング・スコッツマン"
-    },
-    "emoji": "🚂",
-    "rarity": 3,
-    "price": 0,
-    "kind": "warp",
-    "desc": {
-     "en": "Fly to any region you choose! You land at a random station there.",
-     "ja": "好きな地方へひとっとび！着く駅はランダム。"
-    }
-   },
-   {
-    "id": "turpin",
-    "name": {
-     "en": "Richard Turpin",
-     "ja": "リチャード・ターピン"
-    },
-    "emoji": "🦹",
-    "rarity": 2,
-    "price": 1000,
-    "kind": "attack",
-    "desc": {
-     "en": "Steal a random card from the leader. Stand and deliver!",
-     "ja": "1位の人からカードを1枚うばう！"
-    }
-   },
-   {
-    "id": "wellies",
-    "name": {
-     "en": "Wellies",
-     "ja": "長ぐつ"
-    },
-    "emoji": "🥾",
-    "rarity": 1,
-    "price": 800,
-    "kind": "defence",
-    "desc": {
-     "en": "Blocks Leaves on the Line and queues, then it breaks.",
-     "ja": "落ち葉と行列を1回ふせぐけど、こわれちゃう。"
-    }
-   },
-   {
-    "id": "signalbox",
-    "name": {
-     "en": "Signal Box",
-     "ja": "信号所"
-    },
-    "emoji": "🚦",
-    "rarity": 2,
-    "price": 900,
-    "kind": "control",
-    "desc": {
-     "en": "Choose the next destination from 3 stations.",
-     "ja": "次の目的地を3つの駅から選べる。"
-    }
-   }
-  ],
+  }
+ ],
  "shopStock": {
-   "london": [
-    "leaves",
-    "guidebook",
-    "express",
-    "intercity",
-    "tourism",
-    "cupfinal"
-   ],
-   "southeast": [
-    "express",
-    "umbrella",
-    "return",
-    "signalbox"
-   ],
-   "east": [
-    "guidebook",
-    "umbrella",
-    "return",
-    "harvest"
-   ],
-   "southwest": [
-    "balloon",
-    "return",
-    "umbrella",
-    "wellies"
-   ],
-   "midlands": [
-    "intercity",
-    "guidebook",
-    "express",
-    "turpin"
-   ],
+  "london": [
+   "guidebook",
+   "express",
+   "intercity",
+   "tourism",
+   "cupfinal"
+  ],
+  "southeast": [
+   "express",
+   "umbrella",
+   "return",
+   "signalbox"
+  ],
+  "east": [
+   "guidebook",
+   "umbrella",
+   "return",
+   "harvest"
+  ],
+  "southwest": [
+   "balloon",
+   "return",
+   "umbrella",
+   "scotsman"
+  ],
+  "midlands": [
+   "intercity",
+   "guidebook",
+   "express",
+   "signalbox"
+  ],
   "north": [
    "azuma",
-   "leaves",
-   "tea"
+   "scotsman",
+   "harvest"
   ],
   "wales": [
-   "horseshoe",
    "express",
-   "balloon"
+   "balloon",
+   "umbrella"
   ],
   "scotland": [
-   "rowan",
    "umbrella",
-   "intercity"
+   "intercity",
+   "scotsman"
   ],
   "ni": [
    "express",
-   "tea",
-   "balloon"
+   "balloon",
+   "return"
   ]
  }
 }

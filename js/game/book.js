@@ -6,7 +6,8 @@ import { audio } from '../engine/audio.js';
 import { STATIONS, STATION_BY_ID } from '../core/content/stations.js';
 import { HEROES, HERO_BY_ID } from '../core/content/heroes.js';
 import { CARDS, CARD_BY_ID, EVENTS, REGIONS } from '../core/content/game-data.js';
-import { PModal, say, drawCard, drawHeroCard, QuizModal } from './dialogs.js';
+import { stationProfile } from "./profile.js";
+import { PModal, say, drawCard, drawHeroCard, QuizModal } from "./dialogs.js";
 import { drawPortrait } from './mapart.js';
 import { drawPhotoCircle, picStatus, picVersion } from './images.js';
 import { lines, t2, UI } from './i18n.js';
@@ -117,7 +118,7 @@ export class BookModal extends PModal {
         if (!this.has(id)) {
             const how = {
                 stations: t2('Visit this station in a game to add it to your book!', 'ゲームでこの駅に行くと、本に追加されるよ！'),
-                heroes: t2('Meet this hero at their station and answer "Who am I?" to collect them.', 'この人の駅で「わたしはだれ？」に正解すると集められるよ。'),
+                heroes: t2('Meet this hero at their station, or on a surprise square, to collect them.', 'この人の えきや サプライズマスで あえると、あつめられるよ。'),
                 cards: t2('Get this card in a game to add it to your book.', 'ゲームでこのカードを手に入れると、本に追加されるよ。'),
                 events: t2('Play through this month of the year to see this special day.', 'この月まで遊ぶと、このとくべつな日が見られるよ。'),
             };
@@ -125,11 +126,7 @@ export class BookModal extends PModal {
             return;
         }
         if (this.tab === 'stations') {
-            const s = STATION_BY_ID[id];
-            const body = [s.fact];
-            if (s.film)
-                body.push(t2('🎬 ' + s.film.en, '🎬 ' + s.film.ja));
-            await say({ title: s.name, photo: { kind: 'places', name: s.image, emoji: s.emoji, label: s.name.en, color: REGIONS[s.region].color }, badge: lines(REGIONS[s.region].name).main, body, color: REGIONS[s.region].color });
+            await stationProfile(id);
         }
         else if (this.tab === 'heroes') {
             const hd = HERO_BY_ID[id];
@@ -178,10 +175,10 @@ export class BookModal extends PModal {
         }
         audio.play(perfect ? 'fanfare' : 'coin');
         await say({
-            title: t2(`Quiz complete: ${right}/${hd.quiz.length}!`, `クイズ終了：${right}/${hd.quiz.length}！`),
+            title: t2(`Quiz complete: ${right}/${hd.quiz.length}!`, `クイズしゅうりょう：${right}/${hd.quiz.length}！`),
             icon: perfect ? '🏆' : '💪',
             body: [perfect
-                    ? t2(`Perfect! You really know ${hd.name.en}! Star earned!`, `${hd.name.ja}博士だね！パーフェクト！星ゲット！`)
+                    ? t2(`Perfect! You really know ${hd.name.en}! Star earned!`, `${hd.name.ja}はかせだね！パーフェクト！星ゲット！`)
                     : t2('Good try! Only a perfect score earns a star — read the profile and try again!', 'よくがんばった！星はパーフェクトだけ。プロフィールを読んでもう一度！')],
         });
     }
@@ -213,7 +210,7 @@ export class BookModal extends PModal {
         const got = this.ids().filter((id) => this.has(id)).length;
         text(ctx, `${got} / ${this.ids().length}`, 1210, 56, { size: 30, color: '#7a2e1f', align: 'right' });
         if (this.tab === 'heroes')
-            text(ctx, lbl(t2('Hall of Heroes: real people from British history', 'ヒーローの殿堂：イギリスの歴史上の人たち')), 640, 56, { size: 18, color: '#7a5a10', align: 'center', weight: 500 });
+            text(ctx, lbl(t2('Hall of Heroes: real people from British history', 'ヒーローのでんどう：イギリスのれきしじょうの人たち')), 640, 56, { size: 18, color: '#7a5a10', align: 'center', weight: 500 });
         const L = this.layout();
         const kbd = !!window.__kbd;
         this.ids().forEach((id, i) => {

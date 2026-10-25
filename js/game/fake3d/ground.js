@@ -1,3 +1,4 @@
+import { LAY } from '../layout.js';
 // The flat ground of the board, Momotetsu style: bright grass, blue sea with a cliff edge, grey city paving,
 // black-and-white ladder track and raised coloured squares. It is painted once into small square chunks
 // (cached), then drawn in perspective one thin screen row at a time - no WebGL needed.
@@ -550,7 +551,7 @@ export class Ground {
         return c;
     }
     /** Draws the ground in perspective, from screen row top to bottom. */
-    draw(ctx, cam, top = 0, bottom = 720) {
+    draw(ctx, cam, top = 0, bottom = LAY.mapBot) {
         this.frame++;
         if (!landPath)
             buildLand();
@@ -569,13 +570,13 @@ export class Ground {
             if (!a || !b || !mid)
                 continue;
             const s = mid.s;
-            const xl = cam.x + (0 - cam.cx) / s, xr = cam.x + (1280 - cam.cx) / s;
+            const xl = cam.x + (LAY.mapL - cam.cx) / s, xr = cam.x + (LAY.mapR - cam.cx) / s;
             const zt = a.z, zb = b.z;
             // Open sea first, in one fill: the chunk strips below only cover the board itself.
             // (Skipped when the whole band is over land chunks, to avoid pointless overdraw.)
             if (xl < -0.5 || xr > edgeR || zt < -0.5 || zb > board.grid.h - 0.5) {
                 ctx.fillStyle = sea;
-                ctx.fillRect(0, sy, 1280, BAND + 0.6);
+                ctx.fillRect(LAY.mapL, sy, LAY.mapR - LAY.mapL, BAND + 0.6);
             }
             const j0 = Math.max(0, Math.floor((zt + 0.5) / CH)), j1 = Math.min(maxJ, Math.floor((zb + 0.5) / CH));
             const i0 = Math.max(0, Math.floor((xl + 0.5) / CH)), i1 = Math.min(maxI, Math.floor((xr + 0.5) / CH));

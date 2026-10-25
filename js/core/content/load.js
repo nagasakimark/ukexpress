@@ -10,13 +10,14 @@ async function getJson(path) {
     return r.json();
 }
 export async function loadContent(base = 'content/') {
-    const [stations, heroes, cards, game, events, words, board, grid, custom, places] = await Promise.all([
+    const [stations, heroes, cards, game, events, words, board, grid, custom, places, guide] = await Promise.all([
         getJson(base + 'stations.json'), getJson(base + 'heroes.json'), getJson(base + 'cards.json'), getJson(base + 'game.json'),
         getJson(base + 'events.json'), getJson(base + 'words.json'), getJson(base + 'board.json'), getJson(base + 'grid.json'),
         getJson(base + 'custom-quiz.json').catch(() => ({ questions: [] })),
         getJson(base + 'places.json').catch(() => ({})),
+        getJson(base + 'guide.json').catch(() => ({})),
     ]);
-    setStations(stations, places);
+    setStations(stations, places, guide);
     setHeroes(heroes);
     setGameData(game, cards, events, words);
     setCustomQuiz(custom);

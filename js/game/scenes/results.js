@@ -1,3 +1,5 @@
+// Game over: podium plus awards, so every student can win something.
+import { LAY } from '../layout.js';
 import { Button } from '../../engine/ui.js';
 import { C, panel, text, emoji, money, roundRect } from '../../engine/draw.js';
 import { fx } from '../../engine/fx.js';
@@ -15,7 +17,7 @@ export class ResultsScene {
         const ex = by((p) => p.visited.length), sc = by((p) => p.stars), he = by((p) => p.heroCollection.length), ar = by((p) => p.arrivals);
         this.awards = [
             { title: t2('Explorer', 'たんけん家'), icon: '🧭', p: ex, value: `${ex.visited.length} stations` },
-            { title: t2('Scholar', '物知り博士'), icon: '🎓', p: sc, value: `${sc.stars} ⭐` },
+            { title: t2('Scholar', '物知りはかせ'), icon: '🎓', p: sc, value: `${sc.stars} ⭐` },
             { title: t2('Hero Collector', 'ヒーロー・コレクター'), icon: '🦸', p: he, value: `${he.heroCollection.length} heroes` },
             { title: t2('Speed Star', 'スピードスター'), icon: '🚩', p: ar, value: `${ar.arrivals} arrivals` },
         ];
@@ -33,7 +35,7 @@ export class ResultsScene {
         g.addColorStop(0, '#2b5f8f');
         g.addColorStop(1, '#123d27');
         ctx.fillStyle = g;
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.vl, 0, LAY.vr - LAY.vl, 720);
         text(ctx, main(t2('Final results!', '最終結果！')), 640, 50, { size: 44, color: C.gold, align: 'center', outline: 8 });
         const r = ranking(this.g);
         const pods = [[1, 300, 230], [0, 380, 470], [2, 230, 710]];

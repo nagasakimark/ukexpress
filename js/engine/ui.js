@@ -1,4 +1,5 @@
 // Canvas UI widgets: ticket-style buttons with hover, press and keyboard focus, and a modal base class.
+import { LAY } from '../game/layout.js';
 import { C, roundRect, text, emoji, shade } from './draw.js';
 import { audio } from './audio.js';
 import { clock, Ease } from './tween.js';
@@ -171,7 +172,7 @@ export class Modal {
     draw(ctx) {
         ctx.save();
         ctx.fillStyle = `rgba(10,20,15,${this.dim * Math.min(1, Math.max(0, this.appear))})`;
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.vl, 0, LAY.vr - LAY.vl, 720);
         const s = 0.85 + 0.15 * this.appear;
         ctx.globalAlpha = Math.max(0, Math.min(1, this.appear * 1.5));
         ctx.translate(640, 360);

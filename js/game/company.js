@@ -9,11 +9,11 @@ import { STATION_BY_ID, PROP_BY_ID } from '../core/content/stations.js';
 import { TRAINS, CARD_BY_ID, AVATARS, MONTHS } from '../core/content/game-data.js';
 const lbl = (t) => lines(t).main;
 const KIND = {
-    rent: { icon: '🏠', label: t2('Rent', '家賃') },
+    rent: { icon: '🏠', label: t2('Rent', 'やちん') },
     prize: { icon: '🏆', label: t2('Prizes', '賞金') },
     buy: { icon: '🛍️', label: t2('Shopping', 'お買い物') },
     fee: { icon: '💸', label: t2('Fees', '出費') },
-    sale: { icon: '💰', label: t2('Sales', '売却') },
+    sale: { icon: '💰', label: t2('Sales', 'ばいきゃく') },
     other: { icon: '📦', label: t2('Other', 'その他') },
 };
 /** "Birmingham Market Hall" for a ledger note like prop:durham_0 (falls back to '' when unknown). */
@@ -118,7 +118,7 @@ export class CompanyModal extends PModal {
         panel(ctx, 24, 14, 1232, 692);
         header(ctx, t2(`${main(p.name)} Railway: company books`, `${main(p.name)}鉄道：かいしゃのおさいふ`), 24, 14, 1232, C.players[p.color]);
         emoji(ctx, AVATARS[p.avatar].emoji, 90, 178, 44);
-        text(ctx, `${money(p.cash)} · ${this.stationRows().reduce((a, r) => a + r.n, 0)} ${lbl(t2('properties', '物件'))}`, 120, 178, { size: 24, maxWidth: 420 });
+        text(ctx, `${money(p.cash)} · ${this.stationRows().reduce((a, r) => a + r.n, 0)} ${lbl(t2('properties', 'ぶっけん'))}`, 120, 178, { size: 24, maxWidth: 420 });
         if (this.tab === 'hold')
             this.drawHold(ctx);
         else if (this.tab === 'money')
@@ -132,13 +132,13 @@ export class CompanyModal extends PModal {
         const rows = this.stationRows();
         const g = this.g, p = this.player();
         if (!rows.length) {
-            text(ctx, lbl(t2('No properties yet. Land on a station and buy some!', 'まだ物件がないよ。駅に止まって買おう！')), 640, 380, { size: 26, align: 'center', maxWidth: 900 });
+            text(ctx, lbl(t2('No properties yet. Land on a station and buy some!', 'まだぶっけんがないよ。駅に止まって買おう！')), 640, 380, { size: 26, align: 'center', maxWidth: 900 });
             return;
         }
         const fc = forecastIncome(g, p);
         let y = 226;
         text(ctx, lbl(t2('Station', '駅')), 120, y - 28, { size: 18, color: '#8a7a60', weight: 800 });
-        text(ctx, lbl(t2('Rent / year', 'ねんだんの家賃')), 1210, y - 28, { size: 18, color: '#8a7a60', align: 'right', weight: 800 });
+        text(ctx, lbl(t2('Rent / year', 'ねんだんのやちん')), 1210, y - 28, { size: 18, color: '#8a7a60', align: 'right', weight: 800 });
         for (const r of rows.slice(this.page * 6, this.page * 6 + 6)) {
             ctx.fillStyle = 'rgba(255,255,255,0.55)';
             roundRect(ctx, 70, y - 4, 1140, 56, 12);
@@ -274,7 +274,7 @@ export class CompanyModal extends PModal {
         roundRect(ctx, 60, 572, 1160, 56, 12);
         ctx.fill();
         text(ctx, `🔮 ${lbl(t2('Expected March income', '3月の予想しゅうにゅう'))}: +${money(fc.total)}`, 90, 600, { size: 24, color: '#1d1d1b', maxWidth: 560 });
-        text(ctx, top.map((l) => `${main(l.prop.name)} +${money(Math.round(l.rent))}`).join(' · ') || lbl(t2('Buy property to earn rent!', '物件を買うと家賃が入るよ！')), 660, 600, { size: 20, color: '#2e7d32', maxWidth: 540 });
+        text(ctx, top.map((l) => `${main(l.prop.name)} +${money(Math.round(l.rent))}`).join(' · ') || lbl(t2('Buy property to earn rent!', 'ぶっけんを買うとやちんが入るよ！')), 660, 600, { size: 20, color: '#2e7d32', maxWidth: 540 });
     }
 }
 //# sourceMappingURL=company.js.map

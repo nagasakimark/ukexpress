@@ -27,7 +27,7 @@ export class HumanController {
             case 'quiz': return app.show(new QuizModal(pr.quiz, pr.hint, pr.reward, pr.title));
             case 'heroReplace': {
                 const opts = p.heroes.map((id, i) => ({ label: HERO_BY_ID[id].name, value: i, icon: HERO_BY_ID[id].emoji }));
-                return choose(t2('Hero slot is full!', 'ヒーロー枠がいっぱい！'), t2(`Swap a hero for ${HERO_BY_ID[pr.newHero].name.en}? (All heroes stay in your Hall of Heroes.)`, `${HERO_BY_ID[pr.newHero].name.ja}と入れかえる？（ヒーローの殿堂には全員残るよ）`), opts, -1);
+                return choose(t2('Hero slot is full!', 'ヒーローわくがいっぱい！'), t2(`Swap a hero for ${HERO_BY_ID[pr.newHero].name.en}? (All heroes stay in your Hall of Heroes.)`, `${HERO_BY_ID[pr.newHero].name.ja}と入れかえる？（ヒーローのでんどうには全員残るよ）`), opts, -1);
             }
             case 'chooseDest':
                 return choose(t2('Choose the next destination!', '次の目的地を選ぼう！'), null, pr.options.map((id) => ({ label: STATION_BY_ID[id].name, value: id, icon: STATION_BY_ID[id].emoji })));
@@ -37,7 +37,7 @@ export class HumanController {
                 return choose(t2('Which region?', 'どの地方へ？'), null, Object.keys(REGIONS).map((r) => ({ label: REGIONS[r].name, value: r, icon: REGIONS[r].mascot })));
             case 'discard': {
                 const opts = p.cards.map((id, i) => ({ label: CARD_BY_ID[id].name, value: i, icon: CARD_BY_ID[id].emoji }));
-                return choose(t2(`Your hand is full! Throw one away to keep ${CARD_BY_ID[pr.newCard].name.en}?`, `カードがいっぱい！「${CARD_BY_ID[pr.newCard].name.ja}」のために1枚すてる？`), null, opts, -1);
+                return choose(t2(`Your hand is full! Throw one away to keep ${CARD_BY_ID[pr.newCard].name.en}?`, `カードがいっぱい！「${CARD_BY_ID[pr.newCard].name.ja}」のために1まいすてる？`), null, opts, -1);
             }
         }
     }

@@ -14,13 +14,12 @@ import { choose, ImageViewer, say } from './game/dialogs.js';
 import { ProfileModal, PlaceModal } from './game/profile.js';
 import { howToPlay } from './game/tutorial.js';
 import { BookModal } from './game/book.js';
-import { applyGuest } from './game/teacher.js';
 import { teacher } from './game/storage.js';
 import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
+import { preload, PRESENTER_PICS } from './game/images.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
-import { TeacherModal } from './game/teacher.js';
 import { LoadingScene } from './game/scenes/loading.js';
 import { sprites } from './game/fake3d/sprites.js';
 import { view } from './game/fake3d/view.js';
@@ -64,6 +63,7 @@ async function play(g) {
     app.go(board);
     audio.startMusic('board');
     const d = new Director(g, board);
+    window.__dir = d;
     director = d;
     window.__game = g;
     board.onMenu = async () => {
@@ -107,10 +107,9 @@ async function boot() {
     }
     catch (e) {
         loading.classList.add('error');
-        loading.innerHTML = `<p>Could not load the game files. Please start the game with <b>start.bat</b> (or <code>npm start</code>) instead of opening index.html directly.</p><p>ゲームのファイルを読みこめませんでした。index.html を直接開かず、<b>start.bat</b> から起動してください。</p><p style="opacity:.6">${String(e)}</p>`;
+        loading.innerHTML = `<p>Could not load the game files. Please start the game with <b>start.bat</b> (or <code>npm start</code>) instead of opening index.html directly.</p><p>ゲームのファイルを読みこめませんでした。index.html をちょくせつ開かず、<b>start.bat</b> から起動してください。</p><p style="opacity:.6">${String(e)}</p>`;
         return;
     }
-    applyGuest();
     app.boot(canvas);
     // Remember how much detail this computer can manage, so slow Chromebooks start at the right level next time.
     // The canvas itself always stays sharp: only the board's scenery layer shrinks, so words never blur.
@@ -124,7 +123,8 @@ async function boot() {
     spritesLoading = sprites.load().catch((e) => { console.error('sprites', e); });
     window.__view = view;
     window.__app = app;
-    window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay, ProfileModal, PlaceModal, ImageViewer, say, book, createGame, BoardScene, board }; // handy for automated UI tests
+    void preload("presenter", PRESENTER_PICS); // warm the TV-studio art in the background
+    window.__test = { BookModal, MINIGAMES, howToPlay, ProfileModal, PlaceModal, ImageViewer, say, book, createGame, BoardScene, board }; // handy for automated UI tests
     loading.classList.add('hidden');
     // The title screen draws the normal 3D board, so wait for the board
     // pictures first (showing progress meanwhile). The render-scale step-down

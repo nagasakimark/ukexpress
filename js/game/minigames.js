@@ -178,8 +178,8 @@ export class MiniGame extends PModal {
 export class EggHunt extends MiniGame {
     constructor() {
         super();
-        this.title = t2('Easter Egg Hunt', 'イースター・エッグ探し');
-        this.howTo = t2('Eggs are hiding in the garden. Tap every egg you can find!', '庭に卵がかくれているよ。見つけたらタップしよう！');
+        this.title = t2('Easter Egg Hunt', 'イースター・エッグさがし');
+        this.howTo = t2('Eggs are hiding in the garden. Tap every egg you can find!', '庭にたまごがかくれているよ。見つけたらタップしよう！');
         this.icon = '🥚';
         this.unit = t2('eggs', 'こ');
         this.eggs = [];

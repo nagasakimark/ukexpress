@@ -4,6 +4,7 @@ import { Input } from '../engine/input.js';
 import { clock } from '../engine/tween.js';
 import { fx } from '../engine/fx.js';
 import { audio } from '../engine/audio.js';
+import { setExt } from './layout.js';
 class App {
     constructor() {
         this.scene = null;
@@ -16,6 +17,8 @@ class App {
     }
     boot(canvas) {
         this.screen = new Screen(canvas);
+        this.screen.onExt = (e) => setExt(e);
+        setExt(this.screen.ext);
         this.input = new Input(this.screen, () => this.route());
         this.input.onFirstGesture = () => audio.unlock();
         try {
@@ -95,6 +98,8 @@ class App {
         }
         if (!this.modals.length)
             this.snapFor = undefined;
+        window.__top = this.modals.length ? this.modals[this.modals.length - 1].constructor.name : '';
+        window.__scene = this.scene ? this.scene.constructor.name : '';
         for (const o of this.overlays)
             o.draw(ctx);
         for (const m of this.modals)

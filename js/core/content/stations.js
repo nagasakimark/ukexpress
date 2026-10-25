@@ -4,7 +4,7 @@ export const STATION_BY_ID = {};
 export const ALL_PROPS = [];
 export const PROP_BY_ID = {};
 export const CUSTOM_QUIZ = [];
-export function setStations(raw, places = {}) {
+export function setStations(raw, places = {}, guide = {}) {
     STATIONS.length = 0;
     ALL_PROPS.length = 0;
     for (const k of Object.keys(STATION_BY_ID))
@@ -16,12 +16,13 @@ export function setStations(raw, places = {}) {
         const def = {
             id: s.id, name: s.name, region: s.region, lon: s.lon, lat: s.lat, emoji: s.emoji, props, fact: s.fact, quiz: s.quiz,
             film: s.film, hometown: !!s.hometown, nature: !!s.nature, trainShop: !!s.trainShop, capital: !!s.capital,
-            facts: [], image: '',
+            facts: [], image: '', guide: [],
         };
         const pl = places[s.id] ?? {};
         def.facts = [s.fact, ...(pl.facts ?? [])];
         if (s.film)
-            def.facts.push({ en: '🎬 Film location: ' + s.film.en, ja: '🎬 映画のロケ地：' + s.film.ja });
+            def.facts.push({ en: '🎬 Film location: ' + s.film.en, ja: '🎬 えいがのロケ地：' + s.film.ja });
+        def.guide = guide[s.id] ?? [];
         if (pl.team)
             def.team = pl.team;
         if (pl.famous)

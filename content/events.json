@@ -62,7 +62,7 @@
   },
   "fact": {
    "en": "At midnight people sing 'Auld Lang Syne', a song by the Scottish poet Robert Burns.",
-   "ja": "夜中の0時には、スコットランドの詩人バーンズの歌「蛍の光」を歌うよ。"
+   "ja": "夜中の0時には、スコットランドの詩人バーンズの歌「ほたるの光」を歌うよ。"
   },
   "quiz": {
    "q": {
@@ -126,7 +126,7 @@
   "quiz": {
    "q": {
     "en": "What is the traditional food on Burns Night?",
-    "ja": "バーンズ・ナイトの伝統の食べ物は？"
+    "ja": "バーンズ・ナイトのでんとうの食べ物は？"
    },
    "options": [
     {
@@ -172,7 +172,7 @@
   },
   "why": {
    "en": "After Christmas, shops cut their prices in the January Sales. People hurry out to find a bargain.",
-   "ja": "クリスマスのあと、お店は1月のセールで値下げするよ。みんなお買い得品をさがしに出かける。"
+   "ja": "クリスマスのあと、お店は1月のセールでねさげするよ。みんなお買い得品をさがしに出かける。"
   },
   "fact": {
    "en": "The big sales start on Boxing Day, 26th December, and often run through January.",
@@ -186,7 +186,7 @@
    "options": [
     {
      "en": "Prices go down",
-     "ja": "値段が安くなる"
+     "ja": "ねだんが安くなる"
     },
     {
      "en": "Trains stop",
@@ -201,7 +201,7 @@
   },
   "effect": {
    "en": "Bargain! Everyone gets a free card.",
-   "ja": "お買い得！みんなカードを1枚もらえる。"
+   "ja": "お買い得！みんなカードを1まいもらえる。"
   },
   "fx": {
    "t": "card"
@@ -223,7 +223,7 @@
   },
   "why": {
    "en": "Pancake Day, or Shrove Tuesday, is the day before Lent. Families eat pancakes with lemon and sugar.",
-   "ja": "パンケーキ・デー（懺悔の火曜日）は、四旬節の前の日。レモンと砂糖でパンケーキを食べるよ。"
+   "ja": "パンケーキ・デー（ざんげの火曜日）は、しじゅん節の前の日。レモンとさとうでパンケーキを食べるよ。"
   },
   "fact": {
    "en": "Some towns hold pancake races where people run while flipping a pancake in a frying pan!",
@@ -260,7 +260,7 @@
   },
   "label": {
    "en": "Shrove Tuesday (February or early March)",
-   "ja": "懺悔の火曜日（2月か3月はじめ）"
+   "ja": "ざんげの火曜日（2月か3月はじめ）"
   },
   "image": "pancakeday",
   "minigame": "pancake"
@@ -353,7 +353,7 @@
   },
   "effect": {
    "en": "Garden visitors! Tourism properties earn 1.5× this year.",
-   "ja": "庭の見学者！今年は観光の物件が1.5倍。"
+   "ja": "庭の見学者！今年は観光のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -373,7 +373,7 @@
   "emoji": "🌼",
   "title": {
    "en": "St David's Day",
-   "ja": "聖デイヴィッドの日"
+   "ja": "セント・デイヴィッドの日"
   },
   "why": {
    "en": "1st March is the national day of Wales. People wear daffodils or leeks and sing Welsh songs.",
@@ -381,7 +381,7 @@
   },
   "fact": {
    "en": "Welsh children go to school in traditional costume and the red dragon flag flies everywhere.",
-   "ja": "ウェールズの子どもたちは民族衣装で学校へ行き、赤いドラゴンの旗があちこちにあがるよ。"
+   "ja": "ウェールズの子どもたちはみんぞくいしょうで学校へ行き、赤いドラゴンの旗があちこちにあがるよ。"
   },
   "quiz": {
    "q": {
@@ -428,20 +428,20 @@
   "emoji": "☘️",
   "title": {
    "en": "St Patrick's Day",
-   "ja": "聖パトリックの日"
+   "ja": "セント・パトリックの日"
   },
   "why": {
    "en": "17th March is St Patrick's Day. In Northern Ireland people wear green and shamrocks and go to parades.",
-   "ja": "3月17日は聖パトリックの日。北アイルランドでは、緑の服やシャムロックをつけてパレードに行くよ。"
+   "ja": "3月17日はセント・パトリックの日。北アイルランドでは、緑の服やシャムロックをつけてパレードに行くよ。"
   },
   "fact": {
    "en": "St Patrick used a three-leaf shamrock to explain an idea to the people. It became Ireland's symbol.",
-   "ja": "聖パトリックは三つ葉のシャムロックで教えを伝えたよ。いまはアイルランドのシンボル。"
+   "ja": "セント・パトリックは三つ葉のシャムロックで教えを伝えたよ。いまはアイルランドのシンボル。"
   },
   "quiz": {
    "q": {
     "en": "What colour do people wear on St Patrick's Day?",
-    "ja": "聖パトリックの日に着る色は？"
+    "ja": "セント・パトリックの日に着る色は？"
    },
    "options": [
     {
@@ -516,7 +516,7 @@
   },
   "effect": {
    "en": "Cakes and family lunches! Food properties earn 1.5× this year.",
-   "ja": "ケーキと家族のランチ！今年は食べ物の物件が1.5倍。"
+   "ja": "ケーキと家族のランチ！今年は食べ物のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -584,25 +584,25 @@
   "emoji": "🥚",
   "title": {
    "en": "Easter Egg Hunts",
-   "ja": "イースター・エッグ探し"
+   "ja": "イースター・エッグさがし"
   },
   "why": {
    "en": "At Easter, children hunt for chocolate eggs hidden in gardens and parks. Easter moves every year, in March or April.",
-   "ja": "イースターには、庭や公園にかくされたチョコの卵を探すよ。日にちは毎年かわって、3月か4月。"
+   "ja": "イースターには、庭や公園にかくされたチョコのたまごをさがすよ。日にちは毎年かわって、3月か4月。"
   },
   "fact": {
    "en": "Many families eat hot cross buns, sweet buns with a cross on top, on Good Friday.",
-   "ja": "聖金曜日には、上に十字のあるあまいパン「ホット・クロス・バン」を食べる家が多いよ。"
+   "ja": "せい金曜日には、上に十字のあるあまいパン「ホット・クロス・バン」を食べる家が多いよ。"
   },
   "quiz": {
    "q": {
     "en": "What do children hunt for at Easter?",
-    "ja": "イースターに子どもが探すものは？"
+    "ja": "イースターに子どもがさがすものは？"
    },
    "options": [
     {
      "en": "Chocolate eggs",
-     "ja": "チョコの卵"
+     "ja": "チョコのたまご"
     },
     {
      "en": "Pumpkins",
@@ -637,15 +637,15 @@
   "emoji": "🌹",
   "title": {
    "en": "St George's Day",
-   "ja": "聖ジョージの日"
+   "ja": "セント・ジョージの日"
   },
   "why": {
    "en": "23rd April is England's national day, named after St George, who is said to have fought a dragon.",
-   "ja": "4月23日はイングランドの記念日。ドラゴンと戦ったと言われる聖ジョージにちなむよ。"
+   "ja": "4月23日はイングランドの記念日。ドラゴンと戦ったと言われるセント・ジョージにちなむよ。"
   },
   "fact": {
    "en": "England's flag, a red cross on white, is St George's Cross. It is also Shakespeare's birthday!",
-   "ja": "イングランドの旗（白地に赤い十字）は聖ジョージの十字。シェイクスピアの誕生日でもあるよ！"
+   "ja": "イングランドの旗（白地に赤い十字）はセント・ジョージの十字。シェイクスピアのたんじょうびでもあるよ！"
   },
   "quiz": {
    "q": {
@@ -701,11 +701,11 @@
   },
   "why": {
    "en": "In late April, about 50,000 runners run 42 kilometres through London, past Tower Bridge and Buckingham Palace.",
-   "ja": "4月の終わり、約5万人のランナーが、タワーブリッジやバッキンガム宮殿の前を42キロ走るよ。"
+   "ja": "4月の終わり、約5万人のランナーが、タワーブリッジやバッキンガムきゅうでんの前を42キロ走るよ。"
   },
   "fact": {
    "en": "Many runners wear costumes and raise money for charity. Some even run dressed as a rhino!",
-   "ja": "仮装して走り、チャリティーのためにお金を集める人も多いよ。サイの仮装で走る人もいるよ！"
+   "ja": "かそうして走り、チャリティーのためにお金を集める人も多いよ。サイのかそうで走る人もいるよ！"
   },
   "quiz": {
    "q": {
@@ -730,7 +730,7 @@
   },
   "effect": {
    "en": "Crowds fill the streets! Players in London get £200 × year.",
-   "ja": "沿道は大にぎわい！ロンドンにいる人は +£200×年。"
+   "ja": "えんどうは大にぎわい！ロンドンにいる人は +£200×年。"
   },
   "fx": {
    "t": "region",
@@ -764,7 +764,7 @@
   },
   "fact": {
    "en": "Dancers hold coloured ribbons and weave them around a tall pole called a maypole.",
-   "ja": "ダンサーは色とりどりのリボンをもって、メイポールという高い柱のまわりで編みこむよ。"
+   "ja": "ダンサーは色とりどりのリボンをもって、メイポールという高い柱のまわりであみこむよ。"
   },
   "quiz": {
    "q": {
@@ -789,7 +789,7 @@
   },
   "effect": {
    "en": "Players in southern England get a free card.",
-   "ja": "イングランド南部にいる人はカードを1枚もらえる。"
+   "ja": "イングランド南部にいる人はカードを1まいもらえる。"
   },
   "fx": {
    "t": "cardRegion",
@@ -846,7 +846,7 @@
   },
   "effect": {
    "en": "Players in London get a free card.",
-   "ja": "ロンドンにいる人はカードを1枚もらえる。"
+   "ja": "ロンドンにいる人はカードを1まいもらえる。"
   },
   "fx": {
    "t": "cardRegion",
@@ -900,7 +900,7 @@
   },
   "effect": {
    "en": "Football fever! Sport properties earn 2× this year.",
-   "ja": "サッカー熱！今年はスポーツの物件が2倍。"
+   "ja": "サッカー熱！今年はスポーツのぶっけんが2倍。"
   },
   "fx": {
    "t": "boost",
@@ -924,7 +924,7 @@
   },
   "fact": {
    "en": "The town, Hay-on-Wye, has about 20 second-hand bookshops, and is called the 'Town of Books'.",
-   "ja": "ヘイ・オン・ワイには古本屋さんが約20軒あって、「本の町」と呼ばれているよ。"
+   "ja": "ヘイ・オン・ワイには古本屋さんが約20けんあって、「本の町」とよばれているよ。"
   },
   "quiz": {
    "q": {
@@ -975,7 +975,7 @@
   "emoji": "🌞",
   "title": {
    "en": "Summer Solstice",
-   "ja": "夏至"
+   "ja": "げし"
   },
   "why": {
    "en": "Around 21st June is the longest day of the year. In the UK the sun rises very early and sets very late.",
@@ -983,12 +983,12 @@
   },
   "fact": {
    "en": "Crowds gather at Stonehenge every year to watch the sun rise between the ancient stones.",
-   "ja": "毎年、ストーンヘンジに人が集まって、古い石のあいだから昇る朝日を見るよ。"
+   "ja": "毎年、ストーンヘンジに人が集まって、古い石のあいだからのぼる朝日を見るよ。"
   },
   "quiz": {
    "q": {
     "en": "Where do people watch the solstice sunrise?",
-    "ja": "夏至の日の出を見に集まる場所は？"
+    "ja": "げしの日の出を見に集まる場所は？"
    },
    "options": [
     {
@@ -1008,7 +1008,7 @@
   },
   "effect": {
    "en": "If you own a property at Salisbury (Stonehenge), you earn £1,000.",
-   "ja": "ソールズベリー（ストーンヘンジ）の物件をもつ人は +£1,000。"
+   "ja": "ソールズベリー（ストーンヘンジ）のぶっけんをもつ人は +£1,000。"
   },
   "fx": {
    "t": "owner",
@@ -1028,21 +1028,21 @@
   },
   "why": {
    "en": "In June, soldiers march in red coats and tall black hats in London to celebrate the King's official birthday.",
-   "ja": "6月、赤い上着と黒い毛皮の帽子の兵隊が、ロンドンで王さまの公式の誕生日をいわって行進するよ。"
+   "ja": "6月、赤い上着と黒い毛皮のぼうしの兵隊が、ロンドンで王さまの公式のたんじょうびをいわって行進するよ。"
   },
   "fact": {
    "en": "The royal family watches from the balcony of Buckingham Palace, and planes fly past.",
-   "ja": "王室の人びとはバッキンガム宮殿のバルコニーから見て、飛行機も上を飛ぶよ。"
+   "ja": "王室の人びとはバッキンガムきゅうでんのバルコニーから見て、飛行機も上を飛ぶよ。"
   },
   "quiz": {
    "q": {
     "en": "Whose birthday is celebrated?",
-    "ja": "だれの誕生日をおいわいする？"
+    "ja": "だれのたんじょうびをおいわいする？"
    },
    "options": [
     {
      "en": "The King's official birthday",
-     "ja": "王さまの公式の誕生日"
+     "ja": "王さまの公式のたんじょうび"
     },
     {
      "en": "The Prime Minister's",
@@ -1083,11 +1083,11 @@
   },
   "why": {
    "en": "Royal Ascot is a famous horse-racing week near Windsor. People dress up in smart suits and big, fancy hats.",
-   "ja": "ロイヤル・アスコットは、ウィンザー近くで開かれる有名な競馬の週。みんな立派なスーツと大きな帽子でおしゃれする。"
+   "ja": "ロイヤル・アスコットは、ウィンザー近くで開かれる有名な競馬の週。みんなりっぱなスーツと大きなぼうしでおしゃれする。"
   },
   "fact": {
    "en": "The King and Queen arrive in horse-drawn carriages at the start of each day.",
-   "ja": "毎日のはじめに、王さまと女王さまが馬車で到着するよ。"
+   "ja": "毎日のはじめに、王さまと女王さまが馬車でとうちゃくするよ。"
   },
   "quiz": {
    "q": {
@@ -1097,7 +1097,7 @@
    "options": [
     {
      "en": "Fancy hats",
-     "ja": "おしゃれな帽子"
+     "ja": "おしゃれなぼうし"
     },
     {
      "en": "Swimsuits",
@@ -1167,7 +1167,7 @@
   },
   "effect": {
    "en": "Barbecue time! Food properties earn 1.5× this year.",
-   "ja": "バーベキュー！今年は食べ物の物件が1.5倍。"
+   "ja": "バーベキュー！今年は食べ物のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -1216,7 +1216,7 @@
   },
   "effect": {
    "en": "Festival crowds! Culture properties earn 1.5× this year.",
-   "ja": "フェスの大にぎわい！今年は文化の物件が1.5倍。"
+   "ja": "フェスの大にぎわい！今年は文化のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -1240,7 +1240,7 @@
   },
   "why": {
    "en": "Wimbledon is the oldest tennis tournament in the world. It is played on grass courts in London in early July.",
-   "ja": "ウィンブルドンは世界でいちばん古いテニス大会。7月のはじめ、ロンドンの芝のコートで行われるよ。"
+   "ja": "ウィンブルドンは世界でいちばん古いテニス大会。7月のはじめ、ロンドンのしばのコートで行われるよ。"
   },
   "fact": {
    "en": "Players must wear white, and visitors eat strawberries and cream while they watch.",
@@ -1293,11 +1293,11 @@
   },
   "why": {
    "en": "The Durham Miners' Gala, or 'Big Meeting', celebrates the coal miners of north-east England with brass bands and banners.",
-   "ja": "ダラム・ミナーズ・ガラ（ビッグ・ミーティング）は、北東イングランドの炭鉱で働いた人びとを、ブラスバンドと旗でたたえるお祭り。"
+   "ja": "ダラム・ミナーズ・ガラ（ビッグ・ミーティング）は、北東イングランドのたんこうで働いた人びとを、ブラスバンドと旗でたたえるお祭り。"
   },
   "fact": {
    "en": "Each old mining village marches into Durham behind a big, hand-painted banner.",
-   "ja": "昔の炭鉱の村ごとに、手描きの大きな旗を先頭に、ダラムの町へ行進するよ。"
+   "ja": "昔のたんこうの村ごとに、手えがきの大きな旗を先頭に、ダラムの町へ行進するよ。"
   },
   "quiz": {
    "q": {
@@ -1307,22 +1307,22 @@
    "options": [
     {
      "en": "Coal miners",
-     "ja": "炭鉱で働く人"
+     "ja": "たんこうで働く人"
     },
     {
      "en": "Pirates",
-     "ja": "海賊"
+     "ja": "かいぞく"
     },
     {
      "en": "Astronauts",
-     "ja": "宇宙飛行士"
+     "ja": "うちゅうひこうし"
     }
    ],
    "answer": 0
   },
   "effect": {
    "en": "Players in northern England get a free Express card. Durham property owners earn £500 × year.",
-   "ja": "イングランド北部にいる人は特急カードをもらえる。ダラムの物件のもち主は +£500×年。"
+   "ja": "イングランド北部にいる人は特急カードをもらえる。ダラムのぶっけんのもち主は +£500×年。"
   },
   "fx": {
    "t": "gala"
@@ -1405,7 +1405,7 @@
   },
   "fact": {
    "en": "Many families go to seaside towns like Blackpool, Brighton and Newquay, and traffic jams are common!",
-   "ja": "ブラックプール、ブライトン、ニューキーなどの海辺の町へ行く家族が多く、道路はよく渋滞するよ。"
+   "ja": "ブラックプール、ブライトン、ニューキーなどの海辺の町へ行く家族が多く、道路はよくじゅうたいするよ。"
   },
   "quiz": {
    "q": {
@@ -1430,7 +1430,7 @@
   },
   "effect": {
    "en": "Holiday time! Tourism properties earn 2× this year.",
-   "ja": "夏休み！今年は観光の物件が2倍。"
+   "ja": "夏休み！今年は観光のぶっけんが2倍。"
   },
   "fx": {
    "t": "boost",
@@ -1454,11 +1454,11 @@
   },
   "why": {
    "en": "Henley Royal Regatta is a famous rowing race on the River Thames. Crews race side by side along a straight course.",
-   "ja": "ヘンリー・ロイヤル・レガッタは、テムズ川で行われる有名なボートレース。2隻が並んでまっすぐのコースをこぐよ。"
+   "ja": "ヘンリー・ロイヤル・レガッタは、テムズ川で行われる有名なボートレース。2せきがならんでまっすぐのコースをこぐよ。"
   },
   "fact": {
    "en": "Visitors wear blazers and straw hats, and picnic by the river while they watch.",
-   "ja": "観客はブレザーと麦わら帽子で、川のそばでピクニックをしながら観戦するよ。"
+   "ja": "観客はブレザーと麦わらぼうしで、川のそばでピクニックをしながら観戦するよ。"
   },
   "quiz": {
    "q": {
@@ -1513,7 +1513,7 @@
   },
   "why": {
    "en": "In August, Edinburgh becomes the biggest arts festival in the world, with thousands of shows in theatres, pubs and on the street.",
-   "ja": "8月、エディンバラは世界最大の芸術祭の町になり、劇場やパブ、道ばたで何千ものショーが行われるよ。"
+   "ja": "8月、エディンバラは世界最大のげいじゅつ祭の町になり、げきじょうやパブ、道ばたで何千ものショーが行われるよ。"
   },
   "fact": {
    "en": "Comedians, singers and dancers come from all over the world, and many famous comedians began here.",
@@ -1542,7 +1542,7 @@
   },
   "effect": {
    "en": "Players in Scotland: culture properties earn 2× this year.",
-   "ja": "スコットランドの文化の物件は、今年2倍もうかる。"
+   "ja": "スコットランドの文化のぶっけんは、今年2倍もうかる。"
   },
   "fx": {
    "t": "scotlandCulture"
@@ -1568,11 +1568,11 @@
   },
   "why": {
    "en": "The Eisteddfod is a Welsh festival of music, poetry and dance. People compete in singing and reciting poems in Welsh.",
-   "ja": "アイステズヴォッドは、ウェールズの音楽、詩、ダンスのお祭り。ウェールズ語の歌や詩の朗読で競うよ。"
+   "ja": "アイステズヴォッドは、ウェールズの音楽、詩、ダンスのお祭り。ウェールズ語の歌や詩のろうどくで競うよ。"
   },
   "fact": {
    "en": "The winning poet is given a special chair and takes part in a grand ceremony with white-robed druids.",
-   "ja": "優勝した詩人には特別ないすがおくられ、白いローブのドルイドが立ち会う式がひらかれるよ。"
+   "ja": "ゆうしょうした詩人には特別ないすがおくられ、白いローブのドルイドが立ち会う式がひらかれるよ。"
   },
   "quiz": {
    "q": {
@@ -1627,7 +1627,7 @@
   },
   "why": {
    "en": "Notting Hill Carnival is the biggest street party in Europe. It celebrates Caribbean culture with music, floats and costumes.",
-   "ja": "ノッティング・ヒル・カーニバルは、ヨーロッパ最大のストリートパーティー。音楽やおみこし、衣装でカリブの文化をいわうよ。"
+   "ja": "ノッティング・ヒル・カーニバルは、ヨーロッパ最大のストリートパーティー。音楽やおみこし、いしょうでカリブの文化をいわうよ。"
   },
   "fact": {
    "en": "About a million people come to London on the August bank holiday to dance in the streets.",
@@ -1678,11 +1678,11 @@
   "emoji": "🌾",
   "title": {
    "en": "Harvest Festival",
-   "ja": "収穫祭"
+   "ja": "しゅうかくさい"
   },
   "why": {
    "en": "In autumn, schools and churches hold Harvest Festivals to say thank you for food from farms. Children bring tins and fruit.",
-   "ja": "秋には、学校や教会で食べ物に感謝する収穫祭がひらかれて、子どもたちは缶詰や果物をもっていくよ。"
+   "ja": "秋には、学校や教会で食べ物にかんしゃするしゅうかくさいがひらかれて、子どもたちはかんづめや果物をもっていくよ。"
   },
   "fact": {
    "en": "The food is often given to people who need it, so it is a time of sharing.",
@@ -1691,7 +1691,7 @@
   "quiz": {
    "q": {
     "en": "What do people say thank you for at Harvest Festival?",
-    "ja": "収穫祭で感謝するものは？"
+    "ja": "しゅうかくさいでかんしゃするものは？"
    },
    "options": [
     {
@@ -1711,7 +1711,7 @@
   },
   "effect": {
    "en": "Food properties earn 1.5× this year.",
-   "ja": "今年は食べ物の物件が1.5倍。"
+   "ja": "今年は食べ物のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -1739,7 +1739,7 @@
   },
   "fact": {
    "en": "Many children wear school uniforms with a blazer and a tie, and they often have a packed lunch.",
-   "ja": "ブレザーとネクタイの制服を着る子が多く、お弁当をもっていくことも多いよ。"
+   "ja": "ブレザーとネクタイのせいふくを着る子が多く、おべんとうをもっていくことも多いよ。"
   },
   "quiz": {
    "q": {
@@ -1764,7 +1764,7 @@
   },
   "effect": {
    "en": "New pencils! Everyone gets £100 × year.",
-   "ja": "新しい文房具！みんな +£100×年。"
+   "ja": "新しいぶんぼうぐ！みんな +£100×年。"
   },
   "fx": {
    "t": "all",
@@ -1787,11 +1787,11 @@
   },
   "why": {
    "en": "For ten days in September, old buildings like castles, churches and factories open their doors to visitors for free.",
-   "ja": "9月の10日間、お城や教会、工場などの古い建物が、無料で見学できるよ。"
+   "ja": "9月の10日間、おしろや教会、工場などの古い建物が、無料で見学できるよ。"
   },
   "fact": {
    "en": "People can go inside places that are normally closed, and many are run by volunteers.",
-   "ja": "ふだんは入れない場所に入れるよ。ボランティアが運営していることも多い。"
+   "ja": "ふだんは入れない場所に入れるよ。ボランティアがうんえいしていることも多い。"
   },
   "quiz": {
    "q": {
@@ -1816,7 +1816,7 @@
   },
   "effect": {
    "en": "Culture properties earn 1.5× this year.",
-   "ja": "今年は文化の物件が1.5倍。"
+   "ja": "今年は文化のぶっけんが1.5倍。"
   },
   "fx": {
    "t": "boost",
@@ -1844,12 +1844,12 @@
   },
   "fact": {
    "en": "There are bagpipe bands, dancing, running up a hill, and tossing heavy hammers and stones.",
-   "ja": "バグパイプ、ダンス、山のぼりのレース、重いハンマーや石を投げる競技があるよ。"
+   "ja": "バグパイプ、ダンス、山のぼりのレース、重いハンマーや石を投げるきょうぎがあるよ。"
   },
   "quiz": {
    "q": {
     "en": "What instrument is played at the Gathering?",
-    "ja": "ギャザリングで演奏される楽器は？"
+    "ja": "ギャザリングでえんそうされる楽器は？"
    },
    "options": [
     {
@@ -1950,7 +1950,7 @@
   },
   "why": {
    "en": "On 31st October, children dress up as ghosts and witches and go trick-or-treating. People carve scary faces in pumpkins.",
-   "ja": "10月31日、子どもたちはおばけや魔女に仮装して、「トリック・オア・トリート」にまわるよ。かぼちゃには怖い顔をほる。"
+   "ja": "10月31日、子どもたちはおばけやまじょにかそうして、「トリック・オア・トリート」にまわるよ。かぼちゃにはこわい顔をほる。"
   },
   "fact": {
    "en": "Halloween began long ago with a Celtic festival called Samhain, and Derry holds one of Europe's biggest Halloween festivals.",
@@ -1978,11 +1978,11 @@
    "answer": 0
   },
   "effect": {
-   "en": "Spooky! The Boggart jumps to a random player.",
-   "ja": "ぶきみ！ボガートがだれかにジャンプ。"
+   "en": "Trick or treat! Everyone gets a card.",
+   "ja": "トリック・オア・トリート！みんな カードを 1まい もらえるよ。"
   },
   "fx": {
-   "t": "boggart"
+   "t": "card"
   },
   "image": "halloween"
  },
@@ -2056,7 +2056,7 @@
   },
   "why": {
    "en": "On 5th November, people watch fireworks and light bonfires. They remember Guy Fawkes, who tried to blow up Parliament in 1605.",
-   "ja": "11月5日は花火とたき火の夜。1605年に議事堂を爆破しようとしたガイ・フォークスを思い出す日だよ。"
+   "ja": "11月5日は花火とたき火の夜。1605年に議事堂をばくはしようとしたガイ・フォークスを思い出す日だよ。"
   },
   "fact": {
    "en": "Children say a rhyme: 'Remember, remember, the fifth of November!' Many eat toffee apples and sparklers glow in the dark.",
@@ -2065,7 +2065,7 @@
   "quiz": {
    "q": {
     "en": "Whose plot do people remember?",
-    "ja": "人びとが思い出す事件の人物は？"
+    "ja": "人びとが思い出すじけんの人物は？"
    },
    "options": [
     {
@@ -2101,11 +2101,11 @@
   "emoji": "🏴",
   "title": {
    "en": "St Andrew's Day",
-   "ja": "聖アンドリューの日"
+   "ja": "セント・アンドリューの日"
   },
   "why": {
    "en": "30th November is the national day of Scotland, named after St Andrew. The Scottish flag is a white X on blue.",
-   "ja": "11月30日はスコットランドの記念日。聖アンドリューにちなむよ。スコットランドの旗は、青地に白いXの形。"
+   "ja": "11月30日はスコットランドの記念日。セント・アンドリューにちなむよ。スコットランドの旗は、青地に白いXの形。"
   },
   "fact": {
    "en": "The white X is called a saltire. People celebrate with music, dancing and food.",
@@ -2160,11 +2160,11 @@
   },
   "why": {
    "en": "Every November the BBC holds a big TV night to raise money for children who need help. Pudsey Bear is its yellow mascot.",
-   "ja": "毎年11月、BBCは助けが必要な子どもたちのために寄付を集める大きなテレビ番組を放送するよ。黄色のクマ「パッジー」がマスコット。"
+   "ja": "毎年11月、BBCは助けが必要な子どもたちのためにきふを集める大きなテレビ番組を放送するよ。黄色のクマ「パッジー」がマスコット。"
   },
   "fact": {
    "en": "People do silly challenges, wear spotty clothes and bake cakes to raise money. It has raised over £1 billion since 1980.",
-   "ja": "水玉の服を着たり、ケーキを焼いたりして募金するよ。1980年からの寄付は10億ポンドをこえたんだ。"
+   "ja": "水玉の服を着たり、ケーキを焼いたりしてぼきんするよ。1980年からのきふは10億ポンドをこえたんだ。"
   },
   "quiz": {
    "q": {
@@ -2241,7 +2241,7 @@
   },
   "effect": {
    "en": "Merry Christmas! Every player gets a free card.",
-   "ja": "メリー・クリスマス！みんなカードを1枚もらえる。"
+   "ja": "メリー・クリスマス！みんなカードを1まいもらえる。"
   },
   "fx": {
    "t": "card"
@@ -2258,7 +2258,7 @@
     },
     "text": {
      "en": "The day after Christmas, 26th December, is Boxing Day. Long ago, people gave boxes of gifts to the poor and to servants. Today families go for walks, watch football, and hunt for bargains in the sales.",
-     "ja": "クリスマスの次の日、12月26日がボクシング・デー。昔は、貧しい人やお手伝いさんに贈りものの箱をわたした日。いまは家族で散歩したり、サッカーを見たり、セールで買い物をしたりするよ。"
+     "ja": "クリスマスの次の日、12月26日がボクシング・デー。昔は、まずしい人やお手伝いさんにおくりものの箱をわたした日。いまは家族で散歩したり、サッカーを見たり、セールで買い物をしたりするよ。"
     }
    },
    {
@@ -2271,7 +2271,7 @@
     },
     "text": {
      "en": "At Christmas, theatres put on pantomimes, or 'panto': funny family shows of fairy tales like Cinderella. The hero is often played by a woman, and the 'Dame' by a man. Everyone shouts, 'He's behind you!' and 'Oh no it isn't!'",
-     "ja": "クリスマスには、劇場で「パントマイム（パント）」というおもしろい家族向けの劇をやるよ。シンデレラなどの童話が多くて、主人公を女性が、おばさん役を男性が演じたりする。みんなで「うしろにいるよ！」と大声をかけるんだ。"
+     "ja": "クリスマスには、げきじょうで「パントマイム（パント）」というおもしろい家族向けのげきをやるよ。シンデレラなどの童話が多くて、主人公をじょせいが、おばさん役をだんせいがえんじたりする。みんなで「うしろにいるよ！」と大声をかけるんだ。"
     }
    },
    {

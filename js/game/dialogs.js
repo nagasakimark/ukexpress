@@ -14,6 +14,7 @@ import { priceOf, assets, monopolyOwner, payoutYear } from '../core/rules.js';
 import { realMonth, daysInMonth, firstWeekday, eventDate, dateText, MONTH_NAMES, WEEKDAYS } from '../core/calendar.js';
 import { drawPortrait } from './mapart.js';
 import { drawPic, drawPicWhole, drawPhotoCircle, PhotoBrowser } from './images.js';
+import { LAY } from './layout.js';
 export const CAT_EMOJI = { food: '🍽️', tourism: '📷', industry: '⚙️', culture: '🎭', sport: '⚽' };
 export const CAT_NAME = { food: t2('Food', '食べ物'), tourism: t2('Tourism', '観光'), industry: t2('Industry', '工業'), culture: t2('Culture', '文化'), sport: t2('Sport', 'スポーツ') };
 const SUB_RATIO = 0.64;
@@ -100,7 +101,7 @@ export class ImageViewer extends PModal {
     }
     drawBody(ctx) {
         ctx.fillStyle = '#11151a';
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.vl, 0, LAY.vr - LAY.vl, 720);
         const multi = (this.photos?.count() ?? 0) > 1;
         this.prevBtn.hidden = this.nextBtn.hidden = !multi;
         if (!multi && this.focus > 0)
@@ -111,75 +112,111 @@ export class ImageViewer extends PModal {
         text(ctx, lbl(this.caption), 640, 40, { size: 30, color: '#fff', align: 'center', maxWidth: 1100 });
     }
 }
-const BODY_SIZE = 26;
-const MAX_BODY_H = 380;
+const BODY_SIZE = 22;
+const MAX_BODY_H = 150;
+const BIG_BODY_SIZE = 26;
+const BIG_MAX_BODY_H = 380;
+/**
+ * The message box. Normally a see-through bar at the bottom of the map (one tap carries on, like the
+ * Momotetsu text window); tutorial pages with pictures (pageArt) use a large centred panel.
+ */
 export class MessageModal extends PModal {
     constructor(o) {
         super();
         this.o = o;
-        this.w = 860;
-        this.h = 300;
-        this.x = 0;
+        this.w = 872;
+        this.h = 200;
+        this.x = 24;
         this.y = 0;
         this.pages = [];
         this.page = 0;
         this.size = BODY_SIZE;
         /** Where the photo was drawn (for tap-to-enlarge); null when there is no photo. */
         this.photoRect = null;
+        this.big = !!o.pageArt;
         const ctx = app.screen.ctx;
+        const maxH = this.big ? BIG_MAX_BODY_H : MAX_BODY_H;
+        this.size = this.big ? BIG_BODY_SIZE : BODY_SIZE;
+        if (this.big)
+            this.w = 860;
         const tw = this.textW();
         const body = o.body ?? [];
-        const extra = o.money !== undefined ? 70 : 0;
-        const pageH = (pg) => pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + 14, 0);
-        // Split the body into pages that fit; one very long paragraph shrinks a little instead.
+        const pageH = (pg) => pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + 8, 0);
         if (o.pageArt)
             this.pages = body.map((b) => [b]);
         else {
             let cur = [];
             for (const b of body) {
-                if (cur.length && pageH([...cur, b]) + extra > MAX_BODY_H) {
+                if (cur.length && pageH([...cur, b]) > maxH) {
                     this.pages.push(cur);
                     cur = [];
                 }
                 cur.push(b);
             }
             this.pages.push(cur);
-            while (this.size > 18 && this.pages.some((pg) => pageH(pg) + extra > MAX_BODY_H))
+            while (this.size > 16 && this.pages.some((pg) => pageH(pg) > maxH))
                 this.size -= 1;
         }
         if (!this.pages.length)
             this.pages = [[]];
-        let maxH = 0;
+        let mh = 0;
         for (const pg of this.pages)
-            maxH = Math.max(maxH, pageH(pg));
-        maxH += extra;
-        const artH = this.hasArt() ? (o.photo ? 260 : 220) : 0;
-        this.h = Math.min(640, Math.max(250, 96 + Math.max(maxH, artH) + 116));
-        this.x = 640 - this.w / 2;
-        this.y = 360 - this.h / 2;
+            mh = Math.max(mh, pageH(pg));
+        if (this.big) {
+            this.h = Math.min(640, Math.max(250, 96 + Math.max(mh, this.hasArt() ? (this.o.photo ? 260 : 220) : 0) + 116));
+            this.x = 640 - this.w / 2;
+            this.y = 360 - this.h / 2;
+        }
+        else {
+            this.dim = 0;
+            this.h = Math.max(this.hasArt() ? (this.o.photo ? 150 : 132) : 112, 50 + mh + (this.multi() ? 66 : 14));
+            this.y = LAY.mapBot - 12 - this.h;
+        }
         this.buildButtons();
         if (o.confetti)
-            setTimeout(() => fx.burst(640, 200, 'confetti', 60, { speed: 9, up: 6 }), 120);
+            setTimeout(() => fx.burst(this.x + this.w / 2, 200, 'confetti', 60, { speed: 9, up: 6 }), 120);
     }
+    multi() { return (this.o.buttons?.length ?? 0) > 1; }
     hasArt() { return !!(this.o.portrait || this.o.icon || this.o.iconDraw || this.o.pageArt || this.o.photo); }
-    textW() { return this.w - 80 - (this.hasArt() ? 210 : 0); }
+    textW() { return this.w - (this.big ? 80 : 56) - (this.hasArt() ? (this.big ? 210 : 112) : 0) - (!this.big && this.o.money !== undefined ? 150 : 0); }
     lastPage() { return this.page >= this.pages.length - 1; }
     nextPage() { this.page++; audio.play('card'); this.buildButtons(); }
     buildButtons() {
         this.buttons = [];
-        const by = this.y + this.h - 88;
-        if (!this.lastPage()) {
-            this.buttons.push(new Button({ x: 640 - 140, y: by, w: 280, h: 66, label: lbl(UI.next) + ' ▶', sub: sub(UI.next), color: C.green, onClick: () => this.nextPage() }));
-            this.onBack = () => this.nextPage();
+        if (this.big) {
+            const by = this.y + this.h - 88;
+            if (!this.lastPage()) {
+                this.buttons.push(new Button({ x: 640 - 140, y: by, w: 280, h: 66, label: lbl(UI.next) + ' ▶', sub: sub(UI.next), color: C.green, onClick: () => this.nextPage() }));
+                this.onBack = () => this.nextPage();
+            }
+            else {
+                const btns = this.o.buttons ?? [{ label: UI.ok, value: true }];
+                const bw = Math.min(290, (this.w - 80) / btns.length - 20);
+                const total = btns.length * bw + (btns.length - 1) * 24;
+                btns.forEach((b, i) => this.buttons.push(new Button({ x: 640 - total / 2 + i * (bw + 24), y: by, w: bw, h: 66, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
+                this.onBack = btns.length === 1 ? () => this.resolveWith(btns[0].value) : null;
+            }
+            this.focus = 0;
+            return;
+        }
+        if (this.lastPage() && this.multi()) {
+            const btns = this.o.buttons;
+            const bw = Math.min(250, (this.w - 48) / btns.length - 14);
+            const total = btns.length * bw + (btns.length - 1) * 14;
+            btns.forEach((b, i) => this.buttons.push(new Button({ x: this.x + this.w - 24 - total + i * (bw + 14), y: this.y + this.h - 62, w: bw, h: 50, size: 20, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
+            this.onBack = null;
+            this.focus = 0;
         }
         else {
-            const btns = this.o.buttons ?? [{ label: UI.ok, value: true }];
-            const bw = Math.min(290, (this.w - 80) / btns.length - 20);
-            const total = btns.length * bw + (btns.length - 1) * 24;
-            btns.forEach((b, i) => this.buttons.push(new Button({ x: 640 - total / 2 + i * (bw + 24), y: by, w: bw, h: 66, label: lbl(b.label), sub: sub(b.label), color: b.color ?? C.green, onClick: () => this.resolveWith(b.value) })));
-            this.onBack = btns.length === 1 ? () => this.resolveWith(btns[0].value) : null;
+            this.onBack = () => this.advance();
+            this.focus = -1;
         }
-        this.focus = 0;
+    }
+    advance() {
+        if (!this.lastPage())
+            this.nextPage();
+        else if (!this.multi())
+            this.resolveWith((this.o.buttons ?? [{ value: true }])[0].value);
     }
     autoValue() {
         if (!this.lastPage()) {
@@ -188,50 +225,145 @@ export class MessageModal extends PModal {
         }
         return (this.o.buttons ?? [{ value: true }])[0].value;
     }
-    tapOutside() {
+    tapOutside() { if (this.big) {
         if (!this.lastPage())
             this.nextPage();
         else if ((this.o.buttons ?? []).length <= 1)
             this.resolveWith((this.o.buttons ?? [{ value: true }])[0].value);
     }
+    else
+        this.advance(); }
+    pointerUp(x, y, wasDrag) {
+        if (this.closing || wasDrag)
+            return true;
+        if (this.o.photo && this.photoRect) {
+            const r = this.photoRect;
+            if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
+                const ph = this.o.photo;
+                app.show(new ImageViewer(ph, this.o.title, new PhotoBrowser(ph.kind, ph.name)));
+                return true;
+            }
+        }
+        for (const b of this.buttons)
+            if (b.hit(x, y)) {
+                b.click();
+                return true;
+            }
+        if (!this.big)
+            this.advance();
+        return true;
+    }
+    draw(ctx) {
+        if (this.big) {
+            super.draw(ctx);
+            return;
+        }
+        const a = Math.max(0, Math.min(1, this.appear));
+        ctx.save();
+        ctx.globalAlpha = Math.min(1, a * 1.6);
+        ctx.translate(0, (1 - a) * 40);
+        this.drawBody(ctx);
+        for (let i = 0; i < this.buttons.length; i++)
+            this.buttons[i].draw(ctx, i === this.focus && !!window.__kbd);
+        ctx.restore();
+    }
     drawBody(ctx) {
         const { x, y, w, h, o } = this;
-        panel(ctx, x, y, w, h);
-        header(ctx, o.title, x, y, w, o.color ?? C.green);
-        let tx = x + 40;
-        const areaTop = y + 82, areaBot = y + h - (this.pages.length > 1 ? 124 : 100);
+        const col = o.color ?? C.green;
+        if (this.big) {
+            panel(ctx, x, y, w, h);
+            header(ctx, o.title, x, y, w, col);
+        }
+        else {
+            ctx.fillStyle = 'rgba(0,0,0,0.28)';
+            roundRect(ctx, x + 3, y + 6, w, h, 20);
+            ctx.fill();
+            ctx.fillStyle = 'rgba(255,250,238,0.93)';
+            roundRect(ctx, x, y, w, h, 20);
+            ctx.fill();
+            ctx.strokeStyle = col;
+            ctx.lineWidth = 5;
+            roundRect(ctx, x + 2.5, y + 2.5, w - 5, h - 5, 18);
+            ctx.stroke();
+            const tl = lines(o.title);
+            ctx.font = `800 20px ${FONT}`;
+            const tw = Math.min(w - 120, ctx.measureText(tl.main).width + (tl.sub ? 0 : 0) + 36);
+            ctx.fillStyle = col;
+            roundRect(ctx, x + 18, y - 17, tw, 36, 18);
+            ctx.fill();
+            text(ctx, tl.main, x + 18 + tw / 2, y + 1, { size: 20, color: '#fff', align: 'center', maxWidth: tw - 20 });
+        }
+        let tx = x + (this.big ? 40 : 28);
+        const areaTop = y + (this.big ? 82 : 26), areaBot = y + h - (this.big ? (this.pages.length > 1 ? 124 : 100) : (this.multi() && this.lastPage() ? 70 : 28));
         if (this.hasArt()) {
-            const py = (areaTop + areaBot) / 2 - (o.badge ? 12 : 0);
+            const ax = this.big ? x + 120 : x + 62;
+            const py = this.big ? (areaTop + areaBot) / 2 - (o.badge ? 12 : 0) : y + h / 2 + (this.multi() && this.lastPage() ? -22 : 0);
             const art = o.pageArt?.[this.page];
             this.photoRect = null;
             if (art)
-                art(ctx, x + 120, py);
-            else if (o.iconDraw)
-                o.iconDraw(ctx, x + 120, py);
-            else if (o.photo)
-                this.drawPhoto(ctx, x, py);
+                art(ctx, ax, py);
+            else if (o.iconDraw) {
+                // cards are drawn for the big window; in the small text box they are scaled down to sit inside it
+                if (this.big)
+                    o.iconDraw(ctx, ax, py);
+                else {
+                    const k = Math.min(0.8, (h - 34) / 128), cy = py + 6;
+                    ctx.save();
+                    ctx.translate(ax, cy);
+                    ctx.scale(k, k);
+                    o.iconDraw(ctx, 0, 0);
+                    ctx.restore();
+                }
+            }
+            else if (o.photo) {
+                if (this.big)
+                    this.drawPhoto(ctx, ax - 120, py);
+                else {
+                    const k = 0.6, cy = py + 6;
+                    ctx.save();
+                    ctx.translate(ax, cy);
+                    ctx.scale(k, k);
+                    this.drawPhoto(ctx, -120, 0);
+                    ctx.restore();
+                    const r = this.photoRect;
+                    if (r)
+                        this.photoRect = { x: ax + r.x * k, y: cy + r.y * k, w: r.w * k, h: r.h * k };
+                }
+            }
             else if (o.portrait)
-                drawPortrait(ctx, o.portrait, x + 120, py, 68, o.portraitRing);
+                drawPortrait(ctx, o.portrait, ax, py, this.big ? 68 : 44, o.portraitRing);
             else
-                emoji(ctx, o.icon, x + 120, py, 96);
+                emoji(ctx, o.icon, ax, py, this.big ? 96 : 62);
             if (o.badge)
-                text(ctx, o.badge, x + 120, py + 92, { size: 17, align: 'center', color: '#5a5a50', maxWidth: 190 });
-            tx = x + 230;
+                text(ctx, o.badge, ax, py + (this.big ? 92 : 50), { size: 14, align: 'center', color: '#5a5a50', maxWidth: this.big ? 190 : 100 });
+            tx = x + (this.big ? 230 : 118);
         }
         const pg = this.pages[this.page] ?? [];
-        const contentH = pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, this.textW()) + 14, 0) - 14 + (this.lastPage() && o.money !== undefined ? 70 : 0);
-        let cy = areaTop + Math.max(8, (areaBot - areaTop - contentH) / 2);
+        const tw = this.textW();
+        const gap = this.big ? 14 : 8;
+        const contentH = pg.reduce((a, b) => a + dualHeight(ctx, b, this.size, tw) + gap, 0) - gap;
+        let cy = areaTop + Math.max(6, (areaBot - areaTop - contentH) / 2);
         for (const b of pg)
-            cy = dual(ctx, b, tx, cy, this.size, this.textW()) + 14;
+            cy = dual(ctx, b, tx, cy, this.size, tw) + gap;
         if (o.money !== undefined && this.lastPage()) {
             const m = o.money;
-            text(ctx, (m > 0 ? '+' : '') + money(m), tx + this.textW() / 2, cy + 24, { size: 48, color: m >= 0 ? C.gold : C.red, align: 'center', outline: 8 });
+            text(ctx, (m > 0 ? '+' : '') + money(m), this.big ? tx + tw / 2 : x + w - 88, this.big ? cy + 24 : y + h / 2 - 8, { size: this.big ? 48 : 36, color: m >= 0 ? '#c8921a' : C.red, align: 'center', outline: 7, outlineColor: m >= 0 ? '#fff6d0' : '#ffe0e0', maxWidth: 160 });
+        }
+        if (!this.big && !(this.multi() && this.lastPage())) {
+            const bob = Math.sin(clock.realTime / 180) * 4;
+            ctx.fillStyle = col;
+            ctx.beginPath();
+            ctx.moveTo(x + w - 40, y + h - 30 + bob);
+            ctx.lineTo(x + w - 20, y + h - 30 + bob);
+            ctx.lineTo(x + w - 30, y + h - 17 + bob);
+            ctx.closePath();
+            ctx.fill();
         }
         if (this.pages.length > 1) {
             for (let i = 0; i < this.pages.length; i++) {
-                ctx.fillStyle = i === this.page ? C.green : '#cfc4a3';
+                ctx.fillStyle = i === this.page ? col : '#cfc4a3';
                 ctx.beginPath();
-                ctx.arc(640 + (i - (this.pages.length - 1) / 2) * 22, y + h - 112, 6, 0, 7);
+                ctx.arc(this.big ? 640 + (i - (this.pages.length - 1) / 2) * 22 : x + w - 70 - (this.pages.length - 1 - i) * 14, this.big ? y + h - 112 : y + h - 22, 5, 0, 7);
                 ctx.fill();
             }
         }
@@ -262,17 +394,6 @@ export class MessageModal extends PModal {
             ctx.fill();
             emoji(ctx, '🔍', r.x + r.w - 20, r.y + 22, 19);
         }
-    }
-    pointerUp(x, y, wasDrag) {
-        if (!wasDrag && this.o.photo && this.photoRect) {
-            const r = this.photoRect;
-            if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
-                const p = this.o.photo;
-                app.show(new ImageViewer(p, this.o.title, new PhotoBrowser(p.kind, p.name)));
-                return true;
-            }
-        }
-        return super.pointerUp(x, y, wasDrag);
     }
 }
 export function say(o) { return app.show(new MessageModal(o)); }
@@ -559,7 +680,7 @@ export class HandModal extends PModal {
         this.sel = 0;
         this.items = [];
         for (const id of p.cards)
-            this.items.push({ kind: 'card', id, usable: !PASSIVE.includes(id) && !(id === 'return' && !p.lastBuyStation) && !((id === 'rowan' || id === 'tea') && g.boggart.holder !== p.id) });
+            this.items.push({ kind: 'card', id, usable: !PASSIVE.includes(id) && !(id === 'return' && !p.lastBuyStation) });
         for (const id of p.heroes) {
             const hd = HERO_BY_ID[id];
             this.items.push({ kind: 'hero', id, usable: hd.power !== 'none' && p.heroUsedYear[id] !== g.year });
@@ -634,10 +755,10 @@ export class HandModal extends PModal {
         });
         const it = this.items[this.sel];
         if (it) {
-            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, payoutYear(this.g)) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローの殿堂に記録されたよ。'));
-            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Hold this card: it protects you by itself, once.', '持っているだけで1回守ってくれるよ。')
-                : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月に復活するよ。')
-                    : (it.id === 'rowan' || it.id === 'tea') && !it.usable ? t2('Use this when the Boggart is on your train.', 'ボガートがついているときに使おう。') : null;
+            const desc = it.kind === 'card' ? payoutT(CARD_BY_ID[it.id].desc, payoutYear(this.g)) : (HERO_BY_ID[it.id].powerDesc ?? t2('This hero has no power yet, but is in your Hall of Heroes.', 'このヒーローのパワーはまだないよ。ヒーローのでんどうに記録されたよ。'));
+            const note = it.kind === 'card' && PASSIVE.includes(it.id) ? t2('Keep this card: it works by itself.', '持っているだけでこうかがあるよ。')
+                : it.kind === 'hero' && this.p.heroUsedYear[it.id] === this.g.year ? t2('Used this year. It recharges in April.', '今年は使用ずみ。4月にふっかつするよ。')
+                    : null;
             const top = L[L.length - 1].y + L[L.length - 1].h + 18;
             ctx.fillStyle = 'rgba(255,255,255,0.6)';
             roundRect(ctx, 200, top, 880, 602 - top, 14);
@@ -656,10 +777,10 @@ export class ShopModal extends PModal {
         this.stationId = stationId;
         this.cart = new Set();
         this.train = null;
-        this.x = 120;
-        this.y = 24;
-        this.w = 1040;
-        this.h = 672;
+        this.x = 16;
+        this.y = 16;
+        this.w = 888;
+        this.h = 688;
         this.rows = [];
         this.trainBtn = null;
         this.rowH = 82;
@@ -680,7 +801,7 @@ export class ShopModal extends PModal {
             this.trainBtn = new Button({ x: this.x + this.w - 196, y: this.rowTop + st.props.length * this.rowH + (this.rowH - 58) / 2, w: 160, h: 58, label: lbl(UI.buy), sub: sub(UI.buy), color: '#1e5aa8', size: 24, onClick: () => this.toggleTrain(p.train + 1, next.price) });
             this.buttons.push(this.trainBtn);
         }
-        this.buttons.push(new Button({ x: 640 - 130, y: this.y + this.h - 84, w: 260, h: 64, label: lbl(UI.done), sub: sub(UI.done), color: C.green, onClick: () => this.resolveWith({ props: [...this.cart], train: this.train }) }));
+        this.buttons.push(new Button({ x: this.x + this.w / 2 - 130, y: this.y + this.h - 84, w: 260, h: 64, label: lbl(UI.done), sub: sub(UI.done), color: C.green, onClick: () => this.resolveWith({ props: [...this.cart], train: this.train }) }));
         this.onBack = () => this.resolveWith({ props: [...this.cart], train: this.train });
         // keyboard focus starts on the first thing you can actually buy, or on Done
         this.refresh();
@@ -752,7 +873,7 @@ export class ShopModal extends PModal {
         emoji(ctx, st.emoji, x + 58, y + 45, 50);
         const nl = lines(st.name);
         text(ctx, nl.main, x + 100, y + 36, { size: 32, color: '#fff', outline: 6, outlineColor: shade(col, -0.45), maxWidth: 520 });
-        text(ctx, (nl.sub ? nl.sub + '  ·  ' : '') + lbl(t2('Station shop', '駅の物件')), x + 100, y + 68, { size: 17, color: '#fff', weight: 500, maxWidth: 520 });
+        text(ctx, (nl.sub ? nl.sub + '  ·  ' : '') + lbl(t2('Station shop', '駅のぶっけん')), x + 100, y + 68, { size: 17, color: '#fff', weight: 500, maxWidth: 520 });
         ctx.fillStyle = 'rgba(0,0,0,0.25)';
         roundRect(ctx, x + w - 300, y + 18, 276, 54, 12);
         ctx.fill();
@@ -771,7 +892,7 @@ export class ShopModal extends PModal {
             if (pl.sub)
                 text(ctx, pl.sub, x + 100, ry + rh / 2 + 16, { size: 15, weight: 500, color: '#5a5a50', maxWidth: 440 });
             text(ctx, money(priceOf(this.g, pr)), x + 690, ry + rh / 2 - 10, { size: 26, align: 'right' });
-            text(ctx, `${lbl(t2('earns', '利益'))} ${Math.round(pr.ret * 100)}%`, x + 690, ry + rh / 2 + 16, { size: 15, align: 'right', weight: 500, color: '#2e7d32' });
+            text(ctx, `${lbl(t2('earns', 'りえき'))} ${Math.round(pr.ret * 100)}%`, x + 690, ry + rh / 2 + 16, { size: 15, align: 'right', weight: 500, color: '#2e7d32' });
             const owner = this.g.owners[pr.id];
             if (owner) {
                 const op = this.g.players.find((q) => q.id === owner);
@@ -794,9 +915,9 @@ export class ShopModal extends PModal {
             text(ctx, money(next.price), x + 690, ry + rh / 2, { size: 26, align: 'right' });
         }
         const tip = mono
-            ? `👑 ${lbl(t2('Monopoly', '独占'))}: ${lines(this.g.players.find((q) => q.id === mono).name).main}`
-            : '👑 ' + lbl(t2('Buy everything here for a Monopoly: profits double!', 'ぜんぶ買うと独占！利益が2倍！'));
-        text(ctx, tip, 640, y + h - 104, { size: 18, color: '#7a5a10', align: 'center', maxWidth: 900 });
+            ? `👑 ${lbl(t2('Monopoly', 'どくせん'))}: ${lines(this.g.players.find((q) => q.id === mono).name).main}`
+            : '👑 ' + lbl(t2('Buy everything here for a Monopoly: profits double!', 'ぜんぶ買うとどくせん！りえきが2倍！'));
+        text(ctx, tip, x + w / 2, y + h - 104, { size: 18, color: '#7a5a10', align: 'center', maxWidth: 900 });
     }
 }
 // ---------- Card shop ----------
@@ -856,8 +977,8 @@ export class SettlementModal extends PModal {
     autoValue() { return true; }
     drawBody(ctx) {
         panel(ctx, 110, 24, 1060, 676, { fill: '#f3ead2' });
-        header(ctx, t2(`End of Year ${this.g.year}: payday!`, `${this.g.year}年目の決算：利益の日！`), 110, 24, 1060, C.green);
-        text(ctx, lbl(t2('Every March, each property you own pays you money.', '毎年3月、持っている物件がお金をくれるよ。')), 640, 124, { size: 20, align: 'center', color: '#5a5a50', weight: 500 });
+        header(ctx, t2(`End of Year ${this.g.year}: payday!`, `${this.g.year}年目の決算：りえきの日！`), 110, 24, 1060, C.green);
+        text(ctx, lbl(t2('Every March, each property you own pays you money.', '毎年3月、持っているぶっけんがお金をくれるよ。')), 640, 124, { size: 20, align: 'center', color: '#5a5a50', weight: 500 });
         const rank = this.g.players.slice().sort((a, b) => assets(this.g, b) - assets(this.g, a));
         const maxA = Math.max(1, ...rank.map((p) => Math.max(1, assets(this.g, p))));
         rank.forEach((p, i) => {
@@ -883,7 +1004,7 @@ export class SettlementModal extends PModal {
             ctx.fill();
             text(ctx, money(a * this.t), 592 + Math.max(8, bw), y + 48, { size: 22 });
             if (L.sold.length)
-                text(ctx, lbl(t2('Sold property to pay debts', '借金のため物件を売却')), 580, y + 84, { size: 14, color: C.red, weight: 500 });
+                text(ctx, lbl(t2('Sold property to pay debts', '借金のためぶっけんをばいきゃく')), 580, y + 84, { size: 14, color: C.red, weight: 500 });
         });
     }
 }
@@ -1146,19 +1267,24 @@ export class Banner {
         this.done = true; }
     draw(ctx) {
         const k = this.t < 250 ? Ease.outBack(this.t / 250) : this.t > this.dur - 250 ? 1 - Ease.inOutQuad((this.t - (this.dur - 250)) / 250) : 1;
+        // the banner only crosses the map window, never the HUD or the Station guide
+        const L = LAY.mapL, R = LAY.mapR, W = R - L, cy = LAY.cy, cx = (L + R) / 2;
         ctx.save();
-        ctx.translate(-1280 + 1280 * k, 0);
+        ctx.beginPath();
+        ctx.rect(L, LAY.mapTop, W, LAY.mapBot - LAY.mapTop);
+        ctx.clip();
+        ctx.translate(-W + W * k, 0);
         ctx.fillStyle = 'rgba(0,0,0,0.3)';
-        ctx.fillRect(0, 312, 1280, 120);
+        ctx.fillRect(L, cy - 46, W, 112);
         ctx.fillStyle = this.color;
-        ctx.fillRect(0, 302, 1280, 112);
+        ctx.fillRect(L, cy - 54, W, 104);
         ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 302, 1280, 8);
-        emoji(ctx, this.icon, 250, 358, 76);
+        ctx.fillRect(L, cy - 54, W, 7);
+        emoji(ctx, this.icon, cx - Math.min(380, W / 2 - 70), cy - 2, 68);
         const l = lines(this.t2_);
-        text(ctx, l.main, 660, l.sub ? 344 : 358, { size: 50, color: '#fff', align: 'center', outline: 9, outlineColor: shade(this.color, -0.45), maxWidth: 760 });
+        text(ctx, l.main, cx + 30, l.sub ? cy - 14 : cy, { size: 44, color: '#fff', align: 'center', outline: 8, outlineColor: shade(this.color, -0.45), maxWidth: Math.min(700, W - 220) });
         if (l.sub)
-            text(ctx, l.sub, 660, 390, { size: 22, color: '#fff', align: 'center', weight: 500, maxWidth: 760 });
+            text(ctx, l.sub, cx + 30, cy + 28, { size: 20, color: '#fff', align: 'center', weight: 500, maxWidth: Math.min(700, W - 220) });
         ctx.restore();
     }
 }

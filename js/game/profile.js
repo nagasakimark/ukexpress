@@ -6,8 +6,10 @@ import { C, panel, text, emoji, roundRect } from '../engine/draw.js';
 import { audio } from '../engine/audio.js';
 import { app } from './app.js';
 import { lines, t2, UI } from './i18n.js';
-import { PModal, header, dual, dualHeight, ImageViewer, photoCounter } from './dialogs.js';
-import { drawPic, PhotoBrowser } from './images.js';
+import { PModal, header, dual, dualHeight, ImageViewer, photoCounter } from "./dialogs.js";
+import { drawPic, PhotoBrowser } from "./images.js";
+import { STATION_BY_ID } from "../core/content/stations.js";
+import { REGIONS } from "../core/content/game-data.js";
 const lbl = (t) => lines(t).main;
 const sub = (t) => lines(t).sub ?? undefined;
 /** Full-screen factfile with a picture on the left (tap the magnifier to see it big). */
@@ -107,5 +109,20 @@ export class PlaceModal extends PModal {
         text(ctx, '💡 ' + lbl(t2('Did you know?', 'しってた？')), x + 410, y + 112, { size: 20, color: '#8a7a60' });
         dual(ctx, this.fact, x + 410, y + 130 + Math.max(0, (240 - hgt) / 2), size, 450);
     }
+}
+/** The full factfile for a station (picture, region, facts, local team and famous things): "More" in the Station guide and the UK Book. */
+export function stationProfile(sid) {
+    const st = STATION_BY_ID[sid];
+    const reg = REGIONS[st.region];
+    const rows = [{ icon: '🗺️', label: t2('Where', 'どこ'), text: reg.name }];
+    st.facts.slice(0, 3).forEach((f, i) => rows.push({ icon: i === 0 ? '💡' : '✨', label: i === 0 ? t2('Did you know?', 'しってた？') : t2('Also', 'ほかにも'), text: f }));
+    if (st.team)
+        rows.push({ icon: '⚽', label: t2('Local team', 'ちほうの チーム'), text: st.team });
+    if (st.famous)
+        rows.push({ icon: '🛍️', label: t2('Famous for', 'ゆうめいな もの'), text: st.famous });
+    return app.show(new ProfileModal({
+        title: st.name, color: reg.color, badge: lines(reg.name).main, rows,
+        pic: { kind: 'places', name: st.image, emoji: st.emoji, label: st.name.en, color: reg.color }, button: t2('Close', 'とじる'),
+    }));
 }
 //# sourceMappingURL=profile.js.map

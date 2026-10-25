@@ -1,3 +1,4 @@
+import { LAY } from '../layout.js';
 // The whole-map view (Momotetsu's 全体マップ): a flat picture of the board painted once, with every
 // station, the destination and the players drawn on top. Cheap enough for any Chromebook.
 import { board } from '../../core/map.js';
@@ -26,15 +27,15 @@ export class Overview {
         this.canvas = c;
         this.season = ground.season;
     }
-    fit() { const g = board.grid; this.ppc = Math.min(1180 / g.w, 600 / g.h); this.x = g.w / 2 - 0.5; this.y = g.h / 2 - 0.5; }
+    fit() { const g = board.grid; this.ppc = Math.min((LAY.mapR - LAY.mapL - 24) / g.w, (LAY.mapBot - LAY.mapTop - 24) / g.h); this.x = g.w / 2 - 0.5; this.y = g.h / 2 - 0.5; }
     clamp() { const g = board.grid; this.x = Math.max(0, Math.min(g.w - 1, this.x)); this.y = Math.max(0, Math.min(g.h - 1, this.y)); this.ppc = Math.max(8, Math.min(60, this.ppc)); }
-    toScreen(x, y) { return { x: 640 + (x - this.x) * this.ppc, y: 392 + (y - this.y) * this.ppc }; }
-    toWorld(sx, sy) { return { x: this.x + (sx - 640) / this.ppc, y: this.y + (sy - 392) / this.ppc }; }
+    toScreen(x, y) { return { x: LAY.cx + (x - this.x) * this.ppc, y: LAY.cy + (y - this.y) * this.ppc }; }
+    toWorld(sx, sy) { return { x: this.x + (sx - LAY.cx) / this.ppc, y: this.y + (sy - LAY.cy) / this.ppc }; }
     draw(ctx, ground, destNode, players, tt) {
         if (!this.canvas || this.season !== ground.season)
             this.paint(ground);
         ctx.fillStyle = '#3fa3e8';
-        ctx.fillRect(0, 0, 1280, 720);
+        ctx.fillRect(LAY.mapL, 0, LAY.mapR - LAY.mapL, LAY.mapBot);
         const o = this.toScreen(-0.5, -0.5);
         const k = this.ppc / PPC;
         ctx.imageSmoothingEnabled = true;
@@ -48,7 +49,7 @@ export class Overview {
         });
         for (const [sid, s] of entries) {
             const p = this.toScreen(s.x, s.y);
-            if (p.x < -60 || p.x > 1340 || p.y < -30 || p.y > 750)
+            if (p.x < LAY.mapL - 60 || p.x > LAY.mapR + 60 || p.y < -30 || p.y > LAY.mapBot + 30)
                 continue;
             const st = STATION_BY_ID[sid];
             const r = Math.max(3.5, this.ppc * 0.28);

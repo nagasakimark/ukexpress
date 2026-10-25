@@ -64,8 +64,11 @@ export class Fx {
         }
         this.floaters.length = m;
     }
-    draw(ctx) {
+    /** layer 'world': only the train steam, drawn by the board under its HUD and dialogs. 'ui': everything else, on top. */
+    draw(ctx, layer = 'ui') {
         for (const p of this.parts) {
+            if ((p.kind === 'puff') !== (layer === 'world'))
+                continue;
             const a = 1 - p.life / p.max;
             ctx.save();
             ctx.globalAlpha = Math.max(0, a);
@@ -106,6 +109,8 @@ export class Fx {
             }
             ctx.restore();
         }
+        if (layer === 'world')
+            return;
         for (const f of this.floaters) {
             const a = f.life < 1000 ? 1 : 1 - (f.life - 1000) / 400;
             const pop = f.life < 150 ? 0.6 + 0.4 * (f.life / 150) * 1.2 : 1;

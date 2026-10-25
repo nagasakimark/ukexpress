@@ -29,3 +29,13 @@ assets/         pictures, sounds and pre-rendered board sprites
 server.mjs      tiny static web server (no dependencies)
 start.bat       double-click to play on Windows
 ```
+
+## What's new in v0.6
+
+- Japanese first, English small underneath. Japanese uses only kanji taught by the end of grade 4: check with `python3 tools/kanji_check.py`; `python3 tools/kanji_fix.py <files>` turns harder kanji into hiragana.
+- New screen: the map on the left, the Station guide on the right, every player's money and distance under the map. On a window wider than 16:9 the map and HUD spread out to fill it.
+- Mark Sensei's TV studio (chibi art), month picture cards, spinners for card squares, lucky squares and arrival bonuses, and a destination roulette.
+- A Station guide write-up for all 114 places (Durham is Mark Sensei's hometown and has St Cuthbert's story; King's Cross has Platform 9¾; Manchester has the first computer, the Suffragettes and more).
+- The turn banner only crosses the map; train steam stays on the map, under the HUD and dialogs; cards sit inside the message box.
+- Removed: the Boggart, the mean cards (Leaves on the Line, Queue, Richard Turpin, and the cards that only defended against them), the teacher menu, and in-game quizzes.
+  Heroes whose powers needed the Boggart or quizzes have new powers (including a new "draw a card" power).
