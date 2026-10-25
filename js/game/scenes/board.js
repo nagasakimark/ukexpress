@@ -42,6 +42,19 @@ export class BoardScene {
         this.builtExt = -1;
         this.downX = 0;
         this.downY = 0;
+        this.gDown = false;
+        /** While a message box is open the guide still works (read about, scroll and zoom the place the player - CPU or human - is at). */
+        this.guideFirst = {
+            pointerDown: (x, y) => { if (!guideHit(x, y))
+                return false; this.gDown = true; this.downX = x; this.downY = y; return true; },
+            pointerUp: (x, y, wasDrag) => { if (!this.gDown)
+                return false; this.gDown = false; if (!wasDrag)
+                this.guideClick(x, y); return true; },
+            drag: (_dx, dy) => { if (!this.gDown)
+                return false; guideScroll(-dy); return true; },
+            zoom: (f, x, y) => { if (!guideHit(x, y))
+                return false; guideScroll(f > 1 ? -70 : 70); return true; },
+        };
         view.build();
         for (const p of g.players) {
             const n = board.nodes[p.pos];
@@ -288,15 +301,8 @@ export class BoardScene {
             this.junctionArrows().forEach((ar, i) => { if (Math.hypot(ar.x - x, ar.y - y) < 56 * ar.k)
                 this.juncSel = i; });
     }
-    pointerDown(x, y) { this.downX = x; this.downY = y; return true; }
-    pointerUp(x, y, wasDrag) {
-        if (wasDrag)
-            return true;
-        for (const b of this.activeButtons())
-            if (b.hit(x, y)) {
-                b.click();
-                return true;
-            }
+    /** A tap on the Station guide: flip photos, open the big photo / map / full page. True when the tap was on the guide. */
+    guideClick(x, y) {
         const gh = guideHit(x, y);
         if (gh === 'prev' || gh === 'next') {
             audio.play('click');
@@ -318,7 +324,19 @@ export class BoardScene {
             guideOpenPhoto();
             return true;
         }
-        if (gh)
+        return !!gh;
+    }
+    drawGuideLive(ctx) { const gs = this.guideStation(); drawGuide(ctx, gs.sid, gs.tag, clock.realTime, gs.who); }
+    pointerDown(x, y) { this.downX = x; this.downY = y; return true; }
+    pointerUp(x, y, wasDrag) {
+        if (wasDrag)
+            return true;
+        for (const b of this.activeButtons())
+            if (b.hit(x, y)) {
+                b.click();
+                return true;
+            }
+        if (this.guideClick(x, y))
             return true;
         if (this.mode === 'junction') {
             let best = -1, bd = 90;
@@ -613,7 +631,7 @@ export class BoardScene {
         const p = this.current;
         const sid = p ? board.nodes[p.pos].stationId : undefined;
         if (sid && this.mode !== 'map')
-            return { sid, tag: 'here' };
+            return { sid, tag: 'here', who: p && p.controller !== 'human' ? p.name : null };
         return { sid: g.destination, tag: 'dest' };
     }
     drawHud(ctx) {
@@ -629,7 +647,7 @@ export class BoardScene {
         drawTopBar(ctx, g, p, off);
         drawPlayerList(ctx, g, this.current);
         const gs = this.guideStation();
-        drawGuide(ctx, gs.sid, gs.tag, tt);
+        drawGuide(ctx, gs.sid, gs.tag, tt, gs.who);
         const kbd = !!window.__kbd;
         if (this.mode === 'command')
             this.commandButtons.forEach((b, i) => b.draw(ctx, kbd && i === this.focus));

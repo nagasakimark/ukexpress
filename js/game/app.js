@@ -41,7 +41,7 @@ class App {
     route() {
         const top = this.modals[this.modals.length - 1];
         if (top)
-            return [top];
+            return top.guideOk && this.scene?.guideFirst ? [this.scene.guideFirst, top] : [top];
         return this.scene ? [this.scene] : [];
     }
     go(scene) {
@@ -104,6 +104,9 @@ class App {
             o.draw(ctx);
         for (const m of this.modals)
             m.draw(ctx);
+        const topM = this.modals[this.modals.length - 1];
+        if (topM && topM.guideOk && this.scene?.drawGuideLive)
+            this.scene.drawGuideLive(ctx);
         fx.draw(ctx);
         this.screen.end();
         requestAnimationFrame((tt) => this.frame(tt));

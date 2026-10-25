@@ -215,7 +215,7 @@ function guideItems(sid) {
     return items;
 }
 const gcache = { key: '', cv: null, total: 0, s: 0, more: 0 };
-export function drawGuide(ctx, sid, tag, tt) {
+export function drawGuide(ctx, sid, tag, tt, who) {
     const st = STATION_BY_ID[sid];
     const x = LAY.panelX, y = 8, w = LAY.panelW, h = 548;
     const reg = REGIONS[st.region];
@@ -235,14 +235,14 @@ export function drawGuide(ctx, sid, tag, tt) {
     const phX = x + 12, phY = y + 50, phW = w - 24, phH = 172;
     const bx = x + 10, bw = w - 26, by = phY + phH + 6 + LH * 0.56 + 4, bh = y + h - 8 - by;
     // 1. the still parts of the panel (frame, tag, name, region) are painted once and copied
-    blitCache(ctx, 'guide', `${sid}|${tag}|${lang.mode}|${x}`, x - 6, y - 6, w + 12, h + 14, (c) => {
+    blitCache(ctx, 'guide', `${sid}|${tag}|${who ? who.en : ''}|${lang.mode}|${x}`, x - 6, y - 6, w + 12, h + 14, (c) => {
         panel(c, x, y, w, h, { fill: '#fffaf0' });
         const tg = TAGS[tag];
         c.fillStyle = tg.color;
         roundRect(c, x + 6, y + 6, w - 12, 36, 10);
         c.fill();
         emoji(c, tg.icon, x + 28, y + 24, 22);
-        text(c, main(tg.t), x + 50, y + 24, { size: 19, color: '#fff' });
+        text(c, who && tag === 'here' ? main(t2(`${who.en} is here`, `${who.ja}の いるところ`)) : main(tg.t), x + 50, y + 24, { size: 19, color: '#fff', maxWidth: w - 150 });
         text(c, main(t2('Station guide', 'えきガイド')), x + w - 16, y + 24, { size: 14, color: '#fff3c4', align: 'right', weight: 600 });
         const ls0 = 0.56, lw0 = LW * ls0;
         const nw = w - 36 - lw0 - 6;

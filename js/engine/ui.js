@@ -157,6 +157,8 @@ export class Modal {
         this.closing = false;
         this.done = false;
         this.dim = 0.45;
+        /** The board's Station guide stays live and tappable while this dialog is open (message boxes). */
+        this.guideOk = false;
         this.onBack = null;
     }
     open() {

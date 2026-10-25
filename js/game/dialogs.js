@@ -133,6 +133,7 @@ export class MessageModal extends PModal {
         this.size = BODY_SIZE;
         /** Where the photo was drawn (for tap-to-enlarge); null when there is no photo. */
         this.photoRect = null;
+        this.guideOk = true;
         this.big = !!o.pageArt;
         const ctx = app.screen.ctx;
         const maxH = this.big ? BIG_MAX_BODY_H : MAX_BODY_H;
@@ -249,7 +250,8 @@ export class MessageModal extends PModal {
                 b.click();
                 return true;
             }
-        if (!this.big)
+        // only a tap on the game screen moves the message on (the side panel is for reading, and handled before we get here)
+        if (!this.big && x < LAY.panelX - 4)
             this.advance();
         return true;
     }
