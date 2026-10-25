@@ -202,7 +202,8 @@ function jobs() {
         const tag = (b > 0 ? 'p' : 'm') + Math.abs(b), da = b * LEAN_STEP;
         for (const [d, a] of [['s', 0], ['n', Math.PI]])
             C.players.forEach((col, i) => {
-                out.push({ name: `train/0/${i}/${d}/${tag}`, make: () => engine(0, a + da, col), ppu: 2.6 });
+                for (let t = 0; t < 6; t++)
+                    out.push({ name: `train/${t}/${i}/${d}/${tag}`, make: () => engine(t, a + da, col), ppu: 2.6 });
                 out.push({ name: `car/${i}/${d}/${tag}`, make: () => carriage(col, a + da), ppu: 2.6 });
             });
     }
