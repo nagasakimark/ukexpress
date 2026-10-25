@@ -9,6 +9,8 @@ import { drawPic, PhotoBrowser } from './images.js';
 import { ImageViewer } from './dialogs.js';
 import { app } from './app.js';
 import { LAY } from './layout.js';
+import { stationProfile } from './profile.js';
+import { showUkMap } from './ukmap.js';
 const GREEN = '#174a2f';
 /** Redrawn at most about five times a second (or at once when the language, window or player changes). */
 const stamp = () => Math.floor(performance.now() / 200);
@@ -163,7 +165,7 @@ const TAGS = {
 const gs = {
     sid: '', scroll: 0, target: 0, max: 0, photos: null, lastStep: 0,
     photo: { x: 0, y: 0, w: 0, h: 0 }, prev: { x: 0, y: 0, w: 0, h: 0 }, next: { x: 0, y: 0, w: 0, h: 0 },
-    body: { x: 0, y: 0, w: 0, h: 0 },
+    body: { x: 0, y: 0, w: 0, h: 0 }, map: { x: 0, y: 0, w: 0, h: 0 }, more: { x: 0, y: 0, w: 0, h: 0 },
 };
 const inR = (r, x, y) => x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h;
 /** What a tap at (x, y) hits in the guide panel. */
@@ -178,12 +180,20 @@ export function guideHit(x, y) {
     }
     if (inR(gs.photo, x, y))
         return 'photo';
+    if (inR(gs.map, x, y))
+        return 'map';
+    if (gs.more.w && inR(gs.more, x, y) && inR(gs.body, x, y))
+        return 'more';
     if (inR(gs.body, x, y))
         return 'body';
     return 'panel';
 }
 export function guideScroll(dy) { gs.target = Math.max(0, Math.min(gs.max, gs.target + dy)); }
 export function guideStep(d) { gs.photos?.step(d); gs.lastStep = performance.now(); }
+export function guideOpenMore() { if (gs.sid)
+    stationProfile(gs.sid); }
+export function guideOpenMap() { if (gs.sid)
+    showUkMap(gs.sid); }
 /** Opens the current photo full screen (with the other photos of the place). */
 export function guideOpenPhoto() {
     const st = STATION_BY_ID[gs.sid];
@@ -204,7 +214,7 @@ function guideItems(sid) {
         items.push({ icon: '⚽', title: t2('Local team', 'ちいきの チーム'), text: st.team });
     return items;
 }
-const gcache = { key: '', cv: null, total: 0, s: 0 };
+const gcache = { key: '', cv: null, total: 0, s: 0, more: 0 };
 export function drawGuide(ctx, sid, tag, tt) {
     const st = STATION_BY_ID[sid];
     const x = LAY.panelX, y = 8, w = LAY.panelW, h = 548;
@@ -284,6 +294,12 @@ export function drawGuide(ctx, sid, tag, tt) {
     const ls = 0.56, lw = LW * ls, lh = LH * ls;
     const lx = x + w - 12 - lw, ly = phY + phH + 6;
     ctx.drawImage(lm, lx, ly, lw, lh);
+    gs.map = { x: lx, y: ly, w: lw, h: lh };
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.beginPath();
+    ctx.arc(lx + lw - 11, ly + lh - 11, 10, 0, 7);
+    ctx.fill();
+    emoji(ctx, '🔍', lx + lw - 11, ly + lh - 11, 12);
     const s = board.grid.stations[sid];
     if (s) {
         const px = lx + (lm.ox + (s.x + 0.5) * lm.sc) * ls, py = ly + (lm.oy + (s.y + 0.5) * lm.sc) * ls;
@@ -308,7 +324,7 @@ export function drawGuide(ctx, sid, tag, tt) {
         const tw = bw - 40;
         const its = guideItems(sid);
         const hs = its.map((it) => 40 + dualHeight(ctx, it.text, 15, tw) + 10);
-        const total = 8 + hs.reduce((a, q) => a + q + 8, 0);
+        const total = 8 + hs.reduce((a, q) => a + q + 8, 0) + 64;
         const cv = gcache.cv ?? (gcache.cv = document.createElement('canvas'));
         cv.width = Math.ceil((bw + 12) * sc);
         cv.height = Math.ceil(total * sc);
@@ -333,6 +349,17 @@ export function drawGuide(ctx, sid, tag, tt) {
             dual(c, it.text, 20, cy + 38, 15, tw);
             cy += ch + 8;
         });
+        // a big button at the very end: the full fact file
+        c.fillStyle = reg.color;
+        roundRect(c, 10, cy + 6, bw - 22, 50, 25);
+        c.fill();
+        c.strokeStyle = '#fff';
+        c.lineWidth = 2.5;
+        roundRect(c, 14, cy + 10, bw - 30, 42, 21);
+        c.stroke();
+        emoji(c, '📖', 44, cy + 31, 22);
+        text(c, lines(t2('See more', 'もっと みる')).main, (bw - 2) / 2 + 12, cy + 31, { size: 21, color: '#fff', align: 'center' });
+        gcache.more = cy + 6;
         gcache.key = ck;
         gcache.total = total;
     }
@@ -342,6 +369,8 @@ export function drawGuide(ctx, sid, tag, tt) {
     if (gs.target > gs.max)
         gs.target = gs.max;
     const vh = Math.min(bh, total - gs.scroll);
+    const my0 = by + gcache.more - gs.scroll;
+    gs.more = my0 > by - 10 && my0 + 50 < by + bh + 4 ? { x: bx + 10, y: my0, w: bw - 22, h: 50 } : { x: 0, y: 0, w: 0, h: 0 };
     if (vh > 0)
         ctx.drawImage(gcache.cv, 0, gs.scroll * sc, (bw + 12) * sc, vh * sc, bx, by, bw + 12, vh);
     if (gs.max > 0) {

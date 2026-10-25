@@ -181,7 +181,7 @@ export class TitleScene {
                 if (isDryLand(c[0], c[1]))
                     cm.set(c[0] + ',' + c[1], c[2]);
             const D = [[1, 0, 2], [-1, 0, 1], [0, 1, 8], [0, -1, 4]];
-            const exits = (x, y) => D.filter(([dx, dy, bit]) => (cm.get(x + ',' + y) & bit) && cm.has((x + dx) + ',' + (y + dy)));
+            const exits = (x, y) => D.filter(([dx, dy, bit]) => (cm.get(x + ',' + y) & bit) && ((cm.get((x + dx) + ',' + (y + dy)) ?? 0) & (bit === 1 ? 2 : bit === 2 ? 1 : bit === 4 ? 8 : 4)));
             let best = [], bestScore = -1, seed = 11;
             const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
             const keys = [...cm.keys()];

@@ -307,43 +307,34 @@ class MonthCard extends PModal {
         this.resolveWith(undefined); }
     drawBody(ctx) {
         const k = Ease.outBack(Math.min(1, this.age / 520));
-        const cx = LAY.cx, cy = 352;
-        // the picture on top, the words on their own strip underneath, so nothing covers the art
-        const iw = 560, ih = 420, band = 92, pad = 12;
-        const w = iw + pad * 2, h = ih + band + pad * 2;
+        const cx = LAY.cx, cy = 340;
+        // the sticker-style picture floats free (no frame), lifted off the background by a soft drop shadow
+        const pic = getPic('months', MONTH_FILES[this.m]);
+        const iw = 520;
+        const ih = pic && pic.naturalWidth ? iw * pic.naturalHeight / pic.naturalWidth : 440;
+        const hello = lines(MONTH_HELLO[this.m]);
+        const textH = 96, h = ih + textH, w = iw;
         ctx.save();
         ctx.translate(cx, cy + (1 - Math.min(1, this.age / 400)) * 400);
         ctx.rotate((1 - k) * -0.25 + Math.sin(this.age / 700) * 0.01);
         ctx.scale(0.4 + 0.6 * k, 0.4 + 0.6 * k);
         const x = -w / 2, y = -h / 2;
-        ctx.fillStyle = 'rgba(0,0,0,0.3)';
-        roundRect(ctx, x + 8, y + 14, w, h, 30);
-        ctx.fill();
-        ctx.fillStyle = '#fffdf6';
-        roundRect(ctx, x, y, w, h, 30);
-        ctx.fill();
-        ctx.strokeStyle = '#e0457b';
-        ctx.lineWidth = 6;
-        roundRect(ctx, x + 3, y + 3, w - 6, h - 6, 28);
-        ctx.stroke();
-        drawPic(ctx, 'months', MONTH_FILES[this.m], x + pad, y + pad, iw, ih, { emoji: '📅', label: main({ en: MONTH_FILES[this.m], ja: `${this.m + 1}月` }), color: '#e0457b', radius: 20 });
-        // month tag in the corner of the picture
-        const tag = lines({ en: MONTH_FILES[this.m][0].toUpperCase() + MONTH_FILES[this.m].slice(1), ja: `${this.m + 1}月` }).main;
-        ctx.font = `800 30px ${FONT}`;
-        const tw = ctx.measureText(tag).width + 40;
-        ctx.fillStyle = '#e0457b';
-        roundRect(ctx, x + pad + 14, y + pad + 14, tw, 50, 25);
-        ctx.fill();
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 3;
-        roundRect(ctx, x + pad + 14, y + pad + 14, tw, 50, 25);
-        ctx.stroke();
-        text(ctx, tag, x + pad + 14 + tw / 2, y + pad + 40, { size: 30, color: '#fff', align: 'center' });
-        const hello = lines(MONTH_HELLO[this.m]);
-        const by = y + pad + ih + 8;
-        text(ctx, hello.main, 0, by + 30, { size: 30, color: '#b0204f', align: 'center', maxWidth: w - 50 });
+        if (pic && pic.naturalWidth) {
+            ctx.save();
+            ctx.shadowColor = 'rgba(0,0,0,0.55)';
+            ctx.shadowBlur = 30;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 16;
+            ctx.drawImage(pic, x, y, iw, ih);
+            ctx.restore();
+        }
+        else {
+            drawPic(ctx, 'months', MONTH_FILES[this.m], x, y, iw, ih, { emoji: '📅', label: main({ en: MONTH_FILES[this.m], ja: `${this.m + 1}月` }), color: '#e0457b', radius: 20 });
+        }
+        const by = y + ih + 6;
+        text(ctx, hello.main, 0, by + 30, { size: 34, color: '#fff', align: 'center', outline: 9, outlineColor: '#4a1030', maxWidth: w + 100 });
         const ys = lines(t2(`Year ${this.year} of ${this.yearsTotal}`, `${this.year}ねんめ`)).main;
-        text(ctx, hello.sub ? `${hello.sub}  ·  ${ys}` : ys, 0, by + 64, { size: 17, color: '#8a6a55', align: 'center', weight: 600, maxWidth: w - 50 });
+        text(ctx, hello.sub ? `${hello.sub}  ·  ${ys}` : ys, 0, by + 70, { size: 19, color: '#ffe8f0', align: 'center', weight: 700, outline: 6, outlineColor: '#4a1030', maxWidth: w + 100 });
         ctx.restore();
     }
 }

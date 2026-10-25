@@ -15,7 +15,7 @@ import { Overview } from '../fake3d/overview.js';
 import { CompanyModal } from '../company.js';
 import { LAY, useView } from '../layout.js';
 import { stationProfile } from '../profile.js';
-import { drawTopBar, drawPlayerList, drawGuide, guideHit, guideScroll, guideStep, guideOpenPhoto } from '../hud.js';
+import { drawTopBar, drawPlayerList, drawGuide, guideHit, guideScroll, guideStep, guideOpenPhoto, guideOpenMore, guideOpenMap } from '../hud.js';
 const ZOOM = 1;
 const TOP = LAY.mapTop; // height of the top bar
 const DIR_OF = (dx, dy) => (Math.abs(dx) >= Math.abs(dy) ? (dx >= 0 ? 'e' : 'w') : dy >= 0 ? 's' : 'n');
@@ -301,6 +301,16 @@ export class BoardScene {
         if (gh === 'prev' || gh === 'next') {
             audio.play('click');
             guideStep(gh === 'prev' ? -1 : 1);
+            return true;
+        }
+        if (gh === 'more') {
+            audio.play('open');
+            guideOpenMore();
+            return true;
+        }
+        if (gh === 'map') {
+            audio.play('open');
+            guideOpenMap();
             return true;
         }
         if (gh === 'photo') {

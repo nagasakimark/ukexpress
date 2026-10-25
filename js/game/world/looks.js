@@ -111,7 +111,7 @@ export const LOOKS = {
         c.model('city/detail-parasol-a', -18, 18, 16);
         c.model('city/detail-parasol-b', -2, 22, 16);
     },
-    ruins: (c) => { const sh = new Shape(); mound(sh, 46, 10, G.grass); ruinWalls(sh, 0, 0, 1); c.shape(sh, 0, 0, 0); },
+    ruins: (c) => { const sh = new Shape(); mound(sh, 46, 3, G.grass); ruinWalls(sh, 0, 0, 1); c.shape(sh, 0, 0, 0); },
     town: (c) => { const sh = new Shape(); townRow(sh, -34, 0, 5, ['#efe3c8', BRICK, '#f6dcc0', '#c2694a', '#e8dcc0'], '#5b6b7a'); c.shape(sh, 0, 0); trees(c, [[-46, 20], [48, 18]]); },
     modern: (c) => { c.model('city/building-skyscraper-a', -14, -8, 20); c.model('city/building-skyscraper-c', 16, 4, 18); c.model('city/building-g', -40, 14, 18); },
     glasshouse: (c) => {
@@ -150,7 +150,7 @@ export const LOOKS = {
     },
     lighthouse: (c) => {
         const sh = new Shape();
-        mound(sh, 34, 8, '#9a9488');
+        mound(sh, 34, 3, '#9a9488');
         lighthouse(sh, 0, 0, 1.1);
         sh.box(18, 10, 10, WHITE, 22, 8, 6);
         sh.roof(19, 5, 11, SLATE, 22, 18, 6);
@@ -223,7 +223,7 @@ export const LOOKS = {
         trees(c, [[46, -24], [-50, 16]]);
     },
     tudor: (c) => { const sh = new Shape(); tudor(sh, -24, 0); tudor(sh, 0, -4); tudor(sh, 24, 0); c.shape(sh, 0, 0); },
-    abbey: (c) => { const sh = new Shape(); mound(sh, 50, 6, G.grass); gothicArch(sh, -20, 0, 0.9); c.shape(sh, 0, 0, 0); },
+    abbey: (c) => { const sh = new Shape(); mound(sh, 50, 3, G.grass); gothicArch(sh, -20, 0, 0.9); c.shape(sh, 0, 0, 0); },
     moor: (c) => {
         const sh = new Shape();
         sh.box(26, 14, 14, '#9b927e', -10, 0, 0);
@@ -339,7 +339,7 @@ export const STATION_BUILDERS = {
     },
     hastings: (c) => {
         const sh = new Shape();
-        mound(sh, 40, 14, G.grass, -18, -10);
+        mound(sh, 40, 3, G.grass, -18, -10);
         ruinWalls(sh, -18, -10, 0.7);
         for (let i = 0; i < 3; i++) {
             sh.box(8, 22, 8, '#232323', 22 + i * 11, 0, 14);
@@ -348,7 +348,7 @@ export const STATION_BUILDERS = {
         c.shape(sh, 0, 0);
     },
     margate: (c) => LOOKS.pier(c),
-    rye: (c) => { const sh = new Shape(); mound(sh, 50, 8, G.grass); townRow(sh, -30, -4, 4, ['#f2e3c6', BRICK, '#efe3c8', '#d9a07a'], '#8a4a36', 0.9); tudor(sh, 26, 14); spire(sh, -6, -22, 36, 9, '#c9b48e'); c.shape(sh, 0, 0); },
+    rye: (c) => { const sh = new Shape(); mound(sh, 50, 3, G.grass); townRow(sh, -30, -4, 4, ['#f2e3c6', BRICK, '#efe3c8', '#d9a07a'], '#8a4a36', 0.9); tudor(sh, 26, 14); spire(sh, -6, -22, 36, 9, '#c9b48e'); c.shape(sh, 0, 0); },
     miltonkeynes: (c) => {
         c.model('city/building-skyscraper-e', -30, -16, 16);
         for (const [x, z, r] of [[0, 14, 0.4], [16, 20, -0.6], [30, 10, 2.4]])
@@ -398,7 +398,7 @@ export const STATION_BUILDERS = {
         c.shape(sh, 0, 0);
     },
     stives: (c) => { LOOKS.harbour(c); const sh = new Shape(); sh.cyl(12, 12, 14, WHITE, 40, 0, -20, 16); sh.box(16, 6, 6, '#3a7bd5', 40, 14, -20); c.shape(sh, 0, 0); },
-    falmouth: (c) => { const sh = new Shape(); mound(sh, 34, 6, '#9a9488', -20, 0); lighthouse(sh, -20, 0, 0.9); castleShape(sh, 0.4, STONE_D, SLATE, 'none'); c.shape(sh, 24, 0); },
+    falmouth: (c) => { const sh = new Shape(); mound(sh, 34, 3, '#9a9488', -20, 0); lighthouse(sh, -20, 0, 0.9); castleShape(sh, 0.4, STONE_D, SLATE, 'none'); c.shape(sh, 24, 0); },
     glastonbury: (c) => LOOKS.tor(c),
     cheddar: (c) => LOOKS.gorge(c),
     gloucester: (c) => { const sh = new Shape(); cathedral(sh, 1, true); sh.box(16, 60, 16, STONE_D, -22, 0, 2); for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
@@ -449,8 +449,8 @@ export const STATION_BUILDERS = {
     },
     portmeirion: (c) => LOOKS.colourful(c),
     holyhead: (c) => { LOOKS.lighthouse(c); const sh = new Shape(); water(sh, 60, 22, 30, 34); sh.box(36, 10, 12, WHITE, 34, 0, 34); sh.box(28, 6, 10, '#1f4f8a', 32, 10, 34); c.shape(sh, 0, 0); },
-    lincoln: (c) => { const sh = new Shape(); mound(sh, 54, 10, G.grass); cathedral(sh, 0.9, false); for (const dx of [-26, -10])
-        sh.box(11, 44, 11, STONE_D, dx, 10, 2); sh.box(13, 50, 13, STONE_D, 8, 10, 0); c.shape(sh, 0, 0, 0); },
+    lincoln: (c) => { const sh = new Shape(); mound(sh, 54, 3, G.grass); cathedral(sh, 0.9, false); for (const dx of [-26, -10])
+        sh.box(11, 44, 11, STONE_D, dx, 0, 2); sh.box(13, 50, 13, STONE_D, 8, 0, 0); c.shape(sh, 0, 0, 0); },
     coventry: (c) => { const sh = new Shape(); ruinWalls(sh, -20, 0, 0.7, '#b46a52'); spire(sh, -40, -8, 80, 12, '#b46a52'); sh.box(36, 24, 22, '#c9c2b0', 30, 0, -6); c.shape(sh, 0, 0); c.model('car/taxi', 10, 26, 7, 1.2); },
     worcester: (c) => {
         const sh = new Shape();
@@ -507,7 +507,7 @@ export const STATION_BUILDERS = {
         sh.box(4.6, 1, 4.6, '#efe6c4', 40, 10, 10); // a cream phone box
         c.shape(sh, 0, -6);
     },
-    scarborough: (c) => { const sh = new Shape(); mound(sh, 44, 22, G.grass, 6, -10); ruinWalls(sh, 6, -14, 0.7); sh.box(90, 0.8, 20, SAND, 0, 0, 26); beachHuts(sh, -40, 22, 4); c.shape(sh, 0, 0); },
+    scarborough: (c) => { const sh = new Shape(); mound(sh, 44, 3, G.grass, 6, -10); ruinWalls(sh, 6, -14, 0.7); sh.box(90, 0.8, 20, SAND, 0, 0, 26); beachHuts(sh, -40, 22, 4); c.shape(sh, 0, 0); },
     whitby: (c) => LOOKS.abbey(c),
     harrogate: (c) => {
         const sh = new Shape();
@@ -607,7 +607,7 @@ export const STATION_BUILDERS = {
             c.model('nature/tree-fat', x, z, 15, 0, 0, new THREE.Color('#ffd0e0'));
     },
     enniskillen: (c) => { const sh = new Shape(); water(sh, 100, 26, 0, 26); castleShape(sh, 0.6, '#b9b0a0', SLATE, 'none'); c.shape(sh, 0, -4); },
-    downpatrick: (c) => { const sh = new Shape(); mound(sh, 52, 10, G.grass); cathedral(sh, 0.75, true); sh.box(14, 7, 4, '#8d918d', 36, 10, 20); c.shape(sh, 0, 0, 0); },
+    downpatrick: (c) => { const sh = new Shape(); mound(sh, 52, 3, G.grass); cathedral(sh, 0.75, true); sh.box(14, 7, 4, '#8d918d', 36, 10, 20); c.shape(sh, 0, 0, 0); },
     ballycastle: (c) => {
         const sh = new Shape();
         water(sh, 110, 60, 0, 10);

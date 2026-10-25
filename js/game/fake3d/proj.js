@@ -45,6 +45,17 @@ export class Camera {
         out.depth = depth;
         return out;
     }
+    /** project() for a point on the ground (Y = 0), a little cheaper. */
+    projectGround(X, Z, out) {
+        const rx = X - this.Cx, ry = -this.Cy, rz = Z - this.Cz;
+        const depth = -ry * this.sin - rz * this.cos;
+        const k = FOCAL / Math.max(0.05, depth);
+        out.x = this.cx + rx * k;
+        out.y = this.cy - (ry * this.cos - rz * this.sin) * k;
+        out.s = k;
+        out.depth = depth;
+        return out;
+    }
     /** The ground row seen at screen row sy: its z and how many pixels one cell is wide there. Null above the horizon. */
     groundRow(sy) {
         const v = (this.cy - sy) / FOCAL;

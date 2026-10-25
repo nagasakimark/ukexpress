@@ -4,13 +4,14 @@ import { LAY } from '../layout.js';
 import { board } from '../../core/map.js';
 import { STATION_BY_ID } from '../../core/content/stations.js';
 import { C, FONT, emoji, roundRect } from '../../engine/draw.js';
-import { Camera } from './proj.js';
+import { Camera, UNITS_PER_CELL } from './proj.js';
 import { Ground, seasonOf } from './ground.js';
 import { sprites, Scenery, drawSprite, treeSprite } from './sprites.js';
 import { main } from '../i18n.js';
 /** Landmarks are drawn a bit bigger than life so they read clearly. */
 const LMS = 1.3;
 const P = { x: 0, y: 0, s: 0, depth: 0 };
+const P2 = { x: 0, y: 0, s: 0, depth: 0 };
 /** Sorts in place by depth. The train lists passed to draw() are built fresh every frame, so this is safe. */
 const byZ = (p, q) => p.z - q.z;
 const carSlots = [];
@@ -24,6 +25,7 @@ export class BoardView {
         /** Lighter drawing for slow machines: switched on automatically if frames take too long (or with ?lite=1). */
         this.namesFor = -1;
         this.names = [];
+        this.defs = [];
         /** 0 = full detail, 1 = fewer trees, 2 = fewer trees and a coarser ground. Rises on its own if frames run slow. */
         this.tier = /[?&]lite=1/.test(location.search) ? 1 : (() => { try {
             return Math.min(2, +(localStorage.getItem('ukExpressTier') || 0)) || 0;
@@ -137,7 +139,7 @@ export class BoardView {
             if (this.frames.length >= 30) {
                 const avg = this.frames.reduce((a, b) => a + b, 0) / this.frames.length;
                 this.frames.length = 0;
-                if (avg > 26 && this.tier < 2) {
+                if (avg > 20 && this.tier < 2) {
                     this.tier++;
                     this.goodWindows = 0;
                     console.info('board: detail level', this.tier);
@@ -175,10 +177,12 @@ export class BoardView {
         const sk = season === 'autumn' ? 'au' : season === 'winter' ? 'wi' : season === 'spring' ? 'sp' : 'su';
         if (this.namesFor !== this.month) {
             this.names = items.map((it) => (it.name === 'deco/mountain' ? `deco/mountain/${sk}` : it.kind === 2 ? it.name : treeSprite(it.name, it.kind === 1, season, this.month, it.x, it.z)));
+            this.defs = this.names.map((n) => sprites.defs[n]);
             this.namesFor = this.month;
         }
         const sk2 = season === 'autumn' ? 'au' : season === 'winter' ? 'wi' : '';
         const t = this.tier;
+        const atl = sprites.atlases, bot = LAY.mapBot + 4, vl = LAY.vl - 20, vr = LAY.vr + 20;
         for (let i = i0; i < i1; i++) {
             const it = items[i];
             while (li < lmSorted.length && lmSorted[li].z + 0.55 <= it.z) {
@@ -187,7 +191,18 @@ export class BoardView {
             }
             if (t && it.kind !== 2 && (t === 1 ? i % 3 === 2 : i % 2 === 1))
                 continue;
-            drawSprite(ctx, this.cam, this.names[i], it.x, it.z, it.s);
+            const d = this.defs[i];
+            if (!d)
+                continue;
+            const p = this.cam.projectGround(it.x, it.z, P);
+            const k = (p.s / (UNITS_PER_CELL * d.ppu)) * it.s;
+            const w = d.w * k, dy = p.y - d.ay * k;
+            if (dy > bot || dy + d.h * k < top)
+                continue;
+            const dx = p.x - d.ax * k;
+            if (dx > vr || dx + w < vl)
+                continue;
+            ctx.drawImage(atl[d.a], d.x, d.y, d.w, d.h, dx, dy, w, d.h * k);
         }
         while (li < lmSorted.length && lmSorted[li].z < b.z + 2.5) {
             const l = lmSorted[li++];
@@ -222,7 +237,7 @@ export class BoardView {
     drawTrain(ctx, t) {
         // carriages behind, along the trail
         const pts = t.trail;
-        const SP = 0.74 * t.scale;
+        const SP = 0.62 * t.scale;
         carSlots.length = 0;
         if (t.cars > 0 && pts.length > 1) {
             let need = SP, acc = 0;
@@ -257,7 +272,20 @@ export class BoardView {
             ctx.beginPath();
             ctx.ellipse(p.x, p.y + p.s * 0.02, p.s * 0.2 * t.scale, p.s * 0.1 * t.scale, 0, 0, Math.PI * 2);
             ctx.fill();
-            drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
+            // up and down the screen the perspective tilts the rails, so tilt the sprite the same way
+            if (c.dir === 'n' || c.dir === 's') {
+                const px = p.x, py = p.y;
+                const q = this.cam.project(c.x, 0, c.z + 1, P2);
+                const th = Math.atan2(-(q.x - px), q.y - py);
+                ctx.save();
+                ctx.translate(px, py);
+                ctx.rotate(th);
+                ctx.translate(-px, -py);
+                drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
+                ctx.restore();
+            }
+            else
+                drawSprite(ctx, this.cam, c.name, c.x, c.z, 1.3 * t.scale, t.lift);
         }
     }
     drawSigns(ctx, destNode, ov) {

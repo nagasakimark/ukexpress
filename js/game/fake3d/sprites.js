@@ -114,7 +114,8 @@ export class Scenery {
         const pave = [];
         const add = (x, z, kind, name, s = 1) => items.push({ x, z, kind, name, s });
         // mountains first (they are big)
-        const peaks = mountains.filter((mt) => !blocked(mt.x, mt.y, 0.45) && isDryLand(mt.x, mt.y) && !towns.some((t) => Math.hypot(t.x - mt.x, t.y - mt.y) < t.r + 1.2));
+        const lms = Object.values(g.stations).filter((s) => s.lm).map((s) => s.lm);
+        const peaks = mountains.filter((mt) => !blocked(mt.x, mt.y, 0.45) && !lms.some((l) => Math.abs(mt.x - l[0]) < 2.4 && mt.y > l[1] - 1.2 && mt.y < l[1] + 3) && isDryLand(mt.x, mt.y) && !towns.some((t) => Math.hypot(t.x - mt.x, t.y - mt.y) < t.r + 1.2));
         for (const mt of peaks)
             add(mt.x, mt.y, 2, 'deco/mountain', 0.5 + mt.s * 0.22);
         // (the board view swaps this for the season's version)

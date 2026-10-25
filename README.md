@@ -2,7 +2,7 @@
 
 A Momotetsu-style railway board game that teaches Japanese elementary students about the UK.
 HTML5 Canvas + TypeScript, one ES module per file, with all teaching content in editable JSON files.
-Version 0.6: Japanese first (only kanji taught by the end of grade 4) with small English underneath, a TV-studio presenter (Mark Sensei),
+Version 0.7: Japanese first (only kanji taught by the end of grade 4) with small English underneath, a TV-studio presenter (Mark Sensei),
 a Station guide with a write-up for every one of the 114 places, and a layout that fills widescreen windows.
 
 ## Play it
@@ -88,6 +88,15 @@ Test URLs: `?auto=1&years=1&seed=42` makes the computer play every seat at 30x s
 `?lite=1` forces the lighter drawing. `?lang=en` is English only.
 
 Re-render board pictures after changing a landmark: `BASE=/assets/models/ python3 tools/render_sprites.py lm/durham`, then `python3 tools/pack_sprites.py` (see assets/sprites/CREDITS.txt).
+
+## What's new in v0.7
+- Station guide: a "See more" button at the bottom of the scrolling facts, and the little UK map is now a button that opens a big map with every region.
+- Month picture is a free-floating sticker with a drop shadow (no frame); art sheet is `assets/images/months/`.
+- Basic train only (no upgrades); carriages sit closer together and tilt with the rails when travelling up or down the screen.
+- 3D dice, new studio and news art, mic-free presenter, no map flash after the studio intro, scrolling "learn more", scenery culled for widescreen.
+- Landmarks sit on their ground (hill plinths flattened, clocks on Big Ben, Brighton pier rebuilt); mountains no longer cover landmarks.
+- Title screen train follows a winding stretch of real track.
+- Station-arrival scene code (`arrivalScene` in `src/game/show.ts`, art `assets/images/presenter/arr_*.png`) is written but switched off for now.
 
 ## What's new in v0.6
 
