@@ -49,6 +49,13 @@ export class Shape {
     cone(r, h, color, x = 0, y = 0, z = 0, seg = 10) { return this.add(new THREE.ConeGeometry(r, h, seg), color, x, y + h / 2, z); }
     sphere(r, color, x = 0, y = 0, z = 0, seg = 8) { return this.add(new THREE.SphereGeometry(r, seg, Math.max(4, seg - 2)), color, x, y, z); }
     roof(w, h, d, color, x = 0, y = 0, z = 0, ry = 0) { return this.add(prismGeo(w, h, d), color, x, y, z, ry); }
+    /** A patch of land in the sea (Holy Island): the sprite studio leaves it out and the board paints the island. */
+    island(w, d, x = 0, z = 0) {
+        this.waters.push([x, z, w, d, 2]);
+        if (Shape.drawWater)
+            this.add(new THREE.CylinderGeometry(w / 2, w / 2, 1.2, 20), '#62b84a', x, 0.6, z);
+        return this;
+    }
     merge(other) { this.list.push(...other.list); this.waters.push(...other.waters); return this; }
     /** Copies another shape in, turned about y by ry and moved to (x, y, z). */
     place(other, x, y, z, ry = 0) {

@@ -581,7 +581,7 @@ export const STATION_BUILDERS = {
         sh.box(26, 14, 14, '#c9b9a0', 0, 30, -6);
         sh.roof(27, 6, 15, '#7a4a36', 0, 44, -6);
         gothicArch(sh, -34, 20, 0.45);
-        water(sh, 100, 16, 0, 30);
+        sh.island(92, 66, 0, 4);
         c.shape(sh, 0, 0);
     },
     dundee: (c) => LOOKS.ship(c),

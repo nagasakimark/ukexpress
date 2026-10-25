@@ -308,6 +308,28 @@ export class Ground {
                 const cx = st.lm[0] + wx * LM_SCALE, cy = st.lm[1] + wz * LM_SCALE, hw = ww * LM_SCALE / 2, hd = wd * LM_SCALE / 2;
                 if (cx + hw + 0.3 < x0 || cx - hw - 0.3 > x0 + w || cy + hd + 0.3 < y0 || cy - hd - 0.3 > y0 + h)
                     continue;
+                if (round === 2) { // an island: surf round it, a sandy face towards the viewer, then grass
+                    g.beginPath();
+                    g.ellipse(cx, cy, hw, hd, 0, 0, Math.PI * 2);
+                    g.save();
+                    g.lineJoin = 'round';
+                    g.strokeStyle = 'rgba(150,225,255,0.55)';
+                    g.lineWidth = 0.55;
+                    g.stroke();
+                    g.strokeStyle = 'rgba(255,255,255,0.8)';
+                    g.lineWidth = 0.16;
+                    g.stroke();
+                    g.translate(0, 0.13);
+                    g.fillStyle = this.season === 'winter' ? '#b9b2a2' : '#c9a35f';
+                    g.fill();
+                    g.translate(0, -0.05);
+                    g.fillStyle = this.season === 'winter' ? '#cfc8b8' : '#ddb977';
+                    g.fill();
+                    g.restore();
+                    g.fillStyle = grass;
+                    g.fill();
+                    continue;
+                }
                 const shape = (e) => { g.beginPath(); if (round)
                     g.ellipse(cx, cy, hw + e, hd + e, 0, 0, Math.PI * 2);
                 else
