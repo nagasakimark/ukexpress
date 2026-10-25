@@ -218,4 +218,40 @@ export function blitCache(ctx, id, key, x, y, w, h, paint) {
     }
     ctx.drawImage(e.cv, x, y, w, h);
 }
+/** A small round "tap to enlarge" badge: a white disc with a drawn magnifying glass (crisp at any size, unlike the emoji). */
+export function zoomBadge(ctx, cx, cy, r, pulse = 0) {
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.35)';
+    ctx.shadowBlur = r * 0.5;
+    ctx.shadowOffsetY = r * 0.18;
+    ctx.fillStyle = 'rgba(255,255,255,0.96)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r + pulse, 0, 7);
+    ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = '#2b4a78';
+    ctx.lineCap = 'round';
+    ctx.lineWidth = Math.max(1.6, r * 0.17);
+    const lx = cx - r * 0.14, ly = cy - r * 0.14, lr = r * 0.4;
+    ctx.beginPath();
+    ctx.arc(lx, ly, lr, 0, 7);
+    ctx.stroke();
+    ctx.lineWidth = Math.max(2, r * 0.24);
+    const a = Math.PI / 4;
+    ctx.beginPath();
+    ctx.moveTo(lx + Math.cos(a) * lr * 1.25, ly + Math.sin(a) * lr * 1.25);
+    ctx.lineTo(cx + r * 0.52, cy + r * 0.52);
+    ctx.stroke();
+    if (r >= 13) { // a little "+" inside the lens
+        ctx.lineWidth = Math.max(1.4, r * 0.1);
+        const k = lr * 0.5;
+        ctx.beginPath();
+        ctx.moveTo(lx - k, ly);
+        ctx.lineTo(lx + k, ly);
+        ctx.moveTo(lx, ly - k);
+        ctx.lineTo(lx, ly + k);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
 //# sourceMappingURL=draw.js.map

@@ -48,31 +48,124 @@ export function preload(kind, names, timeout = 6000) {
     return Promise.race([done, new Promise((res) => setTimeout(res, timeout))]);
 }
 export const PRESENTER_PICS = ['studio', 'news', 'mark_happy', 'mark_excited', 'mark_surprised', 'mark_sad', 'mark_point'];
+// ---- small preview copies (assets/images/thumbs/<kind>/<name>.webp, made by tools/make_thumbs.py) ----
+// A full photo is a 1 MB+ PNG, so on school Wi-Fi it can take seconds. The ~20 KB previews load almost at
+// once, are all fetched quietly in the background after start-up, and are what the side panel shows.
+let thumbIndex = null;
+const thumbCache = new Map();
+const thumbUrl = (kind, name) => `${BASE}thumbs/${kind}/${name}.webp`;
+/** Loads the list of existing photos (tiny JSON). Safe to call more than once; never throws. */
+export async function loadThumbIndex() {
+    if (thumbIndex)
+        return;
+    try {
+        const r = await fetch(`${BASE}thumbs/index.json`);
+        if (!r.ok)
+            return;
+        const j = await r.json();
+        const m = {};
+        for (const k of Object.keys(j))
+            m[k] = new Set(j[k]);
+        thumbIndex = m;
+        galleries.clear(); // any gallery built before the list arrived is rebuilt from it
+    }
+    catch { /* no index: fall back to probing for numbered photos */ }
+}
+const hasThumb = (kind, name) => !!thumbIndex?.[kind]?.has(name);
+/** The preview picture if it is loaded; starts loading it otherwise. */
+export function getThumb(kind, name) {
+    if (!hasThumb(kind, name))
+        return null;
+    const key = kind + '/' + name;
+    const c = thumbCache.get(key);
+    if (c === undefined) {
+        thumbCache.set(key, 'loading');
+        const img = new Image();
+        img.onload = () => { thumbCache.set(key, img); picVer++; };
+        img.onerror = () => { thumbCache.set(key, null); };
+        img.src = thumbUrl(kind, name);
+        return null;
+    }
+    return c === 'loading' ? null : c;
+}
+/** Loads the previews for these names (resolves when done or after `timeout` ms). */
+export function preloadThumbs(kind, names, timeout = 1500) {
+    const done = Promise.all(names.map((n) => new Promise((res) => {
+        if (!hasThumb(kind, n)) {
+            res();
+            return;
+        }
+        const key = kind + '/' + n, c = thumbCache.get(key);
+        if (c !== undefined && c !== 'loading') {
+            res();
+            return;
+        }
+        const img = new Image();
+        img.onload = () => { thumbCache.set(key, img); picVer++; res(); };
+        img.onerror = () => { thumbCache.set(key, null); res(); };
+        thumbCache.set(key, 'loading');
+        img.src = thumbUrl(kind, n);
+    }))).then(() => undefined);
+    return Promise.race([done, new Promise((res) => setTimeout(res, timeout))]);
+}
+/** Quietly fetches every preview a few at a time, base photos first. Call once, after the game is up. */
+export function warmThumbs(kind = 'places', concurrency = 4) {
+    const all = [...(thumbIndex?.[kind] ?? [])];
+    all.sort((a, b) => Number(/\d$/.test(a)) - Number(/\d$/.test(b)));
+    let i = 0;
+    const next = () => {
+        if (i >= all.length)
+            return;
+        const nm = all[i++], key = kind + '/' + nm;
+        if (thumbCache.has(key)) {
+            next();
+            return;
+        }
+        thumbCache.set(key, 'loading');
+        const img = new Image();
+        const done = (ok) => { thumbCache.set(key, ok ? img : null); if (ok)
+            picVer++; setTimeout(next, 0); };
+        img.onload = () => done(true);
+        img.onerror = () => done(false);
+        img.src = thumbUrl(kind, nm);
+    };
+    for (let k = 0; k < concurrency; k++)
+        next();
+}
 /** How many numbered variants are probed after the base picture: <name>2.png … <name>7.png. */
 export const MAX_PHOTOS = 7;
 const galleries = new Map();
-/** Every file name to try for one picture: the base name plus numbered extras. Probing starts on first use. */
+/** Every file name to try for one picture: the base name plus numbered extras. With the index the list is
+ * exact (no probing); without it, probing starts on first use. */
 export function galleryOf(kind, base) {
     const key = kind + '/' + base;
     let g = galleries.get(key);
     if (!g) {
+        const idx = thumbIndex?.[kind];
         const cands = [base];
         for (let i = 2; i <= MAX_PHOTOS; i++)
             cands.push(base + i);
-        g = { kind, base, cands };
+        if (idx) {
+            g = { kind, base, cands: cands.filter((nm) => idx.has(nm)), known: true };
+            if (!g.cands.length)
+                g.cands = [base];
+        }
+        else {
+            g = { kind, base, cands, known: false };
+            for (const nm of cands)
+                picStatus(kind, nm);
+        }
         galleries.set(key, g);
-        for (const nm of cands)
-            picStatus(kind, nm);
     }
     return g;
 }
 /** Variant names confirmed to exist so far, in order. Grows as files finish loading. */
 export function galleryNames(g) {
-    return g.cands.filter((nm) => picStatus(g.kind, nm) === 'ok');
+    return g.known ? g.cands : g.cands.filter((nm) => picStatus(g.kind, nm) === 'ok');
 }
 /** True once every candidate has answered (found or missing): the list is final. */
 export function gallerySettled(g) {
-    return g.cands.every((nm) => picStatus(g.kind, nm) !== 'loading');
+    return g.known || g.cands.every((nm) => picStatus(g.kind, nm) !== 'loading');
 }
 /** One modal's position inside a shared gallery: a random photo is shown first, then the player's choice. */
 export class PhotoBrowser {
@@ -111,8 +204,9 @@ export class PhotoBrowser {
         this.locked = true;
     }
 }
-/** Draws a picture fitted inside the box (the whole photo is always visible; narrow
- * photos get dark side bars instead of being cropped). With rounded corners and a frame. */
+/** Draws a picture so it fills the box (the photo is cropped a little rather than letterboxed, so there are
+ * never black bars), with rounded corners and a frame. While the big photo is still loading, its small preview
+ * is drawn instead. */
 export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
     const r = o.radius ?? 14;
     ctx.fillStyle = '#20170a';
@@ -121,14 +215,25 @@ export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
     ctx.save();
     roundRect(ctx, x, y, w, h, r);
     ctx.clip();
-    const img = getPic(kind, name);
+    let img = null;
+    if (o.thumb) {
+        const c = cache.get(kind + '/' + name);
+        img = (c && c !== 'loading') ? c : getThumb(kind, name);
+        if (!img && !hasThumb(kind, name))
+            img = getPic(kind, name);
+    }
+    else {
+        img = getPic(kind, name);
+        if (!img || !img.naturalWidth)
+            img = getThumb(kind, name);
+    }
     if (img && img.naturalWidth) {
-        // letterbox behind the photo, then the whole photo fitted inside (never cropped)
         ctx.fillStyle = '#22271f';
         ctx.fillRect(x, y, w, h);
-        const k = Math.min(w / img.naturalWidth, h / img.naturalHeight);
-        const dw = img.naturalWidth * k, dh = img.naturalHeight * k;
-        ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+        // fill the box; keep the upper-middle of tall photos (sky, faces, towers) rather than dead centre
+        const k = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+        const sw = w / k, sh = h / k;
+        ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) * 0.4, sw, sh, x, y, w, h);
     }
     else if (!o.bare) {
         const col = o.color ?? '#5f7d6a';

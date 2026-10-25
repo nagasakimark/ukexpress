@@ -5,7 +5,8 @@ import { board } from '../../core/map.js';
 import { STATION_BY_ID } from '../../core/content/stations.js';
 import { C, FONT, emoji, roundRect } from '../../engine/draw.js';
 import { Camera, UNITS_PER_CELL, PITCH } from './proj.js';
-const LEAN_STEP = 3.5 * Math.PI / 180;
+const LEAN_STEP = 3 * Math.PI / 180;
+const LEAN_MAX = 6; // bins either side (6 x 3 deg = 18 deg: the rails on the title screen lean up to ~15)
 import { Ground, seasonOf } from './ground.js';
 import { sprites, Scenery, drawSprite, treeSprite } from './sprites.js';
 import { main } from '../i18n.js';
@@ -279,7 +280,7 @@ export class BoardView {
                 const px = p.x, py = p.y;
                 const q = this.cam.project(c.x, 0, c.z + 1, P2);
                 const lean = Math.atan(Math.tan(Math.atan2(q.x - px, q.y - py)) * Math.sin(PITCH));
-                const bin = Math.max(-3, Math.min(3, Math.round(lean / LEAN_STEP)));
+                const bin = Math.max(-LEAN_MAX, Math.min(LEAN_MAX, Math.round(lean / LEAN_STEP)));
                 if (bin) {
                     const cand = `${nm}/${bin > 0 ? 'p' : 'm'}${Math.abs(bin)}`;
                     if (sprites.defs[cand])

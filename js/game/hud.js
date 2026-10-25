@@ -2,7 +2,7 @@ import { board, distancesTo } from '../core/map.js';
 import { STATION_BY_ID } from '../core/content/stations.js';
 import { AVATARS, MONTHS, REGIONS, SEASON_EMOJI, STYLES } from '../core/content/game-data.js';
 import { assets, ranking } from '../core/rules.js';
-import { blitCache, C, FONT, panel, text, emoji, money, roundRect } from '../engine/draw.js';
+import { blitCache, C, FONT, panel, text, emoji, money, roundRect, zoomBadge } from '../engine/draw.js';
 import { lang, lines, main, t2 } from './i18n.js';
 import { dual, dualHeight } from './dialogs.js';
 import { drawPic, PhotoBrowser } from './images.js';
@@ -265,13 +265,9 @@ export function drawGuide(ctx, sid, tag, tt) {
         c.stroke();
     });
     // 2. photo (tap to see it big)
-    drawPic(ctx, 'places', pb.name(), phX, phY, phW, phH, { emoji: st.emoji, label: main(st.name), color: reg.color, radius: 12 });
+    drawPic(ctx, 'places', pb.name(), phX, phY, phW, phH, { emoji: st.emoji, label: main(st.name), color: reg.color, radius: 12, thumb: true });
     gs.photo = { x: phX, y: phY, w: phW, h: phH };
-    ctx.fillStyle = 'rgba(0,0,0,0.55)';
-    ctx.beginPath();
-    ctx.arc(phX + phW - 20, phY + 20, 15, 0, 7);
-    ctx.fill();
-    emoji(ctx, '🔍', phX + phW - 20, phY + 20, 18);
+    zoomBadge(ctx, phX + phW - 22, phY + 22, 16);
     if (n > 1) {
         gs.prev = { x: phX + 4, y: phY + phH / 2 - 20, w: 34, h: 40 };
         gs.next = { x: phX + phW - 38, y: phY + phH / 2 - 20, w: 34, h: 40 };
@@ -295,11 +291,7 @@ export function drawGuide(ctx, sid, tag, tt) {
     const lx = x + w - 12 - lw, ly = phY + phH + 6;
     ctx.drawImage(lm, lx, ly, lw, lh);
     gs.map = { x: lx, y: ly, w: lw, h: lh };
-    ctx.fillStyle = 'rgba(0,0,0,0.55)';
-    ctx.beginPath();
-    ctx.arc(lx + lw - 11, ly + lh - 11, 10, 0, 7);
-    ctx.fill();
-    emoji(ctx, '🔍', lx + lw - 11, ly + lh - 11, 12);
+    zoomBadge(ctx, lx + lw - 9, ly + lh - 9, 10);
     const s = board.grid.stations[sid];
     if (s) {
         const px = lx + (lm.ox + (s.x + 0.5) * lm.sc) * ls, py = ly + (lm.oy + (s.y + 0.5) * lm.sc) * ls;

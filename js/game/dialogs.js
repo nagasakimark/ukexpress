@@ -1,7 +1,7 @@
 // In-game dialogs, drawn on the canvas: messages (paged so text never overflows), choices, quizzes,
 // shops, the card hand, settlement, the roulette, the calendar page, dice, banners and toasts.
 import { Modal, Button } from '../engine/ui.js';
-import { C, FONT, panel, text, wrap, fitWrap, emoji, money, roundRect, shade } from '../engine/draw.js';
+import { C, FONT, panel, text, wrap, fitWrap, emoji, money, roundRect, shade, zoomBadge } from '../engine/draw.js';
 import { clock, Ease } from '../engine/tween.js';
 import { audio } from '../engine/audio.js';
 import { fx } from '../engine/fx.js';
@@ -378,21 +378,13 @@ export class MessageModal extends PModal {
             this.photoRect = { x: cx - 62, y: py - 62, w: 124, h: 124 };
             // the badge sits outside the ring, bottom-right, so it never covers the face
             const bx = cx + 48, by = py + 48;
-            ctx.fillStyle = 'rgba(0,0,0,0.55)';
-            ctx.beginPath();
-            ctx.arc(bx, by, 15, 0, 7);
-            ctx.fill();
-            emoji(ctx, '🔍', bx, by, 19);
+            zoomBadge(ctx, bx, by, 16);
         }
         else {
             drawPic(ctx, p.kind, p.name, x + 25, py - 70, 190, 140, { emoji: p.emoji, label: p.label, color: p.color });
             this.photoRect = { x: x + 25, y: py - 70, w: 190, h: 140 };
             const r = this.photoRect;
-            ctx.fillStyle = 'rgba(0,0,0,0.55)';
-            ctx.beginPath();
-            ctx.arc(r.x + r.w - 20, r.y + 22, 15, 0, 7);
-            ctx.fill();
-            emoji(ctx, '🔍', r.x + r.w - 20, r.y + 22, 19);
+            zoomBadge(ctx, r.x + r.w - 22, r.y + 22, 16);
         }
     }
 }

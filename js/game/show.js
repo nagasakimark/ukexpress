@@ -6,7 +6,7 @@ import { audio } from '../engine/audio.js';
 import { fx } from '../engine/fx.js';
 import { app } from './app.js';
 import { lines, t2, main, lang } from './i18n.js';
-import { drawPic, getPic, preload, PRESENTER_PICS } from './images.js';
+import { drawPic, getPic, preload, preloadThumbs, PRESENTER_PICS } from './images.js';
 import { LAY } from './layout.js';
 import { teacher } from './storage.js';
 import { realMonth } from '../core/calendar.js';
@@ -246,7 +246,14 @@ export async function studio(ls) {
     await preload('presenter', PRESENTER_PICS);
     for (const k of ['places', 'heroes', 'events', 'months']) {
         const names = ls.flatMap((l) => [l.tv, ...(l.spin ?? [])]).filter((t) => t && t.kind === k).map((t) => t.name);
-        if (names.length)
+        if (!names.length)
+            continue;
+        if (k === 'places') {
+            await preloadThumbs(k, names);
+            for (const n of names)
+                getPic(k, n);
+        } // quick preview now, the big photo arrives while he talks
+        else
             await preload(k, names, 3000);
     }
     if (!teacher.presenter) {

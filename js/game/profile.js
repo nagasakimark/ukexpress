@@ -127,7 +127,7 @@ export class PlaceModal extends PModal {
         const { x, y, w, h } = this;
         panel(ctx, x, y, w, h);
         header(ctx, this.title, x, y, w, this.color);
-        drawPic(ctx, this.pic.kind, this.photos.name(), x + 36, y + 106, 330, 248, { emoji: this.pic.emoji, label: this.pic.label, color: this.pic.color });
+        drawPic(ctx, this.pic.kind, this.photos.name(), x + 36, y + 106, 330, 248, { emoji: this.pic.emoji, label: this.pic.label, color: this.pic.color, thumb: true });
         const multi = this.photos.count() > 1;
         this.prevBtn.hidden = this.nextBtn.hidden = !multi;
         if (!multi && this.focus > 0)

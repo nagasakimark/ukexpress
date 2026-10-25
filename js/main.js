@@ -17,7 +17,7 @@ import { BookModal } from './game/book.js';
 import { teacher } from './game/storage.js';
 import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
-import { preload, PRESENTER_PICS } from './game/images.js';
+import { preload, PRESENTER_PICS, loadThumbIndex, warmThumbs } from './game/images.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
 import { LoadingScene } from './game/scenes/loading.js';
@@ -129,8 +129,10 @@ async function boot() {
     // The title screen draws the normal 3D board, so wait for the board
     // pictures first (showing progress meanwhile). The render-scale step-down
     // for slow machines is untouched: it still applies on top of the 3D view.
+    await loadThumbIndex();
     app.go(new LoadingScene());
     await spritesLoading;
+    warmThumbs(); // quietly fetch all the small station previews so the side panel never waits
     const q = new URLSearchParams(location.search);
     if (q.get('lang'))
         lang.mode = normLang(q.get('lang'));
