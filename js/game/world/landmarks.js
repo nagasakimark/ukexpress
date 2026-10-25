@@ -18,18 +18,52 @@ export function hillBase(sh, r, h, dx = 0, dz = 0) {
     sh.add(new THREE.CylinderGeometry(r * 0.62, r, h, 10), G.rock, dx, h / 2, dz);
     sh.add(new THREE.CylinderGeometry(r * 0.6, r * 0.66, 2, 10), G.grass, dx, h + 1, dz);
 }
-export function cathedral(sh, s = 1, tower = true) {
-    sh.box(56 * s, 22 * s, 22 * s, STONE, 0, 0, 0);
-    sh.roof(56 * s, 12 * s, 22 * s, SLATE, 0, 22 * s, 0);
-    sh.box(20 * s, 18 * s, 34 * s, STONE, 6 * s, 0, 0); // transept
-    sh.roof(20 * s, 10 * s, 34 * s, SLATE, 6 * s, 18 * s, 0, Math.PI / 2);
+const WIN = '#4f7fb2';
+export function cathedral(sh, s = 1, tower = true, lantern = true) {
+    const L = 56 * s, D = 22 * s, ROOF = '#4d5c72', LEAD = '#5f6f86';
+    sh.box(L, 22 * s, D, STONE, 0, 0, 0);
+    sh.roof(L, 12 * s, D, ROOF, 0, 22 * s, 0);
+    // side aisles with their own low roofs, and flying buttresses between the windows
+    for (const sg of [-1, 1]) {
+        sh.box(L * 0.96, 11 * s, 7 * s, STONE_D, 0, 0, sg * (D / 2 + 3 * s));
+        sh.roof(L * 0.96, 4.5 * s, 7 * s, LEAD, 0, 11 * s, sg * (D / 2 + 3 * s));
+        for (let i = -3; i <= 3; i++) {
+            sh.box(1.6 * s, 14 * s, 2.4 * s, STONE_D, i * 7.4 * s, 0, sg * (D / 2 + 7 * s));
+            sh.add(new THREE.BoxGeometry(1 * s, 1 * s, 6 * s), STONE_D, i * 7.4 * s, 17 * s, sg * (D / 2 + 3.6 * s), 0, 0.5 * sg);
+            sh.box(1.8 * s, 3 * s, 1.8 * s, STONE, i * 7.4 * s, 14 * s, sg * (D / 2 + 7 * s));
+        }
+        for (let i = -3; i <= 3; i += 1) { // pointed windows in the aisle wall and the clerestory
+            const wx = i * 7.4 * s + 3.7 * s;
+            sh.box(1.7 * s, 5 * s, 0.4 * s, WIN, wx, 3.2 * s, sg * (D / 2 + 6.75 * s));
+            sh.add(new THREE.ConeGeometry(0.85 * s, 1.6 * s, 4), WIN, wx, 8.2 * s + 0.8 * s, sg * (D / 2 + 6.75 * s), Math.PI / 4);
+        }
+    }
+    // the transept, with a gable window at each end
+    sh.box(20 * s, 18 * s, 34 * s, STONE, 6 * s, 0, 0);
+    sh.roof(20 * s, 10 * s, 34 * s, ROOF, 6 * s, 18 * s, 0, Math.PI / 2);
+    for (const sg of [-1, 1]) {
+        sh.box(3 * s, 8 * s, 0.5 * s, WIN, 6 * s, 6 * s, sg * 17.2 * s);
+        sh.add(new THREE.ConeGeometry(1.5 * s, 3 * s, 4), WIN, 6 * s, 16 * s, sg * 17.2 * s, Math.PI / 4);
+    }
+    // the south porch and door
+    sh.box(8 * s, 11 * s, 5 * s, STONE_D, -12 * s, 0, D / 2 + 9.5 * s);
+    sh.roof(8 * s, 5 * s, 5 * s, ROOF, -12 * s, 11 * s, D / 2 + 9.5 * s, Math.PI / 2);
+    sh.box(3.6 * s, 7 * s, 0.6 * s, '#5a3a22', -12 * s, 0, D / 2 + 12.2 * s);
+    if (lantern) { // the crossing tower with four pinnacles
+        sh.box(11 * s, 12 * s, 11 * s, STONE_D, 6 * s, 24 * s, 0);
+        for (const [dx, dz] of [[-5, -5], [5, -5], [-5, 5], [5, 5]])
+            sh.cone(1.2 * s, 5 * s, STONE_D, 6 * s + dx * s, 36 * s, dz * s, 4);
+        sh.box(2.2 * s, 6 * s, 0.5 * s, WIN, 6 * s, 27 * s, 5.8 * s);
+    }
     if (tower) {
         sh.box(15 * s, 50 * s, 15 * s, STONE_D, -22 * s, 0, 2 * s);
         for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
             sh.cone(1.6 * s, 7 * s, STONE_D, -22 * s + dx * s, 50 * s, 2 * s + dz * s, 4);
+        for (const sg of [-1, 1])
+            sh.box(2.6 * s, 9 * s, 0.5 * s, GLASS, -22 * s + sg * 3 * s, 30 * s, 9.8 * s);
     }
     for (let i = -2; i <= 2; i++)
-        sh.box(3 * s, 9 * s, 0.6 * s, GLASS, i * 9 * s + 4 * s, 8 * s, 11.1 * s);
+        sh.box(3 * s, 9 * s, 0.6 * s, WIN, i * 9 * s + 4 * s, 8 * s, 11.1 * s);
     sh.cyl(4.5 * s, 4.5 * s, 0.8 * s, '#7fb8e8', -22 * s, 34 * s, 9.6 * s, 12); // rose window
 }
 export function castleShape(sh, s = 1, wall = STONE_D, roof = '#4a6fb0', kind = 'england') {
@@ -139,20 +173,43 @@ export const LANDMARKS = {
         c.model('cube/animal-bunny', 12, 22, 7);
     },
     waterloo: (c) => {
+        // The London Eye: two white rims joined by cables to a central hub, 32 egg-shaped pods on the outside, held up on one side by an A-frame.
         const ring = new Shape();
-        ring.add(new THREE.TorusGeometry(34, 1.3, 6, 48), '#f4f6f8', 0, 0, 0);
-        ring.add(new THREE.TorusGeometry(30, 0.7, 6, 48), '#cfd6dc', 0, 0, 0);
-        for (let i = 0; i < 16; i++) {
-            const a = (i / 16) * Math.PI * 2;
-            ring.add(new THREE.BoxGeometry(0.6, 34, 0.6), '#dfe5ea', Math.cos(a) * 17, Math.sin(a) * 17, 0, 0, 0, a + Math.PI / 2);
-            ring.add(new THREE.SphereGeometry(2.6, 8, 6), i % 4 === 0 ? '#ff6b6b' : '#bfe6ff', Math.cos(a) * 35, Math.sin(a) * 35, 0);
+        const R = 34, ZR = 2.8;
+        for (const z of [-ZR, ZR])
+            ring.add(new THREE.TorusGeometry(R, 0.95, 6, 56), '#f6f8fa', 0, 0, z);
+        ring.add(new THREE.TorusGeometry(R - 3.2, 0.35, 5, 56), '#cdd6dd', 0, 0, 0); // the inner safety ring
+        const N = 32;
+        for (let i = 0; i < N; i++) {
+            const a = (i / N) * Math.PI * 2;
+            for (const z of [-1, 1]) {
+                // a thin cable from the hub to the rim, lying in the plane of the wheel
+                ring.add(new THREE.BoxGeometry(0.3, R - 3, 0.3), '#e4e9ed', Math.cos(a) * (R - 3) / 2 + Math.cos(a) * 1.5, Math.sin(a) * (R - 3) / 2 + Math.sin(a) * 1.5, z * 1.8, 0, 0, a - Math.PI / 2);
+            }
+            const pod = new THREE.SphereGeometry(1.9, 10, 8);
+            pod.scale(1, 1, 1.9);
+            ring.add(pod, i % 8 === 0 ? '#ff7a7a' : '#d9efff', Math.cos(a) * (R + 2.3), Math.sin(a) * (R + 2.3), 0);
+            ring.add(new THREE.BoxGeometry(0.5, 1.2, 0.5), '#b9c3cb', Math.cos(a) * (R + 0.7), Math.sin(a) * (R + 0.7), 0, 0, 0, a);
         }
-        ring.cyl(3, 3, 3, '#9aa4ad', 0, -1.5, 0);
+        ring.tube(3.2, 8, '#8f9aa4', 0, 0, 0, 'z', 14);
         c.anim(ring, 0, 0, 40, (o, t) => { o.rotation.z = t * 0.00008; });
-        const legs = new Shape();
-        legs.add(new THREE.CylinderGeometry(1.2, 1.6, 44, 6), '#dfe5ea', 6, 20, -6, 0, 0.0, -0.32);
-        legs.add(new THREE.CylinderGeometry(1.2, 1.6, 44, 6), '#dfe5ea', 6, 20, 6, 0, 0.0, -0.32);
-        c.shape(legs, 0, 0);
+        const frame = new Shape();
+        const strut = (x0, y0, z0, x1, y1, z1, r, col) => {
+            const dir = new THREE.Vector3(x1 - x0, y1 - y0, z1 - z0), len = dir.length();
+            const g = new THREE.CylinderGeometry(r, r * 1.25, len, 7);
+            g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.clone().normalize()));
+            frame.add(g, col, (x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+        };
+        for (const sx of [-1, 1]) {
+            strut(sx * 2.5, 40, -7, sx * 19, 2, -17, 1.3, '#eef1f4');
+            strut(sx * 2.5, 40, -7, sx * 1.2, 4, -34, 0.5, '#c9d1d8');
+        } // the A-frame and a back-stay
+        frame.box(10, 4, 8, '#9aa4ad', 0, 38, -7); // the hub housing
+        frame.box(80, 3, 16, '#c9c2b0', 0, 0, 3);
+        frame.box(30, 1, 10, '#8fb8cf', 0, 3, 8);
+        frame.box(110, 3, 2.5, '#b9b2a2', 0, 0, 20); // the boarding platform
+        frame.box(110, 0.6, 40, '#5bb4e8', 0, 0, 41); // the Thames
+        c.shape(frame, 0, 0);
     },
     greenwich: (c) => {
         const sh = new Shape();
@@ -189,7 +246,16 @@ export const LANDMARKS = {
         c.shape(sh, 0, -6);
         c.model('pirate/boat-row-small', -10, 22, 6, 1.4);
     },
-    canterbury: (c) => { const sh = new Shape(); cathedral(sh, 1.05); c.shape(sh, 0, 0); },
+    canterbury: (c) => {
+        const sh = new Shape();
+        cathedral(sh, 1.05, true, false);
+        sh.box(13, 54, 13, STONE_D, 6.3, 24, 0);
+        for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
+            sh.cone(1.5, 7, STONE_D, 6.3 + dx, 78, dz, 4);
+        for (const sg of [-1, 1])
+            sh.box(2.8, 12, 0.5, GLASS, 6.3, 50, sg * 6.8);
+        c.shape(sh, 0, 0);
+    },
     durham: (c) => {
         const sh = new Shape();
         cathedral(sh, 1.1);
@@ -213,11 +279,25 @@ export const LANDMARKS = {
     },
     dover: (c) => {
         const sh = new Shape();
-        sh.box(80, 26, 14, '#f4f4ee', 0, -8, 20);
-        sh.box(70, 8, 12, '#e8e8e0', 4, 18, 18);
-        sh.box(80, 1.5, 28, G.grass, 0, 26, 2); // grass on top
-        castleShape(sh, 0.55);
-        c.shape(sh, 0, 0, 0);
+        const slabs = [[84, 12, 14, 0, 12], [80, 12, 13, 2, 13], [76, 10, 12, -2, 14], [72, 6, 11, 3, 15]];
+        let y = 0;
+        for (const [w, h, d, ox, z] of slabs) {
+            sh.box(w, h, d, y % 2 ? '#f6f6f0' : '#ebebe2', ox, y, z);
+            y += h;
+        }
+        for (let i = 0; i < 7; i++)
+            sh.box(7 + (i % 3) * 3, 5, 2, '#d9d9cf', -34 + i * 11, 6 + (i % 2) * 14, 19.2); // ledges and gulls' nests
+        sh.box(86, 2, 34, G.grass, 0, y, 8);
+        sh.box(100, 0.6, 30, '#5bb4e8', 0, 0, 44); // the Channel
+        sh.box(60, 1.4, 6, '#c9bfa6', 0, 0, 29); // shingle beach
+        const cs = new Shape();
+        castleShape(cs, 0.55);
+        sh.place(cs, -10, y + 2, -2);
+        sh.cyl(3.2, 3.8, 20, '#fff', 30, y + 2, 4, 10);
+        sh.cyl(2.2, 2.2, 3, '#d83a3a', 30, y + 22, 4, 10);
+        sh.cone(2.8, 3, DARK, 30, y + 25, 4, 10); // South Foreland lighthouse
+        c.shape(sh, 0, -6);
+        c.seaModel('pirate/ship-medium', 4, -0.3);
     },
     brighton: (c) => {
         const sh = new Shape();
@@ -289,7 +369,13 @@ export const LANDMARKS = {
     },
     exeter: (c) => {
         const sh = new Shape();
-        cathedral(sh, 0.8);
+        cathedral(sh, 0.8, false, false);
+        for (const sg of [-1, 1]) {
+            sh.box(10, 40, 10, STONE_D, 5, 0, sg * 17);
+            sh.box(11.5, 2, 11.5, STONE, 5, 40, sg * 17);
+            for (const [dx, dz] of [[-4.5, -4.5], [4.5, -4.5], [-4.5, 4.5], [4.5, 4.5]])
+                sh.cone(1.1, 4, STONE_D, 5 + dx, 42, sg * 17 + dz, 4);
+        }
         c.shape(sh, -10, -6);
         c.model('cube/animal-cow', 34, 16, 8, -0.6);
         c.model('cube/animal-cow', 46, 4, 8, 0.4);
@@ -517,9 +603,19 @@ export const LANDMARKS = {
     },
     glasgow: (c) => {
         const sh = new Shape();
-        crane(sh, -20, 0, '#2a2a2a', 1);
-        sh.box(40, 30, 16, '#c9c2b0', 26, 0, -10);
-        sh.box(1, 1, 1, GLASS, 0, 0, 0);
+        // the Finnieston Crane: a stout tower, a long jib and a counterweight house
+        sh.box(10, 40, 10, '#34363b', -22, 0, 0);
+        sh.box(14, 6, 14, '#2a2c30', -22, 40, 0);
+        sh.box(62, 5, 6, '#2a2c30', -2, 46, 0);
+        sh.box(5, 12, 5, '#2a2c30', 28, 46, 0);
+        sh.box(16, 9, 9, '#3d4046', -38, 46, 0);
+        sh.box(1.2, 18, 1.2, '#2a2c30', 26, 28, 0);
+        sh.box(5, 3, 5, '#d8b24a', 26, 26, 0);
+        for (let i = 0; i < 5; i++)
+            sh.box(1.2, 1.2, 12, '#3b3d42', -22 + (i - 2) * 0.1, 8 + i * 8, 0);
+        for (const [dx, r] of [[18, 13], [34, 11], [48, 9]])
+            sh.add(new THREE.SphereGeometry(r, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), '#cfd6de', dx, 0, -8); // the Armadillo
+        sh.box(60, 0.6, 22, '#5bb4e8', 14, 0, 14);
         c.shape(sh, 0, 0);
         c.seaModel('pirate/ship-medium', 4.5, -0.3);
     },

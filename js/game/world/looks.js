@@ -365,7 +365,7 @@ export const STATION_BUILDERS = {
         c.shape(sh, 0, 0);
         trees(c, [[-42, 26], [44, 24]]);
     },
-    ely: (c) => { const sh = new Shape(); cathedral(sh, 1, true); sh.cyl(9, 11, 18, STONE_D, 8, 30, 0, 8); sh.cone(9, 8, SLATE, 8, 48, 0, 8); c.shape(sh, 0, -4); },
+    ely: (c) => { const sh = new Shape(); cathedral(sh, 1, true, false); sh.cyl(9, 11, 18, STONE_D, 8, 30, 0, 8); sh.cone(9, 8, SLATE, 8, 48, 0, 8); c.shape(sh, 0, -4); },
     greatyarmouth: (c) => { LOOKS.pier(c); const sh = new Shape(); boat(sh, 44, 24, '#2f6fb0'); c.shape(sh, 0, 0); },
     bournemouth: (c) => { const sh = new Shape(); sh.box(90, 0.8, 30, SAND, 0, 0, 6); water(sh, 96, 26, 0, 34); pier(sh, 22, 26, 60); beachHuts(sh, -44, -4, 6); c.shape(sh, 0, -8); },
     lymeregis: (c) => {
@@ -401,7 +401,7 @@ export const STATION_BUILDERS = {
     falmouth: (c) => { const sh = new Shape(); mound(sh, 34, 3, '#9a9488', -20, 0); lighthouse(sh, -20, 0, 0.9); castleShape(sh, 0.4, STONE_D, SLATE, 'none'); c.shape(sh, 24, 0); },
     glastonbury: (c) => LOOKS.tor(c),
     cheddar: (c) => LOOKS.gorge(c),
-    gloucester: (c) => { const sh = new Shape(); cathedral(sh, 1, true); sh.box(16, 60, 16, STONE_D, -22, 0, 2); for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
+    gloucester: (c) => { const sh = new Shape(); cathedral(sh, 1, true, false); sh.box(16, 60, 16, STONE_D, -22, 0, 2); for (const [dx, dz] of [[-6, -6], [6, -6], [-6, 6], [6, 6]])
         sh.cone(1.8, 9, STONE_D, -22 + dx, 60, 2 + dz, 4); c.shape(sh, 0, -6); },
     newport: (c) => {
         const sh = new Shape();
@@ -451,11 +451,28 @@ export const STATION_BUILDERS = {
     holyhead: (c) => { LOOKS.lighthouse(c); const sh = new Shape(); water(sh, 60, 22, 30, 34); sh.box(36, 10, 12, WHITE, 34, 0, 34); sh.box(28, 6, 10, '#1f4f8a', 32, 10, 34); c.shape(sh, 0, 0); },
     lincoln: (c) => { const sh = new Shape(); mound(sh, 54, 3, G.grass); cathedral(sh, 0.9, false); for (const dx of [-26, -10])
         sh.box(11, 44, 11, STONE_D, dx, 0, 2); sh.box(13, 50, 13, STONE_D, 8, 0, 0); c.shape(sh, 0, 0, 0); },
-    coventry: (c) => { const sh = new Shape(); ruinWalls(sh, -20, 0, 0.7, '#b46a52'); spire(sh, -40, -8, 80, 12, '#b46a52'); sh.box(36, 24, 22, '#c9c2b0', 30, 0, -6); c.shape(sh, 0, 0); c.model('car/taxi', 10, 26, 7, 1.2); },
+    coventry: (c) => {
+        const sh = new Shape();
+        ruinWalls(sh, -22, 0, 0.8, '#b46a52');
+        spire(sh, -46, -10, 84, 11, '#b46a52');
+        sh.box(40, 20, 24, '#e6dcc4', 34, 0, -4);
+        sh.roof(40, 9, 24, '#6b7a88', 34, 20, -4);
+        for (let i = -3; i <= 3; i++)
+            sh.box(2.2, 14, 0.5, '#4f7fb2', 34 + i * 5, 3, 8.3);
+        sh.box(9, 7, 12, '#e6dcc4', 8, 0, 10);
+        sh.box(7, 5.5, 0.5, '#8fb8d8', 8, 0.5, 16.2); // the porch with its glass screen
+        sh.box(6, 34, 6, '#cfc6b0', 6, 0, -22);
+        sh.cone(4.4, 8, '#6b7a88', 6, 34, -22, 4); // the bell tower
+        c.shape(sh, 0, 0);
+        c.model('car/taxi', 10, 30, 7, 1.2);
+    },
     worcester: (c) => {
         const sh = new Shape();
-        cathedral(sh, 0.85, true);
+        cathedral(sh, 0.85, true, false);
         water(sh, 100, 14, 0, 30);
+        sh.box(12, 50, 12, STONE_D, 5, 20, 0);
+        for (const [dx, dz] of [[-5, -5], [5, -5], [-5, 5], [5, 5]])
+            sh.cone(1.3, 6, STONE_D, 5 + dx, 70, dz, 4); // the great tower
         sh.cyl(4, 4, 18, '#5b2a14', 52, 0, 14, 10);
         sh.cyl(1.8, 2.6, 6, '#5b2a14', 52, 18, 14, 10);
         sh.box(7, 8, 0.4, '#f2e6c8', 52, 6, 18.2); // a giant sauce bottle
@@ -501,10 +518,23 @@ export const STATION_BUILDERS = {
     },
     hull: (c) => {
         const sh = new Shape();
-        water(sh, 90, 26, 0, 30);
-        sh.add(new THREE.ConeGeometry(30, 34, 3), '#9fb4c2', 0, 17, 0, Math.PI / 2, 0, 0); // The Deep
-        sh.box(4, 10, 4, '#efe6c4', 40, 0, 10);
-        sh.box(4.6, 1, 4.6, '#efe6c4', 40, 10, 10); // a cream phone box
+        water(sh, 100, 28, 0, 32);
+        sh.box(46, 10, 24, '#7f98a8', 0, 0, 0);
+        const side = new THREE.Shape();
+        side.moveTo(0, 0);
+        side.lineTo(44, 0);
+        side.lineTo(44, 30);
+        side.lineTo(2, 12);
+        side.closePath();
+        const wedge = new THREE.ExtrudeGeometry(side, { depth: 22, bevelEnabled: false });
+        wedge.translate(-22, 10, -11);
+        sh.add(wedge, '#9fd0e8', 0, 0, 0);
+        sh.box(1, 20, 22.4, '#2f5f7a', 22, 10, 0);
+        for (let i = 0; i < 5; i++)
+            sh.box(1, 16 - i * 0.5, 0.5, '#e9f6ff', -16 + i * 8.6, 12 + i * 2, 11.3);
+        sh.add(new THREE.ConeGeometry(6, 16, 3), '#cfe9f5', -24, 18, 0, 0, 0, Math.PI / 2);
+        sh.box(4, 10, 4, '#efe6c4', 44, 0, 14);
+        sh.box(4.6, 1, 4.6, '#efe6c4', 44, 10, 14); // a cream phone box
         c.shape(sh, 0, -6);
     },
     scarborough: (c) => { const sh = new Shape(); mound(sh, 44, 3, G.grass, 6, -10); ruinWalls(sh, 6, -14, 0.7); sh.box(90, 0.8, 20, SAND, 0, 0, 26); beachHuts(sh, -40, 22, 4); c.shape(sh, 0, 0); },
