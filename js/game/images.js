@@ -4,8 +4,11 @@
 // A missing file never breaks the game: a coloured card with the emoji and name is drawn instead.
 import { C, FONT, roundRect, emoji, shade } from '../engine/draw.js';
 const cache = new Map();
+/** When each big photo finished loading (for the fade from its preview). */
+const loadedAt = new Map();
 const BASE = 'assets/images/';
-export function picUrl(kind, name) { return `${BASE}${kind}/${name}.${kind === 'months' ? 'webp' : 'png'}`; }
+/** Web-size copies (tools/make_display.py) are what loads; the PNG masters stay in the source folder. The presenter art keeps its PNGs. */
+export function picUrl(kind, name) { return `${BASE}${kind}/${name}.${kind === 'presenter' ? 'png' : 'webp'}`; }
 /** Starts loading the picture if needed and reports what is known right now. */
 export function picStatus(kind, name) {
     getPic(kind, name);
@@ -20,12 +23,64 @@ export function getPic(kind, name) {
         cache.set(key, 'loading');
         picVer++;
         const img = new Image();
-        img.onload = () => { cache.set(key, img); picVer++; };
+        img.onload = () => { cache.set(key, img); loadedAt.set(key, performance.now()); picVer++; };
         img.onerror = () => { cache.set(key, null); picVer++; };
         img.src = picUrl(kind, name);
         return null;
     }
     return c === 'loading' ? null : c;
+}
+/** The best picture available right now: the big photo if it is loaded, else its small preview. The big photo's
+ * download only starts once the preview has arrived, so the two never fight over a slow connection. */
+export function peekPic(kind, name) {
+    const key = kind + '/' + name;
+    let th = null, thWait = false;
+    if (hasThumb(kind, name)) {
+        th = getThumb(kind, name);
+        thWait = !th && thumbCache.get(key) !== null;
+    }
+    const c = cache.get(key);
+    if (c && c !== 'loading' && c.naturalWidth)
+        return { img: c, thumb: th, full: true };
+    if (!thWait)
+        getPic(kind, name);
+    return { img: th && th.naturalWidth ? th : null, thumb: th, full: false };
+}
+// ---- reading ahead: fetch the big photos of places the train is heading for, two at a time ----
+const aheadQueue = [];
+const aheadSeen = new Set();
+let aheadBusy = 0;
+function pumpAhead() {
+    while (aheadBusy < 2 && aheadQueue.length) {
+        const [kind, name] = aheadQueue.shift();
+        const key = kind + '/' + name;
+        if (cache.has(key))
+            continue;
+        aheadBusy++;
+        cache.set(key, 'loading');
+        const img = new Image();
+        const done = (ok) => { cache.set(key, ok ? img : null); if (ok) {
+            loadedAt.set(key, performance.now() - 1000);
+            picVer++;
+        } aheadBusy--; pumpAhead(); };
+        img.onload = () => done(true);
+        img.onerror = () => done(false);
+        img.src = picUrl(kind, name);
+    }
+}
+/** Quietly loads the big photos of a station (its first photo before the others). Call as the train gets close. */
+export function prefetchPlace(sid, all = false) {
+    const g = galleryOf('places', sid);
+    const names = all ? g.cands : g.cands.slice(0, 1);
+    for (const n of names) {
+        const key = 'places/' + n;
+        if (aheadSeen.has(key))
+            continue;
+        aheadSeen.add(key);
+        if (!cache.has(key))
+            aheadQueue.push(['places', n]);
+    }
+    pumpAhead();
 }
 /** Bumps every time a picture finishes loading (or fails), so cached screens can repaint. */
 let picVer = 0;
@@ -40,7 +95,7 @@ export function preload(kind, names, timeout = 6000) {
             return;
         }
         const img = new Image();
-        img.onload = () => { cache.set(key, img); picVer++; res(); };
+        img.onload = () => { cache.set(key, img); loadedAt.set(key, performance.now() - 1000); picVer++; res(); };
         img.onerror = () => { cache.set(key, null); picVer++; res(); };
         cache.set(key, 'loading');
         img.src = picUrl(kind, n);
@@ -215,7 +270,7 @@ export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
     ctx.save();
     roundRect(ctx, x, y, w, h, r);
     ctx.clip();
-    let img = null;
+    let img = null, under = null, fade = 1;
     if (o.thumb) {
         const c = cache.get(kind + '/' + name);
         img = (c && c !== 'loading') ? c : getThumb(kind, name);
@@ -223,17 +278,33 @@ export function drawPic(ctx, kind, name, x, y, w, h, o = {}) {
             img = getPic(kind, name);
     }
     else {
-        img = getPic(kind, name);
-        if (!img || !img.naturalWidth)
-            img = getThumb(kind, name);
+        const pk = peekPic(kind, name);
+        img = pk.img;
+        if (pk.full && pk.thumb && pk.thumb.naturalWidth) { // the big photo fades in over its preview: same crop, so nothing moves
+            const t = performance.now() - (loadedAt.get(kind + '/' + name) ?? 0);
+            if (t < 350) {
+                under = pk.thumb;
+                fade = t / 350;
+            }
+        }
     }
     if (img && img.naturalWidth) {
         ctx.fillStyle = '#22271f';
         ctx.fillRect(x, y, w, h);
         // fill the box; keep the upper-middle of tall photos (sky, faces, towers) rather than dead centre
-        const k = Math.max(w / img.naturalWidth, h / img.naturalHeight);
-        const sw = w / k, sh = h / k;
-        ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) * 0.4, sw, sh, x, y, w, h);
+        const cover = (im) => {
+            const k = Math.max(w / im.naturalWidth, h / im.naturalHeight);
+            const sw = w / k, sh = h / k;
+            ctx.drawImage(im, (im.naturalWidth - sw) / 2, (im.naturalHeight - sh) * 0.4, sw, sh, x, y, w, h);
+        };
+        if (under) {
+            cover(under);
+            ctx.globalAlpha = fade;
+            cover(img);
+            ctx.globalAlpha = 1;
+        }
+        else
+            cover(img);
     }
     else if (!o.bare) {
         const col = o.color ?? '#5f7d6a';
@@ -291,7 +362,7 @@ export function drawPhotoCircle(ctx, kind, name, x, y, r, ring = '#c99a1a') {
 }
 /** The picture shown whole (not cropped) inside the box. */
 export function drawPicWhole(ctx, kind, name, x, y, w, h, o = {}) {
-    const img = getPic(kind, name);
+    const img = peekPic(kind, name).img; // the preview has the same shape as the big photo, so the box does not jump when it arrives
     if (!img || !img.naturalWidth) {
         drawPic(ctx, kind, name, x, y, w, h, o);
         return;

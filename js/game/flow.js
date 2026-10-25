@@ -674,7 +674,7 @@ export class Director {
         const got = giveCard(p, c);
         audio.play('fanfare');
         await this.tell(p, {
-            title: SENSEI.welcome, portrait: SENSEI.emoji, badge: lines(SENSEI.name).main, confetti: true,
+            title: SENSEI.welcome, photo: { kind: 'heroes', name: 'marksensei', emoji: SENSEI.emoji, label: SENSEI.name.en, color: '#e0457b' }, badge: lines(SENSEI.name).main, confetti: true,
             body: [T(`ダラムは ${SENSEI.name.ja}の ふるさと！だいせいどうには、どうぶつが だいすきだった セント・カスバートが ねむっているよ。`, `Durham is ${SENSEI.name.en}'s hometown! Its cathedral holds the shrine of St Cuthbert, who loved animals.`),
                 T(`ふるさとボーナス：+${yen(m)}${got ? `と「${CARD_BY_ID[c].name.ja}」カード！` : '！'}`, `Hometown bonus: +${yen(m)}${got ? ` and a ${CARD_BY_ID[c].name.en} card!` : '!'}`)],
         }, '👨‍🏫');

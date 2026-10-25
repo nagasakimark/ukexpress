@@ -16,6 +16,7 @@ import { CompanyModal } from '../company.js';
 import { LAY, useView } from '../layout.js';
 import { stationProfile } from '../profile.js';
 import { drawTopBar, drawPlayerList, drawGuide, guideHit, guideScroll, guideStep, guideOpenPhoto, guideOpenMore, guideOpenMap } from '../hud.js';
+import { prefetchPlace } from '../images.js';
 const ZOOM = 1;
 const TOP = LAY.mapTop; // height of the top bar
 const DIR_OF = (dx, dy) => (Math.abs(dx) >= Math.abs(dy) ? (dx >= 0 ? 'e' : 'w') : dy >= 0 ? 's' : 'n');
@@ -55,6 +56,8 @@ export class BoardScene {
             zoom: (f, x, y) => { if (!guideHit(x, y))
                 return false; guideScroll(f > 1 ? -70 : 70); return true; },
         };
+        // ---------- update / draw ----------
+        this.aheadT = 0;
         view.build();
         for (const p of g.players) {
             const n = board.nodes[p.pos];
@@ -438,8 +441,35 @@ export class BoardScene {
         }
         return true;
     }
-    // ---------- update / draw ----------
+    /** Loads the big photos of the stations just down the line (and the destination) before the train gets there. */
+    readAhead() {
+        const p = this.current;
+        if (p && board.nodes[p.pos]) {
+            const seen = new Set([p.pos]);
+            let layer = [p.pos];
+            for (let d = 0; d <= 6 && layer.length; d++) {
+                const nxt = [];
+                for (const id of layer) {
+                    const sid = board.nodes[id].stationId;
+                    if (sid)
+                        prefetchPlace(sid, d <= 1);
+                    for (const l of board.nodes[id].links)
+                        if (!seen.has(l.to)) {
+                            seen.add(l.to);
+                            nxt.push(l.to);
+                        }
+                }
+                layer = nxt;
+            }
+        }
+        if (this.g.destination)
+            prefetchPlace(this.g.destination, true);
+    }
     update(dt) {
+        if (clock.realTime - this.aheadT > 1500) {
+            this.aheadT = clock.realTime;
+            this.readAhead();
+        }
         if (this.follow) {
             const v = this.vis[this.follow];
             if (v) {
