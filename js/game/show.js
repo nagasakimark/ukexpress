@@ -6,7 +6,7 @@ import { audio } from '../engine/audio.js';
 import { fx } from '../engine/fx.js';
 import { app } from './app.js';
 import { lines, t2, main, lang } from './i18n.js';
-import { drawPic, getPic } from './images.js';
+import { drawPic, getPic, preload, PRESENTER_PICS } from './images.js';
 import { LAY } from './layout.js';
 import { teacher } from './storage.js';
 import { realMonth } from '../core/calendar.js';
@@ -66,21 +66,16 @@ class StudioModal extends PModal {
         this.advance(); return true; }
     tapOutside() { this.advance(); }
     draw(ctx) {
-        const a = Math.max(0, Math.min(1, this.appear));
-        ctx.save();
-        ctx.globalAlpha = Math.min(1, a * 1.5);
         this.drawBody(ctx);
-        ctx.restore();
     }
     drawBody(ctx) {
         const tt = clock.realTime;
         const bg = getPic('presenter', 'studio');
+        // the studio is fully opaque from the first frame, so the board never shows through
+        ctx.fillStyle = '#f7b7c8';
+        ctx.fillRect(0, 0, 1280, 720);
         if (bg && bg.naturalWidth)
             ctx.drawImage(bg, 0, 0, 1280, 720);
-        else {
-            ctx.fillStyle = '#f7b7c8';
-            ctx.fillRect(0, 0, 1280, 720);
-        }
         this.drawTv(ctx, tt);
         // presenter
         const pose = this.cur.pose ?? 'happy';
@@ -90,8 +85,6 @@ class StudioModal extends PModal {
             const h = 640, w = img.naturalWidth * h / img.naturalHeight;
             ctx.drawImage(img, 70, 100 + bob, w, h);
         }
-        else
-            emoji(ctx, SENSEI.emoji, 280, 300, 220);
         // ON AIR lamp
         ctx.fillStyle = Math.sin(tt / 300) > 0 ? '#ff3b3b' : '#a02020';
         ctx.beginPath();
@@ -129,13 +122,30 @@ class StudioModal extends PModal {
                 text(ctx, sb, x + 26, y + h - 20, { size: 20, color: '#ffeaa0', weight: 600, maxWidth: w - 52 });
         }
         else {
-            const g = ctx.createLinearGradient(x, y, x + w, y + h);
-            g.addColorStop(0, '#ffd1e0');
-            g.addColorStop(1, '#ffe9a8');
-            ctx.fillStyle = g;
+            // the idle screen: the "UK Express News" title card
+            const nb = getPic('presenter', 'news');
+            ctx.fillStyle = '#123a73';
             ctx.fillRect(x, y, w, h);
-            emoji(ctx, '🚂', x + w / 2, y + h / 2 - 20, 150);
-            text(ctx, 'UK Express News', x + w / 2, y + h - 60, { size: 40, color: '#b01c3c', align: 'center', outline: 7, outlineColor: '#fff' });
+            if (nb && nb.naturalWidth) {
+                const k = Math.max(w / nb.naturalWidth, h / nb.naturalHeight);
+                ctx.drawImage(nb, x + (w - nb.naturalWidth * k) / 2, y + (h - nb.naturalHeight * k) / 2, nb.naturalWidth * k, nb.naturalHeight * k);
+            }
+            const by = y + h - 112;
+            const bg2 = ctx.createLinearGradient(0, by, 0, by + 92);
+            bg2.addColorStop(0, '#e23a56');
+            bg2.addColorStop(1, '#a8142f');
+            ctx.fillStyle = 'rgba(0,0,0,0.25)';
+            roundRect(ctx, x + 36, by + 6, w - 72, 92, 18);
+            ctx.fill();
+            ctx.fillStyle = bg2;
+            roundRect(ctx, x + 36, by, w - 72, 92, 18);
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 4;
+            roundRect(ctx, x + 41, by + 5, w - 82, 82, 14);
+            ctx.stroke();
+            text(ctx, 'UK Express News', x + w / 2, by + 36, { size: 44, color: '#fff', align: 'center', outline: 6, outlineColor: '#6e0d20' });
+            text(ctx, lines(t2('Live from the studio!', 'スタジオから ライブ！')).main, x + w / 2, by + 72, { size: 18, color: '#ffe3ee', align: 'center', weight: 700 });
         }
         if (this.flash > 0) {
             ctx.fillStyle = `rgba(255,255,255,${this.flash})`;
@@ -146,7 +156,7 @@ class StudioModal extends PModal {
         ctx.fillStyle = '#d7263d';
         roundRect(ctx, x + 14, y + 14, 74, 28, 10);
         ctx.fill();
-        text(ctx, '📺 LIVE', x + 51, y + 29, { size: 15, color: '#fff', align: 'center' });
+        text(ctx, 'LIVE', x + 51, y + 29, { size: 16, color: '#fff', align: 'center', weight: 800 });
     }
     drawBubble(ctx, tt) {
         const x = 24, w = 1232, h = 150, y = 548;
@@ -166,7 +176,7 @@ class StudioModal extends PModal {
         ctx.fillStyle = '#e0457b';
         roundRect(ctx, x + 24, y - 20, tw, 40, 20);
         ctx.fill();
-        text(ctx, '🎤 ' + nm, x + 24 + tw / 2, y, { size: 22, color: '#fff', align: 'center' });
+        text(ctx, nm, x + 24 + tw / 2, y, { size: 22, color: '#fff', align: 'center' });
         const t = this.cur.t;
         const l = lines(t);
         const left = Math.floor(this.shown);
@@ -198,6 +208,12 @@ class StudioModal extends PModal {
 export async function studio(ls) {
     if (!ls.length)
         return;
+    await preload('presenter', PRESENTER_PICS);
+    for (const k of ['places', 'heroes', 'events', 'months']) {
+        const names = ls.filter((l) => l.tv && l.tv.kind === k).map((l) => l.tv.name);
+        if (names.length)
+            await preload(k, names, 3000);
+    }
     if (!teacher.presenter) {
         await say({ title: SENSEI.name, icon: '🎤', body: ls.map((l) => l.t), color: '#e0457b' });
         return;
@@ -273,6 +289,7 @@ class MonthCard extends PModal {
 }
 /** `gameMonth` is the game's month index (0 = April); the card needs the calendar month. */
 export async function monthCard(gameMonth, year, years) {
+    await preload('months', [MONTH_FILES[realMonth(year, gameMonth).m]]);
     audio.play('fanfare');
     await app.show(new MonthCard(realMonth(year, gameMonth).m, year, years));
 }

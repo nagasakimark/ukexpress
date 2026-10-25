@@ -6,11 +6,9 @@ import { audio } from '../../engine/audio.js';
 import { fx } from '../../engine/fx.js';
 import { drawTrain } from '../mapart.js';
 import { lines, UI, t2 } from '../i18n.js';
-import { say, choose } from '../dialogs.js';
+import { choose } from '../dialogs.js';
 import { howToPlay } from '../tutorial.js';
 import { BookModal } from '../book.js';
-import { PinModal, TeacherModal } from '../teacher.js';
-import { teacher } from '../storage.js';
 import { board } from '../../core/map.js';
 import { view } from '../fake3d/view.js';
 import { useView } from '../layout.js';
@@ -46,20 +44,8 @@ export class TitleScene {
             mk(650, 412, 280, UI.howTo, '❓', '#3a7be8', () => howToPlay()),
             mk(640 - 290, 494, 280, t2('UK Book', 'UKブック'), '📖', '#7a2e1f', () => app.show(new BookModal())),
             mk(650, 494, 280, UI.options, '⚙️', '#7a6a55', () => this.optionsMenu()),
-            new Button({ x: 1080, y: 20, w: 180, h: 52, label: L(t2('Teacher', '先生')).main, sub: L(t2('Teacher', '先生')).sub ?? undefined, icon: '🍎', color: '#5f7d6a', size: 20, onClick: () => this.teacherPanel() }),
         ];
         this.focus = this.hasSave() ? 1 : 0;
-    }
-    async teacherPanel() {
-        const pin = await app.show(new PinModal(t2('Teacher PIN', '先生用PIN')));
-        if (pin === null)
-            return;
-        if (pin !== teacher.pin) {
-            await say({ title: t2('Wrong PIN', 'PINがちがいます'), icon: '🔒', body: [t2('The first PIN is 0000. You can change it in the Teacher panel.', '最初のPINは0000です。先生用パネルでへんこうできます。')] });
-            return;
-        }
-        await app.show(new TeacherModal());
-        this.enter();
     }
     async optionsMenu() {
         const o = app.options;

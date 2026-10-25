@@ -17,11 +17,7 @@ export function removeKey(key) { try {
     localStorage.removeItem(key);
 }
 catch { /* ignore */ } }
-export const TEACHER_KEY = 'britainExpressTeacher';
-export const teacher = loadJSON(TEACHER_KEY, {
-    pin: '0000', timerMinutes: 0, minigames: true, quizMode: 'off', presenter: true, helper: true, guestName: null, guestWelcome: null, className: '',
-});
-export function saveTeacher() { saveJSON(TEACHER_KEY, teacher); }
+export const teacher = { timerMinutes: 0, minigames: true, quizMode: 'off', presenter: true, helper: true, className: '' };
 export const BOOK_KEY = 'britainExpressBook';
 export const book = loadJSON(BOOK_KEY, { stations: [], heroes: [], cards: [], events: [], games: 0 });
 export function saveBook() { saveJSON(BOOK_KEY, book); }

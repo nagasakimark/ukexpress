@@ -13,12 +13,11 @@ import { lang, t2, normLang } from './game/i18n.js';
 import { choose } from './game/dialogs.js';
 import { howToPlay } from './game/tutorial.js';
 import { BookModal } from './game/book.js';
-import { applyGuest } from './game/teacher.js';
 import { teacher } from './game/storage.js';
 import { audio } from './engine/audio.js';
+import { preload, PRESENTER_PICS } from './game/images.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
-import { TeacherModal } from './game/teacher.js';
 import { LoadingScene } from './game/scenes/loading.js';
 import { sprites } from './game/fake3d/sprites.js';
 import { view } from './game/fake3d/view.js';
@@ -104,7 +103,6 @@ async function boot() {
         loading.innerHTML = `<p>Could not load the game files. Please start the game with <b>start.bat</b> (or <code>npm start</code>) instead of opening index.html directly.</p><p>ゲームのファイルを読みこめませんでした。index.html をちょくせつ開かず、<b>start.bat</b> から起動してください。</p><p style="opacity:.6">${String(e)}</p>`;
         return;
     }
-    applyGuest();
     app.boot(canvas);
     // Remember how much detail this computer can manage, so slow Chromebooks start at the right level next time.
     const applyTier = (t) => { app.screen.setQuality(t >= 1 ? 1 : 1.5, t >= 2 ? 0.75 : 1); try {
@@ -117,7 +115,8 @@ async function boot() {
     spritesLoading = sprites.load().catch((e) => { console.error('sprites', e); });
     window.__view = view;
     window.__app = app;
-    window.__test = { BookModal, TeacherModal, MINIGAMES, howToPlay }; // handy for automated UI tests
+    void preload('presenter', PRESENTER_PICS); // warm the TV-studio art in the background
+    window.__test = { BookModal, MINIGAMES, howToPlay }; // handy for automated UI tests
     loading.classList.add('hidden');
     const q = new URLSearchParams(location.search);
     if (q.get('lang'))
