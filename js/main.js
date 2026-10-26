@@ -19,6 +19,7 @@ import { book } from './game/storage.js';
 import { audio } from './engine/audio.js';
 import { preload, PRESENTER_PICS, loadThumbIndex, warmThumbs } from './game/images.js';
 import { warmMonthCards } from './game/show.js';
+import { loadVideoIndex } from './game/video.js';
 import { clock } from './engine/tween.js';
 import { MINIGAMES } from './game/minigames.js';
 import { LoadingScene } from './game/scenes/loading.js';
@@ -131,6 +132,7 @@ async function boot() {
     // pictures first (showing progress meanwhile). The render-scale step-down
     // for slow machines is untouched: it still applies on top of the 3D view.
     await loadThumbIndex();
+    await loadVideoIndex();
     app.go(new LoadingScene());
     await spritesLoading;
     warmThumbs();

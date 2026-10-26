@@ -13,6 +13,8 @@ import { t2, lines, payoutT } from './i18n.js';
 import { HumanController, CpuController } from './controllers.js';
 import { say, toast, banner, rollDice, SettlementModal, drawCard, drawHeroCard } from './dialogs.js';
 import { studio, monthCard, spin } from './show.js';
+import { hasClip, prefetchClip } from './video.js';
+import { eventPhotos } from './images.js';
 import { MINIGAMES, cpuScore } from './minigames.js';
 import { teacher, collect, book, saveBook, saveJSON, RESULTS_KEY } from './storage.js';
 const filmStations = () => STATIONS.filter((s) => s.film).map((s) => s.id);
@@ -181,12 +183,14 @@ export class Director {
     async monthStart() {
         const g = this.g;
         this.setSpeed(null);
+        const pick = pickMonthEvent(g);
+        if (pick?.ev.video)
+            prefetchClip(pick.ev.video); // the clip downloads while the month card and banner are on screen
         await monthCard(g.month, g.year, g.settings.years);
         if (!(g.year === 1 && g.month === 0)) {
             const first = g.players[(g.firstPlayer ?? 0) % g.players.length];
             await banner(t2(`${first.name.en} goes first this month! (Order rotates.)`, `${first.name.ja}が今月はじめ！（順番は毎月変わるよ）`), C.players[first.color], '🔄', 1600);
         }
-        const pick = pickMonthEvent(g);
         if (pick)
             await this.eventDay(pick.ev, pick.extra);
     }
@@ -201,11 +205,15 @@ export class Director {
         collect('events', ev.id);
         // the hometown guest's name can be changed by the teacher
         const guest = (t) => ({ en: t.en.replace(/Mark Sensei/g, SENSEI.name.en), ja: t.ja.replace(/マーク先生/g, SENSEI.name.ja) });
-        const tv = { kind: 'events', name: ev.image, emoji: ev.emoji, title: ev.title, sub: dt ?? ev.label ?? undefined, color: '#b5651d' };
+        // every photo we have of the event is used: one for each thing the presenter says
+        const pics = await eventPhotos(ev.image);
+        const tvOf = (n) => ({ kind: 'events', name: pics[n % pics.length], emoji: ev.emoji, title: ev.title, sub: dt ?? ev.label ?? undefined, color: '#b5651d' });
         const ls = [
-            { pose: 'excited', tv, sfx: 'fanfare', t: guest(ev.why) },
-            { pose: 'point', t: guest(ev.fact) },
+            { pose: 'excited', tv: tvOf(0), sfx: 'fanfare', t: guest(ev.why) },
+            { pose: 'point', tv: tvOf(1), t: guest(ev.fact) },
         ];
+        if (ev.video && hasClip(ev.video))
+            ls.push({ pose: 'happy', tv: tvOf(2), video: ev.video, t: ev.watch ?? T('ビデオを見てみよう！', "Let's watch a video!") });
         if (extra)
             ls.push({ pose: 'happy', tv: { kind: 'events', name: extra.image, emoji: extra.emoji, title: extra.title, color: '#b5651d' }, t: extra.text });
         ls.push({ pose: 'excited', t: this.payout(ev.effect) });

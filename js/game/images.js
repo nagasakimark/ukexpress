@@ -371,4 +371,11 @@ export function drawPicWhole(ctx, kind, name, x, y, w, h, o = {}) {
     const dw = img.naturalWidth * k, dh = img.naturalHeight * k;
     drawPic(ctx, kind, name, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh, o);
 }
+/** The photos that exist for an event: its own picture, then <name>2 … <name>7. The studio shows one per line. */
+export async function eventPhotos(base) {
+    const g = galleryOf('events', base);
+    await preload('events', g.cands, 2500);
+    const names = galleryNames(g);
+    return names.length ? names : [base];
+}
 //# sourceMappingURL=images.js.map

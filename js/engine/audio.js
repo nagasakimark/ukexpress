@@ -80,6 +80,10 @@ class Audio {
             this.ctx = null;
         }
     }
+    /** Turns the soundtrack down while a video with sound plays. */
+    duck(on) { if (this.bgm)
+        this.bgm.volume = on ? 0.06 : 0.4; if (this.musicGain)
+        this.musicGain.gain.value = on ? 0.03 : 0.16; }
     setMuted(m) {
         this.muted = m;
         if (this.bgm)

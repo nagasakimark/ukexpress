@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Express: video check</title>
+<style>
+  body { font: 16px/1.5 system-ui, "Hiragino Sans", "Noto Sans JP", sans-serif; margin: 0; padding: 20px 16px 60px; background: #fbf7ee; color: #2b2118; }
+  main { max-width: 1000px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 26px; }
+  h2 { margin: 28px 0 8px; font-size: 19px; border-bottom: 2px solid #e0c98f; padding-bottom: 4px; }
+  .sub { color: #6b5a44; margin: 0 0 14px; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eadfc6; vertical-align: top; }
+  th { background: #f3e8c9; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  tr.row:hover { background: #fffaf0; }
+  .tag { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .dub { background: #d7f2dd; color: #1c6b34; }
+  .subs { background: #dbe8fb; color: #1d4e9a; }
+  .none { background: #fdeccb; color: #8a5a00; }
+  .bad { background: #fbd9d9; color: #9a1d1d; }
+  .ok { background: #d7f2dd; color: #1c6b34; }
+  .wait { background: #eee; color: #555; }
+  video { width: 300px; max-width: 100%; background: #000; border-radius: 8px; display: block; }
+  .ja { color: #6b5a44; font-size: 14px; }
+  code { background: #f1e7cc; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  .summary span { margin-right: 14px; }
+  @media (max-width: 720px) { th:nth-child(4), td:nth-child(4) { display: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>UK Express: video check</h1>
+  <p class="sub">Every event clip, as the game loads it. Press play on any clip to test it (sound included). Open this page from the same web server as the game, for example <code>http://localhost:8080/videos.html</code>.</p>
+
+  <div class="summary" id="summary"></div>
+
+  <h2>TV news loop</h2>
+  <table><tbody><tr class="row">
+    <td style="width:320px"><video id="newsv" src="assets/video/news.mp4" loop muted playsinline controls preload="metadata"></video></td>
+    <td><b>assets/video/news.mp4</b><br><span class="ja">The idle studio TV screen. Loops with no sound.</span><br><span id="newsst" class="tag wait">checking…</span> <span id="newsinfo" class="ja"></span></td>
+  </tr></tbody></table>
+
+  <h2>Event videos</h2>
+  <table>
+    <thead><tr><th>Clip</th><th>Event</th><th>Language</th><th>Details</th><th>Plays?</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <h2>Events with no video yet</h2>
+  <p class="sub" id="novidcount"></p>
+  <table><tbody id="novid"></tbody></table>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const fmtT = (s) => { s = Math.round(s); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const monthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function watch(video, badge, info) {
+  badge.className = 'tag wait'; badge.textContent = 'checking…';
+  video.addEventListener('loadedmetadata', () => {
+    badge.className = 'tag ok'; badge.textContent = '✅ plays';
+    if (info) info.textContent = `${video.videoWidth}×${video.videoHeight}, ${fmtT(video.duration)}`;
+  });
+  video.addEventListener('error', () => { badge.className = 'tag bad'; badge.textContent = '❌ failed to load'; });
+  setTimeout(() => { if (badge.classList.contains('wait')) { badge.className = 'tag bad'; badge.textContent = '❌ no response'; } }, 12000);
+}
+
+async function main() {
+  watch($('#newsv'), $('#newsst'), $('#newsinfo'));
+  const [events, index] = await Promise.all([
+    fetch('content/events.json').then((r) => r.json()),
+    fetch('assets/video/events/index.json').then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+  ]);
+  let nDub = 0, nSubs = 0, nNone = 0, nBad = 0, n = 0;
+  const rows = $('#rows');
+  const withVideo = events.filter((e) => e.video);
+  for (const e of withVideo) {
+    const info = index[e.video];
+    const tr = document.createElement('tr'); tr.className = 'row';
+    const ok = info && !info.error;
+    n++;
+    let lang;
+    if (!ok) { lang = '<span class="tag bad">no file</span>'; nBad++; }
+    else if (info.dub) { lang = '<span class="tag dub">🎧 Japanese dub</span>'; nDub++; }
+    else if (info.subs) { lang = '<span class="tag subs">💬 Japanese subtitles</span>'; nSubs++; }
+    else { lang = '<span class="tag none">no dub / no subtitles</span><br><span class="ja">YouTube has no Japanese track for this one (the presenter explains it).</span>'; nNone++; }
+    const when = e.label ? e.label.en : (e.date ? '' : monthName[e.cal]);
+    tr.innerHTML = `
+      <td style="width:320px">${ok ? `<video controls preload="metadata" playsinline src="assets/video/events/${e.video}.mp4">${info.subs ? `<track kind="subtitles" srclang="ja" label="日本語" src="assets/video/events/${e.video}.ja.vtt" default>` : ''}</video>` : '<span class="ja">—</span>'}</td>
+      <td><b>${e.emoji} ${e.title.en}</b><br><span class="ja">${e.title.ja}</span><br><span class="ja">${when}</span></td>
+      <td>${lang}</td>
+      <td class="ja">${ok ? `${info.kb.toLocaleString()} KB · ${fmtT(info.secs)}<br>${info.title}<br><a href="https://www.youtube.com/watch?v=${info.yt}" target="_blank" rel="noopener">YouTube ↗</a>` : (info && info.error ? info.error : '')}</td>
+      <td><span class="tag wait">checking…</span><br><span class="ja"></span></td>`;
+    rows.appendChild(tr);
+    const v = tr.querySelector('video');
+    if (v) watch(v, tr.querySelector('td:last-child .tag'), tr.querySelector('td:last-child .ja'));
+  }
+  // subtitle check: do the cues load?
+  document.querySelectorAll('track').forEach((t) => {
+    t.addEventListener('error', () => { const td = t.closest('tr').querySelector('td:nth-child(3)'); td.insertAdjacentHTML('beforeend', '<br><span class="tag bad">❌ .vtt failed</span>'); });
+  });
+  $('#summary').innerHTML = `<span><b>${n}</b> event videos</span><span class="tag dub">🎧 ${nDub} dubbed</span> <span class="tag subs">💬 ${nSubs} subtitled</span> <span class="tag none">${nNone} neither</span>` + (nBad ? ` <span class="tag bad">${nBad} missing</span>` : '');
+
+  const noVid = events.filter((e) => !e.video || !index[e.video] || index[e.video].error);
+  $('#novidcount').textContent = `${noVid.length} of ${events.length} events have no working video.`;
+  $('#novid').innerHTML = noVid.map((e) => `<tr class="row"><td>${e.emoji} <b>${e.title.en}</b> <span class="ja">${e.title.ja}</span></td><td class="ja">${e.video ? 'link needs replacing (' + e.video + ')' : (e.label ? e.label.en : monthName[e.cal])}</td></tr>`).join('');
+}
+main();
+</script>
+</body>
+</html>

@@ -213,6 +213,47 @@
   "image": "januarysales"
  },
  {
+  "id": "birdwatch",
+  "cal": 0,
+  "date": "",
+  "emoji": "🐦",
+  "title": {
+   "en": "Big Garden Birdwatch",
+   "ja": "ビッグ・ガーデン・バードウォッチ"
+  },
+  "why": {
+   "en": "Hello everyone! Every January, hundreds of thousands of people all over the UK spend just one hour counting the wild birds in their garden or local park. Then they tell the RSPB what they saw. Even you can do it from a window!",
+   "ja": "みんな、こんにちは！毎年1月、イギリスじゅうの なん十万人もの人が、1時間だけ、じぶんの庭や近くの公園に来る鳥を かぞえるよ。そして、鳥をまもる会「RSPB」に おしえるんだ。まどから見るだけでも できるよ！"
+  },
+  "fact": {
+   "en": "Scientists use the counts to see which birds are doing well. The house sparrow, blue tit, starling and blackbird are often in the top ten!",
+   "ja": "かぞえた数で、どの鳥がふえたり へったりしているか、科学者が調べるんだ。ハウス・スパロウ（イエスズメ）やブルー・ティット、ムクドリ、クロウタドリは、いつもトップ10に入るよ！"
+  },
+  "effect": {
+   "en": "Nature lovers! Tourism properties earn 1.5× this year.",
+   "ja": "自然が大すき！今年は観光のぶっけんが1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "tourism",
+   "mult": 1.5
+  },
+  "where": {
+   "en": "All over the UK",
+   "ja": "イギリスじゅう"
+  },
+  "label": {
+   "en": "The last weekend of January",
+   "ja": "1月の終わりの週末"
+  },
+  "image": "biggardenbirdwatch",
+  "video": "birdwatch",
+  "watch": {
+   "en": "Here are this year's top birds. How many have you seen?",
+   "ja": "今年のトップの鳥たちを見てみよう！みんなは なん種類、見たことあるかな？"
+  }
+ },
+ {
   "id": "pancake",
   "cal": 1,
   "date": "easter-47",
@@ -365,6 +406,47 @@
    "ja": "1月の終わりから3月"
   },
   "image": "snowdropseason"
+ },
+ {
+  "id": "sixnations",
+  "cal": 1,
+  "date": "",
+  "emoji": "🏉",
+  "title": {
+   "en": "Six Nations Rugby",
+   "ja": "シックス・ネイションズ（ラグビー）"
+  },
+  "why": {
+   "en": "Brrr, it's cold, but the stadiums are red hot! Six teams (England, Scotland, Wales, Ireland, France and Italy) play each other in a rugby tournament every winter. Welsh fans in Cardiff sing with the roof closed, Scottish fans sing in Edinburgh at Murrayfield, and English fans sing at Twickenham in London!",
+   "ja": "さむいけど、スタジアムはあつい！イングランド、スコットランド、ウェールズ、アイルランド、フランス、イタリアの6チームが、毎年冬にラグビーで たたかうよ。カーディフではウェールズのファンが屋根をしめて大合唱、エディンバラのマレーフィールドではスコットランドのファン、ロンドンのトゥイッケナムではイングランドのファンが歌うんだ！"
+  },
+  "fact": {
+   "en": "Win all five matches and it's called a Grand Slam! The team that finishes last gets a funny prize called the Wooden Spoon.",
+   "ja": "5しあい ぜんぶ勝つと「グランドスラム」！いちばん下のチームには、「ウッデン・スプーン」という おもしろい賞があるよ。"
+  },
+  "effect": {
+   "en": "Rugby fever! Sport properties earn 2× this year.",
+   "ja": "ラグビー熱！今年はスポーツのぶっけんが2倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "sport",
+   "mult": 2
+  },
+  "where": {
+   "en": "Cardiff, Edinburgh and London",
+   "ja": "カーディフ・エディンバラ・ロンドン"
+  },
+  "label": {
+   "en": "February to March",
+   "ja": "2月から3月"
+  },
+  "image": "sixnationsrugby",
+  "video": "sixnations",
+  "watch": {
+   "en": "Listen to the crowd roar!",
+   "ja": "ファンの大かんせいを聞いてみよう！"
+  }
  },
  {
   "id": "stdavid",
@@ -578,6 +660,92 @@
   "image": "springequinox"
  },
  {
+  "id": "crufts",
+  "cal": 2,
+  "date": "",
+  "emoji": "🐕",
+  "title": {
+   "en": "Crufts",
+   "ja": "クラフツ（ドッグショー）"
+  },
+  "why": {
+   "en": "Woof woof! Crufts is the biggest dog show in the world, and it happens in Birmingham in the middle of England. Thousands of dogs come to show their tricks, run through tunnels and jump over bars. Birmingham even has more canals than Venice!",
+   "ja": "ワンワン！クラフツは世界でいちばん大きなドッグショー。イングランドのまんなかにある バーミンガムで開かれるよ。なん千びきもの犬が、トンネルをくぐったり、ハードルをとんだりして、とくいわざを見せるんだ。バーミンガムは、じつはベニスより運河が多い町なんだよ！"
+  },
+  "fact": {
+   "en": "On the last night, one dog wins the top prize: 'Best in Show'. Everyone from tiny Chihuahuas to giant Great Danes can compete.",
+   "ja": "最後の夜には、1ぴきの犬が いちばんの賞「ベスト・イン・ショー」をもらうよ。小さなチワワから大きなグレート・デーンまで、みんな出られるんだ。"
+  },
+  "effect": {
+   "en": "Players in the Midlands get £300 × year.",
+   "ja": "ミッドランズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "midlands"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Birmingham, England",
+   "ja": "イングランド（バーミンガム）"
+  },
+  "label": {
+   "en": "Early March",
+   "ja": "3月のはじめ"
+  },
+  "image": "crufts",
+  "video": "crufts",
+  "watch": {
+   "en": "Look at these clever dogs!",
+   "ja": "かしこい犬たちを見てみよう！"
+  }
+ },
+ {
+  "id": "boatrace",
+  "cal": 2,
+  "date": "",
+  "emoji": "🚣",
+  "title": {
+   "en": "The Boat Race",
+   "ja": "ザ・ボート・レース"
+  },
+  "why": {
+   "en": "Ready, steady, row! Every spring, two famous universities, Oxford and Cambridge, race rowing boats along the River Thames in London. It has happened since 1829! The course is about 7 kilometres long, from Putney to Mortlake.",
+   "ja": "位置について、よーい、こげ！毎年春、有名な大学オックスフォードとケンブリッジが、ロンドンのテムズ川でボートのレースをするよ。なんと1829年からつづいているんだ！コースは、パトニーからモートレークまでの約7キロだよ。"
+  },
+  "fact": {
+   "en": "Each boat has eight rowers and one cox. The cox sits at the back, steers and shouts to keep everybody together. Cambridge wear light blue, and Oxford wear dark blue.",
+   "ja": "ボートには、こぐ人が8人と、コックスという人が1人。コックスは うしろにすわって、かじをとりながら、大声でみんなの タイミングをあわせるんだ。ケンブリッジはライトブルー、オックスフォードはダークブルーだよ。"
+  },
+  "effect": {
+   "en": "Players in London get £200 × year.",
+   "ja": "ロンドンにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "label": {
+   "en": "Late March or early April",
+   "ja": "3月の終わりか4月のはじめ"
+  },
+  "image": "theboatrace",
+  "video": "boatrace",
+  "watch": {
+   "en": "Which blue boat will win?",
+   "ja": "どっちの青いボートが勝つかな？"
+  }
+ },
+ {
   "id": "easter",
   "cal": 3,
   "date": "easter",
@@ -748,6 +916,90 @@
    "ja": "4月の終わり"
   },
   "image": "londonmarathon"
+ },
+ {
+  "id": "lambing",
+  "cal": 3,
+  "date": "",
+  "emoji": "🐑",
+  "title": {
+   "en": "Lambing Season",
+   "ja": "ひつじの赤ちゃんシーズン"
+  },
+  "why": {
+   "en": "Baa! It's spring, and farms all over the UK are full of newborn lambs. There are more than 30 million sheep in the UK. In Wales there are about three sheep for every person, and the green hills of the Yorkshire Dales are dotted with them too!",
+   "ja": "メェ〜！春になると、イギリスじゅうの牧場で、子ひつじが生まれるよ。イギリスには3千万頭いじょうのひつじがいるんだ。ウェールズには、人ひとりにつき、ひつじが3頭ぐらいもいるし、ヨークシャー・デールズの緑の丘も、ひつじだらけだよ！"
+  },
+  "fact": {
+   "en": "Farmers stay up all night to help the mothers. A newborn lamb can usually stand up and drink milk within an hour.",
+   "ja": "農家の人は、お母さんひつじを たすけるために夜ふかしするよ。生まれたばかりの子ひつじは、たいてい1時間いないに、立って ミルクをのめるんだ。"
+  },
+  "effect": {
+   "en": "Farm visits! Food properties earn 1.5× this year.",
+   "ja": "牧場見学！今年は食べ物のぶっけんが1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "food",
+   "mult": 1.5
+  },
+  "where": {
+   "en": "Farms all over the UK",
+   "ja": "イギリスじゅうの牧場"
+  },
+  "label": {
+   "en": "March to May",
+   "ja": "3月から5月"
+  },
+  "image": "lambingseason",
+  "video": "lambing",
+  "watch": {
+   "en": "Aww, look at the lambs!",
+   "ja": "わぁ、子ひつじたち、かわいい！"
+  }
+ },
+ {
+  "id": "grandnational",
+  "cal": 3,
+  "date": "",
+  "emoji": "🏇",
+  "title": {
+   "en": "Grand National",
+   "ja": "グランド・ナショナル（競馬）"
+  },
+  "why": {
+   "en": "And they're off! The Grand National is the most famous horse race in the UK. It is held at Aintree, near Liverpool, the city of the Beatles. About 40 horses jump over 30 giant fences and run nearly 7 kilometres!",
+   "ja": "さあ、スタートしました！グランド・ナショナルは、イギリスでいちばん有名な競馬。ビートルズの町リバプールの近く、エイントリーで開かれるよ。40頭ぐらいの馬が、30こもの大きなさくをとびこえて、7キロ近くも走るんだ！"
+  },
+  "fact": {
+   "en": "One fence is called Becher's Brook, and it is one of the most famous in the world. Millions of people watch on TV and cheer for the horse they chose.",
+   "ja": "さくの1つ「ベッチャーズ・ブルック」は、世界でも有名なんだ。なん百万人もが テレビで見て、えらんだ馬をおうえんするよ。"
+  },
+  "effect": {
+   "en": "Players in northern England get £200 × year.",
+   "ja": "イングランド北部にいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "north"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Liverpool, England",
+   "ja": "イングランド（リバプール）"
+  },
+  "label": {
+   "en": "Early April",
+   "ja": "4月のはじめ"
+  },
+  "image": "grandnational",
+  "video": "grandnational",
+  "watch": {
+   "en": "Hold on tight, here they come!",
+   "ja": "しっかりつかまって、馬たちが来るよ！"
+  }
  },
  {
   "id": "mayday",
@@ -967,6 +1219,89 @@
    "ja": "5月の終わりから6月はじめ"
   },
   "image": "hayfestival"
+ },
+ {
+  "id": "bluebells",
+  "cal": 4,
+  "date": "",
+  "emoji": "💙",
+  "title": {
+   "en": "Bluebell Woods",
+   "ja": "ブルーベルの森"
+  },
+  "why": {
+   "en": "Come for a walk in the woods! Every spring, the forest floor turns into a sea of blue and purple flowers called bluebells. About half of all the bluebells in the world grow in the UK, and they smell sweet too!",
+   "ja": "森をさんぽしよう！毎年春、森の地面は「ブルーベル」という青むらさきの花で いっぱいになるよ。世界のブルーベルの半分ぐらいが イギリスに生えているんだ。あまいにおいもするよ！"
+  },
+  "fact": {
+   "en": "Bluebells take years to grow from a seed, so it is against the law to dig them up from the wild. Look, take photos, but never pick them!",
+   "ja": "ブルーベルは、たねから花がさくまで なん年もかかるから、野生のものをほりとるのは法律でだめなんだ。見たり、写真をとったりするだけにしようね！"
+  },
+  "effect": {
+   "en": "Pretty woods! Tourism properties earn 1.5× this year.",
+   "ja": "きれいな森！今年は観光のぶっけんが1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "tourism",
+   "mult": 1.5
+  },
+  "where": {
+   "en": "Woods all over the UK",
+   "ja": "イギリスじゅうの森"
+  },
+  "label": {
+   "en": "Late April to May",
+   "ja": "4月の終わりから5月"
+  },
+  "image": "bluebellwoods",
+  "video": "bluebells",
+  "watch": {
+   "en": "Take a walk through the blue woods with me!",
+   "ja": "いっしょに 青い森を さんぽしよう！"
+  }
+ },
+ {
+  "id": "cheeserolling",
+  "cal": 4,
+  "date": "last-1",
+  "emoji": "🧀",
+  "title": {
+   "en": "Cheese Rolling",
+   "ja": "チーズ・ローリング"
+  },
+  "why": {
+   "en": "This one is silly, and a little bit scary! At Cooper's Hill near Gloucester, a big round cheese is rolled down a super-steep hill, and people run, tumble and slide after it. Whoever gets to the bottom first wins the cheese!",
+   "ja": "これは、ちょっとおかしくて、ちょっとこわいお祭り！グロスター近くのクーパーズ・ヒルで、大きくて丸いチーズが、とてもきゅうな坂をころがり落ちて、人びとが走ったり、ころんだり、すべったりしながら追いかけるよ。いちばんに下についた人が、チーズをもらえるんだ！"
+  },
+  "fact": {
+   "en": "The cheese is a Double Gloucester, weighs about 4 kilograms and can roll faster than anyone can run! Gloucester is also famous for its cathedral, which was used in the Harry Potter films.",
+   "ja": "チーズは「ダブル・グロスター」で、重さは約4キロ。だれよりも速くころがるんだ！グロスターは大聖堂でも有名で、ハリー・ポッターの映画でも使われたよ。"
+  },
+  "effect": {
+   "en": "A free card for players in the south-west of England.",
+   "ja": "イングランド南西部にいる人はカードを1まいもらえる。"
+  },
+  "fx": {
+   "t": "cardRegion",
+   "regions": [
+    "southwest"
+   ]
+  },
+  "where": {
+   "en": "Gloucestershire, England",
+   "ja": "イングランド（グロスターシャー）"
+  },
+  "label": {
+   "en": "The last Monday in May",
+   "ja": "5月の最後の月曜日"
+  },
+  "image": "cheeserolling",
+  "video": "cheeserolling",
+  "watch": {
+   "en": "Whoa, watch them go!",
+   "ja": "わぁ、見て！みんな ころげてる！"
+  }
  },
  {
   "id": "solstice",
@@ -1228,6 +1563,49 @@
    "ja": "イングランド（サマセット）"
   },
   "image": "glastonburyfestival"
+ },
+ {
+  "id": "highlandshow",
+  "cal": 5,
+  "date": "",
+  "emoji": "🐄",
+  "title": {
+   "en": "Royal Highland Show",
+   "ja": "ロイヤル・ハイランド・ショー"
+  },
+  "why": {
+   "en": "Welcome to Scotland's biggest farming show, right next to Edinburgh! You can meet shaggy Highland cattle with long horns, giant Clydesdale horses and clever sheepdogs. It is also a great place to taste Scottish food like shortbread and Aberdeen Angus beef.",
+   "ja": "エディンバラのすぐそばで開かれる、スコットランド最大の農業ショーへようこそ！長いツノの もじゃもじゃ「ハイランド牛」や、大きな「クライズデール馬」、かしこい牧羊犬に会えるよ。ショートブレッドや、アバディーン・アンガス牛のお肉など、スコットランドの味もたのしめるんだ。"
+  },
+  "fact": {
+   "en": "Highland cattle have a long fringe to keep the rain out of their eyes. Scotland is proud of its farms, from the green Lowlands to the wild Highlands.",
+   "ja": "ハイランド牛は、長い前がみで 雨が目に入らないようにしているよ。スコットランドの人は、ローランドの緑の平原から、あれたハイランドまで、農場にほこりを持っているんだ。"
+  },
+  "effect": {
+   "en": "Players in Scotland get £300 × year.",
+   "ja": "スコットランドにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "scotland"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Edinburgh, Scotland",
+   "ja": "スコットランド（エディンバラ）"
+  },
+  "label": {
+   "en": "Late June",
+   "ja": "6月の終わり"
+  },
+  "image": "royalhighlandshow",
+  "video": "highlandshow",
+  "watch": {
+   "en": "Meet the Highland cows!",
+   "ja": "ハイランドの牛たちに会いにいこう！"
+  }
  },
  {
   "id": "wimbledon",
@@ -1503,6 +1881,166 @@
   "image": "henleyroyalregatta"
  },
  {
+  "id": "welshshow",
+  "cal": 6,
+  "date": "",
+  "emoji": "🐴",
+  "title": {
+   "en": "Royal Welsh Show",
+   "ja": "ロイヤル・ウェルシュ・ショー"
+  },
+  "why": {
+   "en": "Croeso! That means 'welcome' in Welsh. Every July, farmers from all over Wales gather in Builth Wells, right in the green heart of the country, for the Royal Welsh Show. You can see Welsh ponies, Welsh Black cattle and hardy mountain sheep.",
+   "ja": "クロイソ！ウェールズ語で「ようこそ」という意味だよ。毎年7月、ウェールズじゅうの農家の人が、国のまんなかの緑の町ビルス・ウェルズに集まって、ロイヤル・ウェルシュ・ショーを開くんだ。ウェルシュ・ポニーや黒いウェルシュ牛、山のたくましいひつじに会えるよ。"
+  },
+  "fact": {
+   "en": "Many people at the show speak Welsh, one of the oldest languages in Europe. Wales is the land of sheep, castles and the red dragon on its flag!",
+   "ja": "ショーでは、ヨーロッパでいちばん古いことばの1つ、ウェールズ語を話す人も多いよ。ウェールズは、ひつじとお城と、旗の赤いドラゴンの国なんだ！"
+  },
+  "effect": {
+   "en": "Players in Wales get £300 × year.",
+   "ja": "ウェールズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "wales"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Builth Wells, Wales",
+   "ja": "ウェールズ（ビルス・ウェルズ）"
+  },
+  "label": {
+   "en": "Late July",
+   "ja": "7月の終わり"
+  },
+  "image": "royalwelshshow"
+ },
+ {
+  "id": "silverstone",
+  "cal": 6,
+  "date": "nth-0-1",
+  "emoji": "🏎️",
+  "title": {
+   "en": "British Grand Prix",
+   "ja": "イギリス・グランプリ（F1）"
+  },
+  "why": {
+   "en": "Vroom vroom! Every July, the fastest racing cars in the world zoom around Silverstone in the middle of England. The track was built on an old airfield, and most Formula 1 teams have their factories in England, so people call it 'Motorsport Valley'!",
+   "ja": "ブーン、ブーン！毎年7月、世界でいちばん速いレーシングカーが、イングランドのまんなかのシルバーストンを走りぬけるよ。サーキットは、むかしの飛行場のあとにつくられたんだ。F1チームの工場の多くがイングランドにあって、「モータースポーツ・バレー」とよばれているよ！"
+  },
+  "fact": {
+   "en": "The cars can go faster than 300 kilometres per hour! Fans camp near the track for the whole weekend to cheer.",
+   "ja": "マシンは時速300キロより速く走れるんだ！ファンは、しゅうまつずっとサーキットの近くにテントをはって、おうえんするよ。"
+  },
+  "effect": {
+   "en": "Players in the Midlands get £300 × year.",
+   "ja": "ミッドランズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "midlands"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Silverstone, England",
+   "ja": "イングランド（シルバーストン）"
+  },
+  "label": {
+   "en": "The first weekend in July",
+   "ja": "7月の第1しゅうまつ"
+  },
+  "image": "britishgrandprix",
+  "video": "silverstone",
+  "watch": {
+   "en": "Hold your ears, the cars are coming!",
+   "ja": "耳をふさいで、マシンが来るよ！"
+  }
+ },
+ {
+  "id": "yorkshireshow",
+  "cal": 6,
+  "date": "",
+  "emoji": "🚜",
+  "title": {
+   "en": "Great Yorkshire Show",
+   "ja": "グレート・ヨークシャー・ショー"
+  },
+  "why": {
+   "en": "Ey up! That's how Yorkshire folk say hello. Every July, Harrogate fills with tractors, prize cows, sheep and cooking contests at the Great Yorkshire Show. Yorkshire people are proud of their 'God's Own County', with its wide dales, Yorkshire pudding and Wensleydale cheese, Wallace and Gromit's favourite!",
+   "ja": "エイ・アップ！これは、ヨークシャーの人の「こんにちは」だよ。毎年7月、ハロゲートの町は、トラクターや、賞をねらう牛、ひつじ、料理コンテストでいっぱいになるよ。ヨークシャーの人は、ひろい谷や、ヨークシャー・プディング、ウォレスとグルミットの大すきな「ウェンズリーデール・チーズ」がある「神さまの国」にほこりを持っているんだ！"
+  },
+  "fact": {
+   "en": "The Yorkshire flag has a white rose on it. 'Yorkshire Day' is on 1st August, and people really do celebrate it!",
+   "ja": "ヨークシャーの旗には、白いバラがえがかれているよ。8月1日は「ヨークシャー・デー」で、ほんとうにお祝いするんだ！"
+  },
+  "effect": {
+   "en": "Tasty treats! Food properties earn 1.5× this year.",
+   "ja": "おいしいものがいっぱい！今年は食べ物のぶっけんが1.5倍。"
+  },
+  "fx": {
+   "t": "boost",
+   "cat": "food",
+   "mult": 1.5
+  },
+  "where": {
+   "en": "Harrogate, Yorkshire",
+   "ja": "ヨークシャー（ハロゲート）"
+  },
+  "label": {
+   "en": "Mid-July",
+   "ja": "7月のなかごろ"
+  },
+  "image": "greatyorkshireshow",
+  "video": "yorkshireshow",
+  "watch": {
+   "en": "Come and see Yorkshire's big day out!",
+   "ja": "ヨークシャーの大きなお祭りを見に行こう！"
+  }
+ },
+ {
+  "id": "llangolleneisteddfod",
+  "cal": 6,
+  "date": "",
+  "emoji": "🎤",
+  "title": {
+   "en": "Llangollen International Eisteddfod",
+   "ja": "ランゴレン国際アイステズヴォッド"
+  },
+  "why": {
+   "en": "Singing and dancing from all around the world, in one little Welsh town! Every July, choirs and dancers from dozens of countries travel to Llangollen, beside the River Dee in north Wales. It began in 1947, to bring people from different countries together in peace.",
+   "ja": "世界じゅうの歌とダンスが、ウェールズの小さな町に集まるよ！毎年7月、なん十もの国から合唱団やダンサーが、北ウェールズのディー川のほとりの町ランゴレンにやってくるんだ。1947年に、いろいろな国の人が平和につながるために はじまったんだよ。"
+  },
+  "fact": {
+   "en": "This is different from the National Eisteddfod in August, which is all about Welsh language and culture. In Llangollen, everyone is welcome, in any language!",
+   "ja": "8月の「ナショナル・アイステズヴォッド」は、ウェールズ語と文化のお祭りだけど、ランゴレンは ちがうよ。どんなことばでも、みんながかんげいされるんだ！"
+  },
+  "effect": {
+   "en": "Players in Wales get £300 × year.",
+   "ja": "ウェールズにいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "wales"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Llangollen, Wales",
+   "ja": "ウェールズ（ランゴレン）"
+  },
+  "label": {
+   "en": "Early July",
+   "ja": "7月のはじめ"
+  },
+  "image": "llangolleninternationaleisteddfod"
+ },
+ {
   "id": "fringe",
   "cal": 7,
   "date": "d7",
@@ -1670,6 +2208,49 @@
    "ja": "ロンドン"
   },
   "image": "nottinghillcarnival"
+ },
+ {
+  "id": "cowesweek",
+  "cal": 7,
+  "date": "nth-6-1",
+  "emoji": "⛵",
+  "title": {
+   "en": "Cowes Week",
+   "ja": "カウズ・ウィーク"
+  },
+  "why": {
+   "en": "Ahoy there! The Isle of Wight is a little island just off the south coast of England. Every August, hundreds of sailing boats race in the sea between the island and the mainland at Cowes Week, which has been going since 1826.",
+   "ja": "アホイ！ワイト島は、イングランド南がんのすぐ近くにある小さな島だよ。毎年8月、「カウズ・ウィーク」では、なん百そうものヨットが島と本土のあいだの海でレースをするんだ。1826年からつづいているよ。"
+  },
+  "fact": {
+   "en": "Thousands of sailors take part, from experts to young sailors. After the races there are fireworks over the water!",
+   "ja": "ベテランから若い人まで、なん千人ものヨット乗りが参加するよ。レースのあとは、水の上に花火が上がるんだ！"
+  },
+  "effect": {
+   "en": "Players in south-east England get £200 × year.",
+   "ja": "イングランド南東部にいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "southeast"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Isle of Wight, England",
+   "ja": "イングランド（ワイト島）"
+  },
+  "label": {
+   "en": "The first week of August",
+   "ja": "8月の第1週"
+  },
+  "image": "cowesweek",
+  "video": "cowes",
+  "watch": {
+   "en": "Look at all those sails!",
+   "ja": "たくさんの帆を見て！"
+  }
  },
  {
   "id": "harvest",
@@ -1940,6 +2521,128 @@
   "image": "greatnorthrun"
  },
  {
+  "id": "proms",
+  "cal": 8,
+  "date": "nth-6-2",
+  "emoji": "🎻",
+  "title": {
+   "en": "The Proms",
+   "ja": "プロムス（BBCプロムス）"
+  },
+  "why": {
+   "en": "Bravo! The Proms are eight weeks of concerts at the Royal Albert Hall in London, from July to September. The round, red-brick hall opened in 1871. People can stand in the middle for a cheap ticket, and 'Prom' is short for 'promenade', which means to walk around!",
+   "ja": "ブラボー！プロムスは、7月から9月まで、ロンドンのロイヤル・アルバート・ホールで開かれる、8しゅうかんの音楽会だよ。レンガづくりの丸いホールは1871年にできたんだ。まんなかで立って見ると チケットが安いんだよ。「プロム」は、歩きまわることを言う「プロムナード」の短いよび方なんだ！"
+  },
+  "fact": {
+   "en": "On the Last Night, the crowd waves flags and sings 'Land of Hope and Glory' and 'Rule, Britannia!'. Look out for Union flags, the Welsh dragon and the Scottish saltire.",
+   "ja": "「ラスト・ナイト」には、みんながはたをふって「ランド・オブ・ホープ・アンド・グローリー」や「ルール・ブリタニア」を歌うよ。ユニオン・ジャックや、ウェールズのドラゴン、スコットランドの旗も見つけてみてね。"
+  },
+  "effect": {
+   "en": "Players in London get £200 × year.",
+   "ja": "ロンドンにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "Royal Albert Hall, London",
+   "ja": "ロンドン（ロイヤル・アルバート・ホール）"
+  },
+  "label": {
+   "en": "Mid-July to mid-September",
+   "ja": "7月のなかごろから9月のなかごろ"
+  },
+  "image": "theproms",
+  "video": "proms",
+  "watch": {
+   "en": "Wave your flag for the Last Night!",
+   "ja": "ラスト・ナイトで、はたをふろう！"
+  }
+ },
+ {
+  "id": "tourofbritain",
+  "cal": 8,
+  "date": "",
+  "emoji": "🚴",
+  "title": {
+   "en": "Tour of Britain",
+   "ja": "ツール・オブ・ブリテン"
+  },
+  "why": {
+   "en": "Ring ring! The Tour of Britain is a bicycle race that goes all the way across the country for about a week. The route changes every year and passes through towns and villages in England, Scotland and Wales, where families stand along the road to wave and cheer.",
+   "ja": "リンリン！ツール・オブ・ブリテンは、1しゅうかんほどかけて国じゅうを走る自転車レースだよ。コースは毎年かわって、イングランド、スコットランド、ウェールズの町や村を通るんだ。家族みんなで道ばたに立って、手をふっておうえんするよ。"
+  },
+  "fact": {
+   "en": "The riders race in a big group called the peloton. Cheering fans often hold up flags and big signs by the side of the road.",
+   "ja": "せん手は「ペロトン」という大きなむれになって走るよ。おうえんする人は、はたや大きなカンバンを、道ばたでもっているんだ。"
+  },
+  "effect": {
+   "en": "Everyone's cheering! All players get £100 × year.",
+   "ja": "みんなでおうえん！ぜんいんが +£100×年。"
+  },
+  "fx": {
+   "t": "all",
+   "amount": 100
+  },
+  "where": {
+   "en": "England, Scotland and Wales",
+   "ja": "イングランド・スコットランド・ウェールズ"
+  },
+  "label": {
+   "en": "September",
+   "ja": "9月"
+  },
+  "image": "tourofbritain",
+  "video": "tourofbritain",
+  "watch": {
+   "en": "Off they go, up and down the hills!",
+   "ja": "丘をのぼって、おりて、出発！"
+  }
+ },
+ {
+  "id": "shetlandwoolweek",
+  "cal": 8,
+  "date": "",
+  "emoji": "🧶",
+  "title": {
+   "en": "Shetland Wool Week",
+   "ja": "シェトランド・ウール・ウィーク"
+  },
+  "why": {
+   "en": "Brrr! The Shetland Islands are way up in the north of Scotland, closer to Norway than to London! The sheep there grow soft, warm wool, and every autumn knitters from all over the world visit for Shetland Wool Week to learn the colourful 'Fair Isle' patterns.",
+   "ja": "ブルル！シェトランド諸島は、スコットランドのずっと北にあって、ロンドンよりノルウェーのほうが近いんだ！そこのひつじは、やわらかくてあたたかい毛をもっていて、毎年秋に、世界じゅうの編み物ずきが、カラフルな「フェア・アイル」もようを学びに「シェトランド・ウール・ウィーク」にやってくるよ。"
+  },
+  "fact": {
+   "en": "Shetland is also famous for its tiny, fluffy Shetland ponies. Don't be fooled by their size, they are very strong!",
+   "ja": "シェトランドは、小さくてふわふわの「シェトランド・ポニー」でも有名だよ。小さくても、とても力もちなんだ！"
+  },
+  "effect": {
+   "en": "Cosy and clever! Scotland's culture properties earn 2× this year.",
+   "ja": "あたたかくて、うでじまん！今年はスコットランドの文化のぶっけんが2倍。"
+  },
+  "fx": {
+   "t": "scotlandCulture"
+  },
+  "where": {
+   "en": "Shetland, Scotland",
+   "ja": "スコットランド（シェトランド）"
+  },
+  "label": {
+   "en": "Late September to early October",
+   "ja": "9月の終わりから10月のはじめ"
+  },
+  "image": "shetlandwoolweek",
+  "video": "woolweek",
+  "watch": {
+   "en": "See the wool week highlights!",
+   "ja": "ウール・ウィークのようすを見てみよう！"
+  }
+ },
+ {
   "id": "halloween",
   "cal": 9,
   "date": "d31",
@@ -2044,6 +2747,88 @@
    "ja": "10月の終わりから11月はじめ"
   },
   "image": "riveroflight"
+ },
+ {
+  "id": "conkers",
+  "cal": 9,
+  "date": "nth-0-2",
+  "emoji": "🌰",
+  "title": {
+   "en": "Conkers",
+   "ja": "コンカーズ"
+  },
+  "why": {
+   "en": "Crack! In autumn, shiny brown conkers fall from horse chestnut trees. Children thread one onto a string and take turns swinging it at each other's conker. The first conker to smash loses! There is even a World Conker Championships in Southwick, England, every October.",
+   "ja": "パキッ！秋になると、トチノキから つやつやの茶色い「コンカー」が落ちてくるよ。子どもたちは ひもを通して、かわりばんこに、あいての コンカーをたたくんだ。さきに われたほうが負け！10月には、イングランドのサウスウィックで「世界コンカー選手権」もあるよ。"
+  },
+  "fact": {
+   "en": "Conkers is an old British playground game. Some people say that hardening your conker in the oven or in vinegar helps, but that is cheating!",
+   "ja": "コンカーズは、イギリスの子どもの むかしからのあそびだよ。オーブンやお酢でコンカーをかたくする人もいるけど、それはズルなんだ！"
+  },
+  "effect": {
+   "en": "A lucky find! Everyone gets a free card.",
+   "ja": "ラッキー！ぜんいんがカードを1まいもらえる。"
+  },
+  "fx": {
+   "t": "card"
+  },
+  "where": {
+   "en": "England",
+   "ja": "イングランド"
+  },
+  "label": {
+   "en": "The second Sunday in October",
+   "ja": "10月の第2日曜日"
+  },
+  "image": "conkers",
+  "video": "conkers",
+  "watch": {
+   "en": "Here's how to play conkers like a pro!",
+   "ja": "コンカーズのやりかたを見てみよう！"
+  }
+ },
+ {
+  "id": "hullfair",
+  "cal": 9,
+  "date": "",
+  "emoji": "🎡",
+  "title": {
+   "en": "Hull Fair",
+   "ja": "ハル・フェア"
+  },
+  "why": {
+   "en": "Roll up, roll up! Hull Fair is one of the biggest travelling funfairs in Europe. Every October, the city of Hull fills with big wheels, roller coasters, ghost trains and candy floss, and it has been going since 1278! Hull is a proud old port city on the River Humber.",
+   "ja": "さあ、よっといで！ハル・フェアは、ヨーロッパでも最大級の移動遊園地だよ。毎年10月、ハルの町は 観覧車やジェットコースター、おばけやしき、わたあめでいっぱいになるんだ。なんと1278年からつづいているよ！ハルは、ハンバー川にある、ほこり高い古い港町なんだ。"
+  },
+  "fact": {
+   "en": "Hull was the UK City of Culture in 2017. The city's aquarium, The Deep, has real sharks!",
+   "ja": "ハルは2017年に「イギリス文化都市」になったよ。町の水族館「ザ・ディープ」には、本物のサメがいるんだ！"
+  },
+  "effect": {
+   "en": "Players in northern England get £300 × year.",
+   "ja": "イングランド北部にいる人は +£300×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "north"
+   ],
+   "amount": 300
+  },
+  "where": {
+   "en": "Hull, England",
+   "ja": "イングランド（ハル）"
+  },
+  "label": {
+   "en": "A week in mid-October",
+   "ja": "10月なかごろの1しゅうかん"
+  },
+  "image": "hullfair",
+  "video": "hullfair",
+  "watch": {
+   "en": "Hop on, the fair is open!",
+   "ja": "のってみよう、フェアが始まったよ！"
+  }
  },
  {
   "id": "bonfire",
@@ -2200,6 +2985,92 @@
    "ja": "11月なかごろの金曜日"
   },
   "image": "bbcchildreninneed"
+ },
+ {
+  "id": "lordmayorsshow",
+  "cal": 10,
+  "date": "nth-6-2",
+  "emoji": "🎩",
+  "title": {
+   "en": "Lord Mayor's Show",
+   "ja": "ロード・メイヤーズ・ショー"
+  },
+  "why": {
+   "en": "Ta-da! Every November, the new Lord Mayor of the City of London rides through the streets in a big, shiny procession with floats, marching bands, soldiers and giant puppets. It has been happening for more than 800 years!",
+   "ja": "ジャジャーン！毎年11月、ロンドン・シティの新しい市長「ロード・メイヤー」が、山車やマーチング・バンド、兵隊さん、大きな人形といっしょに、にぎやかな行列で町をまわるよ。800年いじょうもつづいているんだ！"
+  },
+  "fact": {
+   "en": "The City of London is only about one square mile, so it is called the Square Mile. It is one of the oldest parts of London.",
+   "ja": "ロンドン・シティは、広さが1平方マイルぐらいしかないから「スクエア・マイル」とよばれているよ。ロンドンでもいちばん古い場所の1つなんだ。"
+  },
+  "effect": {
+   "en": "Players in London get £200 × year.",
+   "ja": "ロンドンにいる人は +£200×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 200
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "label": {
+   "en": "The second Saturday in November",
+   "ja": "11月の第2土曜日"
+  },
+  "image": "lordmayorsshow",
+  "video": "lordmayor",
+  "watch": {
+   "en": "Here comes the big parade!",
+   "ja": "大行列がやってきたよ！"
+  }
+ },
+ {
+  "id": "winterwonderland",
+  "cal": 10,
+  "date": "",
+  "emoji": "🎄",
+  "title": {
+   "en": "Hyde Park Winter Wonderland",
+   "ja": "ハイド・パーク・ウィンター・ワンダーランド"
+  },
+  "why": {
+   "en": "Brrr, wrap up warm! Every winter, Hyde Park, a huge park in the middle of London, turns into a magical Christmas fair. There is an ice rink, a giant wheel, rides, snowy lights, a Christmas market and even Santa!",
+   "ja": "ブルル、あったかくしてね！毎年冬、ロンドンのまんなかにある大きな公園ハイド・パークが、まほうのようなクリスマスのお祭りになるよ。スケートリンク、大観覧車、乗りもの、ひかりのかざり、クリスマス・マーケット、そしてサンタさんもいるんだ！"
+  },
+  "fact": {
+   "en": "It opens in mid-November and stays until the start of January. Try roasted chestnuts and hot chocolate while you walk around!",
+   "ja": "11月のなかごろに開いて、1月のはじめまでつづくよ。歩きながら、焼きぐりやホット・チョコレートを食べてみてね！"
+  },
+  "effect": {
+   "en": "Players in London get £250 × year.",
+   "ja": "ロンドンにいる人は +£250×年。"
+  },
+  "fx": {
+   "t": "region",
+   "regions": [
+    "london"
+   ],
+   "amount": 250
+  },
+  "where": {
+   "en": "London",
+   "ja": "ロンドン"
+  },
+  "label": {
+   "en": "Mid-November to early January",
+   "ja": "11月のなかごろから1月のはじめ"
+  },
+  "image": "hydeparkwinterwonderland",
+  "video": "winterwonderland",
+  "watch": {
+   "en": "Let's visit the winter wonderland!",
+   "ja": "ウィンター・ワンダーランドに行ってみよう！"
+  }
  },
  {
   "id": "christmas",

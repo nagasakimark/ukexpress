@@ -13,6 +13,7 @@ import { realMonth } from '../core/calendar.js';
 import { SENSEI } from '../core/content/heroes.js';
 import { say } from './dialogs.js';
 import { sprites } from './fake3d/sprites.js';
+import { eventClip, newsLoop, prefetchClip, duckMusic } from './video.js';
 /** The presenter's TV studio: Mark Sensei talks, one short bubble at a time, with a picture on the TV. */
 class StudioModal extends PModal {
     constructor(ls) {
@@ -22,6 +23,7 @@ class StudioModal extends PModal {
         this.shown = 0; // characters revealed
         this.flash = 0;
         this.tv = null;
+        this.vid = null; // the clip playing on the TV during this line
         this.spinT = -1;
         this.spinDur = 3400;
         this.spinIdx = -1;
@@ -47,7 +49,20 @@ class StudioModal extends PModal {
         }
         if (l.sfx)
             audio.play(l.sfx);
+        this.stopVid();
+        const c = l.video && !app.autoplay ? eventClip(l.video) : null;
+        if (c) {
+            this.vid = c;
+            c.start(!app.options.muted);
+            if (!app.options.muted)
+                duckMusic(true);
+        }
     }
+    stopVid() { if (this.vid) {
+        this.vid.stop();
+        duckMusic(false);
+        this.vid = null;
+    } }
     get spinning() { return this.spinT >= 0 && this.spinT < this.spinDur; }
     /** The roulette stops: the real destination appears with a flash, a fanfare and confetti. */
     land() {
@@ -78,10 +93,12 @@ class StudioModal extends PModal {
             audio.play('card');
             this.enter();
         }
-        else
+        else {
+            this.stopVid();
             this.resolveWith(undefined);
+        }
     }
-    autoValue() { return undefined; }
+    autoValue() { this.stopVid(); return undefined; }
     update(dt) {
         super.update(dt);
         this.shown = Math.min(this.full(), this.shown + dt * 0.045);
@@ -154,7 +171,20 @@ class StudioModal extends PModal {
         ctx.save();
         roundRect(ctx, x, y, w, h, 18);
         ctx.clip();
-        if (tv) {
+        const playing = !!this.vid && this.vid.draw(ctx, x, y, w, h);
+        if (playing) {
+            const inf = this.vid.opts.info;
+            const tag = inf?.dub ? '🇯🇵 日本語 吹き替え' : inf?.subs ? '日本語 字幕' : '';
+            if (tag) {
+                ctx.font = `800 17px ${FONT}`;
+                const tw = ctx.measureText(tag).width + 24;
+                ctx.fillStyle = 'rgba(0,0,0,0.6)';
+                roundRect(ctx, x + w - tw - 14, y + 14, tw, 30, 10);
+                ctx.fill();
+                text(ctx, tag, x + w - tw / 2 - 14, y + 29, { size: 17, color: '#fff', align: 'center', weight: 800 });
+            }
+        }
+        else if (tv) {
             drawPic(ctx, tv.kind, tv.name, x, y, w, h, { emoji: tv.emoji, label: main(tv.title), color: tv.color, radius: 0, border: 'none' });
             if (this.spinning) {
                 ctx.fillStyle = 'rgba(255,255,255,0.12)';
@@ -177,7 +207,11 @@ class StudioModal extends PModal {
             const nb = getPic('presenter', 'news');
             ctx.fillStyle = '#5aa8e0';
             ctx.fillRect(x, y, w, h);
-            if (nb && nb.naturalWidth) {
+            const loop = newsLoop();
+            if (loop.el.paused && !loop.failed)
+                loop.start(false);
+            if (loop.draw(ctx, x, y, w, h, false)) { /* the looping news clip */ }
+            else if (nb && nb.naturalWidth) {
                 const k = Math.max(w / nb.naturalWidth, h / nb.naturalHeight), dw = nb.naturalWidth * k, dh = nb.naturalHeight * k;
                 ctx.drawImage(nb, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
             }
@@ -244,6 +278,8 @@ export async function studio(ls) {
     if (!ls.length)
         return;
     await preload('presenter', PRESENTER_PICS);
+    for (const l of ls)
+        prefetchClip(l.video);
     for (const k of ['places', 'heroes', 'events', 'months']) {
         const names = ls.flatMap((l) => [l.tv, ...(l.spin ?? [])]).filter((t) => t && t.kind === k).map((t) => t.name);
         if (!names.length)
