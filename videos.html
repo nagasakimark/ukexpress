@@ -6,7 +6,7 @@
 <title>UK Express: video check</title>
 <style>
   body { font: 16px/1.5 system-ui, "Hiragino Sans", "Noto Sans JP", sans-serif; margin: 0; padding: 20px 16px 60px; background: #fbf7ee; color: #2b2118; }
-  main { max-width: 1000px; margin: 0 auto; }
+  main { max-width: 1320px; margin: 0 auto; }
   h1 { margin: 0 0 4px; font-size: 26px; }
   h2 { margin: 28px 0 8px; font-size: 19px; border-bottom: 2px solid #e0c98f; padding-bottom: 4px; }
   .sub { color: #6b5a44; margin: 0 0 14px; }
@@ -21,7 +21,12 @@
   .bad { background: #fbd9d9; color: #9a1d1d; }
   .ok { background: #d7f2dd; color: #1c6b34; }
   .wait { background: #eee; color: #555; }
-  video { width: 300px; max-width: 100%; background: #000; border-radius: 8px; display: block; }
+  video { width: 280px; max-width: 100%; background: #000; border-radius: 8px; display: block; }
+  #rows { table-layout: auto; }
+  #rows td:nth-child(1) { width: 300px; } #rows td:nth-child(2) { min-width: 380px; } #rows td:nth-child(3) { width: 140px; } #rows td:nth-child(4) { width: 170px; } #rows td:nth-child(5) { width: 90px; }
+  .txt { margin: 8px 0 0; padding: 6px 9px; background: #fbf3dc; border-radius: 8px; font-size: 14px; }
+  .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #8a6a1f; }
+  .jp { color: #5a4a8a; }
   .ja { color: #6b5a44; font-size: 14px; }
   code { background: #f1e7cc; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
   .summary span { margin-right: 14px; }
@@ -43,7 +48,7 @@
 
   <h2>Event videos</h2>
   <table>
-    <thead><tr><th>Clip</th><th>Event</th><th>Language</th><th>Details</th><th>Plays?</th></tr></thead>
+    <thead><tr><th>Clip</th><th>Event and what the presenter says</th><th>Language</th><th>Details</th><th>Plays?</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 
@@ -53,6 +58,7 @@
 </main>
 <script>
 const $ = (s) => document.querySelector(s);
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const fmtT = (s) => { s = Math.round(s); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 const monthName = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -86,10 +92,11 @@ async function main() {
     else if (info.dub) { lang = '<span class="tag dub">🎧 Japanese dub</span>'; nDub++; }
     else if (info.subs) { lang = '<span class="tag subs">💬 Japanese subtitles</span>'; nSubs++; }
     else { lang = '<span class="tag none">no dub / no subtitles</span><br><span class="ja">YouTube has no Japanese track for this one (the presenter explains it).</span>'; nNone++; }
-    const when = e.label ? e.label.en : (e.date ? '' : monthName[e.cal]);
+    const when = e.label ? e.label.en : monthName[e.cal];
     tr.innerHTML = `
-      <td style="width:320px">${ok ? `<video controls preload="metadata" playsinline src="assets/video/events/${e.video}.mp4">${info.subs ? `<track kind="subtitles" srclang="ja" label="日本語" src="assets/video/events/${e.video}.ja.vtt" default>` : ''}</video>` : '<span class="ja">—</span>'}</td>
-      <td><b>${e.emoji} ${e.title.en}</b><br><span class="ja">${e.title.ja}</span><br><span class="ja">${when}</span></td>
+      <td>${ok ? `<video controls preload="metadata" playsinline src="assets/video/events/${e.video}.mp4">${info.subs ? `<track kind="subtitles" srclang="ja" label="日本語" src="assets/video/events/${e.video}.ja.vtt" default>` : ''}</video>` : '<span class="ja">—</span>'}</td>
+      <td><b>${e.emoji} ${e.title.en}</b> <span class="ja">${e.title.ja}</span> <span class="ja">(${when})</span>
+        ${['why', 'fact', 'watch'].filter((k) => e[k]).map((k) => `<div class="txt"><span class="lbl">${k === 'why' ? 'Intro' : k === 'fact' ? 'Fun fact' : 'Before the video'}</span><br>${esc(e[k].en)}<br><span class="jp">${esc(e[k].ja)}</span></div>`).join('')}</td>
       <td>${lang}</td>
       <td class="ja">${ok ? `${info.kb.toLocaleString()} KB · ${fmtT(info.secs)}<br>${info.title}<br><a href="https://www.youtube.com/watch?v=${info.yt}" target="_blank" rel="noopener">YouTube ↗</a>` : (info && info.error ? info.error : '')}</td>
       <td><span class="tag wait">checking…</span><br><span class="ja"></span></td>`;
