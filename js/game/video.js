@@ -73,6 +73,13 @@ export class Clip {
     /** Keeps a clip that should be playing playing (browsers sometimes refuse the first play()). */
     keepAlive() { if (this.asked && this.el.paused && !this.el.ended)
         this.el.play().catch(() => { }); }
+    cueAt() {
+        const t = this.el.currentTime;
+        for (const c of this.cues)
+            if (t >= c.a && t <= c.b)
+                return c;
+        return null;
+    }
     cue() {
         const t = this.el.currentTime;
         for (const c of this.cues)
@@ -89,8 +96,9 @@ export class Clip {
         const k = Math.max(w / v.videoWidth, h / v.videoHeight), sw = w / k, sh = h / k;
         ctx.drawImage(v, (v.videoWidth - sw) / 2, (v.videoHeight - sh) / 2, sw, sh, x, y, w, h);
         if (subtitles) {
-            const c = this.cue();
-            if (c) {
+            const cc = this.cueAt();
+            const c = cc?.t;
+            if (cc && c) {
                 const size = Math.max(16, Math.round(w / 26));
                 ctx.save();
                 ctx.font = `800 ${size}px sans-serif`;
@@ -108,7 +116,8 @@ export class Clip {
                 }
                 if (cur)
                     lines.push(cur);
-                const ls = lines.slice(-2), bh = ls.length * (size + 6) + 14;
+                const pages = Math.ceil(lines.length / 2), pg = Math.min(pages - 1, Math.floor(((this.el.currentTime - cc.a) / Math.max(0.1, cc.b - cc.a)) * pages)); // long subtitles are shown two lines at a time
+                const ls = lines.slice(pg * 2, pg * 2 + 2), bh = ls.length * (size + 6) + 14;
                 ctx.fillStyle = 'rgba(0,0,0,0.62)';
                 roundRect(ctx, x + 16, y + h - bh - 14, w - 32, bh, 10);
                 ctx.fill();

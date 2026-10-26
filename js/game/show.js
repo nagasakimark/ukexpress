@@ -174,7 +174,7 @@ class StudioModal extends PModal {
         const playing = !!this.vid && this.vid.draw(ctx, x, y, w, h);
         if (playing) {
             const inf = this.vid.opts.info;
-            const tag = inf?.dub ? '🇯🇵 日本語 吹き替え' : inf?.subs ? '日本語 字幕' : '';
+            const tag = inf?.native ? '🇯🇵 日本語' : inf?.dub ? '🇯🇵 日本語 吹き替え' : inf?.subs ? '日本語 字幕' : '';
             if (tag) {
                 ctx.font = `800 17px ${FONT}`;
                 const tw = ctx.measureText(tag).width + 24;

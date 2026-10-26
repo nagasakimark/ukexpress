@@ -82,6 +82,7 @@ async function main() {
     n++;
     let lang;
     if (!ok) { lang = '<span class="tag bad">no file</span>'; nBad++; }
+    else if (info.native) { lang = '<span class="tag dub">🇯🇵 Japanese (original)</span>'; nDub++; }
     else if (info.dub) { lang = '<span class="tag dub">🎧 Japanese dub</span>'; nDub++; }
     else if (info.subs) { lang = '<span class="tag subs">💬 Japanese subtitles</span>'; nSubs++; }
     else { lang = '<span class="tag none">no dub / no subtitles</span><br><span class="ja">YouTube has no Japanese track for this one (the presenter explains it).</span>'; nNone++; }

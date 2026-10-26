@@ -1614,7 +1614,12 @@
    "cat": "food",
    "mult": 1.5
   },
-  "image": "fathersday"
+  "image": "fathersday",
+  "video": "fathers",
+  "watch": {
+   "en": "A short film about dads. Happy Father's Day!",
+   "ja": "お父さんたちの短い映画を見てみよう。父の日おめでとう！"
+  }
  },
  {
   "id": "glastonbury",
@@ -1667,7 +1672,12 @@
    "en": "Somerset, England",
    "ja": "イングランド（サマセット）"
   },
-  "image": "glastonburyfestival"
+  "image": "glastonburyfestival",
+  "video": "glastonbury",
+  "watch": {
+   "en": "The first 24 hours at Glastonbury. Tents, mud and music!",
+   "ja": "グラストンベリーの最初の24時間。テント、どろんこ、そして音楽！"
+  }
  },
  {
   "id": "highlandshow",
@@ -1763,7 +1773,12 @@
    "ja": "ロンドン"
   },
   "image": "wimbledon",
-  "minigame": "tennis"
+  "minigame": "tennis",
+  "video": "wimbledon",
+  "watch": {
+   "en": "Ai Sugiyama, a tennis star from Japan, tells us why Wimbledon is so special!",
+   "ja": "日本のテニス選手、杉山愛さんが、ウィンブルドンが特別な理由を教えてくれるよ！"
+  }
  },
  {
   "id": "gala",
@@ -1779,8 +1794,8 @@
    "ja": "ダラム・ミナーズ・ガラ（ビッグ・ミーティング）は、北東イングランドのたんこうで働いた人びとを、ブラスバンドと旗でたたえるお祭り。"
   },
   "fact": {
-   "en": "Each old mining village marches into Durham behind a big, hand-painted banner.",
-   "ja": "昔のたんこうの村ごとに、手えがきの大きな旗を先頭に、ダラムの町へ行進するよ。"
+   "en": "Each old mining village marches into Durham behind a big, hand-painted banner. Durham's coal mines closed in the 1980s and 90s, and whole villages suddenly lost their main work. Japan has the same story: Hashima, 'Battleship Island' near Nagasaki, was emptied in 1974 after its coal mine closed.",
+   "ja": "昔のたんこうの村ごとに、手えがきの大きな旗を先頭に、ダラムの町へ行進するよ。ダラムの炭鉱は1980〜90年代に閉山して、村の人たちは急に仕事をなくしたんだ。日本にも同じお話があるよ。長崎の近くにある端島（はしま、「軍艦島」）は、炭鉱が1974年に閉山して、島から人がいなくなったんだ。"
   },
   "quiz": {
    "q": {
@@ -1814,7 +1829,12 @@
    "en": "Durham, England",
    "ja": "イングランド（ダラム）"
   },
-  "image": "durhamminersgala"
+  "image": "durhamminersgala",
+  "video": "gala",
+  "watch": {
+   "en": "Banners and brass bands fill Durham. Think of Nagasaki's Battleship Island: both remember the miners.",
+   "ja": "ダラムの町が旗とブラスバンドでいっぱい！ 長崎の軍艦島を思い出してね。どちらも、たんこうで働いた人たちをおぼえているんだ。"
+  }
  },
  {
   "id": "highland",
@@ -1871,7 +1891,12 @@
    "ja": "夏、スコットランドの各地"
   },
   "image": "highlandgames",
-  "minigame": "caber"
+  "minigame": "caber",
+  "video": "highlandgames",
+  "watch": {
+   "en": "A peek at the Lochearnhead Highland Games in Scotland!",
+   "ja": "スコットランドのロッホアーンヘッド・ハイランド・ゲームズをのぞいてみよう！"
+  }
  },
  {
   "id": "summerhols",
@@ -1924,7 +1949,12 @@
    "en": "Around the third week of July",
    "ja": "7月の第3週ごろ"
   },
-  "image": "summerholidays"
+  "image": "summerholidays",
+  "video": "summerhols",
+  "watch": {
+   "en": "Feel the British summer: sunshine, countryside and holiday fun!",
+   "ja": "イギリスの夏を感じてみよう。太陽、いなか道、そして休みの楽しさ！"
+  }
  },
  {
   "id": "henley",
@@ -1983,7 +2013,12 @@
    "en": "Late June or early July",
    "ja": "6月の終わりか7月はじめ"
   },
-  "image": "henleyroyalregatta"
+  "image": "henleyroyalregatta",
+  "video": "henley",
+  "watch": {
+   "en": "Watch the rowing crews race on the Thames at Henley!",
+   "ja": "テムズ川のヘンリーで、ボートのレースを見てみよう！"
+  }
  },
  {
   "id": "welshshow",
@@ -2198,7 +2233,12 @@
    "en": "Most of August",
    "ja": "8月のほとんど"
   },
-  "image": "edinburghfringefestival"
+  "image": "edinburghfringefestival",
+  "video": "fringe",
+  "watch": {
+   "en": "Performers and visitors tell us what the Fringe feels like!",
+   "ja": "出演者やお客さんが、フリンジってどんな感じか教えてくれるよ！"
+  }
  },
  {
   "id": "eisteddfod",
@@ -2257,62 +2297,12 @@
    "en": "First week of August",
    "ja": "8月のはじめの週"
   },
-  "image": "eisteddfod"
- },
- {
-  "id": "carnival",
-  "cal": 7,
-  "date": "last-1",
-  "emoji": "🥁",
-  "title": {
-   "en": "Notting Hill Carnival",
-   "ja": "ノッティング・ヒル・カーニバル"
-  },
-  "why": {
-   "en": "Notting Hill Carnival is the biggest street party in Europe. It celebrates Caribbean culture with music, floats and costumes.",
-   "ja": "ノッティング・ヒル・カーニバルは、ヨーロッパ最大のストリートパーティー。音楽やおみこし、いしょうでカリブの文化をいわうよ。"
-  },
-  "fact": {
-   "en": "About a million people come to London on the August bank holiday to dance in the streets.",
-   "ja": "8月の祝日に約100万人がロンドンに来て、通りでおどるよ。"
-  },
-  "quiz": {
-   "q": {
-    "en": "Which culture does the Carnival celebrate?",
-    "ja": "カーニバルがいわう文化は？"
-   },
-   "options": [
-    {
-     "en": "Caribbean",
-     "ja": "カリブ"
-    },
-    {
-     "en": "Viking",
-     "ja": "ヴァイキング"
-    },
-    {
-     "en": "Roman",
-     "ja": "ローマ"
-    }
-   ],
-   "answer": 0
-  },
-  "effect": {
-   "en": "Players in London get £250 × year.",
-   "ja": "ロンドンにいる人は +£250×年。"
-  },
-  "fx": {
-   "t": "region",
-   "regions": [
-    "london"
-   ],
-   "amount": 250
-  },
-  "where": {
-   "en": "London",
-   "ja": "ロンドン"
-  },
-  "image": "nottinghillcarnival"
+  "image": "eisteddfod",
+  "video": "eisteddfod",
+  "watch": {
+   "en": "Hear the crowd and the music at the Welsh Eisteddfod!",
+   "ja": "ウェールズのアイステズヴォッドの、にぎわいと音楽を聞いてみよう！"
+  }
  },
  {
   "id": "cowesweek",
@@ -2460,7 +2450,12 @@
    "en": "Early September",
    "ja": "9月のはじめ"
   },
-  "image": "backtoschool"
+  "image": "backtoschool",
+  "video": "backtoschool",
+  "watch": {
+   "en": "What is a UK school day like? Let's find out!",
+   "ja": "イギリスの学校の1日ってどんな感じ？ 見てみよう！"
+  }
  },
  {
   "id": "heritage",
@@ -2513,62 +2508,12 @@
    "en": "Mid-September, ten days",
    "ja": "9月なかごろ、10日間"
   },
-  "image": "heritageopendays"
- },
- {
-  "id": "braemar",
-  "cal": 8,
-  "date": "nth-6-1",
-  "emoji": "🎖️",
-  "title": {
-   "en": "Braemar Gathering",
-   "ja": "ブレーマー・ギャザリング"
-  },
-  "why": {
-   "en": "The Braemar Gathering is the most famous Highland games in Scotland. The royal family sometimes watches it.",
-   "ja": "ブレーマー・ギャザリングは、スコットランドでいちばん有名なハイランド・ゲームズ。王室の人が見にくることもあるよ。"
-  },
-  "fact": {
-   "en": "There are bagpipe bands, dancing, running up a hill, and tossing heavy hammers and stones.",
-   "ja": "バグパイプ、ダンス、山のぼりのレース、重いハンマーや石を投げるきょうぎがあるよ。"
-  },
-  "quiz": {
-   "q": {
-    "en": "What instrument is played at the Gathering?",
-    "ja": "ギャザリングでえんそうされる楽器は？"
-   },
-   "options": [
-    {
-     "en": "Bagpipes",
-     "ja": "バグパイプ"
-    },
-    {
-     "en": "Piano",
-     "ja": "ピアノ"
-    },
-    {
-     "en": "Violin",
-     "ja": "バイオリン"
-    }
-   ],
-   "answer": 0
-  },
-  "effect": {
-   "en": "Players in Scotland get £200 × year.",
-   "ja": "スコットランドにいる人は +£200×年。"
-  },
-  "fx": {
-   "t": "region",
-   "regions": [
-    "scotland"
-   ],
-   "amount": 200
-  },
-  "where": {
-   "en": "Scotland",
-   "ja": "スコットランド"
-  },
-  "image": "braemargathering"
+  "image": "heritageopendays",
+  "video": "heritage",
+  "watch": {
+   "en": "Look at hidden gems you can visit for free!",
+   "ja": "むりょうで入れる、かくれた名所を見てみよう！"
+  }
  },
  {
   "id": "northrun",
@@ -2623,7 +2568,12 @@
    "en": "North-east England",
    "ja": "イングランド北東部"
   },
-  "image": "greatnorthrun"
+  "image": "greatnorthrun",
+  "video": "northrun",
+  "watch": {
+   "en": "Thousands of runners on the Great North Run!",
+   "ja": "グレート・ノース・ランを走る、何千人ものランナーを見てみよう！"
+  }
  },
  {
   "id": "proms",
@@ -2792,66 +2742,12 @@
   "fx": {
    "t": "card"
   },
-  "image": "halloween"
- },
- {
-  "id": "riveroflight",
-  "cal": 9,
-  "date": "d25",
-  "emoji": "🏮",
-  "title": {
-   "en": "River of Light",
-   "ja": "リバー・オブ・ライト"
-  },
-  "why": {
-   "en": "River of Light is a free festival in Liverpool. Giant glowing lanterns and light shows fill the Albert Dock at night.",
-   "ja": "リバー・オブ・ライトはリバプールの無料のお祭り。夜、アルバート・ドックを大きな光のランタンやライトショーがかざるよ。"
-  },
-  "fact": {
-   "en": "It is held in the autumn half-term holiday, when the nights are dark and families go out to see the lights.",
-   "ja": "秋の学校のお休みの時期にひらかれて、暗い夜に家族が光を見に出かけるよ。"
-  },
-  "quiz": {
-   "q": {
-    "en": "In which city is River of Light?",
-    "ja": "リバー・オブ・ライトがひらかれる町は？"
-   },
-   "options": [
-    {
-     "en": "Liverpool",
-     "ja": "リバプール"
-    },
-    {
-     "en": "York",
-     "ja": "ヨーク"
-    },
-    {
-     "en": "Oxford",
-     "ja": "オックスフォード"
-    }
-   ],
-   "answer": 0
-  },
-  "effect": {
-   "en": "Players in northern England get £200 × year.",
-   "ja": "イングランド北部にいる人は +£200×年。"
-  },
-  "fx": {
-   "t": "region",
-   "regions": [
-    "north"
-   ],
-   "amount": 200
-  },
-  "where": {
-   "en": "Liverpool, England",
-   "ja": "イングランド（リバプール）"
-  },
-  "label": {
-   "en": "Late October to early November",
-   "ja": "10月の終わりから11月はじめ"
-  },
-  "image": "riveroflight"
+  "image": "halloween",
+  "video": "halloween",
+  "watch": {
+   "en": "A Japanese video about where Halloween comes from!",
+   "ja": "ハロウィーンのはじまりについての、日本語の動画を見てみよう！"
+  }
  },
  {
   "id": "conkers",
@@ -2982,7 +2878,12 @@
    "id": "fireworks"
   },
   "image": "bonfirenight",
-  "minigame": "fireworks"
+  "minigame": "fireworks",
+  "video": "bonfire",
+  "watch": {
+   "en": "The story of Guy Fawkes, told for kids!",
+   "ja": "ガイ・フォークスのお話を、子ども向けに見てみよう！"
+  }
  },
  {
   "id": "standrew",
@@ -3037,7 +2938,12 @@
    "en": "Scotland",
    "ja": "スコットランド"
   },
-  "image": "standrewsday"
+  "image": "standrewsday",
+  "video": "standrew",
+  "watch": {
+   "en": "Who was St Andrew, and how does Scotland celebrate?",
+   "ja": "セント・アンドリューってだれ？ スコットランドはどうお祝いするの？"
+  }
  },
  {
   "id": "cin",
@@ -3089,7 +2995,12 @@
    "en": "A Friday in mid-November",
    "ja": "11月なかごろの金曜日"
   },
-  "image": "bbcchildreninneed"
+  "image": "bbcchildreninneed",
+  "video": "cin",
+  "watch": {
+   "en": "Why is Children in Need so important? Listen!",
+   "ja": "チルドレン・イン・ニードはなぜ大切なの？ 聞いてみよう！"
+  }
  },
  {
   "id": "lordmayorsshow",
@@ -3263,6 +3174,11 @@
      "ja": "12月には、マンチェスター、バーミンガム、ヨークなどの町に、木の小さな屋台がならぶよ。プレゼント、ホットチョコ、ミンスパイ、ホットワインが買えて、寒い空気の中でライトがキラキラ光る。"
     }
    }
-  ]
+  ],
+  "video": "christmas",
+  "watch": {
+   "en": "How do people in the UK celebrate Christmas? Let's find out!",
+   "ja": "イギリスの人たちはクリスマスをどうお祝いする？ 見てみよう！"
+  }
  }
 ]
