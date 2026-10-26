@@ -45,7 +45,12 @@
    "t": "all",
    "amount": 100
   },
-  "image": "newyearsday"
+  "image": "newyearsday",
+  "video": "newyear",
+  "watch": {
+   "en": "Here are the fireworks over London to welcome the new year!",
+   "ja": "ロンドンの新年の花火を見てみよう！ ドーン、ドーン！"
+  }
  },
  {
   "id": "hogmanay",
@@ -104,7 +109,12 @@
    "en": "31st December to 2nd January",
    "ja": "12月31日〜1月2日"
   },
-  "image": "hogmanay"
+  "image": "hogmanay",
+  "video": "hogmanay",
+  "watch": {
+   "en": "Edinburgh's street party, torch parade and an icy New Year swim!",
+   "ja": "エディンバラの夜のパーティー、たいまつの行列、そして冷たい海での新年およぎ「ルーニー・ドック」を見てみよう！"
+  }
  },
  {
   "id": "burns",
@@ -159,7 +169,12 @@
    "en": "Scotland",
    "ja": "スコットランド"
   },
-  "image": "burnsnight"
+  "image": "burnsnight",
+  "video": "burns",
+  "watch": {
+   "en": "Let's hear about Scotland's poet, Robert Burns!",
+   "ja": "スコットランドの詩人、ロバート・バーンズのお話を聞いてみよう！"
+  }
  },
  {
   "id": "jansales",
@@ -210,7 +225,12 @@
    "en": "After Christmas, through January",
    "ja": "クリスマスのあと、1月ごろ"
   },
-  "image": "januarysales"
+  "image": "januarysales",
+  "video": "jansales",
+  "watch": {
+   "en": "Look at the shoppers rushing in for bargains!",
+   "ja": "お買い得品をめざして、お店にかけこむ人たちを見てみよう！"
+  }
  },
  {
   "id": "birdwatch",
@@ -304,7 +324,12 @@
    "ja": "ざんげの火曜日（2月か3月はじめ）"
   },
   "image": "pancakeday",
-  "minigame": "pancake"
+  "minigame": "pancake",
+  "video": "pancake",
+  "watch": {
+   "en": "Watch the Spitalfields pancake race in London. Toss and run!",
+   "ja": "ロンドンのスピタルフィールズのパンケーキ・レースを見てみよう。トスして、走れ！"
+  }
  },
  {
   "id": "valentine",
@@ -352,7 +377,12 @@
    "t": "all",
    "amount": 100
   },
-  "image": "valentinesday"
+  "image": "valentinesday",
+  "video": "valentine",
+  "watch": {
+   "en": "This video shows Valentine's Day in America. The UK is similar: cards, flowers and dinners!",
+   "ja": "この動画はアメリカのバレンタインデー。イギリスもにていて、カードや花、ディナーでお祝いするよ！"
+  }
  },
  {
   "id": "snowdrops",
@@ -405,7 +435,12 @@
    "en": "Late January to March",
    "ja": "1月の終わりから3月"
   },
-  "image": "snowdropseason"
+  "image": "snowdropseason",
+  "video": "snowdrops",
+  "watch": {
+   "en": "Watch snowdrops bloom in a time-lapse!",
+   "ja": "スノードロップがさくようすを、早送りで見てみよう！"
+  }
  },
  {
   "id": "sixnations",
@@ -501,7 +536,12 @@
    "en": "Wales",
    "ja": "ウェールズ"
   },
-  "image": "stdavidsday"
+  "image": "stdavidsday",
+  "video": "stdavid",
+  "watch": {
+   "en": "Watch a St David's Day parade in Wales. Welsh pride!",
+   "ja": "ウェールズのセント・デイヴィッドの日のパレードを見てみよう。ウェールズの人のほこりだね！"
+  }
  },
  {
   "id": "stpatrick",
@@ -513,8 +553,8 @@
    "ja": "セント・パトリックの日"
   },
   "why": {
-   "en": "17th March is St Patrick's Day. In Northern Ireland people wear green and shamrocks and go to parades.",
-   "ja": "3月17日はセント・パトリックの日。北アイルランドでは、緑の服やシャムロックをつけてパレードに行くよ。"
+   "en": "17th March is St Patrick's Day. It is an Irish celebration, and it is also celebrated in Northern Ireland, which is part of the UK. People wear green and shamrocks and go to parades.",
+   "ja": "3月17日はセント・パトリックの日。もともとはアイルランドのお祝いで、イギリスの一部である北アイルランドでもお祝いするよ。緑の服やシャムロックをつけて、パレードに行くんだ。"
   },
   "fact": {
    "en": "St Patrick used a three-leaf shamrock to explain an idea to the people. It became Ireland's symbol.",
@@ -556,7 +596,12 @@
    "en": "Northern Ireland",
    "ja": "北アイルランド"
   },
-  "image": "stpatricksday"
+  "image": "stpatricksday",
+  "video": "stpatrick",
+  "watch": {
+   "en": "This parade is in Ireland. It is an Irish celebration that Northern Ireland shares.",
+   "ja": "このパレードはアイルランドのもの。もともとアイルランドのお祝いで、北アイルランドでもお祝いしているよ。"
+  }
  },
  {
   "id": "mothers",
@@ -609,7 +654,12 @@
    "en": "Mothering Sunday (March or early April)",
    "ja": "マザリング・サンデー（3月か4月はじめ）"
   },
-  "image": "mothersday"
+  "image": "mothersday",
+  "video": "mothers",
+  "watch": {
+   "en": "This video tells the story of Mother's Day in America, in May. The UK's Mothering Sunday is older, from long ago!",
+   "ja": "この動画は、5月にあるアメリカの母の日のお話。イギリスのマザリング・サンデーは、もっと昔からあるよ！"
+  }
  },
  {
   "id": "equinox",
@@ -657,7 +707,12 @@
    "t": "all",
    "amount": 100
   },
-  "image": "springequinox"
+  "image": "springequinox",
+  "video": "equinox",
+  "watch": {
+   "en": "Let's go to Stonehenge and welcome spring!",
+   "ja": "ストーンヘンジに行って、春をむかえよう！"
+  }
  },
  {
   "id": "crufts",
@@ -796,7 +851,12 @@
    "ja": "イースターの日曜日（3月か4月）"
   },
   "image": "easteregghunts",
-  "minigame": "eggs"
+  "minigame": "eggs",
+  "video": "easter",
+  "watch": {
+   "en": "London Zoo animals have their own Easter egg hunt!",
+   "ja": "ロンドン動物園の動物たちが、イースターのたまごさがしをするよ！"
+  }
  },
  {
   "id": "stgeorge",
@@ -856,7 +916,12 @@
    "en": "England",
    "ja": "イングランド"
   },
-  "image": "stgeorgesday"
+  "image": "stgeorgesday",
+  "video": "stgeorge",
+  "watch": {
+   "en": "Londoners tell us what St George's Day means to them in Trafalgar Square.",
+   "ja": "トラファルガー広場で、ロンドンの人たちがセント・ジョージの日について話してくれるよ。"
+  }
  },
  {
   "id": "marathon",
@@ -915,7 +980,12 @@
    "en": "Late April",
    "ja": "4月の終わり"
   },
-  "image": "londonmarathon"
+  "image": "londonmarathon",
+  "video": "marathon",
+  "watch": {
+   "en": "Let's cheer on the London Marathon runners!",
+   "ja": "ロンドン・マラソンのランナーを応えんしよう！"
+  }
  },
  {
   "id": "lambing",
@@ -1056,7 +1126,12 @@
    "en": "England",
    "ja": "イングランド"
   },
-  "image": "mayday"
+  "image": "mayday",
+  "video": "mayday",
+  "watch": {
+   "en": "Watch a maypole dance, danced by the Royal Ballet!",
+   "ja": "ロイヤル・バレエのメイポール・ダンスを見てみよう！"
+  }
  },
  {
   "id": "chelsea",
@@ -1110,7 +1185,12 @@
    "en": "London",
    "ja": "ロンドン"
   },
-  "image": "chelseaflowershow"
+  "image": "chelseaflowershow",
+  "video": "chelsea",
+  "watch": {
+   "en": "Take a walk around the Chelsea Flower Show gardens!",
+   "ja": "チェルシー・フラワーショーの庭を歩いてみよう！"
+  }
  },
  {
   "id": "facup",
@@ -1159,7 +1239,12 @@
    "cat": "sport",
    "mult": 2
   },
-  "image": "facupfinal"
+  "image": "facupfinal",
+  "video": "facup",
+  "watch": {
+   "en": "Here is a special film about the FA Cup!",
+   "ja": "FAカップのスペシャル映像を見てみよう！"
+  }
  },
  {
   "id": "hay",
@@ -1218,7 +1303,12 @@
    "en": "Late May to early June",
    "ja": "5月の終わりから6月はじめ"
   },
-  "image": "hayfestival"
+  "image": "hayfestival",
+  "video": "hay",
+  "watch": {
+   "en": "A look at the Hay Festival, Wales's book festival!",
+   "ja": "ウェールズの本のお祭り、ヘイ・フェスティバルをのぞいてみよう！"
+  }
  },
  {
   "id": "bluebells",
@@ -1350,7 +1440,12 @@
    "prop": "salisbury_0",
    "amount": 1000
   },
-  "image": "summersolstice"
+  "image": "summersolstice",
+  "video": "solstice",
+  "watch": {
+   "en": "Watch the sunrise at Stonehenge on the longest day!",
+   "ja": "いちばん昼が長い日、ストーンヘンジの日の出を見てみよう！"
+  }
  },
  {
   "id": "trooping",
@@ -1405,7 +1500,12 @@
    "en": "London",
    "ja": "ロンドン"
   },
-  "image": "troopingthecolour"
+  "image": "troopingthecolour",
+  "video": "trooping",
+  "watch": {
+   "en": "Watch Trooping the Colour march past with the band!",
+   "ja": "軍楽隊とともに行進する「トゥルーピング・ザ・カラー」を見てみよう！"
+  }
  },
  {
   "id": "ascot",
@@ -1460,7 +1560,12 @@
    "en": "Berkshire, England",
    "ja": "イングランド（バークシャー）"
   },
-  "image": "royalascot"
+  "image": "royalascot",
+  "video": "ascot",
+  "watch": {
+   "en": "Look at the horses and hats at Royal Ascot!",
+   "ja": "ロイヤル・アスコットの馬とぼうしを見てみよう！"
+  }
  },
  {
   "id": "fathers",
