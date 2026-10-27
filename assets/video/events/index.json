@@ -424,9 +424,13 @@
   "full": true
  },
  "welshshow": {
-  "error": "Command '['yt-dlp', '--no-warnings', '-J', '--skip-download', 'https://www.youtube.com/watch?v=pMQJLDncbIk']' returned non-zero exit status 1.",
+  "dub": false,
+  "subs": false,
+  "secs": 75.7,
+  "title": "Royal Welsh Show",
+  "kb": 7696,
   "yt": "pMQJLDncbIk",
-  "subs": false
+  "full": true
  },
  "fringe": {
   "dub": false,
@@ -447,9 +451,13 @@
   "full": true
  },
  "harvest": {
-  "error": "Command '['yt-dlp', '--no-warnings', '-J', '--skip-download', 'https://www.youtube.com/watch?v=M9L_kaxWrgI']' returned non-zero exit status 1.",
+  "dub": false,
+  "subs": true,
+  "secs": 118.7,
+  "title": "Harvest Festival at a school in Manchester",
+  "kb": 7469,
   "yt": "M9L_kaxWrgI",
-  "subs": false
+  "full": true
  },
  "backtoschool": {
   "dub": false,
@@ -522,6 +530,15 @@
   "title": "How we Celebrate Christmas in the UK | What is Christmas for Kids",
   "kb": 10665,
   "yt": "f8jwRHKJPWI",
+  "full": true
+ },
+ "llangolleneisteddfod": {
+  "dub": false,
+  "subs": false,
+  "secs": 142.8,
+  "title": "Llangollen International Musical Eisteddfod",
+  "kb": 10193,
+  "yt": "UwbGrhQa964",
   "full": true
  }
 }

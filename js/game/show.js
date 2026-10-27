@@ -13,7 +13,7 @@ import { realMonth } from '../core/calendar.js';
 import { SENSEI } from '../core/content/heroes.js';
 import { say } from './dialogs.js';
 import { sprites } from './fake3d/sprites.js';
-import { eventClip, newsLoop, prefetchClip, duckMusic } from './video.js';
+import { eventClip, newsLoop, prefetchClip, duckMusic, isTvMuted, setTvMuted } from './video.js';
 /** The presenter's TV studio: Mark Sensei talks, one short bubble at a time, with a picture on the TV. */
 class StudioModal extends PModal {
     constructor(ls) {
@@ -52,11 +52,22 @@ class StudioModal extends PModal {
         this.stopVid();
         const c = l.video && !app.autoplay ? eventClip(l.video) : null;
         if (c) {
+            const snd = !app.options.muted && !isTvMuted();
             this.vid = c;
-            c.start(!app.options.muted);
-            if (!app.options.muted)
+            c.start(snd);
+            if (snd)
                 duckMusic(true);
         }
+    }
+    muteHit(px, py, pad) { const m = StudioModal.MUTE; return px >= m.x - pad && px <= m.x + m.w + pad && py >= m.y - pad && py <= m.y + m.h + pad; }
+    toggleMute() {
+        setTvMuted(!isTvMuted());
+        const snd = !isTvMuted() && !app.options.muted;
+        if (this.vid) {
+            this.vid.setSound(snd);
+            duckMusic(snd);
+        }
+        audio.play('hover');
     }
     stopVid() { if (this.vid) {
         this.vid.stop();
@@ -121,8 +132,17 @@ class StudioModal extends PModal {
             this.advance();
         }
     }
-    pointerUp(_x, _y, wasDrag) { if (!this.closing && !wasDrag)
-        this.advance(); return true; }
+    pointerUp(x, y, wasDrag) {
+        if (this.closing || wasDrag)
+            return true;
+        if (this.vid && this.muteHit(x, y, StudioModal.MUTE.pad)) { // the button plus a safety margin around it
+            if (this.muteHit(x, y, 4))
+                this.toggleMute();
+            return true;
+        }
+        this.advance();
+        return true;
+    }
     tapOutside() { this.advance(); }
     draw(ctx) {
         this.drawBody(ctx);
@@ -183,6 +203,15 @@ class StudioModal extends PModal {
                 ctx.fill();
                 text(ctx, tag, x + w - tw / 2 - 14, y + 29, { size: 17, color: '#fff', align: 'center', weight: 800 });
             }
+            const m = StudioModal.MUTE, off = isTvMuted() || app.options.muted;
+            ctx.fillStyle = off ? 'rgba(160,30,30,0.78)' : 'rgba(0,0,0,0.6)';
+            roundRect(ctx, m.x, m.y, m.w, m.h, 12);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+            ctx.lineWidth = 2;
+            roundRect(ctx, m.x, m.y, m.w, m.h, 12);
+            ctx.stroke();
+            text(ctx, off ? '🔇' : '🔊', m.x + m.w / 2, m.y + m.h / 2 + 1, { size: 26, color: '#fff', align: 'center' });
         }
         else if (tv) {
             drawPic(ctx, tv.kind, tv.name, x, y, w, h, { emoji: tv.emoji, label: main(tv.title), color: tv.color, radius: 0, border: 'none' });
@@ -273,6 +302,8 @@ class StudioModal extends PModal {
         }
     }
 }
+/** The TV mute button (top left of the screen). Taps near it count as "missed the button", not "next". */
+StudioModal.MUTE = { x: 560 + 14, y: 70 + 14, w: 64, h: 44, pad: 30 };
 /** The presenter speaks the lines (TV studio). If the teacher turned the presenter off, the same lines appear in the message box. */
 export async function studio(ls) {
     if (!ls.length)

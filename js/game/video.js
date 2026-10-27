@@ -4,6 +4,19 @@
 import { text, roundRect } from '../engine/draw.js';
 import { audio } from '../engine/audio.js';
 const DIR = 'assets/video/events/';
+const FADE_MS = 1800;
+// The TV's own mute button: remembered between visits (separate from the game's sound switch).
+const MUTE_KEY = 'ukexpress.tvMuted';
+let tvMuted = false;
+try {
+    tvMuted = localStorage.getItem(MUTE_KEY) === '1';
+}
+catch { /* storage blocked: not remembered */ }
+export const isTvMuted = () => tvMuted;
+export function setTvMuted(m) { tvMuted = m; try {
+    localStorage.setItem(MUTE_KEY, m ? '1' : '0');
+}
+catch { /* ignore */ } }
 let index = {};
 let indexLoaded = false;
 /** Reads the list of clips that exist (a tiny JSON). Never throws: with no list there are simply no event videos. */
@@ -42,6 +55,8 @@ export class Clip {
         this.cues = [];
         this.failed = false;
         this.asked = false;
+        this.fadeFrom = 0;
+        this.fadeMs = 0; // sound fades in so nobody is hit by a sudden loud clip
         const v = document.createElement('video');
         v.preload = 'auto';
         v.playsInline = true;
@@ -66,12 +81,26 @@ export class Clip {
         }
         catch { /* not ready yet */ }
         v.muted = !sound;
+        this.fadeIn(sound ? FADE_MS : 0);
         this.asked = true;
         v.play().catch(() => { v.muted = true; v.play().catch(() => { }); });
     }
+    /** Ramps the volume from silence to full over `ms` (0 = no fade). */
+    fadeIn(ms) { this.fadeMs = ms; this.fadeFrom = performance.now(); this.el.volume = ms > 0 ? 0 : 1; }
+    /** Turns the clip's sound on or off in the middle of playing (the TV mute button). Switching on fades in again. */
+    setSound(sound) { this.el.muted = !sound; if (sound)
+        this.fadeIn(FADE_MS); }
+    tickFade() {
+        if (this.fadeMs <= 0 || this.el.muted)
+            return;
+        const p = Math.min(1, (performance.now() - this.fadeFrom) / this.fadeMs);
+        this.el.volume = p * p; // starts very gently
+        if (p >= 1)
+            this.fadeMs = 0;
+    }
     stop() { this.asked = false; this.el.pause(); }
     /** Keeps a clip that should be playing playing (browsers sometimes refuse the first play()). */
-    keepAlive() { if (this.asked && this.el.paused && !this.el.ended)
+    keepAlive() { this.tickFade(); if (this.asked && this.el.paused && !this.el.ended)
         this.el.play().catch(() => { }); }
     cueAt() {
         const t = this.el.currentTime;

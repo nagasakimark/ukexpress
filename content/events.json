@@ -2056,7 +2056,12 @@
    "en": "Late July",
    "ja": "7月の終わり"
   },
-  "image": "royalwelshshow"
+  "image": "royalwelshshow",
+  "video": "welshshow",
+  "watch": {
+   "en": "Croeso! Let's meet the animals at the Royal Welsh Show!",
+   "ja": "クロエソ（ようこそ）！ ロイヤル・ウェルシュ・ショーで、動物たちに会いにいこう！"
+  }
  },
  {
   "id": "silverstone",
@@ -2178,7 +2183,12 @@
    "en": "Early July",
    "ja": "7月のはじめ"
   },
-  "image": "llangolleninternationaleisteddfod"
+  "image": "llangolleninternationaleisteddfod",
+  "video": "llangolleneisteddfod",
+  "watch": {
+   "en": "Dancers in red and singers from many countries come to Llangollen in Wales!",
+   "ja": "赤い衣装のダンサーや、いろいろな国の歌い手が、ウェールズのラングランに集まるよ！"
+  }
  },
  {
   "id": "fringe",
@@ -2398,7 +2408,12 @@
    "en": "Late September",
    "ja": "9月の終わり"
   },
-  "image": "harvestfestival"
+  "image": "harvestfestival",
+  "video": "harvest",
+  "watch": {
+   "en": "See how a school in Manchester says thank you for food, and shares it with a food bank!",
+   "ja": "マンチェスターの学校が、食べ物に感謝して、フードバンクに分けるようすを見てみよう！"
+  }
  },
  {
   "id": "backtoschool",
