@@ -168,12 +168,6 @@ class StudioModal extends PModal {
             const h = 640, w = img.naturalWidth * h / img.naturalHeight;
             ctx.drawImage(img, 70, 100 + bob, w, h);
         }
-        // ON AIR lamp
-        ctx.fillStyle = Math.sin(tt / 300) > 0 ? '#ff3b3b' : '#a02020';
-        ctx.beginPath();
-        ctx.arc(1226, 40, 11, 0, 7);
-        ctx.fill();
-        text(ctx, 'ON AIR', 1204, 40, { size: 15, color: '#fff', align: 'right', outline: 4, outlineColor: '#7a1020' });
         this.drawBubble(ctx, tt);
     }
     drawTv(ctx, tt) {
@@ -193,16 +187,6 @@ class StudioModal extends PModal {
         ctx.clip();
         const playing = !!this.vid && this.vid.draw(ctx, x, y, w, h);
         if (playing) {
-            const inf = this.vid.opts.info;
-            const tag = inf?.native ? '🇯🇵 日本語' : inf?.dub ? '🇯🇵 日本語 吹き替え' : inf?.subs ? '日本語 字幕' : '';
-            if (tag) {
-                ctx.font = `800 17px ${FONT}`;
-                const tw = ctx.measureText(tag).width + 24;
-                ctx.fillStyle = 'rgba(0,0,0,0.6)';
-                roundRect(ctx, x + w - tw - 14, y + 14, tw, 30, 10);
-                ctx.fill();
-                text(ctx, tag, x + w - tw / 2 - 14, y + 29, { size: 17, color: '#fff', align: 'center', weight: 800 });
-            }
             const m = StudioModal.MUTE, off = isTvMuted() || app.options.muted;
             ctx.fillStyle = off ? 'rgba(160,30,30,0.78)' : 'rgba(0,0,0,0.6)';
             roundRect(ctx, m.x, m.y, m.w, m.h, 12);
@@ -302,8 +286,8 @@ class StudioModal extends PModal {
         }
     }
 }
-/** The TV mute button (top left of the screen). Taps near it count as "missed the button", not "next". */
-StudioModal.MUTE = { x: 560 + 14, y: 70 + 14, w: 64, h: 44, pad: 30 };
+/** The TV mute button (top right of the screen). Taps near it count as "missed the button", not "next". */
+StudioModal.MUTE = { x: 560 + 660 - 14 - 64, y: 70 + 14, w: 64, h: 44, pad: 30 };
 /** The presenter speaks the lines (TV studio). If the teacher turned the presenter off, the same lines appear in the message box. */
 export async function studio(ls) {
     if (!ls.length)
